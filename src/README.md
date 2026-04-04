@@ -1,1 +1,0 @@
-Diretório dedicado a implementação do sistema (arquivos.cpp).
