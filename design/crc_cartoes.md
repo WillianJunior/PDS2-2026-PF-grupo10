@@ -54,3 +54,52 @@ Subclasses: Luz, Ar condicionado, Portão, Som
 | Integrar com macros          |             | 
  
 ---
+## Classe: Som
+
+| Responsabilidades                     | Colaborações |
+|--------------------------------------|-------------|
+| Ligar som                            | Dispositivo |
+| Desligar som                         | Macro       |
+| Ajustar volume                       | Sistema     |
+| Atualizar estado                     |             |
+| Responder a comandos                 |             |
+| Integrar com macros                  |             |
+| Iniciar, pausar e pular música       |             |
+
+---
+
+## Classe: Ar condicionado
+
+| Responsabilidades                     | Colaborações |
+|--------------------------------------|-------------|
+| Ligar ar condicionado                | Dispositivo |
+| Desligar ar condicionado             | Macro       |
+| Ajustar temperatura                  | Sistema     |
+| Atualizar estado                     |             |
+| Responder a comandos                 |             |
+| Integrar com macros                  |             |
+| Alterar modos de operação            |             |
+
+---
+
+## Classe: Portão
+
+| Responsabilidades          | Colaborações |
+|--------------------------|-------------|
+| Abrir portão             | Dispositivo |
+| Fechar portão            | Macro       |
+| Atualizar estado         | Sistema     |
+| Responder a comandos     |             |
+| Integrar com macros      |             |
+
+---
+
+## Classe: Macro
+
+| Responsabilidades                    | Colaborações |
+|-------------------------------------|-------------|
+| Armazenar lista de ações            | Dispositivo |
+| Executar sequência de comandos      | Sistema     |
+| Editar lista de ações               |             |
+| Nomear macro                        |             |
+| Associar a eventos                  |             |
