@@ -44,3 +44,62 @@ Como morador, quero controlar o ar-condicionado remotamente, ou por comando de v
 - Exibir estado.
 
 ---
+
+## 5. Controle do som
+**Descrição:**  
+Como morador, quero ligar/desligar o som e controlar a música remotamente, ou por comando de voz, para gerenciá-la de forma prática e rápida no dia a dia.
+
+**Critérios de aceitação:**
+- Ligar o som;  
+- Desligar o som;
+- Exibir estado (ligado/desligado);
+- Permitir iniciar, pausar e avançar uma música;
+- Responder aos comandos de forma rápida e sem erros.
+
+---
+
+## 6. Monitoramento dos dispositivos
+**Descrição:**  
+Como morador, preciso coletar os dados dos dispositivos para que seja possível acompanhar cada cômodo.  
+
+**Critérios de aceitação:**
+- Exibir temperatura atual;
+- Exibir estado de luz (ligada/desligada);
+- Atualizar dados em tempo real;
+- Alertar valores fora do padrão (dispositivos offline).
+
+---
+
+## 7. Criação de macros
+**Descrição:**  
+Como morador, quero criar macros personalizadas para automatizar ações.  
+
+**Critérios de aceitação:**
+- Permitir criar uma sequência de ações;
+- Permitir nomear macros;
+- Executar macro manualmente;  
+- Permitir editar/excluir macros.  
+
+---
+
+## 8. Simulação de falhas
+**Descrição:**  
+Como desenvolvedor/testador, quero simular falhas para testar o sistema.  
+
+**Critérios de aceitação:**
+- Simular dispositivo offline;
+- Simular falha de comunicação;
+- Exibir erro ao usuário;
+- Registrar falhas no sistema.
+
+---
+
+## 9. Gerenciamento de dispositivos
+**Descrição:**  
+Como morador, preciso cadastrar e remover dispositivos da casa para ter o controle deles.  
+
+**Critérios de aceitação:**
+- Adicionar novo dispositivo;
+- Remover dispositivo existente;
+- Listar todos os dispositivos;
+- Associar dispositivo a um cômodo.
