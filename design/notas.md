@@ -1,0 +1,5 @@
+ - o markdown de user stories e crc ficaram muito legais
+ - user story 1: como vocês planejam simular comandos de voz? não sei se faz sentido manter...
+ - user story 2: essa automação seria uma interação (apertar um botão) ou um sensor de saída de casa? pode simular ambos, mas decidam logo em como fazer isso.
+ - crc: casa: "gerenciar funcionamento geral" é muito genérico, não ajuda muito.
+ - notas gerais: a modelagem está boa, e os user stories estão descritivos. porém pelos cartões crc o sistema parece muito simples. parece apenas um sistema, que tem uma casa, que tem dispositivos em uma hierarquia simples. não foi modelada a parte de testes e falhas. talvez modelar uma interface textual e usuários pode dar mais profundidade ao sistema.
