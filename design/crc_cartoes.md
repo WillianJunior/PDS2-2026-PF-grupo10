@@ -124,23 +124,23 @@ Subclasses: Luz, Ar condicionado, Portão, Som
 
 ## Classe: InterfaceTextual
 
-| Responsabilidades                   |    Colaborações   |
-|-------------------------------------|-------------------|
-| Receber comandos do usuário         | Usuário           |
-| Interpretar comandos de texto       | Sistema           |
-| Encaminhar comandos ao sistema      |                   |
-| Exibir respostas ao usuário         |                   |
-| Exibir alertas                      |                   |
+| Responsabilidades                   | Colaborações |
+|-------------------------------------|--------------|
+| Receber comandos do usuário         | Usuário      |
+| Interpretar comandos de texto       | Sistema      |
+| Encaminhar comandos ao sistema      |              |
+| Exibir respostas ao usuário         |              |
+| Exibir alertas                      |              |
 
 ---
 
 ## Classe: Sensor
 
-| Responsabilidades                   |    Colaborações   |
-|-------------------------------------|-------------------|
-| Monitorar o estado de dispositivos  | Dispositivo       |
-| Coletar dados dos dispositivos      | Sistema           |
-| Detectar erros                      |                   |
-| Gerar alertas                       |                   |
-| Notificar o sistema sobre problemas |                   |
+| Responsabilidades                   | Colaborações |
+|-------------------------------------|--------------|
+| Monitorar o estado de dispositivos  | Dispositivo  |
+| Coletar dados dos dispositivos      | Sistema      |
+| Detectar erros                      |              |
+| Gerar alertas                       |              |
+| Notificar o sistema sobre problemas |              |
 
