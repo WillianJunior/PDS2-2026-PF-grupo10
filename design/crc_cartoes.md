@@ -8,10 +8,9 @@
 |---------------------------------------|--------------| 
 | Armazenar dispositivos                | Dispositivo  | 
 | Organizar dispositivos por cômodo     | Sistema      | 
-| Executar macros globais               |              | 
+| Armazenar macros globais              |              | 
 | Salvar estado atual                   |              | 
 | Adicionar e remover dispositivos      |              | 
-| Gerenciar funcionamento geral         |              | 
  
 --- 
  
