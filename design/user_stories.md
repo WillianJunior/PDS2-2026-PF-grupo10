@@ -2,22 +2,23 @@
 
 ## 1. Controle de iluminação
 **Descrição:**  
-Como morador, quero ligar e desligar luzes remotamente, ou por comando de voz, para controlar a iluminação da casa.
+Como morador, quero ligar e desligar luzes remotamente para controlar a iluminação da casa.  
 
-**Critérios de aceitação:**
+**Critérios de aceitação:**  
 - Permitir ligar e desligar a luz individualmente;  
 - Permitir controlar todas as luzes ao mesmo tempo;  
-- Mostrar estado atual (ligada/desligada).
+- Mostrar estado atual (ligada/desligada).  
 
 ---
 
 ## 2. Automação ao sair de casa
 **Descrição:**  
-Como morador, quero desligar os dispositivos eletrônicos automaticamente ao sair de casa para economizar energia.  
+Como morador, quero ativar o modo "sair de casa" manualmente para desativar todos os dispositivos e economizar energia.  
 
-**Critérios de aceitação:**
-- Desligar todas as luzes;
-- Desligar aparelhos de som;
+**Critérios de aceitação:**  
+- Executar macro associado ao apertar o botão;  
+- Desligar todas as luzes;  
+- Desligar aparelhos de som;  
 - Desligar o ar-condicionado.  
 
 ---
@@ -35,26 +36,26 @@ Como morador, quero abrir e fechar os portões remotamente para ter mais seguran
 
 ## 4. Controle da temperatura
 **Descrição:**  
-Como morador, quero controlar o ar-condicionado remotamente, ou por comando de voz, para ajustar a temperatura da casa.
+Como morador, quero controlar o ar-condicionado remotamente, ou por comando de voz, para ajustar a temperatura da casa.  
 
 **Critérios de aceitação:**
 - Ligar o ar-condicionado;  
-- Desligar o ar-condicionado;
-- Controlar modo e temperatura;
-- Exibir estado.
+- Desligar o ar-condicionado;  
+- Controlar modo e temperatura;  
+- Exibir estado.  
 
 ---
 
 ## 5. Controle do som
 **Descrição:**  
-Como morador, quero ligar/desligar o som e controlar a música remotamente, ou por comando de voz, para gerenciá-la de forma prática e rápida no dia a dia.
+Como morador, quero ligar/desligar o som e controlar a música remotamente para gerenciá-la de forma prática e rápida no dia a dia.  
 
-**Critérios de aceitação:**
+**Critérios de aceitação:**  
 - Ligar o som;  
-- Desligar o som;
-- Exibir estado (ligado/desligado);
-- Permitir iniciar, pausar e avançar uma música;
-- Responder aos comandos de forma rápida e sem erros.
+- Desligar o som;  
+- Exibir estado (ligado/desligado);  
+- Permitir iniciar, pausar e avançar uma música;  
+- Responder aos comandos de forma rápida e sem erros.  
 
 ---
 
