@@ -36,7 +36,7 @@ Como morador, quero abrir e fechar os portões remotamente para ter mais seguran
 
 ## 4. Controle da temperatura
 **Descrição:**  
-Como morador, quero controlar o ar-condicionado remotamente, ou por comando de voz, para ajustar a temperatura da casa.  
+Como morador, quero controlar o ar-condicionado remotamente para ajustar a temperatura da casa.  
 
 **Critérios de aceitação:**
 - Ligar o ar-condicionado;  

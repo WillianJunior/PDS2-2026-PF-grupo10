@@ -8,7 +8,7 @@
 |---------------------------------------|--------------| 
 | Armazenar dispositivos                | Dispositivo  | 
 | Organizar dispositivos por cômodo     | Sistema      | 
-| Armazenar macros globais              |              | 
+| Armazenar macros globais              | Sensor       | 
 | Salvar estado atual                   |              | 
 | Adicionar e remover dispositivos      |              | 
  
@@ -16,15 +16,15 @@
  
 ## Classe: Sistema 
  
-| Responsabilidades                             | Colaborações | 
-|-----------------------------------------------|--------------| 
-| Controlar execução do sistema                 | Casa         | 
-| Identificar comandos                          | Dispositivo  | 
-| Enviar comandos para dispositivos             | Macro        | 
-| Monitorar estado geral                        |              | 
-| Gerenciar automações                          |              | 
-| Informar estado                               |              | 
-| Registrar alertas e falhas                    |              | 
+| Responsabilidades                             | Colaborações     | 
+|-----------------------------------------------|------------------| 
+| Controlar execução do sistema                 | Casa             | 
+| Identificar comandos                          | Macro            | 
+| Enviar comandos para dispositivos             | Dispositivo      | 
+| Monitorar estado geral                        | Sensor           | 
+| Gerenciar automações                          | InterfaceTextual | 
+| Informar estado                               |                  | 
+| Registrar alertas e falhas                    |                  | 
  
 --- 
  
@@ -32,11 +32,10 @@
  
 | Responsabilidades                             | Colaborações | 
 |-----------------------------------------------|--------------| 
-| Armazenar ID e nome                           | Casa         | 
-| Definir tipo (luz, som, etc.)                 | Sistema      | 
+| Armazenar ID                                  | Casa         | 
+| Definir cômodo                                | Sistema      | 
 | Atualizar estado                              | Macro        | 
-| Receber comandos do sistema                   |              | 
-| Definir cômodo                                |              | 
+| Receber comandos do sistema                   | Sensor       | 
 | Detectar falhas                               |              | 
  
 Subclasses: Luz, Ar condicionado, Portão, Som   
@@ -50,11 +49,12 @@ Subclasses: Luz, Ar condicionado, Portão, Som
 | Ligar luz                    | Dispositivo  | 
 | Desligar luz                 | Macro        | 
 | Ajustar intensidade          | Sistema      | 
-| Atualizar estado             |              | 
+| Atualizar estado             | Sensor       | 
 | Responder a comandos         |              | 
 | Integrar com macros          |              | 
  
 ---
+
 ## Classe: Som
 
 | Responsabilidades                    | Colaborações |
@@ -62,7 +62,7 @@ Subclasses: Luz, Ar condicionado, Portão, Som
 | Ligar som                            | Dispositivo  |
 | Desligar som                         | Macro        |
 | Ajustar volume                       | Sistema      |
-| Atualizar estado                     |              |
+| Atualizar estado                     | Sensor       |
 | Responder a comandos                 |              |
 | Integrar com macros                  |              |
 | Iniciar, pausar e pular música       |              |
@@ -76,7 +76,7 @@ Subclasses: Luz, Ar condicionado, Portão, Som
 | Ligar ar condicionado                | Dispositivo  |
 | Desligar ar condicionado             | Macro        |
 | Ajustar temperatura                  | Sistema      |
-| Atualizar estado                     |              |
+| Atualizar estado                     | Sensor       |
 | Responder a comandos                 |              |
 | Integrar com macros                  |              |
 | Alterar modos de operação            |              |
@@ -90,7 +90,7 @@ Subclasses: Luz, Ar condicionado, Portão, Som
 | Abrir portão                     | Dispositivo  |
 | Fechar portão                    | Macro        |
 | Atualizar estado                 | Sistema      |
-| Fechar depois de certo tempo     |              |
+| Fechar depois de certo tempo     | Sensor       |
 | Responder a comandos             |              |
 | Integrar com macros              |              |
 
@@ -102,7 +102,7 @@ Subclasses: Luz, Ar condicionado, Portão, Som
 |-------------------------------------|--------------|
 | Armazenar lista de ações            | Dispositivo  |
 | Executar sequência de comandos      | Sistema      |
-| Editar lista de ações               |              |
+| Editar lista de ações               | Sensor       |
 | Nomear macro                        |              |
 | Associar a eventos                  |              |
 
@@ -137,9 +137,8 @@ Subclasses: Luz, Ar condicionado, Portão, Som
 
 | Responsabilidades                   | Colaborações |
 |-------------------------------------|--------------|
-| Monitorar o estado de dispositivos  | Dispositivo  |
-| Coletar dados dos dispositivos      | Sistema      |
-| Detectar erros                      |              |
+| Monitorar o estado de dispositivos  | Sistema      |
+| Coletar dados dos dispositivos      | Casa         |
+| Detectar erros                      | Macro        |
 | Gerar alertas                       |              |
 | Notificar o sistema sobre problemas |              |
-
