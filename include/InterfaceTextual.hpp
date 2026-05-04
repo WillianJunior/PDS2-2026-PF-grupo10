@@ -6,45 +6,48 @@
 #include "Usuario.hpp"
 #include "Sistema.hpp"
 
+/** @brief Interface textual para interação com o sistema.
+ * Permite ao usuário enviar comandos, visualizar mensagens,
+ * alertas e estados de dispositivos. */
 class InterfaceTextual{
 
 private:
-    /** @brief quantidade de interfaces */
+    /** @brief Quantidade de interfaces */
     static int qtdInterfaces;
 
-    /** @brief ponteiro para o sistema principal */
+    /** @brief Ponteiro para o sistema principal */
     Sistema* sistema;
 
-    /** @brief indica se a interface está ativa */
+    /** @brief Indica se a interface está ativa */
     bool ativa; 
 
-    /** @brief ponteiro para o usuário atual */
+    /** @brief Ponteiro para o usuário atual */
     Usuario* usuarioAtual;
 
 public:
-    /** @brief inicia o uso da interface */
+    /** @brief Inicia o uso da interface */
     void iniciar(); 
 
-    /** @brief le o comando inserido pelo usuário*/
+    /** @brief Lê o comando inserido pelo usuário*/
     void lerComando(); 
 
-     /** @brief interpreta um comando fornecido pelo usuário 
+     /** @brief Interpreta um comando fornecido pelo usuário 
      * @param comando comando a ser interpretado */
     void interpretarComando(const std::string &comando); 
 
-    /** @brief exibe uma mensagem ao usuário
+    /** @brief Exibe uma mensagem ao usuário
      * @param mensagem mensagem a ser exibida */
     void exibirMensagem(const std::string &mensagem); 
 
-    /** @brief exibe uma lista de alertas ao usuário
+    /** @brief Exibe uma lista de alertas ao usuário
      * @param alertas veetor contendo as mensagens de alerta */
     void exibirAlerta(std::vector<std::string> &alertas); 
 
-    /** @brief exibe o estado de um dispositivo
+    /** @brief Exibe o estado de um dispositivo
      * @param ID identificador do dispositivo */
     void exibirEstado(int ID); 
 
-    /** @brief encerra o uso da interface */
+    /** @brief Encerra o uso da interface */
     void encerrar();
 };
 
