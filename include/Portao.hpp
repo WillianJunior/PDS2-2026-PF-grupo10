@@ -31,7 +31,7 @@ public:
     *   @return "aberto" ou "fechado"
     *
     */
-    string getEstado() override;
+    bool getEstado() override;
 
     /** @brief Retorna o valor do temporizador atual*/
     int getTemporizador();
