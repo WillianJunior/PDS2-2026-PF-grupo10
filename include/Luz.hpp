@@ -12,7 +12,7 @@ using namespace std;
  * 
  * A classe Luz herda de Dispositivo e permite controlar a intensidade da luz (níveis de 1 a 5). 
  * 
- * Além disso, eese sistema consegue detectar erros/falhas que prejudicam o funcionamento.
+ * Além disso, esse sistema consegue detectar erros/falhas que prejudicam o funcionamento.
  */
 class Luz : public Dispositivo {
 private:
