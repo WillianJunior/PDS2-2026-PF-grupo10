@@ -3,6 +3,9 @@
 
 #include <string>
 
+/** @brief Representa um usuário do sistema. 
+ * Armazena nome e senha, permitindo autenticação
+ * e alteração dos dados do usuário. */
 class Usuario{
 
 private:    

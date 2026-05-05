@@ -8,15 +8,14 @@ using namespace std;
 
 /**
  * @class ArCondicionado
- * @brief Classe na qual representa um ar condicionado automatizado.
+ * @brief Classe que representa um ar-condicionado automatizado.
  * 
- * Permite controlar a temperatura (entre 18 e 30 graus Celsius), 
- * além de detectar falhas/erros.
+ * Permite controlar o estado a temperatura
+ * (entre 15 e 30 graus Celsius), além de detectar falhas.
  */
-
 class ArCondicionado : public Dispositivo {
 private:
-    int temperatura; ///< Temperatura do ar condicionado (18 a 30)
+    int temperatura; ///< Temperatura do ar-condicionado (15 a 30)
 
 public:
 
@@ -24,7 +23,7 @@ public:
      * @brief Construtor da classe ArCondicionado
      * 
      * @param id Identificador do dispositivo
-     * @param comodo Nome do cômodo que o dispositivo está instalado.
+     * @param comodo Nome do cômodo
      */
     ArCondicionado(int id, string comodo);
 
@@ -36,14 +35,14 @@ public:
     /**
      * @brief Retorna a temperatura atual
      * 
-     * @return int Temperatura (18 a 30)
+     * @return int Temperatura (15 a 30)
      */
     int getTemperatura();
 
     /**
-     * @brief Ajusta a temperatura do ar-condicionado
+     * @brief Ajusta a temperatura do dispositivo
      * 
-     * @param temperatura Nova temperatura (18 a 30)
+     * @param temperatura Nova temperatura (15 a 30)
      */
     void ajustarTemperatura(int temperatura);
 
