@@ -10,8 +10,8 @@ using namespace std;
  * @class ArCondicionado
  * @brief Classe na qual representa um ar condicionado automatizado.
  * 
- * Permite controlar a temperatura (entre 18 e 30 graus Celsius) e 
- * o estado (ligado/desligado), além de detectar falhas/erros.
+ * Permite controlar a temperatura (entre 18 e 30 graus Celsius), 
+ * além de detectar falhas/erros.
  */
 
 class ArCondicionado : public Dispositivo {
@@ -34,13 +34,6 @@ public:
     ~ArCondicionado();
 
     /**
-     * @brief Retorna o estado atual do ar condicionado
-     * 
-     * @return "ligado" ou "desligado"
-     */
-    string getEstado() override;
-
-    /**
      * @brief Retorna a temperatura atual
      * 
      * @return int Temperatura (18 a 30)
@@ -58,7 +51,6 @@ public:
      * @brief Detecta erros no funcionamento
      * 
      * Verifica:
-     * - Estado incompreendido 
      * - Temperatura fora do intervalo permitido
      * - Dispositivo offline
      */

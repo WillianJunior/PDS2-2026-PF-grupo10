@@ -10,8 +10,8 @@ using namespace std;
  * @class Luz
  * @brief Classe na qual representa um dispositivo de iluminação automatizado.
  * 
- * A classe Luz herda de Dispositivo e permite controlar a intensidade da luz (níveis de 1 a 5) 
- * e o estado (ligado/desligado).
+ * A classe Luz herda de Dispositivo e permite controlar a intensidade da luz (níveis de 1 a 5). 
+ * 
  * Além disso, eese sistema consegue detectar erros/falhas que prejudicam o funcionamento.
  */
 class Luz : public Dispositivo {
@@ -34,13 +34,6 @@ public:
     ~Luz();
 
     /**
-     * @brief Retorna o estado atual da luz
-     * 
-     * @return "ligada" ou "desligada"
-     */
-    string getEstado() override;
-
-    /**
      * @brief Retorna a intensidade atual da luz
      * 
      * @return int Intensidade (1 a 5)
@@ -59,7 +52,6 @@ public:
      * 
      * Verifica:
      * - Intensidade fora do intervalo permitido
-     * - Estado incompreendido 
      * - Dispositivo offline
      */
     void detectarErro() override;
