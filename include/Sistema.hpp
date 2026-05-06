@@ -69,16 +69,12 @@ public:
      * @param comando Comando textual recebido. */
     void receberComando(const string& comando);
 
-    /**
-     * @brief Adiciona um novo cômodo ao sistema.
-     * @param comodo Cômodo a ser adicionado ao sistema.
-     */
+    /** @brief Adiciona um novo cômodo ao sistema.
+     * @param comodo Cômodo a ser adicionado ao sistema. */
     void adicionarComodo(Casa comodo);
 
-    /**
-     * @brief Remove um cômodo do sistema.
-     * @param comodo Referência para o cômodo a ser removido.
-     */
+    /** @brief Remove um cômodo do sistema.
+     * @param comodo Referência para o cômodo a ser removido. */
     void removerComodo(const Casa& comodo);
 };
 

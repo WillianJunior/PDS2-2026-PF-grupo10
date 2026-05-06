@@ -11,18 +11,11 @@
  * alertas e estados de dispositivos. */
 class InterfaceTextual{
 
-private:
-    /** @brief Quantidade de interfaces */
-    static int qtdInterfaces;
-
-    /** @brief Ponteiro para o sistema principal */
-    Sistema* sistema;
-
-    /** @brief Indica se a interface está ativa */
-    bool ativa; 
-
-    /** @brief Ponteiro para o usuário atual */
-    Usuario* usuarioAtual;
+private: 
+    static int qtdInterfaces;   ///< Quantidade de interfaces 
+    Sistema* sistema;           ///< Ponteiro para o sistema principal 
+    bool ativa;                 ///< Indica se a interface está ativa  
+    Usuario* usuarioAtual;      ///< Ponteiro para o usuário atual
 
 public:
     /** @brief Inicia o uso da interface */

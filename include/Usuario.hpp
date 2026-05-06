@@ -8,18 +8,18 @@
  * e alteração dos dados do usuário. */
 class Usuario{
 
-private:    
-    /** @brief nome do usuário */
-    std::string nome;
-
-    /** @brief senha do usuário */
-    std::string senha;
+private:     
+    std::string nome;   ///< Nome do usuário
+    std::string senha;  ///< Senha do usuário 
 
 public:
-    /** @brief Constrói um usuario com nome e senha
+    /** @brief Construtor de um usuario 
     * @param nome nome do usuario
     * @param senha senha do usuario */
     Usuario(std::string nome, std::string senha); 
+
+    /** @brief Destrutor da classe Usuario. */
+    ~Usuario(); 
 
     /** @brief retorna o nome do usuário
     * @return string nome armazenado no objeto */

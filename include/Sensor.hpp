@@ -5,49 +5,36 @@
 
 using std::string;
 
-/**
- * @class Sensor
- * @brief Monitora dispositivos e gera alertas de falhas.
- */
+/** @class Sensor
+ * @brief Monitora dispositivos e gera alertas de falhas. */
 class Sensor {
+
 private:
-    int tempoVerificacao;
-    string alertas[100];
+    int tempoVerificacao;   ///< Tempo entre verificações dos dispositivos (em segundos) 
+    string alertas[100];    ///< Lista de alertas gerados pelo sensor 
 
 public:
-    /**
-     * @brief Construtor da classe Sensor.
-     * @param tempoVerificacao Tempo entre verificações.
-     */
+    /** @brief Construtor da classe Sensor.
+     * @param tempoVerificacao Tempo entre verificações. */
     Sensor(int tempoVerificacao);
 
-    /**
-     * @brief Destrutor da classe Sensor.
-     */
+    /** @brief Destrutor da classe Sensor. */
     ~Sensor();
 
-    /**
-     * @brief Retorna o tempo de verificação.
-     * @return Tempo em segundos.
-     */
+    /** @brief Retorna o tempo de verificação.
+     * @return Tempo em segundos. */
     int getTempoVerificacao();
 
-    /**
-     * @brief Retorna um alerta pelo índice.
+    /** @brief Retorna um alerta pelo índice.
      * @param i Índice do alerta.
-     * @return Texto do alerta.
-     */
+     * @return Texto do alerta. */
     string getAlertas(int i);
 
-    /**
-     * @brief Altera o tempo de verificação.
-     * @param segundos Novo tempo em segundos.
-     */
+    /** @brief Altera o tempo de verificação.
+     * @param segundos Novo tempo em segundos. */
     void alterarTempoVerificacao(int segundos);
 
-    /**
-     * @brief Verifica dispositivos e salva alertas.
-     */
+    /** @brief Verifica dispositivos e salva alertas. */
     void salvarAlertas();
 };
 

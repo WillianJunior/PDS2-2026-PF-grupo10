@@ -7,9 +7,9 @@ using namespace std;
 /** @class Dispositivo
  * @brief Classe abstrata que representa um dispositivo genérico da casa inteligente.
  * Esta classe define atributos e comportamentos comuns a todos os dispositivos,
- * como identificação, cômodo onde está localizado, estado e possíveis falhas.
- */
+ * como identificação, cômodo onde está localizado, estado e possíveis falhas. */
 class Dispositivo{
+
     private:
     int id;         ///< Identificador único do dispositivo
     bool estado;    ///< Estado atual do dispositivo (0 = ligado/aberto, 1 = desligado/fechado)
@@ -18,57 +18,33 @@ class Dispositivo{
     public:
     static int qtdDispositivos; ///< Quantidade total de dispositivos criados
 
-    /**
-     * @brief Construtor da classe Dispositivo.
-     * @details
-     * Inicializa o dispositivo com um id e um cômodo, além de incrementar
-     * o contador estático de dispositivos.
-     * @param id Identificador do dispositivo
-     */
+    /** @brief Construtor da classe Dispositivo.
+     * @param id Identificador do dispositivo */
     Dispositivo(int id);
 
-     /**
-     * @brief Destrutor da classe Dispositivo.
-     */
+     /** @brief Destrutor da classe Dispositivo. */
     ~Dispositivo(); 
 
-    /**
-     * @brief Retorna o identificador do dispositivo.
-     * @return int ID do dispositivo
-     */
+    /** @brief Retorna o identificador do dispositivo.
+     * @return int ID do dispositivo */
     int getId();
 
-    /**
-     * @brief Retorna o estado do dispositivo.
-     * @details
-     * O valor retornado representa o estado lógico do dispositivo.
-     * A interpretação de true ou false depende da subclasse.
+    /** @brief Retorna o estado do dispositivo.
      * @return true Se o dispositivo estiver ativo (ligado/aberto).
-     * @return false Se o dispositivo estiver inativo (desligado/fechado).
-     */
-    bool getEstado();
+     * @return false Se o dispositivo estiver inativo (desligado/fechado). */
+    virtual bool getEstado();
 
-    /**
-     * @brief Indica se o dispositivo apresenta erro.
+    /** @brief Indica se o dispositivo apresenta erro.
      * @return true Se o dispositivo estiver com falha.
-     * @return false Caso contrário.
-     */
+     * @return false Caso contrário. */
     bool temErro();
     
-    /**
-     * @brief Altera o estado do dispositivo.
-     * @details
-     * O estado só é modificado se for diferente do atual.
-     * @param estado Novo estado desejado.
-     */
+    /** @brief Altera o estado do dispositivo.
+     * @details O estado só é modificado se for diferente do atual.
+     * @param estado Novo estado desejado. */
     void alterarEstado(bool estado); 
 
-    /**
-     * @brief Detecta falhas no dispositivo.
-     * @details
-     * Método abstrato que deve ser implementado pelas subclasses,
-     * definindo como cada tipo de dispositivo identifica erros.
-     */
+    /** @brief Detecta falhas no dispositivo. */
     virtual void detectarErro() = 0; 
 
 };

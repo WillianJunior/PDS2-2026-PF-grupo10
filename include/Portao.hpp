@@ -5,17 +5,14 @@
 #include <string>
 #include <ctime> //temporizador
 
-/**
- * @class Portão
+/** @class Portão
  * @brief Classe que representa o algoritmo de controle automático do portão.
- *
- * Implementa funções de abrir/fechar o portão e manter um temporizador enquanto aberto.
- *
- */
-
+ * Implementa funções de abrir/fechar o portão e manter um temporizador enquanto aberto. */
 class Portao : public Dispositivo{
+
 private:
-    int segundos;
+    int segundos; ///< Armazena o tempo em segundos
+
 public:
     /** @brief Construtor de cada objeto.*/
     Portao(int id);
@@ -23,27 +20,16 @@ public:
     /** @brief Destrutor */
     ~Portao();
 
-//--------------------
-
-    //getters
-
     /** @brief Retorna o valor do estado do portão
-    *   @return "aberto" ou "fechado"
-    *
-    */
+    * @return "aberto" ou "fechado" */
     bool getEstado() override;
 
-    /** @brief Retorna o valor do temporizador atual*/
+    /** @brief Retorna o valor do temporizador atual */
     int getTemporizador();
 
-    //setters
-
     /** @brief Muda o valor do temporizador com base no parâmetro dado
-    *   @param seg tempo até fechar
-    */
+    * @param seg tempo até fechar */
     void setTemporizador(int seg);
-
-//------------------
 
     /** @brief Execução do fechamento automático com temporizador */
     void fecharAutomaticamente();
