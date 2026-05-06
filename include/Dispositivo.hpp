@@ -11,13 +11,12 @@ using namespace std;
  */
 class Dispositivo{
     private:
-    int id;         /**< Identificador único do dispositivo */
-    string comodo;  /**< Nome do cômodo onde o dispositivo está localizado */
-    bool estado;    /**< Estado atual do dispositivo (0 = ligado/aberto, 1 = desligado/fechado) */
-    bool erro;      /**< Indica se o dispositivo apresenta falha */
+    int id;         ///< Identificador único do dispositivo
+    bool estado;    ///< Estado atual do dispositivo (0 = ligado/aberto, 1 = desligado/fechado)
+    bool erro;      ///< Indica se o dispositivo apresenta falha 
 
     public:
-    static int qtdDispositivos; /**< Quantidade total de dispositivos criados */
+    static int qtdDispositivos; ///< Quantidade total de dispositivos criados
 
     /**
      * @brief Construtor da classe Dispositivo.
@@ -25,9 +24,8 @@ class Dispositivo{
      * Inicializa o dispositivo com um id e um cômodo, além de incrementar
      * o contador estático de dispositivos.
      * @param id Identificador do dispositivo
-     * @param comodo Nome do cômodo onde o dispositivo está
      */
-    Dispositivo(int id, string comodo);
+    Dispositivo(int id);
 
      /**
      * @brief Destrutor da classe Dispositivo.
@@ -41,12 +39,6 @@ class Dispositivo{
     int getId();
 
     /**
-     * @brief Retorna o cômodo em que o dispositivo está.
-     * @return string Nome do cômodo em que o dispositivo está.
-     */
-    string getComodo();
-
-        /**
      * @brief Retorna o estado do dispositivo.
      * @details
      * O valor retornado representa o estado lógico do dispositivo.

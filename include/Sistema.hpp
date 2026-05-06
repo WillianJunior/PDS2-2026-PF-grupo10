@@ -16,13 +16,12 @@ using std::string;
 class Sistema {
     
 private:
-    static const int MAX_MACROS = 20;
 
-    bool ativo;
-    Casa* casa;
-    Sensor* sensor;
-    Macro* macros[MAX_MACROS];
-    int qtdMacros;
+    bool ativo;           ///< Indica se o sistema está ativo
+    Casa** comodos;       ///< Vetor de ponteiros para os cômodos
+    Sensor* sensor;       ///< Sensor responsável pelo monitoramento do sistema
+    Macro** macros;       ///< Vetor de macros do sistema
+    int qtdMacros;        ///< Quantidade de macros cadastradas
 
 public:
     /** @brief Construtor da classe Sistema.
@@ -33,9 +32,10 @@ public:
     /** @brief Destrutor da classe Sistema. */
     ~Sistema();
 
-    /** @brief Retorna a casa associada ao sistema.
-     * @return Ponteiro para o objeto Casa. */
-    Casa* getCasa();
+    /** @brief Retorna um cômodo pelo índice.
+     * @param i Índice da cômodo no vetor.
+     * @return Ponteiro para o cômodo da casa, ou nullptr se o índice for inválido. */
+    Casa* getComodo(int i);
 
     /** @brief Retorna o sensor associado ao sistema.
      * @return Ponteiro para o objeto Sensor. */
@@ -68,6 +68,18 @@ public:
     /** @brief Recebe e processa um comando vindo da interface textual.
      * @param comando Comando textual recebido. */
     void receberComando(const string& comando);
+
+    /**
+     * @brief Adiciona um novo cômodo ao sistema.
+     * @param comodo Cômodo a ser adicionado ao sistema.
+     */
+    void adicionarComodo(Casa comodo);
+
+    /**
+     * @brief Remove um cômodo do sistema.
+     * @param comodo Referência para o cômodo a ser removido.
+     */
+    void removerComodo(const Casa& comodo);
 };
 
 #endif

@@ -10,10 +10,8 @@
 class Casa {
     
 private:
-    static const int MAX_DISPOSITIVOS = 50;
-
-    Dispositivo* dispositivos[MAX_DISPOSITIVOS];
-    int qtdDispositivos;
+    Dispositivo** dispositivos;   ///< Vetor de ponteiros para os dispositivos da casa
+    int qtdDispositivos;          ///< Quantidade de dispositivos cadastrados
 
 public:
     /** @brief Construtor da classe Casa. */
