@@ -20,10 +20,6 @@ public:
     /** @brief Destrutor */
     ~Portao();
 
-    /** @brief Retorna o valor do estado do portão
-    * @return "aberto" ou "fechado" */
-    bool getEstado() override;
-
     /** @brief Retorna o valor do temporizador atual */
     int getTemporizador();
 

@@ -32,7 +32,7 @@ class Dispositivo{
     /** @brief Retorna o estado do dispositivo.
      * @return true Se o dispositivo estiver ativo (ligado/aberto).
      * @return false Se o dispositivo estiver inativo (desligado/fechado). */
-    virtual bool getEstado();
+    bool getEstado();
 
     /** @brief Indica se o dispositivo apresenta erro.
      * @return true Se o dispositivo estiver com falha.
