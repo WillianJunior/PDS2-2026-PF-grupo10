@@ -1,0 +1,6 @@
+ - Legal os diagramas de classes.
+ - A hierarquia de Dispositivo parece muito simples. Apenas detecção de erro é abstrato? Não existe mais nenhuma funcionalidade comum a todos dispositivos?
+ - Gostei da tentativa de usar const em métodos, mas existem outros métodos em que isso também se aplica. Exemplo Luz::getIntensidade().
+ - Cuidado com passagem por valor. Em Sistema::adicionarComodo(Casa comodo). Vocês vão querer passar uma cópia para adicionarComodo? Será que não vale um ponteiro ou uma referência?
+ - Não colocar documentação óbvia, Em Sistema::adicionarComodo(): "Adiciona um novo cômodo ao sistema.", sim, é o que está escrito no nome do método. Mas tem alguma regra de negócio? Pode ser qualquer comodo? Pode ser duplicado? Será feita uma cópia profunda? 
+ - Não vi muita coisa da interface e isso me preocupa. Como vocês modelarão o uso do sistema?
