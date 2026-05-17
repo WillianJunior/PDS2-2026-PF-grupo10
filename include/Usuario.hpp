@@ -18,14 +18,11 @@ public:
     * @param senha senha do usuario */
     Usuario(std::string nome, std::string senha); 
 
-    /** @brief Remove o usuário cadastrado
-     *
-     */
+    /** @brief Remove o usuário cadastrado */
     ~Usuario(); 
 
     /** @brief retorna o nome do usuário
-    * @return string nome cadastrado no sistema
-    */
+    * @return string nome cadastrado no sistema */
     std::string getNome() const;
 
     /** @brief Altera o nome do usuário
@@ -37,8 +34,7 @@ public:
     * Confere se existe um usuário com o nome e a senha informados
     * @param nome nome do usuário
     * @param senha senha do usuário
-    * @return true se as informações forem válidas
-    */
+    * @return true se as informações forem válidas */
     bool autenticar(std::string nome, std::string senha) const;
 };
 
