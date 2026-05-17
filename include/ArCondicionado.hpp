@@ -26,7 +26,7 @@ public:
 
     /** @brief Retorna a temperatura atual 
      * @return int Temperatura (15 a 30) */
-    int getTemperatura();
+    int getTemperatura() const;
 
     /** @brief Ajusta a temperatura do dispositivo 
      * @param temperatura Nova temperatura (15 a 30) */

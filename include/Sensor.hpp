@@ -23,7 +23,7 @@ public:
 
     /** @brief Retorna o tempo de verificação.
      * @return Tempo em segundos. */
-    int getTempoVerificacao();
+    int getTempoVerificacao() const;
 
     /** @brief Retorna um alerta pelo índice.
      * @param i Índice do alerta.

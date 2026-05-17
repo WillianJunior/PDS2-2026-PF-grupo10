@@ -35,16 +35,16 @@ public:
     /** @brief Retorna um cômodo pelo índice.
      * @param i Índice da cômodo no vetor.
      * @return Ponteiro para o cômodo da casa, ou nullptr se o índice for inválido. */
-    Casa* getComodo(int i);
+    Casa* getComodo(int i) const;
 
     /** @brief Retorna o sensor associado ao sistema.
      * @return Ponteiro para o objeto Sensor. */
-    Sensor* getSensor();
+    Sensor* getSensor() const;
 
     /** @brief Retorna uma macro pelo índice.
      * @param i Índice da macro no vetor.
      * @return Ponteiro para a macro encontrada, ou nullptr se o índice for inválido. */
-    Macro* getMacro(int i);
+    Macro* getMacro(int i) const;
 
     /** @brief Verifica se o sistema está ativo.
      * @return true se o sistema estiver ativo, false caso contrário. */

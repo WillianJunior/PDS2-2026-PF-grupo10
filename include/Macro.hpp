@@ -45,7 +45,7 @@ class Macro{
 
     /** @brief Retorna a lista de ações da macro.
      * @return Ponteiro para o primeiro nó da lista. */        
-    Node* getLista();
+    Node* getLista() const;
 
 
     /** @brief Define o evento da macro.

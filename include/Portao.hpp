@@ -21,7 +21,7 @@ public:
     ~Portao();
 
     /** @brief Retorna o valor do temporizador atual */
-    int getTemporizador();
+    int getTemporizador() const;
 
     /** @brief Muda o valor do temporizador com base no parâmetro dado
     * @param seg tempo até fechar */

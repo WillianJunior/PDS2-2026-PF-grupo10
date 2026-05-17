@@ -27,12 +27,12 @@ class Dispositivo{
 
     /** @brief Retorna o identificador do dispositivo.
      * @return int ID do dispositivo */
-    int getId();
+    int getId() const;
 
     /** @brief Retorna o estado do dispositivo.
      * @return true Se o dispositivo estiver ativo (ligado/aberto).
      * @return false Se o dispositivo estiver inativo (desligado/fechado). */
-    bool getEstado();
+    bool getEstado() const;
 
     /** @brief Indica se o dispositivo apresenta erro.
      * @return true Se o dispositivo estiver com falha.

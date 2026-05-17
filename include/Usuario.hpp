@@ -23,7 +23,7 @@ public:
 
     /** @brief retorna o nome do usuário
     * @return string nome armazenado no objeto */
-    std::string getNome(); 
+    std::string getNome() const; 
 
     /** @brief define o nome do usuário
     * @param nome novo nome a ser atribuido */

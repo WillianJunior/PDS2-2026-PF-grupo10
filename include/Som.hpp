@@ -39,7 +39,7 @@ public:
 
     /** @brief Retorna o volume em valor inteiro.
      * @return inteiro. */
-    int getVolume();
+    int getVolume() const;
 
 /*=========================setters================================*/
 
