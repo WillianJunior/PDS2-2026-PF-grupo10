@@ -41,19 +41,19 @@ public:
      * @param i Índice posicional do cômodo dentro do vetor de gerenciamento da casa.
      * @return Casa* Ponteiro para o objeto do cômodo correspondente se o índice for válido; 
      *         Retorna `nullptr` caso o índice seja negativo ou maior/igual ao tamanho do vetor. */
-    Comodo* getComodo(int i);
+    Comodo* getComodo(int i) const;
 
     /** @brief Retorna o sensor principal associado e gerenciado pelo sistema. 
      * Permite o acesso externo ao objeto de monitoramento para leitura de estados,
      * ou configurações diretas no dispositivo de entrada.
      * @return Sensor* Ponteiro para a instância do objeto Sensor ativo no sistema. */
-    Sensor* getSensor();
+    Sensor* getSensor() const;
 
     /** @brief Identifica uma macro específica cadastrada no sistema através do seu índice. 
      * @param i Índice posicional da macro dentro do vetor de macros do sistema.
      * @return Macro* Ponteiro para o objeto Macro encontrado se o índice for válido;
      * Retorna `nullptr` se o índice não for válido */
-    Macro* getMacro(int i);
+    Macro* getMacro(int i) const;
 
     /** @brief Verifica o estado de operação atual do sistema. 
      * Método de consulta que indica se as rotinas de automação, monitoramento
