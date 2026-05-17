@@ -2,7 +2,7 @@
 #define MACRO_H
 
 #include "Dispositivo.hpp"
-#include "Casa.hpp"
+#include "Comodo.hpp"
 #include <string>
 using namespace std;
 

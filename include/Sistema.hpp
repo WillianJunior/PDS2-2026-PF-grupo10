@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "Casa.hpp"
+#include "Comodo.hpp"
 #include "Sensor.hpp"
 #include "Macro.hpp"
 
@@ -18,14 +18,14 @@ class Sistema {
 private:
 
     bool ativo;           ///< Indica se o sistema está ativo
-    Casa** comodos;       ///< Vetor de ponteiros para os cômodos
+    Comodo** comodos;     ///< Vetor de ponteiros para os cômodos
     Sensor* sensor;       ///< Sensor responsável pelo monitoramento do sistema
     Macro** macros;       ///< Vetor de macros do sistema
     int qtdMacros;        ///< Quantidade de macros cadastradas
 
 public:
     /** @brief Construtor da classe Sistema.
-     * Inicializa a casa, o sensor, o vetor de macros e cria a macro padrão
+     * Inicializa a Comodo, o sensor, o vetor de macros e cria a macro padrão
      * "sair de casa". */
     Sistema();
 
@@ -34,8 +34,8 @@ public:
 
     /** @brief Retorna um cômodo pelo índice.
      * @param i Índice da cômodo no vetor.
-     * @return Ponteiro para o cômodo da casa, ou nullptr se o índice for inválido. */
-    Casa* getComodo(int i);
+     * @return Ponteiro para o cômodo, ou nullptr se o índice for inválido. */
+    Comodo* getComodo(int i);
 
     /** @brief Retorna o sensor associado ao sistema.
      * @return Ponteiro para o objeto Sensor. */
@@ -71,11 +71,11 @@ public:
 
     /** @brief Adiciona um novo cômodo ao sistema.
      * @param comodo Cômodo a ser adicionado ao sistema. */
-    void adicionarComodo(Casa comodo);
+    void adicionarComodo(Comodo comodo);
 
     /** @brief Remove um cômodo do sistema.
      * @param comodo Referência para o cômodo a ser removido. */
-    void removerComodo(const Casa& comodo);
+    void removerComodo(const Comodo& comodo);
 };
 
 #endif
