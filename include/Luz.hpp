@@ -27,7 +27,7 @@ public:
 
     /** @brief Retorna a intensidade atual da luz 
      * @return int Intensidade (1 a 5) */
-    int getIntensidade();
+    int getIntensidade() const;
 
     /** @brief Regula a intensidade da luz 
      * @param intensidade Novo valor (1 a 5) */

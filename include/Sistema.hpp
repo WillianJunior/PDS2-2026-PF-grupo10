@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "Casa.hpp"
+#include "Comodo.hpp"
 #include "Sensor.hpp"
 #include "Macro.hpp"
 
@@ -18,12 +18,13 @@ class Sistema {
 private:
 
     bool ativo;           ///< Indica se o sistema está ativo
-    Casa** comodos;       ///< Vetor de ponteiros para os cômodos
+    Comodo** comodos;     ///< Vetor de ponteiros para os cômodos
     Sensor* sensor;       ///< Sensor responsável pelo monitoramento do sistema
     Macro** macros;       ///< Vetor de macros do sistema
     int qtdMacros;        ///< Quantidade de macros cadastradas
 
 public:
+
     /** @brief Construtor padrão da classe Sistema. 
      * Inicializa os componentes principais do sistema de automação residencial.
      * Aloca e configura a estrutura interna da casa, inicializa o sensor principal
@@ -103,6 +104,7 @@ public:
      * O cômodo deixa de responder aos comandos globais do sistema.
      * @param comodo Referência constante para o objeto Casa que se deseja desvincular do sistema. */
     void removerComodo(const Casa& comodo);
+
 };
 
 #endif
