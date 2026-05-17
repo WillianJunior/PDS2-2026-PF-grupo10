@@ -32,7 +32,7 @@ public:
      * Recupera o valor atual do cronômetro interno que gerencia o fechamento
      * automático do portão.
      * @return int O tempo configurado ou a contagem regressiva atual em segundos. */
-    int getTemporizador();
+    int getTemporizador() const;
 
     /** @brief Define ou atualiza o tempo de espera para o fechamento automático.
      * Modifica o atributo interno do temporizador. Este valor define por quanto tempo

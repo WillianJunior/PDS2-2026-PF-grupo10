@@ -26,47 +26,48 @@ class Macro{
     string evento; ///< Nome do evento que ativa a macro 
     Node* lista;   ///< Lista encadeada de ações sobre dispositivos 
 
-    public:
-    /** @brief Quantidade total de macros criadas */
+public:
+    /** @brief Contador global que rastreia o número total de instâncias de macros ativas.
+     * Atributo estático compartilhado por todas as instâncias da classe, incrementado no 
+     * construtor e decrementado no destrutor. */
     static int qtdMacros;  
 
-     /** @brief Construtor da classe Macro.
-     * Inicializa o evento da macro e incrementa o contador estático.
-     * A lista de ações é iniciada como vazia.
-     * @param evento Nome do evento associado à macro. */
+    /** @brief Construtor da classe Macro.
+     * Inicializa o nome do evento, configura o ponteiro da lista encadeada de ações como nulo 
+     * (lista vazia) e incrementa o contador estático global `qtdMacros`.
+     * @param evento Nome identificador do evento associado a esta macro. */
     Macro(string evento);
 
-    /** @brief Destrutor da classe Macro. */
+    /** @brief Destrutor da classe Macro.
+     * Libera a memória de todos os nós da lista encadeada de ações para evitar vazamento de memória 
+     * e decrementa o contador estático global `qtdMacros`. */
     ~Macro(); 
     
-    /** @brief Retorna o evento da macro.
-     * @return string Nome do evento. */    
-    string getEvento();
+    /** @brief Consulta o nome do evento associado à macro.
+     * @return string O nome do evento que dispara esta macro. */    
+    string getEvento() const;
 
-    /** @brief Retorna a lista de ações da macro.
-     * @return Ponteiro para o primeiro nó da lista. */        
-    Node* getLista();
+    /** @brief Retorna o ponto de entrada para a sequência de ações da macro.
+     * @return Node* Ponteiro para o primeiro elemento da lista encadeada de comandos. */        
+    Node* getLista() const;
 
-
-    /** @brief Define o evento da macro.
-     * @param evento Novo nome do evento. */
+    /** @brief Atualiza o nome do evento atrelado à macro.
+     * @param evento Novo nome identificador para o gatilho da macro. */
     void setEvento(string evento);
 
-    /** @brief Adiciona uma ação associada a um dispositivo na macro.
-     * @details
-     * Cria um novo nó a partir do id e ação a ser executada, que é inserido ao final da lista encadeada.
-     * @param id Identificador do dispositivo.
-     * @param acao Ação a ser executada (ex: "ligar", "desligar", "abrir", "fechar" e "ajustar"). */
+    /** @brief Insere uma nova instrução de comando no final da sequência de execução.
+     * Aloca dinamicamente um novo nó contendo o ID do alvo e a operação desejada, inserindo-o 
+     * no final da lista encadeada.
+     * @param id Identificador numérico do dispositivo que sofrerá a ação.
+     * @param acao Comando textual a ser disparado (ex: "ligar", "desligar", "abrir", "fechar", "ajustar"). */
     void adicionarDispositivo(int id, string acao);
 
-    /**
-     * @brief Remove uma ação de um dispositivo da macro.
-     * @details
-     * Remove o nó da lista de acordo com o id e a ação a ser executada.
-     * Caso existam múltiplos nós iguais, apenas o primeiro encontrado é removido.
-     * @param id Identificador do dispositivo.
-     * @param acao Ação associada ao dispositivo a ser removida. */
-    void removerDispositivo(int id, string acao); //remove nó da lista 
+    /** @brief Remove uma instrução de comando específica da sequência da macro.
+     * Varre a lista encadeada em busca do primeiro nó que coincida simultaneamente com o ID e a ação fornecidos. 
+     * Se encontrado, ajusta os ponteiros vizinhos, libera a memória do nó e encerra a busca.
+     * @param id Identificador do dispositivo cuja ação será removida.
+     * @param acao A descrição exata do comando que se deseja retirar da sequência. */
+    void removerDispositivo(int id, string acao);
 };
 
 #endif

@@ -14,27 +14,36 @@ private:
     int qtdDispositivos;          ///< Quantidade de dispositivos cadastrados
 
 public:
-    /** @brief Construtor da classe Comodo. */
+    /** @brief Construtor padrão da classe Comodo.
+     * Inicializa a estrutura do cômodo, zerando o contador de dispositivos e preparando 
+     * o conteiner interno (vetor/lista) que armazenará as referências dos dispositivos. */
     Comodo();
 
-    /** @brief Destrutor da classe Comodo. */
+    /** @brief Destrutor da classe Comodo.
+     * Libera a memória e os recursos associados ao cômodo, limpando o contêiner de macros 
+     * e gerenciando a destruição ou desvinculação da lista de dispositivos alocados para 
+     * evitar vazamentos de memória. */
     ~Comodo();
 
-    /** @brief Busca um dispositivo pelo seu ID.
-     * @param id ID do dispositivo procurado.
-     * @return Ponteiro para o dispositivo encontrado, ou nullptr se não existir. */
-    Dispositivo* getDispositivo(int id);
+    /** @brief Busca um dispositivo cadastrado no cômodo através do seu identificador.
+     * Percorre a lista interna comparando o ID fornecido com o de cada dispositivo.
+     * @param id Identificador numérico único do dispositivo procurado.
+     * @return Dispositivo* Ponteiro para a instância encontrada, ou nullptr caso o ID não exista no cômodo. */
+    Dispositivo* getDispositivo(int id) const;
 
-    /** @brief Adiciona um dispositivo ao Comodo.
-     * @param dispositivo Ponteiro para o dispositivo que será adicionado. */
+    /** @brief Insere um novo dispositivo no mapa de controle do cômodo.
+     * Adiciona o ponteiro do objeto ao contêiner interno, permitindo que ele receba comandos direcionados ao cômodo.
+     * @param dispositivo Ponteiro para o objeto do dispositivo a ser acoplado. */
     void adicionarDispositivo(Dispositivo* dispositivo);
 
-    /** @brief Remove um dispositivo do Comodo pelo ID.
-     * @param id ID do dispositivo que será removido. */
+    /** @brief Remove um dispositivo do cômodo com base no seu ID.
+     * Busca o dispositivo pelo identificador, retira sua referência do contêiner interno e, se necessário, 
+     * libera sua memória. Se o ID não for encontrado, nenhuma ação é tomada.
+     * @param id Identificador numérico do dispositivo a ser removido. */
     void removerDispositivo(int id);
 
-    /** @brief Retorna a quantidade atual de dispositivos cadastrados.
-     * @return Quantidade de dispositivos. */
+    /** @brief Consulta o total de dispositivos atualmente vinculados a este cômodo.
+     * @return int O número inteiro que representa a quantidade atual de dispositivos monitorados. */
     int getQtdDispositivos() const;
 };
 

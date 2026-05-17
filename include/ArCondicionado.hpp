@@ -16,26 +16,30 @@ private:
     int temperatura; ///< Temperatura do ar-condicionado (15 a 30)
 
 public:
-    /** @brief Construtor da classe ArCondicionado 
-     * @param id Identificador do dispositivo
-     * @param comodo Nome do cômodo */
+    /** @brief Construtor da classe ArCondicionado.
+     * Inicializa o dispositivo de climatização definindo seu ID exclusivo 
+     * e o cômodo de instalação.
+     * @param id Identificador numérico único do dispositivo.
+     * @param comodo Nome ou identificador do cômodo onde o aparelho está fixado. */
     ArCondicionado(int id, string comodo);
 
-    /** @brief Destrutor da classe ArCondicionado */
+    /** @brief Destrutor da classe ArCondicionado.
+     * Libera os recursos alocados para o módulo de climatização e encerra 
+     * a comunicação ativa do aparelho. */
     ~ArCondicionado();
 
-    /** @brief Retorna a temperatura atual 
-     * @return int Temperatura (15 a 30) */
-    int getTemperatura();
+    /** @brief Consulta a temperatura atualmente configurada no aparelho.
+     * @return int Valor inteiro da temperatura ideal alvo, estabelecida entre 15°C e 30°C. */
+    int getTemperatura() const;
 
-    /** @brief Ajusta a temperatura do dispositivo 
-     * @param temperatura Nova temperatura (15 a 30) */
+    /** @brief Altera a temperatura alvo do dispositivo.
+     * Atualiza o termostato interno com o novo valor fornecido, desde que esteja dentro da faixa operacional.
+     * @param temperatura Nova temperatura desejada, contida estritamente no intervalo de 15 a 30. */
     void ajustarTemperatura(int temperatura);
 
-    /** @brief Detecta erros no funcionamento 
-     * Verifica:
-     * - Temperatura fora do intervalo permitido
-     * - Dispositivo offline */
+    /** @brief Avalia o estado operacional do aparelho para identificar falhas.
+     * Sobrescreve o método da classe base. Dispara alarmes caso a temperatura configurada 
+     * estoure os limites permitidos (15 a 30) ou se houver perda de conexão */
     void detectarErro() override;
 };
 

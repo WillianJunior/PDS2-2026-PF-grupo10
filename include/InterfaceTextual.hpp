@@ -18,29 +18,38 @@ private:
     Usuario* usuarioAtual;      ///< Ponteiro para o usuário atual
 
 public:
-    /** @brief Inicia o uso da interface */
+    /** @brief Inicializa a interface textual/gráfica para o usuário.
+     * Prepara o ambiente de interação, exibe a mensagem de boas-vindas e coloca a interface 
+     * pronta para receber os primeiros dados de entrada. */
     void iniciar(); 
 
-    /** @brief Lê o comando inserido pelo usuário*/
+    /** @brief Captura a entrada de texto fornecida pelo usuário no console.
+     * Aguarda a digitação de uma linha de comando, limpa buffers se necessário e encaminha 
+     * o texto capturado para as rotinas de processamento. */
     void lerComando(); 
 
-     /** @brief Interpreta um comando fornecido pelo usuário 
-     * @param comando comando a ser interpretado */
+    /** @brief Analisa a sintaxe e executa a ação correspondente ao comando recebido.
+     * Atua como o núcleo de controle da interface, mapeando a string de texto para as 
+     * funções internas do sistema de automação.
+     * @param comando Referência constante para a string contendo o comando a ser processado. */
     void interpretarComando(const std::string &comando); 
 
-    /** @brief Exibe uma mensagem ao usuário
-     * @param mensagem mensagem a ser exibida */
+    /** @brief Imprime uma mensagem na tela do usuário.
+     * @param mensagem Referência constante para o texto que deve ser exibido no console. */
     void exibirMensagem(const std::string &mensagem); 
 
-    /** @brief Exibe uma lista de alertas ao usuário
-     * @param alertas veetor contendo as mensagens de alerta */
+    /** @brief Percorre e exibe todas as mensagens de erro ou avisos do sistema.
+     * @param alertas Referência para o vetor de strings contendo o histórico de problemas 
+     * detectados pelos sensores. */
     void exibirAlerta(std::vector<std::string> &alertas); 
 
-    /** @brief Exibe o estado de um dispositivo
-     * @param ID identificador do dispositivo */
+    /** @brief Busca e exibe na tela os parâmetros atuais (ex: ligado/desligado, temperatura) de um aparelho.
+     * @param ID Identificador numérico único do dispositivo que terá seu estado consultado. */
     void exibirEstado(int ID); 
 
-    /** @brief Encerra o uso da interface */
+    /** @brief Finaliza as atividades da interface e libera seus recursos visuais.
+     * Exibe a mensagem de despedida, fecha fluxos de entrada/saída abertos e interrompe o 
+     * loop de captura de comandos. */
     void encerrar();
 };
 

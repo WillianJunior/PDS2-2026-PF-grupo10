@@ -26,68 +26,68 @@ private:
     void supplArq();
 
 public:
-
-    /** @brief Construtor da classe Som
-     * @param id Identificador do dispositivo
-     * @param comodo Nome do comodo */
+    /** @brief Construtor da classe Som.
+     * Inicializa o dispositivo de áudio definindo seu ID exclusivo e o cômodo de instalação.
+     * @param id Identificador numérico único do dispositivo.
+     * @param comodo Nome ou identificador do cômodo onde o aparelho está localizado. */
     Som(int id, string comodo);
 
-    /** @brief Destrutor da classe Som*/
+    /** @brief Destrutor da classe Som.
+     * Libera a memória alocada para a estrutura da playlist e encerra de forma segura 
+     * qualquer fluxo de áudio ou comunicação ativa do dispositivo. */
     ~Som();
 
-/*=========================getters================================*/
+    /** @brief Consulta o nível de volume atual do dispositivo.
+     * @return int Valor inteiro representando a escala atual de volume do aparelho. */
+    int getVolume() const;
 
-    /** @brief Retorna o volume em valor inteiro.
-     * @return inteiro. */
-    int getVolume();
-
-/*=========================setters================================*/
-
-/*=========================metodos================================*/
-
-
-    /** @brief Carrega a lista de musicas em um arquivo para a playlist.
-    * @param nomeArquivo Nome do arquivo contendo a lista de musicas a serem tocadas. */
+    /** @brief Lê e importa uma lista de faixas a partir de um arquivo externo.
+     * Abre o arquivo especificado, faz o parser dos nomes das músicas e as insere na estrutura de dados da playlist.
+     * @param nomeArquivo Caminho ou nome do arquivo de texto contendo os títulos das músicas. */
     void carregarMusicas(const string& nomeArquivo);
 
-    /** @brief Toca/pausa a musica */
+    /** @brief Alterna o estado de reprodução atual entre tocando e pausado.
+     * Inverte o estado lógico do player; se a música estiver ativa, ela é pausada, e vice-versa. */
     void togglePause();
 
-
     //OVERLOAD~~~~~~~~~~~~~~~~~~~
-    /** @brief Toca(imprime na tela) uma musica. */
+    /** @brief Inicia ou retoma a reprodução da faixa atual (imprime o status na tela).
+     * Dispara o áudio a partir do ponto onde foi parado ou do início da playlist caso nenhuma música tenha começado. */
     void tocar();
 
-    /** @brief Toca(imprime na tela) uma musica.
-     *  @param indice toca uma musica em um indice especificado(vazio para o comeco da lista) */
+    /** @brief Salta diretamente para uma faixa específica e inicia a reprodução.
+     * @param indice Posição numérica da música desejada dentro da playlist (base zero). */
     void tocar(int indice);
     //OVERLOAD~~~~~~~~~~~~~~~~~~~
 
-
-    /** @brief Pula para a proxima musica */
+    /** @brief Avança para a próxima faixa da playlist.
+     * Altera o ponteiro/índice para a música seguinte da lista, respeitando os limites da estrutura. */
     void proxima();
 
-    /** @brief Pula para a musica anterior */
+    /** @brief Retorna para a faixa anterior da playlist.
+     * Altera o ponteiro/índice para a música antecedente, verificando se já não está no início da lista. */
     void anterior();
 
-    /** @brief Imprime a playlist na tela */
+    /** @brief Exibe na tela todas as músicas contidas na playlist atual.
+     * Percorre a lista sequencialmente e imprime o índice e o nome de cada faixa de áudio cadastrada. */
     void printPlaylist();
 
-
     //OVERLOAD~~~~~~~~~~~~~~~~~~~
-    /** @brief Adiciona uma musica no final da playlist usando o nome
-     *  @param nome nome da musica a ser adicionada */
+    /** @brief Insere uma nova música ao final da playlist corrente.
+     * Aloca um novo elemento com o título fornecido e o anexa no final da lista de reprodução.
+     * @param nome Título ou nome da música a ser inserida. */
     void adicionarMusica(const string& nome);
 
-    /** @brief Adiciona uma musica em uma posicao desejada da playlist usando o nome
-     *  @param nome nome da musica a ser adicionada
-     *  @param indice lugar da playlist onde a musica vai ser adicionada*/
+    /** @brief Insere uma nova música em uma posição arbitrária da playlist.
+     * Desloca os elementos necessários ou ajusta os ponteiros para encaixar a nova faixa no local exato informado.
+     * @param nome Título ou nome da música a ser inserida.
+     * @param indice Posição desejada na lista onde a música será encaixada. */
     void adicionarMusica(const string& nome, int indice);
     //OVERLOAD~~~~~~~~~~~~~~~~~~~
 
-
-    /** @brief Remove uma musica da playlist
-     *  @param nome  */
+    /** @brief Elimina uma música da playlist buscando pelo seu título.
+     * Procura o nome correspondente na lista, remove o elemento, ajusta a estrutura e libera a memória associada.
+     * @param nome Título exato da música que será removida da lista. */
     void removerMusica(const string& nome);
 };
 

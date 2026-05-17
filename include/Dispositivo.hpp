@@ -15,7 +15,7 @@ class Dispositivo{
     bool estado;    ///< Estado atual do dispositivo (0 = ligado/aberto, 1 = desligado/fechado)
     bool erro;      ///< Indica se o dispositivo apresenta falha 
 
-    public:
+public:
     static int qtdDispositivos; ///< Quantidade total de dispositivos criados
 
     /** @brief Construtor da classe Dispositivo.
