@@ -20,8 +20,6 @@ private:
     bool ativo;           ///< Indica se o sistema está ativo
     Comodo** comodos;     ///< Vetor de ponteiros para os cômodos
     Sensor* sensor;       ///< Sensor responsável pelo monitoramento do sistema
-    Macro** macros;       ///< Vetor de macros do sistema
-    int qtdMacros;        ///< Quantidade de macros cadastradas
 
 public:
 
@@ -49,11 +47,6 @@ public:
      * @return Sensor* Ponteiro para a instância do objeto Sensor ativo no sistema. */
     Sensor* getSensor() const;
 
-    /** @brief Identifica uma macro específica cadastrada no sistema através do seu índice. 
-     * @param i Índice posicional da macro dentro do vetor de macros do sistema.
-     * @return Macro* Ponteiro para o objeto Macro encontrado se o índice for válido;
-     * Retorna `nullptr` se o índice não for válido */
-    Macro* getMacro(int i) const;
 
     /** @brief Verifica o estado de operação atual do sistema. 
      * Método de consulta que indica se as rotinas de automação, monitoramento
@@ -66,26 +59,6 @@ public:
      * Altera o estado do sistema para ativo, coloca os sensores em modo de leitura
      * e passa a receber, processar e responder aos comandos do usuário. */
     void executarSistema();
-
-    /** @brief Registra e armazena uma nova macro vazia no sistema. 
-     * Cria uma nova estrutura de automação baseada no nome de um evento fornecido e a 
-     * adiciona ao vetor de macros. A partir do registro, ações podem ser vinculadas a este evento.
-     * @param evento Nome identificador único que será associado à nova macro (ex: "sair_de_casa"). */
-    void adicionarMacro(string evento);
-
-    /** @brief Remove uma macro existente do sistema com base no nome de evento fornecido. 
-     * Busca no vetor de macros o evento correspondente. Se encontrado, o objeto é 
-     * destruído da memória e sua referência é removida do vetor. 
-     * Caso o evento não exista, nenhuma ação é tomada.
-     * @param evento Nome identificador da macro que deseja remover. */
-    void removerMacro(string evento);
-
-    /** @brief Dispara e executa a sequência de ações de uma macro cadastrada. 
-     * Procura pela macro associada ao nome do evento fornecido. Se encontrada, o sistema 
-     * intercepta e executa todos os comandos e alterações de estado agendados 
-     * para aquela macro específica.
-     * @param evento Nome do evento cuja macro correspondente deve ser disparada. */
-    void executarMacro(string evento);
 
     /** @brief Interpreta e processa comandos textuais brutos recebidos da interface com o usuário (CLI). 
      * Este método atua como o parser do sistema. Ele analisa a string de comando recebida,
