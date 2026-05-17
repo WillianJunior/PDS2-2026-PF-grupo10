@@ -41,7 +41,7 @@ public:
      * @param i Índice posicional do cômodo dentro do vetor de gerenciamento da casa.
      * @return Casa* Ponteiro para o objeto do cômodo correspondente se o índice for válido; 
      *         Retorna `nullptr` caso o índice seja negativo ou maior/igual ao tamanho do vetor. */
-    Casa* getComodo(int i);
+    Comodo* getComodo(int i);
 
     /** @brief Retorna o sensor principal associado e gerenciado pelo sistema. 
      * Permite o acesso externo ao objeto de monitoramento para leitura de estados,
@@ -97,13 +97,13 @@ public:
     /** @brief Adiciona um novo cômodo à estrutura de gerenciamento da casa. 
      * Insere uma cópia do objeto fornecido no vetor interno de cômodos do sistema.
      * @param comodo Objeto do tipo Casa (representando o cômodo) a ser clonado e inserido. */
-    void adicionarComodo(Casa comodo);
+    void adicionarComodo(Comodo comodo);
 
     /** @brief Remove um cômodo específico do sistema de monitoramento. 
      * Varre a lista de cômodos cadastrados para encontrar o que corresponda à referência fornecida. 
      * O cômodo deixa de responder aos comandos globais do sistema.
      * @param comodo Referência constante para o objeto Casa que se deseja desvincular do sistema. */
-    void removerComodo(const Casa& comodo);
+    void removerComodo(const Comodo& comodo);
 
 };
 
