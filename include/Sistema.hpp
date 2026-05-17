@@ -24,58 +24,87 @@ private:
     int qtdMacros;        ///< Quantidade de macros cadastradas
 
 public:
-    /** @brief Construtor da classe Sistema.
-     * Inicializa a Comodo, o sensor, o vetor de macros e cria a macro padrão
-     * "sair de casa". */
+
+    /** @brief Construtor padrão da classe Sistema. 
+     * Inicializa os componentes principais do sistema de automação residencial.
+     * Aloca e configura a estrutura interna da casa, inicializa o sensor principal
+     * e o vetor dinâmico de macros. */
     Sistema();
 
-    /** @brief Destrutor da classe Sistema. */
+    /** @brief Destrutor da classe Sistema. 
+     * Garante a liberação correta de memória e recursos. Desaloca os ponteiros
+     * armazenados no vetor de macros, limpa as estruturas de dados da casa e
+     * destrói o objeto sensor associado, evitando vazamentos de memória. */
     ~Sistema();
 
-    /** @brief Retorna um cômodo pelo índice.
-     * @param i Índice da cômodo no vetor.
-     * @return Ponteiro para o cômodo, ou nullptr se o índice for inválido. */
-    Comodo* getComodo(int i);
+    /** @brief Identifica um cômodo específico da casa com base no seu índice de armazenamento. 
+     * @param i Índice posicional do cômodo dentro do vetor de gerenciamento da casa.
+     * @return Casa* Ponteiro para o objeto do cômodo correspondente se o índice for válido; 
+     *         Retorna `nullptr` caso o índice seja negativo ou maior/igual ao tamanho do vetor. */
+    Comodo* getComodo(int i) const;
 
-    /** @brief Retorna o sensor associado ao sistema.
-     * @return Ponteiro para o objeto Sensor. */
-    Sensor* getSensor();
+    /** @brief Retorna o sensor principal associado e gerenciado pelo sistema. 
+     * Permite o acesso externo ao objeto de monitoramento para leitura de estados,
+     * ou configurações diretas no dispositivo de entrada.
+     * @return Sensor* Ponteiro para a instância do objeto Sensor ativo no sistema. */
+    Sensor* getSensor() const;
 
-    /** @brief Retorna uma macro pelo índice.
-     * @param i Índice da macro no vetor.
-     * @return Ponteiro para a macro encontrada, ou nullptr se o índice for inválido. */
-    Macro* getMacro(int i);
+    /** @brief Identifica uma macro específica cadastrada no sistema através do seu índice. 
+     * @param i Índice posicional da macro dentro do vetor de macros do sistema.
+     * @return Macro* Ponteiro para o objeto Macro encontrado se o índice for válido;
+     * Retorna `nullptr` se o índice não for válido */
+    Macro* getMacro(int i) const;
 
-    /** @brief Verifica se o sistema está ativo.
-     * @return true se o sistema estiver ativo, false caso contrário. */
+    /** @brief Verifica o estado de operação atual do sistema. 
+     * Método de consulta que indica se as rotinas de automação, monitoramento
+     * e resposta à comandos estão ativos no momento.
+     * @return true Se o sistema estiver inicializado e rodando ativamente.
+     * @return false Se o sistema estiver desligado. */
     bool estaAtivo() const;
 
-    /** @brief Liga ou executa o sistema. */
+    /** @brief Inicia o loop principal de execução do sistema.
+     * Altera o estado do sistema para ativo, coloca os sensores em modo de leitura
+     * e passa a receber, processar e responder aos comandos do usuário. */
     void executarSistema();
 
-    /** @brief Adiciona uma nova macro ao sistema.
-     * @param evento Nome do evento associado à macro. */
+    /** @brief Registra e armazena uma nova macro vazia no sistema. 
+     * Cria uma nova estrutura de automação baseada no nome de um evento fornecido e a 
+     * adiciona ao vetor de macros. A partir do registro, ações podem ser vinculadas a este evento.
+     * @param evento Nome identificador único que será associado à nova macro (ex: "sair_de_casa"). */
     void adicionarMacro(string evento);
 
-    /** @brief Remove uma macro do sistema.
-     * @param evento Nome do evento associado à macro. */
+    /** @brief Remove uma macro existente do sistema com base no nome de evento fornecido. 
+     * Busca no vetor de macros o evento correspondente. Se encontrado, o objeto é 
+     * destruído da memória e sua referência é removida do vetor. 
+     * Caso o evento não exista, nenhuma ação é tomada.
+     * @param evento Nome identificador da macro que deseja remover. */
     void removerMacro(string evento);
 
-    /** @brief Executa uma macro cadastrada.
-     * @param evento Nome do evento da macro que será executada. */
+    /** @brief Dispara e executa a sequência de ações de uma macro cadastrada. 
+     * Procura pela macro associada ao nome do evento fornecido. Se encontrada, o sistema 
+     * intercepta e executa todos os comandos e alterações de estado agendados 
+     * para aquela macro específica.
+     * @param evento Nome do evento cuja macro correspondente deve ser disparada. */
     void executarMacro(string evento);
 
-    /** @brief Recebe e processa um comando vindo da interface textual.
-     * @param comando Comando textual recebido. */
+    /** @brief Interpreta e processa comandos textuais brutos recebidos da interface com o usuário (CLI). 
+     * Este método atua como o parser do sistema. Ele analisa a string de comando recebida,
+     * valida a sintaxe e a semântica em relação às funções do sistema e invoca os métodos 
+     * internos correspondentes (como ligar aparelhos, listar cômodos ou criar macros).
+     * @param comando Referência constante para a string contendo a linha de comando enviada pelo usuário. */
     void receberComando(const string& comando);
 
-    /** @brief Adiciona um novo cômodo ao sistema.
-     * @param comodo Cômodo a ser adicionado ao sistema. */
+    /** @brief Adiciona um novo cômodo à estrutura de gerenciamento da casa. 
+     * Insere uma cópia do objeto fornecido no vetor interno de cômodos do sistema.
+     * @param comodo Objeto do tipo Casa (representando o cômodo) a ser clonado e inserido. */
     void adicionarComodo(Comodo comodo);
 
-    /** @brief Remove um cômodo do sistema.
-     * @param comodo Referência para o cômodo a ser removido. */
+    /** @brief Remove um cômodo específico do sistema de monitoramento. 
+     * Varre a lista de cômodos cadastrados para encontrar o que corresponda à referência fornecida. 
+     * O cômodo deixa de responder aos comandos globais do sistema.
+     * @param comodo Referência constante para o objeto Casa que se deseja desvincular do sistema. */
     void removerComodo(const Comodo& comodo);
+
 };
 
 #endif
