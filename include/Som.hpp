@@ -9,18 +9,14 @@
 using std::string;
 using std::vector;
 
-/**
- * @class Som
+/** @class Som
  * @brief Dispositivo conectado ao sistema que executa as funcoes de tocar e gerenciar musicas.
- *
  * A classe Som herda de Dispositivo e permite controlar a lista de faixas tocando agora, adicionar novas faixa, remover faixas,
  * alterar o volume e o estado (ligado/desligado).
- * Alem disso, esse sistema consegue detectar erros/falhas que prejudicam o funcionamento.
- */
-
+ * Alem disso, esse sistema consegue detectar erros/falhas que prejudicam o funcionamento. */
 class Som : public Dispositivo {
-private:
 
+private:
     int _volume; ///< volume(0 ~ 100)
     int _indice; ///< numero da musica que esta tocando
     bool _pause;///< estado do player
@@ -51,8 +47,7 @@ public:
 
 
     /** @brief Carrega a lista de musicas em um arquivo para a playlist.
-    *   @param nomeArquivo Nome do arquivo contendo a lista de musicas a serem tocadas.
-    */
+    * @param nomeArquivo Nome do arquivo contendo a lista de musicas a serem tocadas. */
     void carregarMusicas(const string& nomeArquivo);
 
     /** @brief Toca/pausa a musica */
@@ -64,8 +59,7 @@ public:
     void tocar();
 
     /** @brief Toca(imprime na tela) uma musica.
-     *  @param indice toca uma musica em um indice especificado(vazio para o comeco da lista)
-     */
+     *  @param indice toca uma musica em um indice especificado(vazio para o comeco da lista) */
     void tocar(int indice);
     //OVERLOAD~~~~~~~~~~~~~~~~~~~
 
