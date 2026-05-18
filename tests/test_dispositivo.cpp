@@ -2,11 +2,11 @@
 #include "Dispositivo.hpp"
 #include <string>
 
-// Classe auxiliar para testar a classe abstrata Dispositivo
+// Classe auxiliar para testar Dispositivo
 class DispositivoTeste : public Dispositivo {
 public:
-    DispositivoTeste(int id, const std::string& comodo)
-        : Dispositivo(id, comodo) {}
+    DispositivoTeste(int id)
+        : Dispositivo(id) {}
 
     void detectarErro() override {
         erro = true;
@@ -18,16 +18,15 @@ public:
 };
 
 TEST_CASE("Construtor inicializa corretamente") {
-    DispositivoTeste d(1, "Sala");
+    DispositivoTeste d(1);
 
     CHECK(d.getId() == 1);
-    CHECK(d.getComodo() == "Sala");
     CHECK(d.getEstado() == false);
     CHECK(d.temErro() == false);
 }
 
 TEST_CASE("Alterar estado do dispositivo") {
-    DispositivoTeste d(2, "Quarto");
+    DispositivoTeste d(2);
 
     d.alterarEstado(true);
     CHECK(d.getEstado() == true);
@@ -37,7 +36,7 @@ TEST_CASE("Alterar estado do dispositivo") {
 }
 
 TEST_CASE("Deteccao de erro altera flag de erro") {
-    DispositivoTeste d(3, "Cozinha");
+    DispositivoTeste d(3);
 
     d.detectarErro();
 
@@ -45,7 +44,7 @@ TEST_CASE("Deteccao de erro altera flag de erro") {
 }
 
 TEST_CASE("Estado formatado retorna texto correto") {
-    DispositivoTeste d(4, "Banheiro");
+    DispositivoTeste d(4);
 
     CHECK(d.getEstadoFormatado() == "Desligado");
 
@@ -58,8 +57,8 @@ TEST_CASE("Contador de dispositivos aumenta corretamente") {
     int qtdInicial = Dispositivo::qtdDispositivos;
 
     {
-        DispositivoTeste d1(5, "Sala");
-        DispositivoTeste d2(6, "Quarto");
+        DispositivoTeste d1(5);
+        DispositivoTeste d2(6);
 
         CHECK(Dispositivo::qtdDispositivos == qtdInicial + 2);
     }

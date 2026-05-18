@@ -10,7 +10,6 @@ class Dispositivo {
 
 protected: // Mudado para protected para que as subclasses tenham acesso
     int id;               ///< Identificador único do dispositivo
-    std::string comodo;   ///< Cômodo onde o dispositivo está localizado
     bool estado;          ///< Estado atual (false = desligado/fechado, true = ligado/aberto)
     bool erro;            ///< Indica se o dispositivo apresenta falha 
 
@@ -20,9 +19,8 @@ public:
 
     /** @brief Construtor da classe base Dispositivo.
      * Define o ID e o cômodo de instalação e incrementa o contador estático global `qtdDispositivos`.
-     * @param id Identificador numérico único que representará o dispositivo.
-     * @param comodo Referência constante para a string com o nome do cômodo de instalação. */
-    Dispositivo(int id, const std::string &comodo);
+     * @param id Identificador numérico único que representará o dispositivo.*/
+    Dispositivo(int id);
 
     /** @brief Destrutor virtual da classe Dispositivo.
      * Garante que os destrutores das classes derivadas (como Luz, Som, ArCondicionado) sejam chamados 
@@ -33,10 +31,6 @@ public:
     /** @brief Consulta o identificador numérico único do dispositivo.
      * @return int O ID correspondente ao dispositivo corrente. */
     int getId() const;
-
-    /** @brief Consulta o local/cômodo onde o dispositivo está fisicamente mapeado.
-     * @return std::string String contendo o nome do cômodo associado. */
-    std::string getComodo() const;
 
     /** @brief Consulta o estado lógico de funcionamento do dispositivo.
      * @return true Se o aparelho estiver ativo.
