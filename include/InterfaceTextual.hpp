@@ -6,51 +6,68 @@
 #include "Usuario.hpp"
 #include "Sistema.hpp"
 
-/** @brief Interface textual para interação com o sistema.
- * Permite ao usuário enviar comandos, visualizar mensagens,
- * alertas e estados de dispositivos. */
-class InterfaceTextual{
+/** @brief Interface textual para interação com o sistema de Smart Home.
+ * Controla os estados de navegação (menus), captura comandos do usuário
+ * e exibe o estado dos cômodos, dispositivos e alertas. */
+class InterfaceTextual {
 
 private: 
-    static int qtdInterfaces;   ///< Quantidade de interfaces 
-    Sistema* sistema;           ///< Ponteiro para o sistema principal 
-    bool ativa;                 ///< Indica se a interface está ativa  
-    Usuario* usuarioAtual;      ///< Ponteiro para o usuário atual
+    static int qtdInterfaces;   ///< Quantidade de interfaces ativas
+    Sistema* sistema;           ///< Ponteiro para o sistema principal (regras de negócio)
+    bool ativa;                 ///< Indica se o loop da interface está ativo  
+    Usuario* usuarioAtual;      ///< Ponteiro para o usuário logado no sistema
+
+    std::string menuAtual;      ///< Armazena a tela atual (ex: "PRINCIPAL", "COMODO", "DISPOSITIVO")
+    std::string comodoFocado;   ///< Armazena o nome do cômodo que o usuário está inspecionando no momento
+    int dispositivoFocadoID;   ///< ID do dispositivo selecionado para configurações detalhadas
 
 public:
-    /** @brief Inicializa a interface textual/gráfica para o usuário.
-     * Prepara o ambiente de interação, exibe a mensagem de boas-vindas e coloca a interface 
-     * pronta para receber os primeiros dados de entrada. */
+    /** @brief Inicializa a interface, exibe as boas-vindas e carrega o menu inicial. */
     void iniciar(); 
 
-    /** @brief Captura a entrada de texto fornecida pelo usuário no console.
-     * Aguarda a digitação de uma linha de comando, limpa buffers se necessário e encaminha 
-     * o texto capturado para as rotinas de processamento. */
+    /** @brief Captura a entrada de texto fornecida pelo usuário no console. */
     void lerComando(); 
 
     /** @brief Analisa a sintaxe e executa a ação correspondente ao comando recebido.
-     * Atua como o núcleo de controle da interface, mapeando a string de texto para as 
-     * funções internas do sistema de automação.
-     * @param comando Referência constante para a string contendo o comando a ser processado. */
+     * @param comando Referência para a string contendo o comando a ser processado. */
     void interpretarComando(const std::string &comando); 
 
-    /** @brief Imprime uma mensagem na tela do usuário.
-     * @param mensagem Referência constante para o texto que deve ser exibido no console. */
+    /** @brief Finaliza as atividades da interface e limpa o estado de execução. */
+    void _encerrar(); // Renomeado ou mantido como encerrar() conforme seu padrão
+    void encerrar();
+
+    
+    /** @brief Exibe o menu principal com as opções macro da casa (Ver cômodos, alertas, dashboard). */
+    void exibirMenuPrincipal();
+
+    /** @brief Exibe as opções e comandos possíveis dentro de um cômodo específico.
+     * @param nomeComodo Nome do cômodo a ser renderizado. */
+    void exibirMenuComodo(const std::string &nomeComodo);
+
+    /** @brief Exibe um painel geral (Dashboard) com métricas da casa (ex: consumo total, dispositivos ligados). */
+    void exibirDashboard();
+
+    /** @brief Percorre o sistema e lista textualmente todos os cômodos cadastrados. */
+    void exibirComodos();
+
+    /** @brief Lista todos os dispositivos pertencentes a um cômodo específico e seus status rápidos.
+     * @param nomeComodo Nome do cômodo onde os dispositivos serão buscados. */
+    void exibirDispositivosPorComodo(const std::string &nomeComodo);
+
+    /** @brief Limpa o console para garantir que a interface textual fique organizada a cada comando. */
+    void limparTela();
+
+    /** @brief Imprime uma mensagem padrão de feedback na tela do usuário.
+     * @param mensagem Texto a ser exibido. */
     void exibirMensagem(const std::string &mensagem); 
 
-    /** @brief Percorre e exibe todas as mensagens de erro ou avisos do sistema.
-     * @param alertas Referência para o vetor de strings contendo o histórico de problemas 
-     * detectados pelos sensores. */
+    /** @brief Percorre e exibe de forma destacada os avisos e problemas detectados por sensores.
+     * @param alertas Vetor de strings contendo o histórico de alertas do sistema. */
     void exibirAlerta(std::vector<std::string> &alertas); 
 
-    /** @brief Busca e exibe na tela os parâmetros atuais (ex: ligado/desligado, temperatura) de um aparelho.
-     * @param ID Identificador numérico único do dispositivo que terá seu estado consultado. */
+    /** @brief Busca e exibe detalhadamente as propriedades atuais de um aparelho específico.
+     * @param ID Identificador único do dispositivo. */
     void exibirEstado(int ID); 
-
-    /** @brief Finaliza as atividades da interface e libera seus recursos visuais.
-     * Exibe a mensagem de despedida, fecha fluxos de entrada/saída abertos e interrompe o 
-     * loop de captura de comandos. */
-    void encerrar();
 };
 
 #endif
