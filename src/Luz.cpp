@@ -1,4 +1,5 @@
 #include "Luz.hpp"
+#include "Dispositivo.hpp"
 
 Luz::Luz(int id) : Dispositivo(id) {
 }
