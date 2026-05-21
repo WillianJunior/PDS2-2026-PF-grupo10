@@ -19,9 +19,8 @@ public:
     /** @brief Construtor parametrizado da classe Luz.
      * Inicializa uma nova instância de iluminação automatizada, definindo seu ID único e 
      * o cômodo de instalação.
-     * @param id Identificador numérico único do dispositivo.
-     * @param comodo Nome ou identificador do cômodo onde a luz está localizada. */
-    Luz(int id, string comodo);
+     * @param id Identificador numérico único do dispositivo. */
+    Luz(int id);
 
     /** @brief Destrutor da classe Luz.
      * Libera os recursos específicos alocados para este ponto de iluminação e encerra 

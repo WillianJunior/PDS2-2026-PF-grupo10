@@ -28,9 +28,8 @@ private:
 public:
     /** @brief Construtor da classe Som.
      * Inicializa o dispositivo de áudio definindo seu ID exclusivo e o cômodo de instalação.
-     * @param id Identificador numérico único do dispositivo.
-     * @param comodo Nome ou identificador do cômodo onde o aparelho está localizado. */
-    Som(int id, string comodo);
+     * @param id Identificador numérico único do dispositivo. */
+    Som(int id);
 
     /** @brief Destrutor da classe Som.
      * Libera a memória alocada para a estrutura da playlist e encerra de forma segura 
