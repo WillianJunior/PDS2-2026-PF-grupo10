@@ -12,7 +12,7 @@ using std::string;
 /** @class Sistema
  * @brief Controla o funcionamento geral do sistema Smart Home.
  * A classe Sistema é responsável por controlar a execução do sistema,
- * gerenciar a casa, sensores, macros e comandos recebidos da interface textual. */
+ * gerenciar os cômodos, sensores e comandos recebidos da interface textual. */
 class Sistema {
     
 private:
@@ -31,13 +31,13 @@ public:
 
     /** @brief Destrutor da classe Sistema. 
      * Garante a liberação correta de memória e recursos. Desaloca os ponteiros
-     * armazenados no vetor de macros, limpa as estruturas de dados da casa e
-     * destrói o objeto sensor associado, evitando vazamentos de memória. */
+     * armazenados no vetor de comodos e destrói o objeto sensor associado, 
+     * evitando vazamentos de memória. */
     ~Sistema();
 
     /** @brief Identifica um cômodo específico da casa com base no seu índice de armazenamento. 
      * @param i Índice posicional do cômodo dentro do vetor de gerenciamento da casa.
-     * @return Casa* Ponteiro para o objeto do cômodo correspondente se o índice for válido; 
+     * @return Comodo* Ponteiro para o objeto do cômodo correspondente se o índice for válido; 
      *         Retorna `nullptr` caso o índice seja negativo ou maior/igual ao tamanho do vetor. */
     Comodo* getComodo(int i) const;
 
@@ -68,14 +68,14 @@ public:
     void receberComando(const string& comando);
 
     /** @brief Adiciona um novo cômodo à estrutura de gerenciamento da casa. 
-     * Insere uma cópia do objeto fornecido no vetor interno de cômodos do sistema.
-     * @param comodo Objeto do tipo Casa (representando o cômodo) a ser clonado e inserido. */
-    void adicionarComodo(Comodo comodo);
+     * Insere o objeto fornecido no vetor interno de cômodos do sistema.
+     * @param comodo Referência para o objeto Comodo que se deseja vincular ao sistema. */
+    void adicionarComodo(Comodo& comodo);
 
     /** @brief Remove um cômodo específico do sistema de monitoramento. 
      * Varre a lista de cômodos cadastrados para encontrar o que corresponda à referência fornecida. 
      * O cômodo deixa de responder aos comandos globais do sistema.
-     * @param comodo Referência constante para o objeto Casa que se deseja desvincular do sistema. */
+     * @param comodo Referência constante para o objeto Comodo que se deseja desvincular do sistema. */
     void removerComodo(const Comodo& comodo);
 
 };
