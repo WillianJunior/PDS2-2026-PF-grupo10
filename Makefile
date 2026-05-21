@@ -50,6 +50,10 @@ $(TEST_TARGET): $(TEST_OBJECTS) $(MAIN_OBJECTS)
 $(BUILD_DIR)/test_%.o: $(TEST_DIR)/test_%.cpp | $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+test: tests
+	@echo "Running tests..."
+	@./$(TEST_TARGET)
+
 # Limpar arquivos compilados
 clean:
 	rm -rf $(BUILD_DIR)/*.o $(TARGET) $(TEST_TARGET)
