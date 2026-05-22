@@ -23,7 +23,6 @@ void Portao::detectarErro() {
     // Implementação vazia
 }
 
-// ✅ IMPLEMENTAÇÃO CORRETA
 std::string Portao::getEstadoFormatado() const {
     return "Portão: Fechado";  // Implementação vazia simples
 }

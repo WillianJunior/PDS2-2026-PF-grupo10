@@ -19,7 +19,6 @@ void Luz::detectarErro() {
     // Implementação vazia
 }
 
-// ✅ IMPLEMENTAÇÃO CORRETA
 std::string Luz::getEstadoFormatado() const {
     return "Luz: Desligada";  // Implementação vazia simples
 }

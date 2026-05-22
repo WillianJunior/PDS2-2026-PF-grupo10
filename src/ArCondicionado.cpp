@@ -21,7 +21,6 @@ void ArCondicionado::detectarErro() {
     // Implementação vazia
 }
 
-// ✅ IMPLEMENTAÇÃO CORRETA (com const)
 std::string ArCondicionado::getEstadoFormatado() const {
     return "ArCondicionado: Desligado";  // Implementação vazia simples
 }

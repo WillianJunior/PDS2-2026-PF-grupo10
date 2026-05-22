@@ -54,7 +54,6 @@ void Som::removerMusica(const string& nome) {
     // Implementação vazia
 }
 
-// ✅ IMPLEMENTAÇÃO DOS MÉTODOS VIRTUAIS PUROS
 void Som::detectarErro() {
     // Implementação vazia
 }
@@ -62,6 +61,3 @@ void Som::detectarErro() {
 std::string Som::getEstadoFormatado() const {
     return "Som: Desligado";  // Implementação vazia simples
 }
-
-// ❌ REMOVER esta função solta que causa conflito:
-// std::string getEstadoFormatado() {}

@@ -90,6 +90,7 @@ public:
     void removerMusica(const string& nome);
 
     void detectarErro() override;
+    
     std::string getEstadoFormatado() const override;
 };
 
