@@ -41,6 +41,7 @@ public:
      * estoure os limites permitidos (15 a 30) ou se houver perda de conexão */
     void detectarErro() override;
 
+    std::string getEstadoFormatado() const override;
 };
 
 #endif

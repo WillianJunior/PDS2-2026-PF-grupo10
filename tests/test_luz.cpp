@@ -11,7 +11,7 @@
 TEST_CASE("Testando a classe Luz - Gerenciamento de Iluminação") {
     
     // Instanciamos uma lâmpada base que será reinicializada para cada SUBCASE
-    Luz lampada(101, "Cozinha");
+    Luz lampada(101);
 
     SUBCASE("Cenário 1: Inicialização e Valores Padrão") {
         // Valida se os dados passados no construtor foram definidos corretamente

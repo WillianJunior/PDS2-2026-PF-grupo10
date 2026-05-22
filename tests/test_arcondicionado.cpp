@@ -2,7 +2,7 @@
 #include "ArCondicionado.hpp"
 
 TEST_CASE("Testando o Construtor e Inicialização") {
-    ArCondicionado ar(1, "Quarto");
+    ArCondicionado ar(1);
     // Substitua pelo método correto da classe base para pegar ID e Cômodo se houver
     // CHECK(ar.getId() == 1); 
     
@@ -12,7 +12,7 @@ TEST_CASE("Testando o Construtor e Inicialização") {
 }
 
 TEST_CASE("Testando Ajuste de Temperatura - Limites Válidos") {
-    ArCondicionado ar(2, "Sala");
+    ArCondicionado ar(2);
     
     ar.ajustarTemperatura(15);
     CHECK(ar.getTemperatura() == 15);
@@ -25,7 +25,7 @@ TEST_CASE("Testando Ajuste de Temperatura - Limites Válidos") {
 }
 
 TEST_CASE("Testando Ajuste de Temperatura - Valores Inválidos") {
-    ArCondicionado ar(3, "Escritório");
+    ArCondicionado ar(3);
     ar.ajustarTemperatura(22); // Estado inicial conhecido
     
     ar.ajustarTemperatura(14); // Inválido (Abaixo)
@@ -36,7 +36,7 @@ TEST_CASE("Testando Ajuste de Temperatura - Valores Inválidos") {
 }
 
 TEST_CASE("Testando Detecção de Erros") {
-    ArCondicionado ar(4, "Cozinha");
+    ArCondicionado ar(4);
     
     // Cenário normal
     ar.ajustarTemperatura(25);
