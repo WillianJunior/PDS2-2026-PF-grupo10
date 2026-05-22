@@ -17,6 +17,9 @@
 build/*
 pull
 coverage*
+!coverage.html
+!coverage.css
+!coverage.functions.html
 # ============================================
 # Executáveis
 # ============================================

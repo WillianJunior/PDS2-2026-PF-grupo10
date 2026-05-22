@@ -87,9 +87,6 @@ rebuild-tests: clean tests
 coverage: clean
 
 	$(MAKE) COVERAGE=1 tests
-
 	@./$(TEST_TARGET) 2>/dev/null || true
-
 	@gcovr -r . --object-directory $(BUILD_DIR) --html --html-details -o coverage.html --gcov-ignore-parse-errors --exclude '$(TEST_DIR)/.*' --exclude '.*/doctest.h'
-
 	@gcovr -r . --object-directory $(BUILD_DIR) --gcov-ignore-parse-errors --exclude '$(TEST_DIR)/.*' --exclude '.*/doctest.h'
