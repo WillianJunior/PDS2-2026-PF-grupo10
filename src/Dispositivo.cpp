@@ -2,23 +2,26 @@
 
 int Dispositivo::qtdDispositivos = 0;
 
-Dispositivo::Dispositivo(int id) {
+Dispositivo::Dispositivo(int id) : id(id), estado(false), erro(false) {
+    qtdDispositivos++;
 }
 
 Dispositivo::~Dispositivo() {
+    qtdDispositivos--;
 }
 
 int Dispositivo::getId() const {
-    return 0;
+    return id;
 }
 
 bool Dispositivo::getEstado() const {
-    return false;
+    return estado;
 }
 
 bool Dispositivo::temErro() const {
-    return false;
+    return erro;
 }
 
 void Dispositivo::alterarEstado(bool novoEstado) {
+    estado = novoEstado;
 }

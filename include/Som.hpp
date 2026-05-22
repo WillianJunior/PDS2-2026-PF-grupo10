@@ -88,6 +88,9 @@ public:
      * Procura o nome correspondente na lista, remove o elemento, ajusta a estrutura e libera a memória associada.
      * @param nome Título exato da música que será removida da lista. */
     void removerMusica(const string& nome);
+
+    void detectarErro() override;
+    std::string getEstadoFormatado() const override;
 };
 
 #endif

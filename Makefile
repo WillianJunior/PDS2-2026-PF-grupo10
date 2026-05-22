@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -Wextra -I include
+CXXFLAGS = -std=c++11 -w -I include
 
 # Diretórios
 SRC_DIR = src

@@ -54,6 +54,8 @@ public:
      * interrompe imediatamente qualquer movimento ou temporização por motivos de segurança. */
     void detectarErro() override;
 
+    std::string getEstadoFormatado() const override;
+
 };
 
 #endif

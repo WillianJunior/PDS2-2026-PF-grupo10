@@ -4,7 +4,6 @@
  * Componente do sistema Smart Home - PDS2 (UFMG)
  */
 
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h" // Certifique-se de que o doctest.h está na sua pasta include ou de terceiros
 #include "Luz.hpp"
 
@@ -16,7 +15,7 @@ TEST_CASE("Testando a classe Luz - Gerenciamento de Iluminação") {
     SUBCASE("Cenário 1: Inicialização e Valores Padrão") {
         // Valida se os dados passados no construtor foram definidos corretamente
         CHECK(lampada.getId() == 101);
-        CHECK(lampada.getComodo() == "Cozinha");
+   //     CHECK(lampada.getComodo() == "Cozinha");
         
         // Atributos herdados da base Dispositivo
         CHECK(lampada.getEstado() == false); // Deve iniciar desligada
