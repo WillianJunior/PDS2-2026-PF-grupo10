@@ -77,7 +77,6 @@ public:
      * O cômodo deixa de responder aos comandos globais do sistema.
      * @param comodo Referência constante para o objeto Comodo que se deseja desvincular do sistema. */
     void removerComodo(const Comodo& comodo);
-
 };
 
 #endif

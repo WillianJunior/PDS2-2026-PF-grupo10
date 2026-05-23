@@ -89,8 +89,15 @@ public:
      * @param nome Título exato da música que será removida da lista. */
     void removerMusica(const string& nome);
 
+    /** @brief Verifica possíveis falhas no funcionamento do aparelho de som.
+     * Realiza a análise do estado interno do dispositivo para identificar
+     * erros relacionados à reprodução, volume ou operação geral do sistema de áudio. */
     void detectarErro() override;
     
+    /** @brief Retorna uma descrição textual do estado atual do aparelho de som.
+     * Informa se o dispositivo está ligado ou desligado e pode incluir
+     * detalhes como volume ou modo de reprodução.
+     * @return std::string Texto formatado representando o estado do aparelho de som. */
     std::string getEstadoFormatado() const override;
 };
 
