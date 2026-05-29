@@ -41,7 +41,7 @@ std::string Luz::getEstadoFormatado() const {
 
     
     if (this->erro) {
-        resposta += " (⚠️ ESTADO DE ERRO DETECTADO)";
+        resposta += "(⚠️ ESTADO DE ERRO DETECTADO)";
     }
 
     return resposta;

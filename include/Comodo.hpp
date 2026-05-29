@@ -23,44 +23,28 @@ public:
      * Libera a memória e os recursos associados ao cômodo, limpando o contêiner de macros 
      * e gerenciando a destruição ou desvinculação da lista de dispositivos alocados para 
      * evitar vazamentos de memória. */
-    ~Comodo() {}
-
-    /** @brief Retorna o identificador do cômodo.
-     * @return int ID do cômodo. */
-    int getId() const {
-        return id;
-    }
-
-    /** @brief Retorna o nome do cômodo.
-     * @return string Nome do cômodo. */
-    string getNome() const {
-        return nome;
-    }
+    ~Comodo();
 
     /** @brief Busca um dispositivo cadastrado no cômodo através do seu identificador.
      * Percorre a lista interna comparando o ID fornecido com o de cada dispositivo.
      * @param id Identificador numérico único do dispositivo procurado.
      * @return Dispositivo* Ponteiro para a instância encontrada, ou nullptr caso o ID não exista no cômodo. */
-    Dispositivo* getDispositivo(int id) const {
-        return nullptr;
-    }
+    Dispositivo* getDispositivo(int id) const;
 
     /** @brief Insere um novo dispositivo no mapa de controle do cômodo.
      * Adiciona o ponteiro do objeto ao contêiner interno, permitindo que ele receba comandos direcionados ao cômodo.
      * @param dispositivo Ponteiro para o objeto do dispositivo a ser acoplado. */
-    void adicionarDispositivo(Dispositivo* dispositivo) {}
+    void adicionarDispositivo(Dispositivo* dispositivo);
 
     /** @brief Remove um dispositivo do cômodo com base no seu ID.
      * Busca o dispositivo pelo identificador, retira sua referência do contêiner interno e, se necessário, 
      * libera sua memória. Se o ID não for encontrado, nenhuma ação é tomada.
      * @param id Identificador numérico do dispositivo a ser removido. */
-    void removerDispositivo(int id) {}
+    void removerDispositivo(int id);
 
     /** @brief Consulta o total de dispositivos atualmente vinculados a este cômodo.
      * @return int O número inteiro que representa a quantidade atual de dispositivos monitorados. */
-    int getQtdDispositivos() const {
-        return qtdDispositivos;
-    }
+    int getQtdDispositivos() const;
 };
 
 #endif
