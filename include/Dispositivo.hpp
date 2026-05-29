@@ -28,7 +28,6 @@ public:
      * Também decrementa o contador estático `qtdDispositivos`. */
     virtual ~Dispositivo(); 
 
-<<<<<<< HEAD
     /** @brief Retorna o identificador do dispositivo.
      * @return int ID do dispositivo */
     int getId() const;
@@ -36,15 +35,6 @@ public:
     /** @brief Retorna o estado do dispositivo.
      * @return true Se o dispositivo estiver ativo (ligado/aberto).
      * @return false Se o dispositivo estiver inativo (desligado/fechado). */
-=======
-    /** @brief Consulta o identificador numérico único do dispositivo.
-     * @return int O ID correspondente ao dispositivo corrente. */
-    int getId() const;
-
-    /** @brief Consulta o estado lógico de funcionamento do dispositivo.
-     * @return true Se o aparelho estiver ativo.
-     * @return false Se o aparelho estiver inativo. */
->>>>>>> ede9b2ddeb2f16456d6561030cc38db4bcc88c60
     bool getEstado() const;
 
     /** @brief Verifica se o dispositivo foi marcado com alguma falha de funcionamento.

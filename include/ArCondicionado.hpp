@@ -26,13 +26,8 @@ public:
      * a comunicação ativa do aparelho. */
     ~ArCondicionado();
 
-<<<<<<< HEAD
-    /** @brief Retorna a temperatura atual 
-     * @return int Temperatura (15 a 30) */
-=======
     /** @brief Consulta a temperatura atualmente configurada no aparelho.
      * @return int Valor inteiro da temperatura ideal alvo, estabelecida entre 15°C e 30°C. */
->>>>>>> ede9b2ddeb2f16456d6561030cc38db4bcc88c60
     int getTemperatura() const;
 
     /** @brief Altera a temperatura alvo do dispositivo.

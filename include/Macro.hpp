@@ -47,13 +47,8 @@ public:
      * @return string O nome do evento que dispara esta macro. */    
     std::string getEvento() const;
 
-<<<<<<< HEAD
-    /** @brief Retorna a lista de ações da macro.
-     * @return Ponteiro para o primeiro nó da lista. */        
-=======
     /** @brief Retorna o ponto de entrada para a sequência de ações da macro.
      * @return Node* Ponteiro para o primeiro elemento da lista encadeada de comandos. */        
->>>>>>> ede9b2ddeb2f16456d6561030cc38db4bcc88c60
     Node* getLista() const;
 
     /** @brief Atualiza o nome do evento atrelado à macro.

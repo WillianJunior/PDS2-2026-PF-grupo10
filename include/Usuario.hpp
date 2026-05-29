@@ -26,13 +26,8 @@ public:
     ~Usuario(); 
 
     /** @brief retorna o nome do usuário
-<<<<<<< HEAD
-    * @return string nome armazenado no objeto */
-    std::string getNome() const; 
-=======
     * @return string nome cadastrado no sistema */
     std::string getNome() const;
->>>>>>> ede9b2ddeb2f16456d6561030cc38db4bcc88c60
 
     /** @brief Altera o nome do usuário
     * @param nome novo nome a ser atribuido
@@ -58,7 +53,7 @@ public:
      * adiciona ao vetor de macros. A partir do registro, ações podem ser vinculadas a este evento.
      * @param evento Nome identificador único que será associado à nova macro (ex: "sair_de_casa").
      * @param user Nome do usuario que registra o macro*/
-    void adicionarMacro(string evento, Usuario& user);
+    void adicionarMacro(std::string evento, Usuario& user);
 
     /** @brief Remove uma macro existente do sistema com base no nome de evento fornecido.
      * Busca no vetor de macros o evento correspondente. Se encontrado, o objeto é
@@ -66,7 +61,7 @@ public:
      * Caso o evento não exista, nenhuma ação é tomada.
      * @param evento Nome identificador da macro que deseja remover.
      * @param user Nome do usuario que tem o macro. */
-    void removerMacro(string evento, Usuario& user);
+    void removerMacro(std::string evento, Usuario& user);
 
     /** @brief Dispara e executa a sequência de ações de uma macro cadastrada.
      * Procura pela macro associada ao nome do evento fornecido. Se encontrada, o sistema
@@ -74,7 +69,7 @@ public:
      * para aquela macro específica.
      * @param evento Nome do evento cuja macro correspondente deve ser disparada.
      * @param user Nome do usuario que tem o macro. */
-    void executarMacro(string evento, Usuario& user);
+    void executarMacro(std::string evento, Usuario& user);
 };
 
 

@@ -28,14 +28,10 @@ public:
      * interrompendo rotinas de temporização ativas antes da destruição do objeto. */
     ~Portao();
 
-<<<<<<< HEAD
-    /** @brief Retorna o valor do temporizador atual */
-=======
     /** @brief Consulta o tempo restante ou configurado no temporizador.
      * Recupera o valor atual do cronômetro interno que gerencia o fechamento
      * automático do portão.
      * @return int O tempo configurado ou a contagem regressiva atual em segundos. */
->>>>>>> ede9b2ddeb2f16456d6561030cc38db4bcc88c60
     int getTemporizador() const;
 
     /** @brief Define ou atualiza o tempo de espera para o fechamento automático.

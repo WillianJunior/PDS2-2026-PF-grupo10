@@ -4,7 +4,6 @@
 #include "Dispositivo.hpp"
 #include <string>
 
-using namespace std;
 
 /** @class Luz
  * @brief Classe na qual representa um dispositivo de iluminação automatizado. 

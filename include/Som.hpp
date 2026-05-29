@@ -40,23 +40,9 @@ public:
      * @return int Valor inteiro representando a escala atual de volume do aparelho. */
     int getVolume() const;
 
-<<<<<<< HEAD
-    /** @brief Retorna o volume em valor inteiro.
-     * @return inteiro. */
-    int getVolume() const;
-
-/*=========================setters================================*/
-
-/*=========================metodos================================*/
-
-
-    /** @brief Carrega a lista de musicas em um arquivo para a playlist.
-    * @param nomeArquivo Nome do arquivo contendo a lista de musicas a serem tocadas. */
-=======
     /** @brief Lê e importa uma lista de faixas a partir de um arquivo externo.
      * Abre o arquivo especificado, faz o parser dos nomes das músicas e as insere na estrutura de dados da playlist.
      * @param nomeArquivo Caminho ou nome do arquivo de texto contendo os títulos das músicas. */
->>>>>>> ede9b2ddeb2f16456d6561030cc38db4bcc88c60
     void carregarMusicas(const string& nomeArquivo);
 
     /** @brief Alterna o estado de reprodução atual entre tocando e pausado.
