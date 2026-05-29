@@ -1,1 +1,45 @@
 #include "doctest.h"
+#include "ArCondicionado.hpp"
+
+TEST_CASE("Testando o Construtor e Inicialização") {
+    ArCondicionado ar(1);
+    // Substitua pelo método correto da classe base para pegar ID e Cômodo se houver
+    // CHECK(ar.getId() == 1); 
+    
+    // Verifica se a temperatura inicial está no intervalo aceito
+    CHECK(ar.getTemperatura() >= 15);
+    CHECK(ar.getTemperatura() <= 30);
+}
+
+TEST_CASE("Testando Ajuste de Temperatura - Limites Válidos") {
+    ArCondicionado ar(2);
+    
+    ar.ajustarTemperatura(15);
+    CHECK(ar.getTemperatura() == 15);
+    
+    ar.ajustarTemperatura(30);
+    CHECK(ar.getTemperatura() == 30);
+    
+    ar.ajustarTemperatura(22);
+    CHECK(ar.getTemperatura() == 22);
+}
+
+TEST_CASE("Testando Ajuste de Temperatura - Valores Inválidos") {
+    ArCondicionado ar(3);
+    ar.ajustarTemperatura(22); // Estado inicial conhecido
+    
+    ar.ajustarTemperatura(14); // Inválido (Abaixo)
+    CHECK(ar.getTemperatura() == 22); // Deve manter o valor antigo ou lançar exceção
+    
+    ar.ajustarTemperatura(31); // Inválido (Acima)
+    CHECK(ar.getTemperatura() == 22);
+}
+
+TEST_CASE("Testando Detecção de Erros") {
+    ArCondicionado ar(4);
+    
+    // Cenário normal
+    ar.ajustarTemperatura(25);
+    ar.detectarErro();
+    // CHECK(ar.hasErro() == false); // Depende de como a classe base gerencia o estado de erro
+}

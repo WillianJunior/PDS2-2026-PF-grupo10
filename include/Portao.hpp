@@ -14,24 +14,55 @@ private:
     int segundos; ///< Armazena o tempo em segundos
 
 public:
-    /** @brief Construtor de cada objeto.*/
+    /** @brief Construtor da classe Portao.
+     * Inicializa uma nova instância de um portão automatizado, com um identificador único. 
+     * Configura o estado inicial do portão como fechado,
+     * zera ou define o temporizador padrão de fechamento e garante que os flags
+     * de erro comecem limpos (falsos).
+     * @param id Código identificador numérico único para o portão dentro do sistema. */
     Portao(int id);
 
-    /** @brief Destrutor */
+    /** @brief Destrutor da classe Portao.
+     * Responsável por liberar quaisquer recursos de hardware ou memória alocados 
+     * dinamicamente para este portão específico. Garante um encerramento seguro,
+     * interrompendo rotinas de temporização ativas antes da destruição do objeto. */
     ~Portao();
 
+<<<<<<< HEAD
     /** @brief Retorna o valor do temporizador atual */
+=======
+    /** @brief Consulta o tempo restante ou configurado no temporizador.
+     * Recupera o valor atual do cronômetro interno que gerencia o fechamento
+     * automático do portão.
+     * @return int O tempo configurado ou a contagem regressiva atual em segundos. */
+>>>>>>> ede9b2ddeb2f16456d6561030cc38db4bcc88c60
     int getTemporizador() const;
 
-    /** @brief Muda o valor do temporizador com base no parâmetro dado
-    * @param seg tempo até fechar */
+    /** @brief Define ou atualiza o tempo de espera para o fechamento automático.
+     * Modifica o atributo interno do temporizador. Este valor define por quanto tempo
+     * o portão permanecerá totalmente aberto antes que o sistema envie o comando
+     * de fechamento automático.
+     * @param seg Tempo de espera desejado, expresso estritamente em segundos. */
     void setTemporizador(int seg);
 
-    /** @brief Execução do fechamento automático com temporizador */
+    /** @brief Inicia a rotina de contagem regressiva e executa o fechamento do portão.
+     * Monitora o estado do portão durante o tempo definido no temporizador.
+     * Assim que a contagem chega a zero (e se nenhum erro for encontrado),
+     * altera o estado do portão para "fechando" e, posteriormente, "fechado". */
     void fecharAutomaticamente();
 
-    /** @brief Muda o estado de erro caso detecte algum problema */
+    /** @brief Analisa os sensores físicos do portão para identificar e registrar falhas.
+     * Sobrescreve o método da classe base. Realiza uma varredura em busca de 
+     * problemas operacionais. 
+     * Caso um problema seja detectado, altera o estado interno do portão para "Erro" e 
+     * interrompe imediatamente qualquer movimento ou temporização por motivos de segurança. */
     void detectarErro() override;
+
+    /** @brief Retorna uma descrição textual do estado atual do portão.
+     * Informa se o portão está aberto ou fechado, podendo incluir
+     * informações relacionadas ao tempo para fechamento automático.
+     * @return std::string Texto formatado representando o estado do portão. */
+    std::string getEstadoFormatado() const override;
 
 };
 

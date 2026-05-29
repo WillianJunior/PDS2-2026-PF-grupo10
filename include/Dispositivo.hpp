@@ -2,29 +2,33 @@
 #define DISPOSITIVO_H
 
 #include <string>
-using namespace std;
 
 /** @class Dispositivo
  * @brief Classe abstrata que representa um dispositivo genérico da casa inteligente.
- * Esta classe define atributos e comportamentos comuns a todos os dispositivos,
- * como identificação, cômodo onde está localizado, estado e possíveis falhas. */
-class Dispositivo{
+ * Esta classe define atributos e comportamentos comuns a todos os dispositivos. */
+class Dispositivo {
 
-    private:
-    int id;         ///< Identificador único do dispositivo
-    bool estado;    ///< Estado atual do dispositivo (0 = ligado/aberto, 1 = desligado/fechado)
-    bool erro;      ///< Indica se o dispositivo apresenta falha 
+protected: // Mudado para protected para que as subclasses tenham acesso
+    int id;               ///< Identificador único do dispositivo
+    bool estado;          ///< Estado atual (false = desligado/fechado, true = ligado/aberto)
+    bool erro;            ///< Indica se o dispositivo apresenta falha 
 
-    public:
-    static int qtdDispositivos; ///< Quantidade total de dispositivos criados
+public:
+    /** @brief Contador global que rastreia o número total de dispositivos criados no sistema. */
+    static int qtdDispositivos;
 
-    /** @brief Construtor da classe Dispositivo.
-     * @param id Identificador do dispositivo */
+    /** @brief Construtor da classe base Dispositivo.
+     * Define o ID e o cômodo de instalação e incrementa o contador estático global `qtdDispositivos`.
+     * @param id Identificador numérico único que representará o dispositivo.*/
     Dispositivo(int id);
 
-     /** @brief Destrutor da classe Dispositivo. */
-    ~Dispositivo(); 
+    /** @brief Destrutor virtual da classe Dispositivo.
+     * Garante que os destrutores das classes derivadas (como Luz, Som, ArCondicionado) sejam chamados 
+     * corretamente ao deletar um objeto por meio de um ponteiro da classe base, evitando vazamentos de memória.
+     * Também decrementa o contador estático `qtdDispositivos`. */
+    virtual ~Dispositivo(); 
 
+<<<<<<< HEAD
     /** @brief Retorna o identificador do dispositivo.
      * @return int ID do dispositivo */
     int getId() const;
@@ -32,21 +36,34 @@ class Dispositivo{
     /** @brief Retorna o estado do dispositivo.
      * @return true Se o dispositivo estiver ativo (ligado/aberto).
      * @return false Se o dispositivo estiver inativo (desligado/fechado). */
+=======
+    /** @brief Consulta o identificador numérico único do dispositivo.
+     * @return int O ID correspondente ao dispositivo corrente. */
+    int getId() const;
+
+    /** @brief Consulta o estado lógico de funcionamento do dispositivo.
+     * @return true Se o aparelho estiver ativo.
+     * @return false Se o aparelho estiver inativo. */
+>>>>>>> ede9b2ddeb2f16456d6561030cc38db4bcc88c60
     bool getEstado() const;
 
-    /** @brief Indica se o dispositivo apresenta erro.
-     * @return true Se o dispositivo estiver com falha.
-     * @return false Caso contrário. */
-    bool temErro();
-    
-    /** @brief Altera o estado do dispositivo.
-     * @details O estado só é modificado se for diferente do atual.
-     * @param estado Novo estado desejado. */
-    void alterarEstado(bool estado); 
+    /** @brief Verifica se o dispositivo foi marcado com alguma falha de funcionamento.
+     * @return true Se houver um problema técnico detectado previamente pelo sensor ou hardware.
+     * @return false Se o funcionamento do aparelho estiver normal. */
+    bool temErro() const;
 
-    /** @brief Detecta falhas no dispositivo. */
+    /** @brief Modifica o estado lógico (ativo/inativo) do dispositivo.
+     * @param novoEstado Flag booleano representando o comando desejado (true para ligar/abrir, false para desligar/fechar). */
+    virtual void alterarEstado(bool novoEstado); 
+
+    /** @brief Realiza a varredura e diagnóstico interno de falhas no hardware ou parâmetros.
+     * Método virtual puro. */
     virtual void detectarErro() = 0; 
 
+    /** @brief Monta uma string descritiva com os detalhes atuais e específicos da operação do dispositivo.
+     * Método virtual puro. 
+     * @return std::string Texto legível detalhando o estado atual (ex: "Ligado - Volume 12" ou "Fechado"). */
+    virtual std::string getEstadoFormatado() const = 0;
 };
 
 #endif

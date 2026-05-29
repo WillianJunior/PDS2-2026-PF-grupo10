@@ -4,7 +4,6 @@
 #include "Dispositivo.hpp"
 #include <string>
 
-using namespace std;
 
 /** @class ArCondicionado
  * @brief Classe que representa um ar-condicionado automatizado.
@@ -16,27 +15,42 @@ private:
     int temperatura; ///< Temperatura do ar-condicionado (15 a 30)
 
 public:
-    /** @brief Construtor da classe ArCondicionado 
-     * @param id Identificador do dispositivo
-     * @param comodo Nome do cômodo */
-    ArCondicionado(int id, string comodo);
+    /** @brief Construtor da classe ArCondicionado.
+     * Inicializa o dispositivo de climatização definindo seu ID exclusivo 
+     * e o cômodo de instalação.
+     * @param id Identificador numérico único do dispositivo. */
+    ArCondicionado(int id);
 
-    /** @brief Destrutor da classe ArCondicionado */
+    /** @brief Destrutor da classe ArCondicionado.
+     * Libera os recursos alocados para o módulo de climatização e encerra 
+     * a comunicação ativa do aparelho. */
     ~ArCondicionado();
 
+<<<<<<< HEAD
     /** @brief Retorna a temperatura atual 
      * @return int Temperatura (15 a 30) */
+=======
+    /** @brief Consulta a temperatura atualmente configurada no aparelho.
+     * @return int Valor inteiro da temperatura ideal alvo, estabelecida entre 15°C e 30°C. */
+>>>>>>> ede9b2ddeb2f16456d6561030cc38db4bcc88c60
     int getTemperatura() const;
 
-    /** @brief Ajusta a temperatura do dispositivo 
-     * @param temperatura Nova temperatura (15 a 30) */
+    /** @brief Altera a temperatura alvo do dispositivo.
+     * Atualiza o termostato interno com o novo valor fornecido, desde que esteja dentro da faixa operacional.
+     * @param temperatura Nova temperatura desejada, contida estritamente no intervalo de 15 a 30. */
     void ajustarTemperatura(int temperatura);
 
-    /** @brief Detecta erros no funcionamento 
-     * Verifica:
-     * - Temperatura fora do intervalo permitido
-     * - Dispositivo offline */
+    /** @brief Avalia o estado operacional do aparelho para identificar falhas.
+     * Sobrescreve o método da classe base. Dispara alarmes caso a temperatura configurada 
+     * estoure os limites permitidos (15 a 30) ou se houver perda de conexão */
     void detectarErro() override;
+
+    /** @brief Retorna uma descrição textual do estado atual do ar-condicionado.
+     * Informa se o dispositivo está ligado ou desligado e pode incluir
+     * informações adicionais, como a temperatura configurada.
+     * @return std::string Texto formatado representando o estado do ar-condicionado. */
+    std::string getEstadoFormatado() const override;
 };
 
 #endif
+

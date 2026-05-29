@@ -6,42 +6,68 @@
 #include "Usuario.hpp"
 #include "Sistema.hpp"
 
-/** @brief Interface textual para interação com o sistema.
- * Permite ao usuário enviar comandos, visualizar mensagens,
- * alertas e estados de dispositivos. */
-class InterfaceTextual{
+/** @brief Interface textual para interação com o sistema de Smart Home.
+ * Controla os estados de navegação (menus), captura comandos do usuário
+ * e exibe o estado dos cômodos, dispositivos e alertas. */
+class InterfaceTextual {
 
 private: 
-    static int qtdInterfaces;   ///< Quantidade de interfaces 
-    Sistema* sistema;           ///< Ponteiro para o sistema principal 
-    bool ativa;                 ///< Indica se a interface está ativa  
-    Usuario* usuarioAtual;      ///< Ponteiro para o usuário atual
+    static int qtdInterfaces;   ///< Quantidade de interfaces ativas
+    Sistema* sistema;           ///< Ponteiro para o sistema principal (regras de negócio)
+    bool ativa;                 ///< Indica se o loop da interface está ativo  
+    Usuario* usuarioAtual;      ///< Ponteiro para o usuário logado no sistema
+
+    std::string menuAtual;      ///< Armazena a tela atual (ex: "PRINCIPAL", "COMODO", "DISPOSITIVO")
+    std::string comodoFocado;   ///< Armazena o nome do cômodo que o usuário está inspecionando no momento
+    int dispositivoFocadoID;   ///< ID do dispositivo selecionado para configurações detalhadas
 
 public:
-    /** @brief Inicia o uso da interface */
+    /** @brief Inicializa a interface, exibe as boas-vindas e carrega o menu inicial. */
     void iniciar(); 
 
-    /** @brief Lê o comando inserido pelo usuário*/
+    /** @brief Captura a entrada de texto fornecida pelo usuário no console. */
     void lerComando(); 
 
-     /** @brief Interpreta um comando fornecido pelo usuário 
-     * @param comando comando a ser interpretado */
+    /** @brief Analisa a sintaxe e executa a ação correspondente ao comando recebido.
+     * @param comando Referência para a string contendo o comando a ser processado. */
     void interpretarComando(const std::string &comando); 
 
-    /** @brief Exibe uma mensagem ao usuário
-     * @param mensagem mensagem a ser exibida */
+    /** @brief Finaliza as atividades da interface e limpa o estado de execução. */
+    void _encerrar(); // Renomeado ou mantido como encerrar() conforme seu padrão
+    void encerrar();
+
+    
+    /** @brief Exibe o menu principal com as opções macro da casa (Ver cômodos, alertas, dashboard). */
+    void exibirMenuPrincipal();
+
+    /** @brief Exibe as opções e comandos possíveis dentro de um cômodo específico.
+     * @param nomeComodo Nome do cômodo a ser renderizado. */
+    void exibirMenuComodo(const std::string &nomeComodo);
+
+    /** @brief Exibe um painel geral (Dashboard) com métricas da casa (ex: consumo total, dispositivos ligados). */
+    void exibirDashboard();
+
+    /** @brief Percorre o sistema e lista textualmente todos os cômodos cadastrados. */
+    void exibirComodos();
+
+    /** @brief Lista todos os dispositivos pertencentes a um cômodo específico e seus status rápidos.
+     * @param nomeComodo Nome do cômodo onde os dispositivos serão buscados. */
+    void exibirDispositivosPorComodo(const std::string &nomeComodo);
+
+    /** @brief Limpa o console para garantir que a interface textual fique organizada a cada comando. */
+    void limparTela();
+
+    /** @brief Imprime uma mensagem padrão de feedback na tela do usuário.
+     * @param mensagem Texto a ser exibido. */
     void exibirMensagem(const std::string &mensagem); 
 
-    /** @brief Exibe uma lista de alertas ao usuário
-     * @param alertas veetor contendo as mensagens de alerta */
+    /** @brief Percorre e exibe de forma destacada os avisos e problemas detectados por sensores.
+     * @param alertas Vetor de strings contendo o histórico de alertas do sistema. */
     void exibirAlerta(std::vector<std::string> &alertas); 
 
-    /** @brief Exibe o estado de um dispositivo
-     * @param ID identificador do dispositivo */
+    /** @brief Busca e exibe detalhadamente as propriedades atuais de um aparelho específico.
+     * @param ID Identificador único do dispositivo. */
     void exibirEstado(int ID); 
-
-    /** @brief Encerra o uso da interface */
-    void encerrar();
 };
 
 #endif
