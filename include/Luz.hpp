@@ -31,9 +31,6 @@ public:
      * @return int Valor inteiro representando a intensidade, escalonada estritamente de 1 a 5. */
     int getIntensidade() const;
 
-    std::string getComodo() const;
-
-
     /** @brief Altera o nível de brilho da luz.
      * Modifica o atributo interno de intensidade para o valor fornecido, atualizando o estado do hardware.
      * @param intensidade Novo valor de brilho a ser aplicado, devendo respeitar o intervalo de 1 a 5. */
@@ -44,7 +41,11 @@ public:
      * permitido (1 a 5) ou se há perda de conexão, colocando a luz em estado de erro se necessário. */
     void detectarErro() override;
 
-    virtual std::string getEstadoFormatado() const override;
+    /** @brief Retorna uma descrição textual do estado atual da luz.
+     * Informa se a luz está ligada ou desligada e pode incluir
+     * o nível de intensidade configurado.
+     * @return std::string Texto formatado representando o estado da luz. */
+    std::string getEstadoFormatado() const override;
 
 };
 

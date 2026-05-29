@@ -1,0 +1,2 @@
+ - boa quantidade de testes
+ - arquivos .html de coverage são gerados na raiz. eles devem ser gerados em outro local (build, ou coverage, ou html). fica até mais fácil de ignorar um diretório inteiro

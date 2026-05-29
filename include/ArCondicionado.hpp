@@ -4,7 +4,6 @@
 #include "Dispositivo.hpp"
 #include <string>
 
-using namespace std;
 
 /** @class ArCondicionado
  * @brief Classe que representa um ar-condicionado automatizado.
@@ -41,6 +40,10 @@ public:
      * estoure os limites permitidos (15 a 30) ou se houver perda de conexão */
     void detectarErro() override;
 
+    /** @brief Retorna uma descrição textual do estado atual do ar-condicionado.
+     * Informa se o dispositivo está ligado ou desligado e pode incluir
+     * informações adicionais, como a temperatura configurada.
+     * @return std::string Texto formatado representando o estado do ar-condicionado. */
     std::string getEstadoFormatado() const override;
 };
 

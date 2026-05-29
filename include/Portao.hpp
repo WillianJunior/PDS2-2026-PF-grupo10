@@ -54,6 +54,12 @@ public:
      * interrompe imediatamente qualquer movimento ou temporização por motivos de segurança. */
     void detectarErro() override;
 
+    /** @brief Retorna uma descrição textual do estado atual do portão.
+     * Informa se o portão está aberto ou fechado, podendo incluir
+     * informações relacionadas ao tempo para fechamento automático.
+     * @return std::string Texto formatado representando o estado do portão. */
+    std::string getEstadoFormatado() const override;
+
 };
 
 #endif

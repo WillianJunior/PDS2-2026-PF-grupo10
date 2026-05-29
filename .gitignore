@@ -1,0 +1,158 @@
+# ============================================
+# Arquivos de compilação e objetos
+# ============================================
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.so
+*.dll
+*.dylib
+*.a
+*.lib
+# ============================================
+# Arquivos de build e cobertura
+# ============================================
+build/*
+pull
+coverage*
+!coverage.html
+!coverage.css
+!coverage.functions.html
+# ============================================
+# Executáveis
+# ============================================
+sistema_casa_inteligente
+run_tests
+test_*
+*.exe
+*.out
+*.app
+
+# ============================================
+# IDE e editores
+# ============================================
+# VS Code
+.vscode/
+*.code-workspace
+
+# CLion
+.idea/
+cmake-build-*/
+
+# CodeBlocks
+*.cbp
+*.depend
+*.layout
+
+# Qt Creator
+*.user
+*.creator
+*.files
+*.includes
+*.config
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.*.swp
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ============================================
+# Sistema operacional
+# ============================================
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Icon
+
+# Linux
+.directory
+*.orig
+*.bak
+
+
+# Doxygen
+doxygen-warning.txt
+doxygen_error.log
+doxygen_output.txt
+
+# ============================================
+# Arquivos temporários
+# ============================================
+*.tmp
+*.temp
+*.cache
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# ============================================
+# Arquivos de backup
+# ============================================
+*.backup
+*.bak
+*.old
+*.orig
+*.rej
+
+# ============================================
+# Dependências e pacotes
+# ============================================
+.vcpkg/
+vcpkg_installed/
+conaninfo.txt
+conanbuildinfo.*
+CMakeUserPresets.json
+
+# ============================================
+# Arquivos do projeto (específicos)
+# ============================================
+# Relatórios de cobertura gerados
+coverage_report.html
+coverage_report.css
+coverage_report.functions.html
+
+# Arquivos de teste temporários
+test.log
+test_output.txt
+
+# Core dumps
+core.*
+*.core
+
+# ============================================
+# Arquivos de configuração pessoal
+# ============================================
+.env
+.env.local
+.env.*.local
+*.local
+
+# ============================================
+# Arquivos de compilação do doctest
+# ============================================
+doctest.h.gch
+*.gch
