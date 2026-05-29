@@ -25,8 +25,13 @@ public:
      * armazenadas no vetor de alertas para evitar desperdício de memória. */
     ~Sensor();
 
+<<<<<<< HEAD
+    /** @brief Retorna o tempo de verificação.
+     * @return Tempo em segundos. */
+=======
     /** @brief Consulta o intervalo atual de varredura do sensor.
      * @return int O tempo de ciclo atual configurado, expresso em segundos. */
+>>>>>>> ede9b2ddeb2f16456d6561030cc38db4bcc88c60
     int getTempoVerificacao() const;
 
     /** @brief Recebe uma mensagem de alerta específica com base no índice.
