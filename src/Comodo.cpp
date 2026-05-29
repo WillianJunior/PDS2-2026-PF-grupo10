@@ -1,13 +1,10 @@
 #include "Comodo.hpp"
 #include <string>
 
-Comodo::Comodo() : qtdDispositivos(0) {
-    // Aloca array de dispositivos (tamanho 10 por exemplo)
-    dispositivos = new Dispositivo*[10];
+Comodo::Comodo() {
 }
 
 Comodo::~Comodo() {
-    delete[] dispositivos;
 }
 
 Dispositivo* Comodo::getDispositivo(int id) const {
@@ -15,8 +12,8 @@ Dispositivo* Comodo::getDispositivo(int id) const {
     return nullptr;
 }
 
-void Comodo::adicionarDispositivo(Dispositivo* dispositivo) {
-    // Implementação vazia
+void Comodo::adicionarDispositivo(Dispositivo* d) {
+    dispositivos.push_back(d);
 }
 
 void Comodo::removerDispositivo(int id) {
@@ -24,5 +21,5 @@ void Comodo::removerDispositivo(int id) {
 }
 
 int Comodo::getQtdDispositivos() const {
-    return qtdDispositivos;
+    return dispositivos.size();
 }

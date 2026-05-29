@@ -2,6 +2,7 @@
 #define COMODO_HPP
 
 #include "Dispositivo.hpp"
+#include "vector"
 
 /** @class Comodo
  * @brief Representa cada espaco fisico da casa e gerencia seus dispositivos.
@@ -10,13 +11,12 @@
 class Comodo{
     
 private:
-    Dispositivo** dispositivos;   ///< Vetor de ponteiros para os dispositivos da Comodo
-    int qtdDispositivos;          ///< Quantidade de dispositivos cadastrados
+    std::vector<Dispositivo*> dispositivos;   ///< Vetor de ponteiros para os dispositivos do Comodo
 
 public:
     /** @brief Construtor padrão da classe Comodo.
-     * Inicializa a estrutura do cômodo, zerando o contador de dispositivos e preparando 
-     * o conteiner interno (vetor/lista) que armazenará as referências dos dispositivos. */
+     * Inicializa a estrutura do cômodo preparando o conteiner interno (vetor) 
+     * que armazenará as referências dos dispositivos. */
     Comodo();
 
     /** @brief Destrutor da classe Comodo.

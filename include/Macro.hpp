@@ -4,14 +4,14 @@
 #include "Dispositivo.hpp"
 #include "Comodo.hpp"
 #include <string>
-using namespace std;
+
 
 /** @struct Node
  * @brief Representa um nó da lista encadeada de uma macro. */
 struct Node {
     Dispositivo* dispositivo;    ///< Ponteiro para o dispositivo associado ao nó 
-    string acao;                 ///< Ação a ser executada no dispositivo (Valores esperados: "ligar", 
-                                 ///"desligar", "abrir", "fechar" e "ajustar")
+    std::string acao;                 ///< Ação a ser executada no dispositivo (Valores esperados: "ligar", 
+                                      ///"desligar", "abrir", "fechar" e "ajustar")
     Node* proximo;               ///< Ponteiro para o próximo nó da lista 
 };
 
@@ -23,7 +23,7 @@ struct Node {
 class Macro{
 
     private:
-    string evento; ///< Nome do evento que ativa a macro 
+    std::string evento; ///< Nome do evento que ativa a macro 
     Node* lista;   ///< Lista encadeada de ações sobre dispositivos 
 
 public:
@@ -36,7 +36,7 @@ public:
      * Inicializa o nome do evento, configura o ponteiro da lista encadeada de ações como nulo 
      * (lista vazia) e incrementa o contador estático global `qtdMacros`.
      * @param evento Nome identificador do evento associado a esta macro. */
-    Macro(string evento);
+    Macro(std::string evento);
 
     /** @brief Destrutor da classe Macro.
      * Libera a memória de todos os nós da lista encadeada de ações para evitar vazamento de memória 
@@ -45,7 +45,7 @@ public:
     
     /** @brief Consulta o nome do evento associado à macro.
      * @return string O nome do evento que dispara esta macro. */    
-    string getEvento() const;
+    std::string getEvento() const;
 
     /** @brief Retorna o ponto de entrada para a sequência de ações da macro.
      * @return Node* Ponteiro para o primeiro elemento da lista encadeada de comandos. */        
@@ -53,21 +53,21 @@ public:
 
     /** @brief Atualiza o nome do evento atrelado à macro.
      * @param evento Novo nome identificador para o gatilho da macro. */
-    void setEvento(string evento);
+    void setEvento(std::string evento);
 
     /** @brief Insere uma nova instrução de comando no final da sequência de execução.
      * Aloca dinamicamente um novo nó contendo o ID do alvo e a operação desejada, inserindo-o 
      * no final da lista encadeada.
      * @param id Identificador numérico do dispositivo que sofrerá a ação.
      * @param acao Comando textual a ser disparado (ex: "ligar", "desligar", "abrir", "fechar", "ajustar"). */
-    void adicionarDispositivo(int id, string acao);
+    void adicionarDispositivo(int id, std::string acao);
 
     /** @brief Remove uma instrução de comando específica da sequência da macro.
      * Varre a lista encadeada em busca do primeiro nó que coincida simultaneamente com o ID e a ação fornecidos. 
      * Se encontrado, ajusta os ponteiros vizinhos, libera a memória do nó e encerra a busca.
      * @param id Identificador do dispositivo cuja ação será removida.
      * @param acao A descrição exata do comando que se deseja retirar da sequência. */
-    void removerDispositivo(int id, string acao);
+    void removerDispositivo(int id, std::string acao);
 };
 
 #endif

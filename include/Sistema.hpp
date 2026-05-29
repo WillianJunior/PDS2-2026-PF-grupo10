@@ -2,12 +2,12 @@
 #define SISTEMA_HPP
 
 #include <string>
+#include <vector>
 
 #include "Comodo.hpp"
 #include "Sensor.hpp"
 #include "Macro.hpp"
 
-using std::string;
 
 /** @class Sistema
  * @brief Controla o funcionamento geral do sistema Smart Home.
@@ -18,7 +18,7 @@ class Sistema {
 private:
 
     bool ativo;           ///< Indica se o sistema está ativo
-    Comodo** comodos;     ///< Vetor de ponteiros para os cômodos
+    std::vector <Comodo*> comodos;     ///< Vetor de ponteiros para os cômodos
     Sensor* sensor;       ///< Sensor responsável pelo monitoramento do sistema
 
 public:
@@ -47,6 +47,11 @@ public:
      * @return Sensor* Ponteiro para a instância do objeto Sensor ativo no sistema. */
     Sensor* getSensor() const;
 
+    /** @brief Retorna a quantidade de cômodos cadastrados no sistema.
+     * Esta função retorna o número total de objetos Comodo
+     * armazenados no vetor de cômodos do sistema.
+     * @return int Quantidade de cômodos cadastrados.*/
+    int getQtdComodos();
 
     /** @brief Verifica o estado de operação atual do sistema. 
      * Método de consulta que indica se as rotinas de automação, monitoramento
@@ -65,7 +70,7 @@ public:
      * valida a sintaxe e a semântica em relação às funções do sistema e invoca os métodos 
      * internos correspondentes (como ligar aparelhos, listar cômodos ou criar macros).
      * @param comando Referência constante para a string contendo a linha de comando enviada pelo usuário. */
-    void receberComando(const string& comando);
+    void receberComando(const std::string& comando);
 
     /** @brief Adiciona um novo cômodo à estrutura de gerenciamento da casa. 
      * Insere o objeto fornecido no vetor interno de cômodos do sistema.

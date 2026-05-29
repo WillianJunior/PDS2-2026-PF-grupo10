@@ -4,7 +4,6 @@
 #include "Dispositivo.hpp"
 #include <string>
 
-using namespace std;
 
 /** @class ArCondicionado
  * @brief Classe que representa um ar-condicionado automatizado.

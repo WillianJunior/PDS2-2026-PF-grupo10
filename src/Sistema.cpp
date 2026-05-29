@@ -10,6 +10,10 @@ Comodo* Sistema::getComodo(int i) const {
     return nullptr;
 }
 
+int Sistema::getQtdComodos(){
+    return comodos.size();
+}
+
 Sensor* Sistema::getSensor() const {
     return nullptr;
 }
