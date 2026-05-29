@@ -35,6 +35,21 @@ public:
      * evitando vazamentos de memória. */
     ~Sistema();
 
+<<<<<<< HEAD
+    /** @brief Retorna um cômodo pelo índice.
+     * @param i Índice da cômodo no vetor.
+     * @return Ponteiro para o cômodo da casa, ou nullptr se o índice for inválido. */
+    Casa* getComodo(int i) const;
+
+    /** @brief Retorna o sensor associado ao sistema.
+     * @return Ponteiro para o objeto Sensor. */
+    Sensor* getSensor() const;
+
+    /** @brief Retorna uma macro pelo índice.
+     * @param i Índice da macro no vetor.
+     * @return Ponteiro para a macro encontrada, ou nullptr se o índice for inválido. */
+    Macro* getMacro(int i) const;
+=======
     /** @brief Identifica um cômodo específico da casa com base no seu índice de armazenamento. 
      * @param i Índice posicional do cômodo dentro do vetor de gerenciamento da casa.
      * @return Comodo* Ponteiro para o objeto do cômodo correspondente se o índice for válido; 
@@ -52,6 +67,7 @@ public:
      * armazenados no vetor de cômodos do sistema.
      * @return int Quantidade de cômodos cadastrados.*/
     int getQtdComodos();
+>>>>>>> ede9b2ddeb2f16456d6561030cc38db4bcc88c60
 
     /** @brief Verifica o estado de operação atual do sistema. 
      * Método de consulta que indica se as rotinas de automação, monitoramento

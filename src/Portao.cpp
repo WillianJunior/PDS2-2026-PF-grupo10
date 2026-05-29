@@ -16,13 +16,50 @@ void Portao::setTemporizador(int segundos) {
 }
 
 void Portao::fecharAutomaticamente() {
-    // Implementação vazia
+    
+    if (this->estado && !this->erro && this->segundos > 0) {
+        
+        std::time_t tempoInicial = std::time(nullptr);
+        int tempoRestante = this->segundos;
+
+        
+        while (tempoRestante > 0) {
+            std::time_t tempoAtual = std::time(nullptr);
+            tempoRestante = this->segundos - static_cast<int>(tempoAtual - tempoInicial);
+
+            
+            this->detectarErro();
+            if (this->erro) {
+                return; 
+            }
+        }
+
+        
+        this->estado = false; 
+    }
 }
 
 void Portao::detectarErro() {
-    // Implementação vazia
+    
+    if (this->segundos < 0) {
+        this->erro = true;
+        this->segundos = 0; 
+    }
 }
 
 std::string Portao::getEstadoFormatado() const {
-    return "Portão: Fechado";  // Implementação vazia simples
+    std::string resposta;
+
+    
+    if (this->estado) {
+        resposta = "Portao [ID " + std::to_string(this->id) + "]: ABERTO - Fechando em: " + std::to_string(this->segundos) + "s";
+    } else {
+        resposta = "Portao [ID " + std::to_string(this->id) + "]: FECHADO";
+    }
+
+    if (this->erro) {
+        resposta += " (⚠️ ESTADO DE ERRO DETECTADO)";
+    }
+
+    return resposta;
 }

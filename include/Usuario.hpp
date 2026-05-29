@@ -26,8 +26,13 @@ public:
     ~Usuario(); 
 
     /** @brief retorna o nome do usuário
+<<<<<<< HEAD
+    * @return string nome armazenado no objeto */
+    std::string getNome() const; 
+=======
     * @return string nome cadastrado no sistema */
     std::string getNome() const;
+>>>>>>> ede9b2ddeb2f16456d6561030cc38db4bcc88c60
 
     /** @brief Altera o nome do usuário
     * @param nome novo nome a ser atribuido
