@@ -1,7 +1,7 @@
 #include "Portao.hpp"
 #include <string>
 
-Portao::Portao(int id) : Dispositivo(id), segundos(0) {
+Portao::Portao() : Dispositivo(), segundos(0) {
 }
 
 Portao::~Portao() {
@@ -52,9 +52,9 @@ std::string Portao::getEstadoFormatado() const {
 
     
     if (this->estado) {
-        resposta = "Portao [ID " + std::to_string(this->id) + "]: ABERTO - Fechando em: " + std::to_string(this->segundos) + "s";
+        resposta = "Portao [ID " + std::to_string(this->getId()) + "]: ABERTO - Fechando em: " + std::to_string(this->segundos) + "s";
     } else {
-        resposta = "Portao [ID " + std::to_string(this->id) + "]: FECHADO";
+        resposta = "Portao [ID " + std::to_string(this->getId()) + "]: FECHADO";
     }
 
     if (this->erro) {

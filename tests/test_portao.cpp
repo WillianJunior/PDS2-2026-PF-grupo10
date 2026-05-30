@@ -2,21 +2,21 @@
 #include "Portao.hpp"
 
 TEST_CASE("Construtor do Portao") {
-    Portao p(1);
+    Portao p;
 
-    CHECK(p.getId() == 1);
+    CHECK(p.getId() > 0);
     CHECK(p.getEstado() == false);
     CHECK(p.temErro() == false);
 }
 
 TEST_CASE("Temporizador inicia em zero ou valor padrao") {
-    Portao p(2);
+    Portao p;
 
     CHECK(p.getTemporizador() >= 0);
 }
 
 TEST_CASE("Set e Get do temporizador") {
-    Portao p(3);
+    Portao p;
 
     p.setTemporizador(15);
 
@@ -24,7 +24,7 @@ TEST_CASE("Set e Get do temporizador") {
 }
 
 TEST_CASE("Alterar estado do portao") {
-    Portao p(4);
+    Portao p;
 
     p.alterarEstado(true);
     CHECK(p.getEstado() == true);
@@ -34,7 +34,7 @@ TEST_CASE("Alterar estado do portao") {
 }
 
 TEST_CASE("Fechamento automatico desliga o portao") {
-    Portao p(5);
+    Portao p;
 
     p.alterarEstado(true);
     p.setTemporizador(0);
@@ -45,7 +45,7 @@ TEST_CASE("Fechamento automatico desliga o portao") {
 }
 
 TEST_CASE("Deteccao de erro executa corretamente") {
-    Portao p(6);
+    Portao p;
 
     CHECK_NOTHROW(p.detectarErro());
 }

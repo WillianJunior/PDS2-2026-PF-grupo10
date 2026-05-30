@@ -1,7 +1,7 @@
 #include "ArCondicionado.hpp"
 #include <string>
 
-ArCondicionado::ArCondicionado(int id) : Dispositivo(id), temperatura(22) {
+ArCondicionado::ArCondicionado() : Dispositivo(), temperatura(22) {
 }
 
 ArCondicionado::~ArCondicionado() {

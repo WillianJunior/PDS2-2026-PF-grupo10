@@ -1,7 +1,7 @@
 #include "Som.hpp"
 #include <string>
 
-Som::Som(int id) : Dispositivo(id), _volume(50), _indice(0), _pause(true) {
+Som::Som() : Dispositivo(), _volume(50), _indice(0), _pause(true) {
 }
 
 Som::~Som() {

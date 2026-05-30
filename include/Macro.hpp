@@ -1,17 +1,15 @@
 #ifndef MACRO_H
 #define MACRO_H
 
-#include "Dispositivo.hpp"
-#include "Comodo.hpp"
 #include <string>
 
 
 /** @struct Node
  * @brief Representa um nó da lista encadeada de uma macro. */
 struct Node {
-    Dispositivo* dispositivo;    ///< Ponteiro para o dispositivo associado ao nó 
-    std::string acao;                 ///< Ação a ser executada no dispositivo (Valores esperados: "ligar", 
-                                      ///"desligar", "abrir", "fechar" e "ajustar")
+    int id;                       ///< Identificador do dispositivo associado à ação
+    std::string acao;            ///< Ação a ser executada no dispositivo (valores esperados: "ligar", 
+                                  ///"desligar", "abrir", "fechar" e "ajustar")
     Node* proximo;               ///< Ponteiro para o próximo nó da lista 
 };
 

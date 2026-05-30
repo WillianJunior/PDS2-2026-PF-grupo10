@@ -10,11 +10,11 @@
 TEST_CASE("Testando a classe Luz - Gerenciamento de Iluminação") {
     
     // Instanciamos uma lâmpada base que será reinicializada para cada SUBCASE
-    Luz lampada(101);
+    Luz lampada;
 
     SUBCASE("Cenário 1: Inicialização e Valores Padrão") {
-        // Valida se os dados passados no construtor foram definidos corretamente
-        CHECK(lampada.getId() == 101);
+        // Valida se o dispositivo recebeu um identificador válido
+        CHECK(lampada.getId() > 0);
    //     CHECK(lampada.getComodo() == "Cozinha");
         
         // Atributos herdados da base Dispositivo

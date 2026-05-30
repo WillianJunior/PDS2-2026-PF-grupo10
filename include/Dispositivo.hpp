@@ -8,8 +8,8 @@
  * Esta classe define atributos e comportamentos comuns a todos os dispositivos. */
 class Dispositivo {
 
-protected: // Mudado para protected para que as subclasses tenham acesso
-    int id;               ///< Identificador único do dispositivo
+protected: // Protected para que as subclasses tenham acesso
+    int id;    ///< Identificador único do dispositivo
     bool estado;          ///< Estado atual (false = desligado/fechado, true = ligado/aberto)
     bool erro;            ///< Indica se o dispositivo apresenta falha 
 
@@ -17,10 +17,14 @@ public:
     /** @brief Contador global que rastreia o número total de dispositivos criados no sistema. */
     static int qtdDispositivos;
 
+    /** @brief Contador estático usado para gerar IDs únicos de dispositivos.
+     * Nunca é decrementado para garantir unicidade. */
+    static int identificador;
+
     /** @brief Construtor da classe base Dispositivo.
-     * Define o ID e o cômodo de instalação e incrementa o contador estático global `qtdDispositivos`.
-     * @param id Identificador numérico único que representará o dispositivo.*/
-    Dispositivo(int id);
+     * Gera um ID único para a nova instância, configura o estado inicial e incrementa
+     * o contador estático global `qtdDispositivos`. */
+    Dispositivo();
 
     /** @brief Destrutor virtual da classe Dispositivo.
      * Garante que os destrutores das classes derivadas (como Luz, Som, ArCondicionado) sejam chamados 

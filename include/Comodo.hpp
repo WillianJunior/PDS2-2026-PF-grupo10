@@ -2,10 +2,10 @@
 #define COMODO_HPP
 
 #include "Dispositivo.hpp"
-#include "vector"
+#include <vector>
 
 /** @class Comodo
- * @brief Representa cada espaco fisico da casa e gerencia seus dispositivos.
+ * @brief Representa cada espaço físico da casa e gerencia seus dispositivos.
  * A classe Comodo armazena os dispositivos cadastrados, permite adicionar,
  * remover e buscar dispositivos pelo ID. */
 class Comodo{
@@ -32,7 +32,7 @@ public:
     Dispositivo* getDispositivo(int id) const;
 
     /** @brief Insere um novo dispositivo no mapa de controle do cômodo.
-     * Adiciona o ponteiro do objeto ao contêiner interno, permitindo que ele receba comandos direcionados ao cômodo.
+     * Adiciona o ponteiro do objeto ao contêiner interno.
      * @param dispositivo Ponteiro para o objeto do dispositivo a ser acoplado. */
     void adicionarDispositivo(Dispositivo* dispositivo);
 

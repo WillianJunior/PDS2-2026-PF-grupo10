@@ -15,12 +15,10 @@ private:
 
 public:
     /** @brief Construtor da classe Portao.
-     * Inicializa uma nova instância de um portão automatizado, com um identificador único. 
-     * Configura o estado inicial do portão como fechado,
-     * zera ou define o temporizador padrão de fechamento e garante que os flags
-     * de erro comecem limpos (falsos).
-     * @param id Código identificador numérico único para o portão dentro do sistema. */
-    Portao(int id);
+     * Inicializa uma nova instância de um portão automatizado com um identificador único.
+     * Configura o estado inicial do portão como fechado, zera o temporizador padrão de fechamento
+     * e garante que os flags de erro comecem limpos (falsos). */
+    Portao();
 
     /** @brief Destrutor da classe Portao.
      * Responsável por liberar quaisquer recursos de hardware ou memória alocados 

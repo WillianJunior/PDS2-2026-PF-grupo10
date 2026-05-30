@@ -16,10 +16,9 @@ private:
 
 public:
     /** @brief Construtor da classe ArCondicionado.
-     * Inicializa o dispositivo de climatização definindo seu ID exclusivo 
-     * e o cômodo de instalação.
-     * @param id Identificador numérico único do dispositivo. */
-    ArCondicionado(int id);
+     * Inicializa o dispositivo de climatização com um ID gerado automaticamente.
+     * O ID exclusivo é fornecido pela classe base Dispositivo. */
+    ArCondicionado();
 
     /** @brief Destrutor da classe ArCondicionado.
      * Libera os recursos alocados para o módulo de climatização e encerra 

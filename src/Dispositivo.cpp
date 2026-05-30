@@ -1,8 +1,9 @@
 #include "Dispositivo.hpp"
 
 int Dispositivo::qtdDispositivos = 0;
+int Dispositivo::identificador = 0;
 
-Dispositivo::Dispositivo(int id) : id(id), estado(false), erro(false) {
+Dispositivo::Dispositivo() : id(++Dispositivo::identificador), estado(false), erro(false) {
     qtdDispositivos++;
 }
 

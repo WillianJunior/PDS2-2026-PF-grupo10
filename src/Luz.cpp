@@ -2,7 +2,7 @@
 #include <string>
 
 
-Luz::Luz(int id) : Dispositivo(id), intensidade(1) {
+Luz::Luz() : Dispositivo(), intensidade(1) {
 }
 
 
@@ -34,9 +34,9 @@ std::string Luz::getEstadoFormatado() const {
 
     
     if (this->estado) {
-        resposta = "Luz [ID " + std::to_string(this->id) + "]: LIGADA - Intensidade: " + std::to_string(this->intensidade);
+        resposta = "Luz [ID " + std::to_string(this->getId()) + "]: LIGADA - Intensidade: " + std::to_string(this->intensidade);
     } else {
-        resposta = "Luz [ID " + std::to_string(this->id) + "]: DESLIGADA";
+        resposta = "Luz [ID " + std::to_string(this->getId()) + "]: DESLIGADA";
     }
 
     

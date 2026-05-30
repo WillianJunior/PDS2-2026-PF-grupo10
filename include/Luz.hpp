@@ -16,10 +16,9 @@ private:
 
 public:
     /** @brief Construtor parametrizado da classe Luz.
-     * Inicializa uma nova instância de iluminação automatizada, definindo seu ID único e 
-     * o cômodo de instalação.
-     * @param id Identificador numérico único do dispositivo. */
-    Luz(int id);
+     * Inicializa uma nova instância de iluminação automatizada com um ID gerado automaticamente.
+     * O ID exclusivo é fornecido pela classe base Dispositivo. */
+    Luz();
 
     /** @brief Destrutor da classe Luz.
      * Libera os recursos específicos alocados para este ponto de iluminação e encerra 

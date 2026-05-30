@@ -1,23 +1,36 @@
 #include "Comodo.hpp"
-#include <string>
 
 Comodo::Comodo() {
 }
 
 Comodo::~Comodo() {
+    for (Dispositivo* dispositivo : dispositivos) {
+        delete dispositivo;
+    }
+    dispositivos.clear();
 }
 
 Dispositivo* Comodo::getDispositivo(int id) const {
-    // Implementação vazia - retorna nullptr
+    for (Dispositivo* dispositivo : dispositivos) {
+        if (dispositivo != nullptr && dispositivo->getId() == id) {
+            return dispositivo;
+        }
+    }
     return nullptr;
 }
 
-void Comodo::adicionarDispositivo(Dispositivo* d) {
-    dispositivos.push_back(d);
+void Comodo::adicionarDispositivo(Dispositivo* dispositivo) {
+    dispositivos.push_back(dispositivo);
 }
 
 void Comodo::removerDispositivo(int id) {
-    // Implementação vazia
+    for (auto it = dispositivos.begin(); it != dispositivos.end(); ++it) {
+        if (*it != nullptr && (*it)->getId() == id) {
+            delete *it;
+            dispositivos.erase(it);
+            return;
+        }
+    }
 }
 
 int Comodo::getQtdDispositivos() const {

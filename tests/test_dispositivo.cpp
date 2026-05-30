@@ -5,8 +5,8 @@
 // Classe auxiliar para testar Dispositivo
 class DispositivoTeste : public Dispositivo {
 public:
-    DispositivoTeste(int id)
-        : Dispositivo(id) {}
+    DispositivoTeste()
+        : Dispositivo() {}
 
     void detectarErro() override {
         erro = true;
@@ -18,15 +18,15 @@ public:
 };
 
 TEST_CASE("Construtor inicializa corretamente") {
-    DispositivoTeste d(1);
+    DispositivoTeste d;
 
-    CHECK(d.getId() == 1);
+    CHECK(d.getId() > 0);
     CHECK(d.getEstado() == false);
     CHECK(d.temErro() == false);
 }
 
 TEST_CASE("Alterar estado do dispositivo") {
-    DispositivoTeste d(2);
+    DispositivoTeste d;
 
     d.alterarEstado(true);
     CHECK(d.getEstado() == true);
@@ -36,7 +36,7 @@ TEST_CASE("Alterar estado do dispositivo") {
 }
 
 TEST_CASE("Deteccao de erro altera flag de erro") {
-    DispositivoTeste d(3);
+    DispositivoTeste d;
 
     d.detectarErro();
 
@@ -44,7 +44,7 @@ TEST_CASE("Deteccao de erro altera flag de erro") {
 }
 
 TEST_CASE("Estado formatado retorna texto correto") {
-    DispositivoTeste d(4);
+    DispositivoTeste d;
 
     CHECK(d.getEstadoFormatado() == "Desligado");
 
@@ -57,8 +57,8 @@ TEST_CASE("Contador de dispositivos aumenta corretamente") {
     int qtdInicial = Dispositivo::qtdDispositivos;
 
     {
-        DispositivoTeste d1(5);
-        DispositivoTeste d2(6);
+        DispositivoTeste d1;
+        DispositivoTeste d2;
 
         CHECK(Dispositivo::qtdDispositivos == qtdInicial + 2);
     }

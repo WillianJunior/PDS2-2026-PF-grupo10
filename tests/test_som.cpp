@@ -5,11 +5,11 @@
 
 TEST_CASE("Testes de Unidade - Classe Som") {
     // Cenário inicial: Um dispositivo de som instalado na sala
-    Som aparelhoSom(105);
+    Som aparelhoSom;
 
     SUBCASE("Inicialização Padrão e Herança de Dispositivo") {
         // Testando atributos herdados da classe base Dispositivo
-        CHECK(aparelhoSom.getId() == 105);
+        CHECK(aparelhoSom.getId() > 0);
        // CHECK(aparelhoSom.getComodo() == "Sala");
         CHECK(aparelhoSom.getEstado() == false); // Deve iniciar desligado
 
