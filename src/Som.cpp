@@ -1,63 +1,197 @@
 #include "Som.hpp"
+#include <fstream>
 #include <string>
+#include <algorithm>
+
+/*
+Assume-se que:
+    não há tempo de reprodução das músicas
+    imprimir o nome da musica na tela da SmartHome faz com que ela seja tocada no aparelho físico
+
+*/
 
 Som::Som() : Dispositivo(), _volume(50), _indice(0), _pause(true) {
+    carregarMusicas("playlist.txt");
 }
 
 Som::~Som() {
+    supplArq("playlist.txt");
 }
 
-void Som::supplArq() {
+void Som::supplArq(const string& nomeArquivo){
+    if(playlist.empty()){
+        std::cerr << "Nada para salvar" << std::endl;
+        return;
+    }
+
+    std::cout << "Salvando músicas..." << std::endl;
+
+    std::fstream playArq(nomeArquivo, std::ios::trunc);
+    if(!playArq.is_open()){
+        std::cerr << "Erro ao abrir o arquivo" << std::endl;
+        return;
+    }else{
+            for(const auto& a : playlist){
+                playArq << a << std::endl;
+            }
+        }
+    playArq.close();
 }
 
 int Som::getVolume() const {
     return _volume;
 }
 
+void Som::setVolume(int nVol){
+    _volume = nVol;
+}
+
 void Som::carregarMusicas(const string& nomeArquivo) {
-    // Implementação vazia
+    std::cout << "Carregando músicas salvas..." << std::endl;
+    std::ifstream playArq(nomeArquivo);
+    if(!playArq.is_open()){
+        std::cout << "Erro ao abrir o arquivo" << std::endl;
+        return;
+    }
+
+    while(getline(playArq, _musica)){
+        if(!_musica.empty()){playlist.push_back(_musica);}
+    }
+    std::cout << "Músicas carregadas!"<<std::endl;
+
+    playArq.close();
 }
 
 void Som::togglePause() {
+    std::cout << (_pause ? "Reprodução pausada" : "Reprodução retomada" )<<std::endl;
     _pause = !_pause;
 }
 
 void Som::tocar() {
-    // Implementação vazia
+    std::cout << "Reprodução iniciada" <<std::endl;
+    _musica = playlist[0];
 }
 
-void Som::tocar(int indice) {
-    // Implementação vazia
+void Som::tocar(int indice){
+    if(indice < 0 || indice >= playlist.size()){
+        std::cerr << "Erro: Índice inválido" << std::endl;
+        return;
+    }else{
+        _indice = indice;
+        _musica = playlist[indice];
+        std::cout << "Tocando música escolhida: "<< _musica << std::endl;
+    }
 }
 
 void Som::proxima() {
-    // Implementação vazia
+    if(playlist.empty()){
+        std::cerr << "Nada para tocar" << std::endl;
+        return;
+    }
+    int prox = (_indice + 1) % playlist.size();
+    tocar(prox);
 }
 
 void Som::anterior() {
-    // Implementação vazia
+    if(playlist.empty()){
+        std::cerr << "Nada para tocar" << std::endl;
+        return;
+    }
+
+    int ant = _indice - 1;
+
+    if(ant < 0){
+        ant = playlist.size() - 1;
+    }
+    tocar(ant);
 }
 
 void Som::printPlaylist() {
-    // Implementação vazia
+    if(playlist.empty()){
+        std::cerr << "Nada para tocar" << std::endl;
+        return;
+    }
+
+    std::cout << "Lista de reprodução atual:" << std::endl << std::endl;
+    for(auto a : playlist){
+        std::cout << a << std::endl;
+    }
 }
 
-void Som::adicionarMusica(const string& nome) {
-    // Implementação vazia
+void Som::adicionarMusica(const string& nome){
+        std::cout << "Adicionando " << nome << "no final da lista de reprodução" << std::endl;
+        playlist.push_back(nome);
 }
 
-void Som::adicionarMusica(const string& nome, int indice) {
-    // Implementação vazia
+void Som::adicionarMusica(const string& nome, int pos) {
+    std::cout << "Adicionando " << nome << "na posição " << pos << " da lista de reprodução" << std::endl;
+
+    auto it = playlist.begin() + pos;
+    playlist.insert(it, nome);
+
+    if(pos <= _indice) _indice++;
 }
 
 void Som::removerMusica(const string& nome) {
-    // Implementação vazia
+    if(playlist.empty()){
+        std::cerr << "Não há nada para remover" << std::endl;
+    }
+
+    auto it = std::find(playlist.begin(), playlist.end(), nome);
+
+    if(it != playlist.end()){
+        int pos = std::distance(playlist.begin(), it);
+        playlist.erase(it);
+        std::cout << "Removendo " << nome << " da lista de reprodução" << std::endl;
+
+        if(playlist.empty()){
+            _indice = 0;
+            _musica = " ";
+        }else if (pos < _indice) {
+            _indice--;
+        }else if (pos == _indice) {
+            if(_indice >= playlist.size()){
+                _indice = 0;
+            }
+            _musica = playlist[_indice];
+        }
+    }else{
+        std::cerr << "Música não encontrada" << std::endl;
+    }
+
+}
+
+void Som::removerMusica(int pos) {
+    if(playlist.empty()){
+        std::cerr << "Não há nada para remover" << std::endl;
+    }
+
+    auto it = playlist.begin() + pos;
+    playlist.erase(it);
+
+    std::cout << "Removendo da lista de reprodução a musica na posição "<< pos << std::endl;
+
+    if(playlist.empty()){
+        _indice = 0;
+        _musica = " ";
+    }else if (pos < _indice) {
+        _indice--;
+    }else if (pos == _indice) {
+        if(_indice >= playlist.size()){
+            _indice = 0;
+        }
+        _musica = playlist[_indice];
+    }
 }
 
 void Som::detectarErro() {
-    // Implementação vazia
+    std::ifstream teste("playlist.txt");
+    if(!teste.is_open()) {
+        std::cerr << "Arquivo de leitura ausente ou corrompido" << std::endl;
+    }
+    teste.close();
 }
 
 std::string Som::getEstadoFormatado() const {
-    return "Som: Desligado";  // Implementação vazia simples
+    return estado ? "Som: Ligado" : "Som: Desligado";  // Implementação vazia simples
 }
