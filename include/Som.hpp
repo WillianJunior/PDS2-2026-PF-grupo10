@@ -23,8 +23,10 @@ private:
     string _musica; ///< musica que esta tocando agora
     vector<string> playlist; ///< lista de musicas em um buffer
 
-    /** @brief Escreve no arquivo a playlist atual (metodo para funcionamento interno) */
-    void supplArq();
+    /** @brief Escreve no arquivo a playlist atual (metodo para funcionamento interno)
+     *  @param nomeArquivo Nome do arquivo de texto que contém as músicas salvas
+     */
+    void supplArq(const string& nomeArquivo);
 
 public:
     /** @brief Construtor da classe Som.
@@ -93,6 +95,12 @@ public:
      *  Procura o nome correspondente na lista, remove o elemento, ajusta a estrutura e libera a memória associada.
      *  @param nome Título exato da música que será removida da lista. */
     void removerMusica(const string& nome);
+
+    /** @brief Elimina uma música da playlist buscando pelo seu índice.
+     *  Procura o nome correspondente na lista, remove o elemento, ajusta a estrutura e libera a memória associada.
+     *  @param pos Posição na playlist da música que será removida. */
+    void removerMusica(int pos);
+
 
     /** @brief Verifica possíveis falhas no funcionamento do aparelho de som.
      *  Realiza a análise do estado interno do dispositivo para identificar

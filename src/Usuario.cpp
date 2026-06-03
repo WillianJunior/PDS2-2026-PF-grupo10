@@ -1,6 +1,8 @@
 #include "Usuario.hpp"
 
-Usuario::Usuario(std::string nome, std::string senha) {
+using namespace std;
+
+Usuario::Usuario(string nome, string senha) {
 }
 
 Usuario::~Usuario() {
@@ -10,10 +12,10 @@ std::string Usuario::getNome() const {
     return "";
 }
 
-void Usuario::setNome(std::string nome) {
+void Usuario::setNome(string nome) {
 }
 
-bool Usuario::autenticar(std::string nome, std::string senha) const {
+bool Usuario::autenticar(string nome, string senha) const {
     return false;
 }
 
