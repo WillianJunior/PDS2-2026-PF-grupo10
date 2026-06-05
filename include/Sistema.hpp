@@ -18,7 +18,7 @@ class Sistema {
 private:
 
     bool ativo;           ///< Indica se o sistema está ativo
-    std::vector <Comodo*> comodos;     ///< Vetor de ponteiros para os cômodos
+    std::vector<Comodo*> comodos;     ///< Vetor de ponteiros para os cômodos
     Sensor* sensor;       ///< Sensor responsável pelo monitoramento do sistema
 
 public:

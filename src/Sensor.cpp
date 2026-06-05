@@ -1,24 +1,32 @@
 #include "Sensor.hpp"
+#include <iostream>
 
-Sensor::Sensor(int tempoVerificacao) {
-    this->tempoVerificacao = 10;
+Sensor::Sensor(int temp) : tempoVerificacao(temp) {
 }
 
 Sensor::~Sensor() {
-    this->tempoVerificacao = 10;
+    alertas.clear();
 }
 
 int Sensor::getTempoVerificacao() const {
-    return this->tempoVerificacao;
+    return tempoVerificacao;
 }
 
-std::string Sensor::getAlertas(int i) const {
-    return alertas[i];
+std::string Sensor::getAlerta(int i) const {
+    if((i < 0) || i >= static_cast<int>(alertas.size())){
+        std::cerr << "Erro: Alerta inexistente" << std::endl;
+        return "";
+    }else{
+        return alertas[i];
+    }
 }
 
 void Sensor::alterarTempoVerificacao(int segundos) {
-    this->tempoVerificacao = segundos;
-    return;
+    if(segundos < 0){
+        std::cerr << "Erro: Tempo de verificação não pode ser negativo" << std::endl;
+        return;
+    }
+    tempoVerificacao = segundos;
 }
 
 void Sensor::salvarAlertas() {

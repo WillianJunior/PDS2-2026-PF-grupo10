@@ -10,8 +10,8 @@ TEST_CASE("Testes de Unidade - Classe Sensor") {
         
         // No início, a lista de alertas deve estar limpa/vazia
         // Testando os limites iniciais do array
-        CHECK(meuSensor.getAlertas(0) == "");
-        CHECK(meuSensor.getAlertas(50) == "");
+        CHECK(meuSensor.getAlerta(0) == "");
+        CHECK(meuSensor.getAlerta(50) == "");
     }
 
     SUBCASE("Modificação do Tempo de Verificação") {
@@ -26,9 +26,9 @@ TEST_CASE("Testes de Unidade - Classe Sensor") {
     SUBCASE("Tratamento de Índices Inválidos no Histórico de Alertas") {
         // Testando os limites estritos do array de tamanho 100 (0 a 99)
         // Devem retornar uma string vazia conforme especificado na documentação
-        CHECK(meuSensor.getAlertas(-1) == "");
-        CHECK(meuSensor.getAlertas(100) == "");
-        CHECK(meuSensor.getAlertas(999) == "");
+        CHECK(meuSensor.getAlerta(-1) == "");
+        CHECK(meuSensor.getAlerta(100) == "");
+        CHECK(meuSensor.getAlerta(999) == "");
     }
 
     SUBCASE("Varredura de Dispositivos e Geração de Alertas") {
@@ -37,6 +37,6 @@ TEST_CASE("Testes de Unidade - Classe Sensor") {
 
         // Em uma simulação de TDD onde não há dispositivos reais acoplados ainda,
         // o comportamento padrão esperado pode ser nenhum alerta gerado:
-        CHECK(meuSensor.getAlertas(0) == "");
+        CHECK(meuSensor.getAlerta(0) == "");
     }
 }

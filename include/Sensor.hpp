@@ -11,7 +11,7 @@
 class Sensor {
 
 private:
-    int tempoVerificacao;   ///< Tempo entre verificações dos dispositivos (em segundos) 
+    int tempoVerificacao;                ///< Tempo entre verificações dos dispositivos (em segundos)
     std::vector<std::string> alertas;    ///< Vetor de alertas gerados pelo sensor 
 
 public:
@@ -34,7 +34,7 @@ public:
      * @param i Índice posicional da mensagem dentro do vetor de alertas do sensor.
      * @return string O texto descritivo do alerta encontrado se o índice for válido, ou uma 
      *         string vazia caso esteja fora dos limites. */
-    std::string getAlertas(int i) const;
+    std::string getAlerta(int i) const;
 
     /** @brief Atualiza a frequência de varredura e checagem do sensor.
      * Modifica o temporizador interno que dita de quanto em quanto tempo o sensor lê o ambiente.

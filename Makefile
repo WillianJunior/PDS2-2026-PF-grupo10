@@ -28,7 +28,7 @@ COVERAGE ?= 0
 # Adiciona flags de cobertura se ativado
 ifeq ($(COVERAGE),1)
     CXXFLAGS += $(COV_FLAGS)
-    LDFLAGS = $(COV_FLAGS)
+    LDFLAGS += $(COV_FLAGS)
 endif
 
 # Padrao
@@ -90,3 +90,6 @@ coverage: clean
 	@./$(TEST_TARGET) 2>/dev/null || true
 	@gcovr -r . --object-directory $(BUILD_DIR) --html --html-details -o coverage.html --gcov-ignore-parse-errors --exclude '$(TEST_DIR)/.*' --exclude '.*/doctest.h'
 	@gcovr -r . --object-directory $(BUILD_DIR) --gcov-ignore-parse-errors --exclude '$(TEST_DIR)/.*' --exclude '.*/doctest.h'
+
+
+
