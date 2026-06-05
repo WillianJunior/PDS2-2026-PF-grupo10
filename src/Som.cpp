@@ -47,7 +47,7 @@ void Som::setVolume(int nVol){
     _volume = nVol;
 }
 
-bool Som::getPause(){
+bool Som::getPause() const{
     return _pause;
 }
 
