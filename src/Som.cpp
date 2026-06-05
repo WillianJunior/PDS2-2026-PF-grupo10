@@ -47,6 +47,10 @@ void Som::setVolume(int nVol){
     _volume = nVol;
 }
 
+bool Som::getPause(){
+    return _pause;
+}
+
 void Som::carregarMusicas(const string& nomeArquivo) {
     std::cout << "Carregando músicas salvas..." << std::endl;
     std::ifstream playArq(nomeArquivo);
@@ -64,7 +68,10 @@ void Som::carregarMusicas(const string& nomeArquivo) {
 }
 
 void Som::togglePause() {
-    std::cout << (_pause ? "Reprodução pausada" : "Reprodução retomada" )<<std::endl;
+    /* Pause true:  pausado
+     * Pause false: tocando
+     * */
+    std::cout << (_pause ? "Reprodução pausada" : "Reprodução retomada" ) <<std::endl;
     _pause = !_pause;
 }
 

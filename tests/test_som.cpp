@@ -24,9 +24,9 @@ TEST_CASE("Testes de Unidade - Classe Som") {
         bool estadoInicialPause = true; 
         
         aparelhoSom.togglePause();
-        // O teste assume que o comportamento esperado é a inversão do estado anterior
-        // Como não temos um método getPause público, testamos a execução estável do método:
-        aparelhoSom.togglePause(); 
+
+        CHECK(aparelhoSom.getPause() == false);
+
     }
 
     SUBCASE("Gerenciamento de Playlist (Overloads de Adição e Remoção)") {
@@ -64,6 +64,11 @@ TEST_CASE("Testes de Unidade - Classe Som") {
         // Cenário: Chegamos na última música da playlist
         // Testando limite superior: avançar além do tamanho do vector
         aparelhoSom.proxima(); 
+
+        /* Em Som::proxima() e Som::anterior() espera-se um comportamento circular, se estiver na
+        * ultima música e pedir para passar para a próxima, volta para a primeira e se estiver na
+        * primeira e pedir para passar para a anterior vai pra última
+        */
     }
 
     SUBCASE("Overloads do Método Tocar") {

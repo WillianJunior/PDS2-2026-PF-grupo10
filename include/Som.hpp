@@ -56,6 +56,9 @@ public:
      *  Inverte o estado lógico do player; se a música estiver ativa, ela é pausada, e vice-versa. */
     void togglePause();
 
+    /** @brief retorna o estado do player(pausado/reproduzindo). */
+    bool getPause() const;
+
     //OVERLOAD~~~~~~~~~~~~~~~~~~~
     /** @brief Inicia ou retoma a reprodução da faixa atual (imprime o status na tela).
      *  Dispara o áudio a partir do ponto onde foi parado ou do início da playlist caso nenhuma música tenha começado. */
