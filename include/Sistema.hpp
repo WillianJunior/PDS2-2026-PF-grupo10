@@ -18,7 +18,7 @@ class Sistema {
 private:
 
     bool ativo;           ///< Indica se o sistema está ativo
-    std::vector<Comodo*> comodos;     ///< Vetor de ponteiros para os cômodos
+    std::vector<Comodo> comodos;     ///< Vetor de ponteiros para os cômodos
     Sensor* sensor;       ///< Sensor responsável pelo monitoramento do sistema
 
 public:
@@ -39,7 +39,7 @@ public:
      * @param i Índice posicional do cômodo dentro do vetor de gerenciamento da casa.
      * @return Comodo* Ponteiro para o objeto do cômodo correspondente se o índice for válido; 
      *         Retorna `nullptr` caso o índice seja negativo ou maior/igual ao tamanho do vetor. */
-    Comodo* getComodo(int i) const;
+    const Comodo* getComodo(int i) const;
 
     /** @brief Retorna o sensor principal associado e gerenciado pelo sistema. 
      * Permite o acesso externo ao objeto de monitoramento para leitura de estados,

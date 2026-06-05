@@ -1,26 +1,22 @@
 #include "Sistema.hpp"
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
 Sistema::Sistema() : ativo(false), sensor(new Sensor(0)) {
 }
 
 Sistema::~Sistema() {
-    for (Comodo* comodo : comodos) {
-        delete comodo;
-    }
     comodos.clear();
-
-    if (sensor != nullptr) {
-        delete sensor;
-    }
+    delete sensor;
 }
 
-Comodo* Sistema::getComodo(int i) const {
+const Comodo* Sistema::getComodo(int i) const {
     if (i >= 0 && i < static_cast<int>(comodos.size())) {
-        return comodos[i];
+        return &comodos[i];
+    }else{
+        return nullptr;
     }
-    return nullptr;
 }
 
 int Sistema::getQtdComodos() {
@@ -45,14 +41,10 @@ void Sistema::receberComando(const std::string& comando) {
 }
 
 void Sistema::adicionarComodo(Comodo& comodo) {
-    comodos.push_back(&comodo);
+    comodos.push_back(comodo);
 }
 
 void Sistema::removerComodo(const Comodo& comodo) {
-    for (auto it = comodos.begin(); it != comodos.end(); ++it) {
-        if (*it == &comodo) {
-            comodos.erase(it);
-            break; 
-        }
-    }
+    auto it = std::find_if(comodos.begin(), comodos.end(), [&comodo](const Comodo& c){return &c == &comodo;});
+    if(it != comodos.end()){ comodos.erase(it); }
 }

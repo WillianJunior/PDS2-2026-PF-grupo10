@@ -56,7 +56,7 @@ TEST_CASE("Testes de Unidade - Classe Sistema") {
         sistemaHome.adicionarComodo(quarto);
 
         // Recupera ponteiro antes da remoção
-        Comodo* cAntes = sistemaHome.getComodo(0);
+        const Comodo* cAntes = sistemaHome.getComodo(0);
 
         REQUIRE(cAntes != nullptr);
 
