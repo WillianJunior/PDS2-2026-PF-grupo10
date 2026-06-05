@@ -91,5 +91,12 @@ coverage: clean
 	@gcovr -r . --object-directory $(BUILD_DIR) --html --html-details -o coverage.html --gcov-ignore-parse-errors --exclude '$(TEST_DIR)/.*' --exclude '.*/doctest.h'
 	@gcovr -r . --object-directory $(BUILD_DIR) --gcov-ignore-parse-errors --exclude '$(TEST_DIR)/.*' --exclude '.*/doctest.h'
 
+cleancov:
+
+	@find . -maxdepth 1 -type f -name "coverage.*" \
+		! -name "coverage.html" \
+		! -name "coverage.css" \
+		! -name "coverage.functions.html" \
+		-delete
 
 
