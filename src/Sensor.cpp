@@ -1,5 +1,6 @@
 #include "Sensor.hpp"
 #include <iostream>
+#include <fstream>
 
 Sensor::Sensor(int temp) : tempoVerificacao(temp) {
 }
@@ -30,5 +31,15 @@ void Sensor::alterarTempoVerificacao(int segundos) {
 }
 
 void Sensor::salvarAlertas() {
-   
+    std::ofstream arquivo("alertas.txt");
+
+    if (!arquivo.is_open()) {
+        std::cerr << "Erro: Não foi possível criar ou abrir o arquivo alertas.txt" << std::endl;
+        return;
+    }
+
+    for (size_t i = 0; i < alertas.size(); ++i) {
+        arquivo << alertas[i] << "\n";
+    }
 }
+
