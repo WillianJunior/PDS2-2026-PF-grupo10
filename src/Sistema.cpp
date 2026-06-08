@@ -1,5 +1,6 @@
 #include "Sistema.hpp"
 #include <iostream>
+#include <sstream>
 #include <algorithm>
 #include <vector>
 
@@ -12,15 +13,16 @@ Sistema::~Sistema() {
 }
 
 const Comodo* Sistema::getComodo(int i) const {
-    if (i >= 0 && i < static_cast<int>(comodos.size())) {
-        return &comodos[i];
-    }else{
+    int quantidade = comodos.size();
+    if (i < 0 || i >= quantidade) {
         return nullptr;
     }
+    return &comodos[i];
 }
 
-int Sistema::getQtdComodos() {
-    return comodos.size();
+int Sistema::getQtdComodos() const{
+    int quantidade = comodos.size();
+    return quantidade;
 }
 
 Sensor* Sistema::getSensor() const {
@@ -36,8 +38,23 @@ void Sistema::executarSistema() {
 }
 
 void Sistema::receberComando(const std::string& comando) {
-    if (comando == "conectar" || comando == "ligar") {
+    if(!ativo){
+        std::cout << "Sistema inativo. Ative o sistema para receber comandos." << std::endl;
+        return;
     }
+    std::istringstream parser(comando);
+    std::string acao;
+    parser >> acao;
+    std::string objeto;
+    parser >> objeto;
+
+    if (acao == "conectar" || acao == "ligar") {
+        return;
+    }
+    if (acao == "desconectar" || acao == "desligar") {
+        return;
+    }
+
 }
 
 void Sistema::adicionarComodo(Comodo& comodo) {

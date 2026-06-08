@@ -51,7 +51,7 @@ public:
      * Esta função retorna o número total de objetos Comodo
      * armazenados no vetor de cômodos do sistema.
      * @return int Quantidade de cômodos cadastrados.*/
-    int getQtdComodos();
+    int getQtdComodos() const;
 
     /** @brief Verifica o estado de operação atual do sistema. 
      * Método de consulta que indica se as rotinas de automação, monitoramento
