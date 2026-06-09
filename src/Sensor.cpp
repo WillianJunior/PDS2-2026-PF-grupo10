@@ -31,7 +31,7 @@ void Sensor::alterarTempoVerificacao(int segundos) {
 }
 
 void Sensor::salvarAlertas() {
-    std::ofstream arquivo("alertas.txt");
+    std::ofstream arquivo("src/alertas.txt");
 
     if (!arquivo.is_open()) {
         std::cerr << "Erro: Não foi possível criar ou abrir o arquivo alertas.txt" << std::endl;
