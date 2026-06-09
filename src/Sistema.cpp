@@ -38,26 +38,6 @@ void Sistema::executarSistema() {
     ativo = true;
 }
 
-void Sistema::receberComando(const std::string& comando) {
-    if(!ativo){
-        std::cout << "Sistema inativo. Ative o sistema para receber comandos." << std::endl;
-        return;
-    }
-    std::istringstream parser(comando);
-    std::string acao;
-    parser >> acao;
-    std::string objeto;
-    parser >> objeto;
-
-    if (acao == "conectar" || acao == "ligar") {
-        return;
-    }
-    if (acao == "desconectar" || acao == "desligar") {
-        return;
-    }
-
-}
-
 void Sistema::adicionarComodo(Comodo& comodo) {
     comodos.push_back(comodo);
 }

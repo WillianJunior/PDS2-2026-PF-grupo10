@@ -4,8 +4,8 @@
 #include <string>
 
 /** @class Dispositivo
- * @brief Classe abstrata que representa um dispositivo genérico da casa inteligente.
- * Esta classe define atributos e comportamentos comuns a todos os dispositivos. */
+ *  @brief Classe abstrata que representa um dispositivo genérico da casa inteligente.
+ *  Esta classe define atributos e comportamentos comuns a todos os dispositivos. */
 class Dispositivo {
 
 protected: // Protected para que as subclasses tenham acesso
@@ -18,45 +18,45 @@ public:
     static int qtdDispositivos;
 
     /** @brief Contador estático usado para gerar IDs únicos de dispositivos.
-     * Nunca é decrementado para garantir unicidade. */
+     *  Nunca é decrementado para garantir unicidade. */
     static int identificador;
 
     /** @brief Construtor da classe base Dispositivo.
-     * Gera um ID único para a nova instância, configura o estado inicial e incrementa
-     * o contador estático global `qtdDispositivos`. */
+     *  Gera um ID único para a nova instância, configura o estado inicial e incrementa
+     *  o contador estático global `qtdDispositivos`. */
     Dispositivo();
 
     /** @brief Destrutor virtual da classe Dispositivo.
-     * Garante que os destrutores das classes derivadas (como Luz, Som, ArCondicionado) sejam chamados 
-     * corretamente ao deletar um objeto por meio de um ponteiro da classe base, evitando vazamentos de memória.
-     * Também decrementa o contador estático `qtdDispositivos`. */
+     *  Garante que os destrutores das classes derivadas (como Luz, Som, ArCondicionado) sejam chamados
+     *  corretamente ao deletar um objeto por meio de um ponteiro da classe base, evitando vazamentos de memória.
+     *  Também decrementa o contador estático `qtdDispositivos`. */
     virtual ~Dispositivo(); 
 
     /** @brief Retorna o identificador do dispositivo.
-     * @return int ID do dispositivo */
+     *  @return int ID do dispositivo */
     int getId() const;
 
     /** @brief Retorna o estado do dispositivo.
-     * @return true Se o dispositivo estiver ativo (ligado/aberto).
-     * @return false Se o dispositivo estiver inativo (desligado/fechado). */
+     *  @return true Se o dispositivo estiver ativo (ligado/aberto).
+     *  @return false Se o dispositivo estiver inativo (desligado/fechado). */
     bool getEstado() const;
 
     /** @brief Verifica se o dispositivo foi marcado com alguma falha de funcionamento.
-     * @return true Se houver um problema técnico detectado previamente pelo sensor ou hardware.
-     * @return false Se o funcionamento do aparelho estiver normal. */
+     *  @return true Se houver um problema técnico detectado previamente pelo sensor ou hardware.
+     *  @return false Se o funcionamento do aparelho estiver normal. */
     bool temErro() const;
 
     /** @brief Modifica o estado lógico (ativo/inativo) do dispositivo.
-     * @param novoEstado Flag booleano representando o comando desejado (true para ligar/abrir, false para desligar/fechar). */
+     *  @param novoEstado Flag booleano representando o comando desejado (true para ligar/abrir, false para desligar/fechar). */
     virtual void alterarEstado(bool novoEstado); 
 
     /** @brief Realiza a varredura e diagnóstico interno de falhas no hardware ou parâmetros.
-     * Método virtual puro. */
+     *  Método virtual puro. */
     virtual void detectarErro() = 0; 
 
     /** @brief Monta uma string descritiva com os detalhes atuais e específicos da operação do dispositivo.
-     * Método virtual puro. 
-     * @return std::string Texto legível detalhando o estado atual (ex: "Ligado - Volume 12" ou "Fechado"). */
+     *  Método virtual puro.
+     *  @return std::string Texto legível detalhando o estado atual (ex: "Ligado - Volume 12" ou "Fechado"). */
     virtual std::string getEstadoFormatado() const = 0;
 };
 

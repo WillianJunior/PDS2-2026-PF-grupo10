@@ -10,17 +10,17 @@ using std::string;
 using std::vector;
 
 /** @class Som
- * @brief Dispositivo conectado ao sistema que executa as funcoes de tocar e gerenciar musicas.
- * A classe Som herda de Dispositivo e permite controlar a lista de faixas tocando agora, adicionar novas faixa, remover faixas,
- * alterar o volume e o estado (ligado/desligado).
- * Alem disso, esse sistema consegue detectar erros/falhas que prejudicam o funcionamento. */
+ *  @brief Dispositivo conectado ao sistema que executa as funcoes de tocar e gerenciar musicas.
+ *  A classe Som herda de Dispositivo e permite controlar a lista de faixas tocando agora, adicionar novas faixa, remover faixas,
+ *  alterar o volume e o estado (ligado/desligado).
+ *  Alem disso, esse sistema consegue detectar erros/falhas que prejudicam o funcionamento. */
 class Som : public Dispositivo {
 
 private:
-    int _volume; ///< volume(0 ~ 100)
-    int _indice; ///< numero da musica que esta tocando
-    bool _pause;///< estado do player
-    string _musica; ///< musica que esta tocando agora
+    int _volume;             ///< volume(0 ~ 100)
+    int _indice;             ///< numero da musica que esta tocando
+    bool _pause;             ///< estado do player
+    string _musica;          ///< musica que esta tocando agora
     vector<string> playlist; ///< lista de musicas em um buffer
 
     /** @brief Escreve no arquivo a playlist atual (metodo para funcionamento interno)
