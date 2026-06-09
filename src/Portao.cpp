@@ -47,17 +47,10 @@ void Portao::detectarErro() {
 }
 
 std::string Portao::getEstadoFormatado() const {
-    std::string resposta;
-    
-    if (this->estado) {
-        resposta = "Portao [ID " + std::to_string(this->getId()) + "]: ABERTO - Fechando em: " + std::to_string(this->segundos) + "s";
-    } else {
-        resposta = "Portao [ID " + std::to_string(this->getId()) + "]: FECHADO";
-    }
-
+    std::string estado_str = this->estado ? "aberto" : "fechado";
+    std::string resposta = std::to_string(this->getId()) + " Portao " + estado_str + " " + std::to_string(this->segundos);
     if (this->erro) {
-        resposta += " (⚠️ ESTADO DE ERRO DETECTADO)";
+        resposta += " ⚠️";
     }
-
     return resposta;
 }

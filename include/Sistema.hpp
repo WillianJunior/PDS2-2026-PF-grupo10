@@ -82,6 +82,11 @@ public:
      * O cômodo deixa de responder aos comandos globais do sistema.
      * @param comodo Referência constante para o objeto Comodo que se deseja desvincular do sistema. */
     void removerComodo(const Comodo& comodo);
+
+    /** @brief Gera um arquivo com as informações atuais de todos os cômodos e dispositivos.
+     * O arquivo contém uma linha por dispositivo com formato: id dispositivo estado valor [emoji_alerta]
+     * @param caminhoArquivo Caminho e nome do arquivo a ser gerado. */
+    void gerarRelatorio(const std::string& caminhoArquivo) const;
 };
 
 #endif

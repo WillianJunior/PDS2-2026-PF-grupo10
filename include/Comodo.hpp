@@ -11,6 +11,7 @@
 class Comodo{
     
 private:
+    std::string nome;                         ///< Nome do cômodo
     std::vector<Dispositivo*> dispositivos;   ///< Vetor de ponteiros para os dispositivos do Comodo
 
 public:
@@ -18,6 +19,12 @@ public:
      * Inicializa a estrutura do cômodo preparando o conteiner interno (vetor) 
      * que armazenará as referências dos dispositivos. */
     Comodo();
+
+    /** @brief Construtor da classe Comodo.
+     * Inicializa a estrutura do cômodo preparando o conteiner interno (vetor) 
+     * que armazenará as referências dos dispositivos. 
+     * @param nome Nome do cômodo (ex: "Sala", "Cozinha") */
+    Comodo(const std::string& nome);
 
     /** @brief Destrutor da classe Comodo.
      * Libera a memória e os recursos associados ao cômodo, limpando o contêiner de macros 
@@ -45,6 +52,19 @@ public:
     /** @brief Consulta o total de dispositivos atualmente vinculados a este cômodo.
      * @return int O número inteiro que representa a quantidade atual de dispositivos monitorados. */
     int getQtdDispositivos() const;
+
+    /** @brief Retorna um dispositivo pelo índice interno do vetor.
+     * @param idx Índice baseado em 0 dentro do vetor de dispositivos.
+     * @return Dispositivo* Ponteiro para o dispositivo ou nullptr se índice inválido. */
+    Dispositivo* getDispositivoPorIndice(int idx) const;
+
+    /** @brief Retorna o nome do cômodo.
+     * @return std::string Nome do cômodo */
+    std::string getNome() const;
+
+    /** @brief Define o nome do cômodo.
+     * @param nome Novo nome para o cômodo */
+    void setNome(const std::string& nome);
 };
 
 #endif

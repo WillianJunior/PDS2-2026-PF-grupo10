@@ -33,26 +33,20 @@ public:
     void interpretarComando(const std::string &comando); 
 
     /** @brief Finaliza as atividades da interface e limpa o estado de execução. */
-    void _encerrar(); // Renomeado ou mantido como encerrar() conforme seu padrão
     void encerrar();
-
     
-    /** @brief Exibe o menu principal com as opções macro da casa (Ver cômodos, alertas, dashboard). */
+    /** @brief Exibe o menu principal com as opções de navegação da casa (Ver cômodos, alertas, macros, relatório). */
     void exibirMenuPrincipal();
 
     /** @brief Exibe as opções e comandos possíveis dentro de um cômodo específico.
      * @param nomeComodo Nome do cômodo a ser renderizado. */
     void exibirMenuComodo(const std::string &nomeComodo);
 
-    /** @brief Exibe um painel geral (Dashboard) com métricas da casa (ex: consumo total, dispositivos ligados). */
-    void exibirDashboard();
+    /** @brief Exibe o arquivo de relatório detalhado com informações sobre todos os cômodos e dispositivos. */
+    void exibirRelatorio();
 
     /** @brief Percorre o sistema e lista textualmente todos os cômodos cadastrados. */
     void exibirComodos();
-
-    /** @brief Lista todos os dispositivos pertencentes a um cômodo específico e seus status rápidos.
-     * @param nomeComodo Nome do cômodo onde os dispositivos serão buscados. */
-    void exibirDispositivosPorComodo(const std::string &nomeComodo);
 
     /** @brief Limpa o console para garantir que a interface textual fique organizada a cada comando. */
     void limparTela();

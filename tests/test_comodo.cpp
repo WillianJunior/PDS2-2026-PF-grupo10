@@ -1,6 +1,6 @@
 
 #include "doctest.h"
-#include "../include/Comodo.hpp"
+#include "Comodo.hpp"
 #include <type_traits>
 
 TEST_CASE("Classe Comodo existe") {

@@ -30,19 +30,10 @@ void Luz::detectarErro() {
 
 
 std::string Luz::getEstadoFormatado() const {
-    std::string resposta;
-
-    
-    if (this->estado) {
-        resposta = "Luz [ID " + std::to_string(this->getId()) + "]: LIGADA - Intensidade: " + std::to_string(this->intensidade);
-    } else {
-        resposta = "Luz [ID " + std::to_string(this->getId()) + "]: DESLIGADA";
-    }
-
-    
+    std::string estado_str = this->estado ? "ligada" : "desligada";
+    std::string resposta = std::to_string(this->getId()) + " Luz " + estado_str + " " + std::to_string(this->intensidade);
     if (this->erro) {
-        resposta += "(⚠️ ESTADO DE ERRO DETECTADO)";
+        resposta += " ⚠️";
     }
-
     return resposta;
 }

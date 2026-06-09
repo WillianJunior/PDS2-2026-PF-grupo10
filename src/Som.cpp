@@ -201,5 +201,10 @@ void Som::detectarErro() {
 }
 
 std::string Som::getEstadoFormatado() const {
-    return estado ? "Som: Ligado" : "Som: Desligado";  // Implementação vazia simples
+    std::string estado_str = this->estado ? "ligado" : "desligado";
+    std::string resposta = std::to_string(this->getId()) + " Som " + estado_str + " " + std::to_string(this->_volume);
+    if (this->erro) {
+        resposta += " ⚠️";
+    }
+    return resposta;
 }

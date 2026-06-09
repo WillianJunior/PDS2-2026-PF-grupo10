@@ -17,7 +17,7 @@ TEST_CASE("Testes de Unidade - Classe InterfaceTextual") {
         // O menu inicial padrão esperado pela regra de negócio deve ser o "PRINCIPAL"
         // Como esses atributos são privados, testamos a estabilidade dos métodos de exibição iniciais:
         interface.exibirMenuPrincipal();
-        interface.exibirDashboard();
+        interface.exibirRelatorio();
     }
 
     SUBCASE("Máquina de Estados de Navegação (Menus e Focos)") {
@@ -29,7 +29,6 @@ TEST_CASE("Testes de Unidade - Classe InterfaceTextual") {
         
         // Testa se o método aceita a renderização baseada na mudança de estado anterior
         interface.exibirMenuComodo("Quarto");
-        interface.exibirDispositivosPorComodo("Quarto");
 
         // Cenário: Usuário foca em um dispositivo específico (ex: ID 42)
         interface.interpretarComando("focar_dispositivo 42");
@@ -71,8 +70,6 @@ TEST_CASE("Testes de Unidade - Classe InterfaceTextual") {
         
         // Garante o desligamento correto do loop da interface textual
         interface.encerrar();
-        
-        // Se houver suporte à função alternativa ou interna, testa também a estabilidade:
-        interface._encerrar();
+        // Após encerrar, o estado da interface deve ser limpo ou inativo
     }
 }

@@ -1,6 +1,9 @@
 #include "Comodo.hpp"
 
-Comodo::Comodo() {
+Comodo::Comodo() : nome("") {
+}
+
+Comodo::Comodo(const std::string& nome) : nome(nome) {
 }
 
 Comodo::~Comodo() {
@@ -35,4 +38,17 @@ void Comodo::removerDispositivo(int id) {
 
 int Comodo::getQtdDispositivos() const {
     return dispositivos.size();
+}
+
+Dispositivo* Comodo::getDispositivoPorIndice(int idx) const {
+    if (idx < 0 || idx >= static_cast<int>(dispositivos.size())) return nullptr;
+    return dispositivos[idx];
+}
+
+std::string Comodo::getNome() const {
+    return nome;
+}
+
+void Comodo::setNome(const std::string& nome) {
+    this->nome = nome;
 }

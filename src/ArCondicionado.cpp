@@ -24,18 +24,10 @@ void ArCondicionado::detectarErro() {
 }
 
 std::string ArCondicionado::getEstadoFormatado() const {
-    std::string resposta;
-
-    
-    if (this->estado) {
-        resposta = "Ar condicionado [ID " + std::to_string(this->getId()) + "]: LIGADO - Temperatura: " + std::to_string(this->temperatura);
-    } else {
-        resposta = "Ar condicionado [ID " + std::to_string(this->getId()) + "]: DESLIGADO";
-    }
-
+    std::string estado_str = this->estado ? "ligado" : "desligado";
+    std::string resposta = std::to_string(this->getId()) + " ArCondicionado " + estado_str + " " + std::to_string(this->temperatura);
     if (this->erro) {
-        resposta += "(⚠️ ESTADO DE ERRO DETECTADO)";
+        resposta += " ⚠️";
     }
-
     return resposta;
 }
