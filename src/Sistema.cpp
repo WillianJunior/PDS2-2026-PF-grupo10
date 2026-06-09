@@ -5,7 +5,7 @@
 #include <vector>
 #include <fstream>
 
-Sistema::Sistema() : ativo(false), sensor(new Sensor(0)) {
+Sistema::Sistema() : ativo(false), sensor(new Sensor(10)) {
 }
 
 Sistema::~Sistema() {

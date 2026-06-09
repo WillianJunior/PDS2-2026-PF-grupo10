@@ -9,6 +9,7 @@ SRC_DIR = src
 BUILD_DIR = build
 INCLUDE_DIR = include
 TEST_DIR = tests
+COVR_DIR = coverage
 
 # Arquivos fonte
 SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
@@ -36,7 +37,7 @@ all: $(BUILD_DIR) $(TARGET)
 
 # Criar diretório build se não existir
 $(BUILD_DIR):
-	@mkdir -p $(BUILD_DIR)
+	mkdir -p $(BUILD_DIR)
 
 # Linkagem
 $(TARGET): $(OBJECTS)
@@ -64,7 +65,7 @@ $(BUILD_DIR)/test_%.o: $(TEST_DIR)/test_%.cpp | $(BUILD_DIR)
 
 test: tests
 
-	@./$(TEST_TARGET)
+	./$(TEST_TARGET)
 
 # Limpar arquivos compilados
 clean:
@@ -87,16 +88,12 @@ rebuild-tests: clean tests
 coverage: clean
 
 	$(MAKE) COVERAGE=1 tests
-	@./$(TEST_TARGET) 2>/dev/null || true
-	@gcovr -r . --object-directory $(BUILD_DIR) --html --html-details -o coverage.html --gcov-ignore-parse-errors --exclude '$(TEST_DIR)/.*' --exclude '.*/doctest.h'
-	@gcovr -r . --object-directory $(BUILD_DIR) --gcov-ignore-parse-errors --exclude '$(TEST_DIR)/.*' --exclude '.*/doctest.h'
+	cd $(COVR_DIR) && ./$(TEST_TARGET) 2>/dev/null || true
+	gcovr -r . --object-directory $(BUILD_DIR) --html --html-details -o $(COVR_DIR)/coverage.html --gcov-ignore-parse-errors --exclude '$(TEST_DIR)/.*' --exclude '.*/doctest.h'
+	gcovr -r . --object-directory $(BUILD_DIR) --gcov-ignore-parse-errors --exclude '$(TEST_DIR)/.*' --exclude '.*/doctest.h'
 
 cleancov:
 
-	@find . -maxdepth 1 -type f -name "coverage.*" \
-		! -name "coverage.html" \
-		! -name "coverage.css" \
-		! -name "coverage.functions.html" \
-		-delete
+	rm $(COVR_DIR)/coverage.*
 
 
