@@ -10,8 +10,8 @@
 class Usuario{
 
 private:     
-    std::string nome;   ///< Nome do usuário
-    std::string senha;  ///< Senha do usuário
+    std::string _nome;   ///< Nome do usuário
+    std::string _senha;  ///< Senha do usuário
     Macro** macros;       ///< Vetor de macros do sistema
     int qtdMacros;        ///< Quantidade de macros cadastradas
 

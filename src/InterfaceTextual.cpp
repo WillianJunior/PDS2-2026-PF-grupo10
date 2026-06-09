@@ -1,4 +1,5 @@
 #include "InterfaceTextual.hpp"
+#include <cstdlib>
 #include <fstream>
 #include <iostream>
 
@@ -140,6 +141,11 @@ void InterfaceTextual::exibirComodos() {
 }
 
 void InterfaceTextual::limparTela() {
+#ifdef _WIN32
+    std::system("cls");
+#else
+    std::system("clear");
+#endif
 }
 
 void InterfaceTextual::exibirMensagem(const std::string &mensagem) {
