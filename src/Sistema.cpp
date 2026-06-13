@@ -67,3 +67,7 @@ void Sistema::gerarRelatorio(const std::string& caminhoArquivo) const {
 
     arquivo.close();
 }
+
+void Sistema::receberComando(std::string comando) {
+    return;
+}

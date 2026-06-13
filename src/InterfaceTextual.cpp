@@ -12,6 +12,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <cctype>
 
 void InterfaceTextual::iniciar() {
       ativa = true;
@@ -33,10 +34,23 @@ void InterfaceTextual::iniciar() {
 
 void InterfaceTextual::interpretarComando(const std::string &comando){
       // converte tudo para minusculo
-      std::string Fcomando = std::transform(comando.begin(), comando.end(), comando.begin(), [](char c)
+      std::string Fcomando = comando;
+      std::transform(Fcomando.begin(), Fcomando.end(), Fcomando.begin(), [](unsigned char c)
       {
-            return tolower(c);
+            return static_cast<char>(std::tolower(c));
       });
+
+      Comodo* comodoAtual = nullptr;
+      if (!comodoFocado.empty() && sistema != nullptr) {
+            int qtd = sistema->getQtdComodos();
+            for (int i = 0; i < qtd; ++i) {
+                  const Comodo* c = sistema->getComodo(i);
+                  if (c != nullptr && c->getNome() == comodoFocado) {
+                        comodoAtual = const_cast<Comodo*>(c);
+                        break;
+                  }
+            }
+      }
 
       Dispositivo* dispBase = nullptr;
       if (comodoAtual != nullptr && dispositivoFocadoID != 0) {
@@ -122,9 +136,8 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
 
       else if (Fcomando == "abrir portao") {
           if (auto portao = dynamic_cast<Portao*>(dispBase)) {
-              portao->estado = true;
-              portao.fecharAutomaticamente();
-              portao->estado = false;
+              portao->alterarEstado(true);
+              portao->fecharAutomaticamente();
           }
       }else if (Fcomando == "alterar temporizador") {
           if (auto portao = dynamic_cast<Portao*>(dispBase)) {
@@ -139,11 +152,11 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
 
       else if (Fcomando == "ligar ar condicionado") {
           if (auto ac = dynamic_cast<ArCondicionado*>(dispBase)) {
-              ac.ligar();
+              ac->ligar();
           }
       }else if (Fcomando == "desligar ar condicionado") {
           if (auto ac = dynamic_cast<ArCondicionado*>(dispBase)) {
-              ac.desligar();
+              ac->desligar();
           }
       }else if (Fcomando == "alterar temperatura") {
           if (auto ac = dynamic_cast<ArCondicionado*>(dispBase)) {

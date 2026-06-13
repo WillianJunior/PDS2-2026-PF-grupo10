@@ -82,6 +82,15 @@ public:
      *  O arquivo contém uma linha por dispositivo com formato: id dispositivo estado valor [emoji_alerta]
      *  @param caminhoArquivo Caminho e nome do arquivo a ser gerado. */
     void gerarRelatorio(const std::string& caminhoArquivo) const;
+
+    /** @brief Recebe e processa um comando informado pelo usuário.
+     * Este método realiza a leitura de um comando ja interpretado 
+     * pela interface textual, eexecuta a ação correspondente no 
+     * sistema. Caso o comando seja inválido, uma mensagem de erro
+     * poderá ser exibida ao usuário.
+     * @note O comportamento específico depende da implementação do método.
+     * @param comando Texto contendo o comando a ser executado.*/
+    void receberComando(std::string comando);
 };
 
 #endif
