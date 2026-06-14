@@ -22,6 +22,8 @@ private:
     int dispositivoFocadoID;    ///< ID do dispositivo selecionado para configurações detalhadas
 
 public:
+
+    InterfaceTextual();
     /** @brief Inicializa a interface, exibe as boas-vindas e carrega o menu inicial. */
     void iniciar(); 
 

@@ -12,5 +12,7 @@
 #include <iostream>
 
 int main() {
+    InterfaceTextual inter;
+    inter.iniciar();
     return 0;
 }
