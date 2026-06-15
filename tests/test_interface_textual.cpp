@@ -21,7 +21,6 @@ TEST_CASE("Testes de Unidade - Classe InterfaceTextual") {
     }
 
     SUBCASE("Máquina de Estados de Navegação (Menus e Focos)") {
-        interface.iniciar();
 
         // Cenário: Usuário simula a entrada em um cômodo específico
         // O interpretador deve atualizar internamente a string 'menuAtual' para "COMODO" e 'comodoFocado'
@@ -39,7 +38,6 @@ TEST_CASE("Testes de Unidade - Classe InterfaceTextual") {
     }
 
     SUBCASE("Robustez do Interpretador de Comandos (Parser de String)") {
-        interface.iniciar();
 
         // Passar comandos inexistentes, mal formatados
         // ou vazios não pode causar travamento (Crash/Segmentation Fault) do software.
@@ -66,7 +64,7 @@ TEST_CASE("Testes de Unidade - Classe InterfaceTextual") {
     }
 
     SUBCASE("Rotinas de Encerramento da Aplicação") {
-        interface.iniciar();
+       interface.iniciar();
         
         // Garante o desligamento correto do loop da interface textual
         interface.encerrar();

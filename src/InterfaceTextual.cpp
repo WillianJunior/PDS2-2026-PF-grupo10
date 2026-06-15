@@ -14,25 +14,31 @@
 #include <algorithm>
 #include <cctype>
 
+InterfaceTextual::InterfaceTextual() : ativa(false), sistema(new Sistema), usuarioAtual(nullptr), menuAtual(" "), comodoFocado(" "), dispositivoFocadoID(0){
+}
+
 void InterfaceTextual::iniciar() {
       ativa = true;
-      std::cout << "Bem-vindo ao Sistema Smart Home (digite 'sair' para encerrar)" << std::endl;
-      exibirMenuPrincipal();
-
       std::string comando;
       while (ativa) {
-            std::cout << "> ";
+            exibirMenuPrincipal();
+
             if (!std::getline(std::cin, comando)) break;
             if (comando.empty()) continue;
             if (comando == "sair" || comando == "encerrar") {
                   encerrar();
             break;
             }
+            this->limparTela();
             interpretarComando(comando);
+            std::cout << std::endl;
+            std::cout << std::endl;
+
       }
 }
 
 void InterfaceTextual::interpretarComando(const std::string &comando){
+
       // converte tudo para minusculo
       std::string Fcomando = comando;
       std::transform(Fcomando.begin(), Fcomando.end(), Fcomando.begin(), [](unsigned char c)
@@ -211,6 +217,11 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
           }
       }
 
+      /*todo:
+       * listar comodos
+       * interface normal
+       *
+        */
       // comandos de usuario
 
       else if (Fcomando == "renomear") {
@@ -275,6 +286,7 @@ void InterfaceTextual::exibirMenuPrincipal() {
       comodoFocado.clear();
       dispositivoFocadoID = -1;
 
+      std::cout << "Bem-vindo ao Sistema Smart Home (digite 'sair' para encerrar)" << std::endl;
       std::cout << "=== Menu Principal ===" << std::endl;
       exibirComodos();
 
@@ -284,6 +296,8 @@ void InterfaceTextual::exibirMenuPrincipal() {
       std::cout << "  alertas               - exibir alertas recentes\n" << std::endl;
       std::cout << "  macros                - listar macros cadastradas\n" << std::endl;
       std::cout << "  sair                  - encerrar a interface\n" << std::endl;
+
+      std::cout << "> ";
 }
 
 void InterfaceTextual::exibirMenuComodo(const std::string &nomeComodo) {
