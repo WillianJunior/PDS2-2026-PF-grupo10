@@ -3,12 +3,20 @@
 
 
 Luz::Luz() : Dispositivo(), intensidade(1) {
+    this->estado = false; 
+    this->erro = false;
 }
-
 
 Luz::~Luz() {
 }
 
+void Luz::ligar() { 
+    this->estado = true; 
+}
+
+void Luz::desligar() {
+    this->estado = false; 
+}
 
 int Luz::getIntensidade() const {
     return intensidade;

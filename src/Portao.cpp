@@ -1,7 +1,9 @@
 #include "Portao.hpp"
 #include <string>
 
-Portao::Portao() : Dispositivo(), segundos(0) {
+Portao::Portao() : Dispositivo(), segundos(30) {
+    this->estado = false;
+    this->erro = false;
 }
 
 Portao::~Portao() {

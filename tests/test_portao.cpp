@@ -9,17 +9,21 @@ TEST_CASE("Construtor do Portao") {
     CHECK(p.temErro() == false);
 }
 
-TEST_CASE("Temporizador inicia em zero ou valor padrao") {
+TEST_CASE("Temporizador inicia valor padrao") {
     Portao p;
 
-    CHECK(p.getTemporizador() >= 0);
+    CHECK(p.getTemporizador() == 30);
 }
 
 TEST_CASE("Set e Get do temporizador") {
     Portao p;
 
     p.setTemporizador(15);
-
+    CHECK(p.getTemporizador() == 15);
+    // O temporizador não deve aceitar valores negativos ou zero, mantendo o valor anterior.
+    p.setTemporizador(0);
+    CHECK(p.getTemporizador() == 15); 
+    p.setTemporizador(-5);
     CHECK(p.getTemporizador() == 15);
 }
 
@@ -37,7 +41,7 @@ TEST_CASE("Fechamento automatico desliga o portao") {
     Portao p;
 
     p.alterarEstado(true);
-    p.setTemporizador(0);
+    p.setTemporizador(1); // Configura o temporizador para 1 segundo para acelerar o teste
 
     p.fecharAutomaticamente();
 

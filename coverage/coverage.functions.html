@@ -3,186 +3,819 @@
 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>GCC Code Coverage Report</title>
+    <title>Functions - GCC Code Coverage Report</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="coverage.css"/>
+    <script src="coverage.js"></script>
   </head>
 
   <body>
-    <header>
-      <h1>GCC Code Coverage Report</h1>
-
-      <hr/>
-
-      <div class="summary">
-<div>
-  <table class="legend">
-    <tr>
-      <th scope="row">Directory:</th>
-      <td>./</td>
-    </tr>
-    <tr>
-      <th scope="row">Date:</th>
-      <td>2026-06-14 18:28:05</td>
-    </tr>
-  </table>
+    <div class="Layout-main">
+      <div class="Layout-main-centered-lg" style="max-width: 1280px;">
+        <div class="d-flex flex-justify-center">
+          <h1>GCC Code Coverage Report</h1>
+        </div>
+        <hr class="block-separator"/>
+        <header>
+<div class="summary">
+  <div>
+    <table class="legend">
+      <tr>
+        <th scope="row">Directory:</th>
+        <td>src/</td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <table class="coverage">
+      <tr>
+        <th></th>
+        <th scope="col">Coverage</th>
+        <th scope="col">Exec</th>
+        <th scope="col">Excl</th>
+        <th scope="col">Total</th>
+      </tr>
+      <tr>
+        <th scope="row">Lines:</th>
+        <td class="coverage-low">60.6%</td>
+        <td class="coverage-low">412</td>
+        <td class="coverage-low">0</td>
+        <td class="coverage-low">680</td>
+      </tr>
+      <tr>
+        <th scope="row">Functions:</th>
+        <td class="coverage-medium">87.6%</td>
+        <td class="coverage-medium">92</td>
+        <td class="coverage-medium">0</td>
+        <td class="coverage-medium">105</td>
+      </tr>
+      <tr>
+        <th scope="row">Branches:</th>
+        <td class="coverage-low">23.7%</td>
+        <td class="coverage-low">224</td>
+        <td class="coverage-low">0</td>
+        <td class="coverage-low">946</td>
+      </tr>
+    </table>
+  </div>
 </div>
-
-<div>
-  <table class="coverage">
-    <tr>
-      <th></th>
-      <th scope="col">Exec</th>
-      <th scope="col">Total</th>
-      <th scope="col">Coverage</th>
-    </tr>
-    <tr>
-      <th scope="row">Lines:</th>
-      <td>369</td>
-      <td>653</td>
-      <td class="coverage-low">56.5%</td>
-    </tr>
-    <tr>
-      <th scope="row">Functions:</th>
-      <td>86</td>
-      <td>105</td>
-      <td class="coverage-medium">81.9%</td>
-    </tr>
-    <tr>
-      <th scope="row">Branches:</th>
-      <td>214</td>
-      <td>938</td>
-      <td class="coverage-low">22.8%</td>
-    </tr>
-  </table>
+        </header>
+        <hr/>
+        <nav>
+        </nav>
+        <main>
+<div class="Box m-3 functionslist">
+  <div class="Box-header py-2 d-flex sticky">
+    <div role="rowheader" class="color-fg-muted flex-auto min-width-0 col-md-2 sortable sorted-ascending">Function (File:Line)</div>
+    <div role="rowheader" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline sortable">Calls</div>
+    <div role="rowheader" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 sortable">Lines</div>
+    <div role="rowheader" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 sortable">Branches</div>
+    <div role="rowheader" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 sortable">Blocks</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l4">ArCondicionado::ArCondicionado() (src/ArCondicionado.cpp:4)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="5">called 5 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l24">ArCondicionado::ajustarTemperatura(int) (src/ArCondicionado.cpp:24)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="7">called 7 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l16">ArCondicionado::desligar() (src/ArCondicionado.cpp:16)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l30">ArCondicionado::detectarErro() (src/ArCondicionado.cpp:30)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">75.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">75.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l36">ArCondicionado::getEstadoFormatado[abi:cxx11]() const (src/ArCondicionado.cpp:36)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l20">ArCondicionado::getTemperatura() const (src/ArCondicionado.cpp:20)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="6">called 6 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l12">ArCondicionado::ligar() (src/ArCondicionado.cpp:12)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l9">ArCondicionado::~ArCondicionado() (src/ArCondicionado.cpp:9)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="5">called 5 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l3">Comodo::Comodo() (src/Comodo.cpp:3)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="11">called 11 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">77.8%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l6">Comodo::Comodo(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/Comodo.cpp:6)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l25">Comodo::adicionarDispositivo(Dispositivo*) (src/Comodo.cpp:25)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="10">called 10 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l16">Comodo::getDispositivo(int) const (src/Comodo.cpp:16)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="4">called 4 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">80.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l43">Comodo::getDispositivoPorIndice(int) const (src/Comodo.cpp:43)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="8">called 8 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l48">Comodo::getNome[abi:cxx11]() const (src/Comodo.cpp:48)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="3">called 3 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l39">Comodo::getQtdDispositivos() const (src/Comodo.cpp:39)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="6">called 6 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l29">Comodo::removerDispositivo(int) (src/Comodo.cpp:29)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="2">called 2 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">71.4%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">97.1%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l52">Comodo::setNome(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/Comodo.cpp:52)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l9">Comodo::~Comodo() (src/Comodo.cpp:9)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="16">called 16 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">75.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html#l6">Dispositivo::Dispositivo() (src/Dispositivo.cpp:6)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="38">called 38 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html#l26">Dispositivo::alterarEstado(bool) (src/Dispositivo.cpp:26)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="7">called 7 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html#l18">Dispositivo::getEstado() const (src/Dispositivo.cpp:18)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="14">called 14 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html#l14">Dispositivo::getId() const (src/Dispositivo.cpp:14)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="21">called 21 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html#l22">Dispositivo::temErro() const (src/Dispositivo.cpp:22)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="7">called 7 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html#l10">Dispositivo::~Dispositivo() (src/Dispositivo.cpp:10)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="38">called 38 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l17">InterfaceTextual::InterfaceTextual() (src/InterfaceTextual.cpp:17)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="5">called 5 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">40.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">54.2%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l273">InterfaceTextual::encerrar() (src/InterfaceTextual.cpp:273)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="3">called 3 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l400">InterfaceTextual::exibirAlerta(std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;&amp;) (src/InterfaceTextual.cpp:400)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l373">InterfaceTextual::exibirComodos() (src/InterfaceTextual.cpp:373)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="4">called 4 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">16.7%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">39.1%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l403">InterfaceTextual::exibirEstado(int) (src/InterfaceTextual.cpp:403)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l397">InterfaceTextual::exibirMensagem(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/InterfaceTextual.cpp:397)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l303">InterfaceTextual::exibirMenuComodo(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/InterfaceTextual.cpp:303)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">26.7%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">10.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">18.8%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l284">InterfaceTextual::exibirMenuPrincipal() (src/InterfaceTextual.cpp:284)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="3">called 3 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l350">InterfaceTextual::exibirRelatorio() (src/InterfaceTextual.cpp:350)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">66.7%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">30.6%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">57.4%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l20">InterfaceTextual::iniciar() (src/InterfaceTextual.cpp:20)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="2">called 2 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">73.3%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">32.1%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">62.1%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l40">InterfaceTextual::interpretarComando(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/InterfaceTextual.cpp:40)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="7">called 7 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">24.4%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">9.1%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">18.7%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l44">InterfaceTextual::interpretarComando(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)::{lambda(unsigned char)#1}::operator()(unsigned char) const (src/InterfaceTextual.cpp:44)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="136">called 136 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l389">InterfaceTextual::limparTela() (src/InterfaceTextual.cpp:389)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l5">Luz::Luz() (src/Luz.cpp:5)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="5">called 5 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l26">Luz::ajustarIntensidade(int) (src/Luz.cpp:26)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="4">called 4 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">75.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l17">Luz::desligar() (src/Luz.cpp:17)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="2">called 2 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l33">Luz::detectarErro() (src/Luz.cpp:33)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">75.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">75.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l40">Luz::getEstadoFormatado[abi:cxx11]() const (src/Luz.cpp:40)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">85.7%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">44.4%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">48.9%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l21">Luz::getIntensidade() const (src/Luz.cpp:21)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="3">called 3 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l13">Luz::ligar() (src/Luz.cpp:13)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l10">Luz::~Luz() (src/Luz.cpp:10)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="5">called 5 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l5">Macro::Macro(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Macro.cpp:5)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="6">called 6 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l31">Macro::adicionarDispositivo(int, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Macro.cpp:31)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="8">called 8 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">83.3%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">91.7%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l19">Macro::getEvento[abi:cxx11]() const (src/Macro.cpp:19)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="2">called 2 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l23">Macro::getLista() const (src/Macro.cpp:23)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="22">called 22 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l49">Macro::removerDispositivo(int, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Macro.cpp:49)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="3">called 3 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">83.3%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l27">Macro::setEvento(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Macro.cpp:27)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l9">Macro::~Macro() (src/Macro.cpp:9)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="6">called 6 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">75.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l4">Portao::Portao() (src/Portao.cpp:4)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="6">called 6 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l43">Portao::detectarErro() (src/Portao.cpp:43)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">60.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">66.7%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l20">Portao::fecharAutomaticamente() (src/Portao.cpp:20)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">76.9%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">60.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">78.6%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l51">Portao::getEstadoFormatado[abi:cxx11]() const (src/Portao.cpp:51)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l12">Portao::getTemporizador() const (src/Portao.cpp:12)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="4">called 4 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l16">Portao::setTemporizador(int) (src/Portao.cpp:16)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="4">called 4 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l9">Portao::~Portao() (src/Portao.cpp:9)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="6">called 6 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html#l5">Sensor::Sensor(int) (src/Sensor.cpp:5)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="14">called 14 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html#l25">Sensor::alterarTempoVerificacao(int) (src/Sensor.cpp:25)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="2">called 2 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html#l16">Sensor::getAlerta[abi:cxx11](int) const (src/Sensor.cpp:16)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="6">called 6 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">80.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">62.5%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">75.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html#l12">Sensor::getTempoVerificacao() const (src/Sensor.cpp:12)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="3">called 3 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html#l33">Sensor::salvarAlertas() (src/Sensor.cpp:33)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">62.5%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">25.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">56.5%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html#l8">Sensor::~Sensor() (src/Sensor.cpp:8)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="9">called 9 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l8">Sistema::Sistema() (src/Sistema.cpp:8)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="10">called 10 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">37.5%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">54.5%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l41">Sistema::adicionarComodo(Comodo&amp;) (src/Sistema.cpp:41)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="3">called 3 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l33">Sistema::estaAtivo() const (src/Sistema.cpp:33)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="2">called 2 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l37">Sistema::executarSistema() (src/Sistema.cpp:37)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="2">called 2 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l50">Sistema::gerarRelatorio(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) const (src/Sistema.cpp:50)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">46.2%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">13.2%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">36.4%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l16">Sistema::getComodo(int) const (src/Sistema.cpp:16)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="7">called 7 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l24">Sistema::getQtdComodos() const (src/Sistema.cpp:24)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="12">called 12 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l29">Sistema::getSensor() const (src/Sistema.cpp:29)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l71">Sistema::receberComando(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Sistema.cpp:71)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="4">called 4 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l45">Sistema::removerComodo(Comodo const&amp;) (src/Sistema.cpp:45)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">90.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l46">Sistema::removerComodo(Comodo const&amp;)::{lambda(Comodo const&amp;)#1}::operator()(Comodo const&amp;) const (src/Sistema.cpp:46)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l11">Sistema::~Sistema() (src/Sistema.cpp:11)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="5">called 5 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l14">Som::Som() (src/Som.cpp:14)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="6">called 6 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l129">Som::adicionarMusica(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/Som.cpp:129)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="7">called 7 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l134">Som::adicionarMusica(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;, int) (src/Som.cpp:134)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">89.5%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l103">Som::anterior() (src/Som.cpp:103)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">75.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">70.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l54">Som::carregarMusicas(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/Som.cpp:54)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="7">called 7 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">63.6%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">23.3%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">46.4%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l195">Som::detectarErro() (src/Som.cpp:195)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l203">Som::getEstadoFormatado[abi:cxx11]() const (src/Som.cpp:203)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l50">Som::getPause() const (src/Som.cpp:50)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l42">Som::getVolume() const (src/Som.cpp:42)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="2">called 2 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l117">Som::printPlaylist() (src/Som.cpp:117)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l94">Som::proxima() (src/Som.cpp:94)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="3">called 3 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">66.7%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">62.5%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l172">Som::removerMusica(int) (src/Som.cpp:172)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l143">Som::removerMusica(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/Som.cpp:143)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="2">called 2 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">73.7%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">44.4%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">88.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l46">Som::setVolume(int) (src/Som.cpp:46)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l22">Som::supplArq(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/Som.cpp:22)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="6">called 6 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">76.9%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">39.3%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">43.9%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l78">Som::tocar() (src/Som.cpp:78)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l83">Som::tocar(int) (src/Som.cpp:83)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="7">called 7 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l70">Som::togglePause() (src/Som.cpp:70)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="1">called 1 time</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">83.3%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l18">Som::~Som() (src/Som.cpp:18)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="6">called 6 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l3">Usuario::Usuario(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Usuario.cpp:3)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="2">called 2 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">100.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">80.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l34">Usuario::adicionarMacro(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, Usuario&amp;) (src/Usuario.cpp:34)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l21">Usuario::autenticar(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) const (src/Usuario.cpp:21)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l40">Usuario::executarMacro(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, Usuario&amp;) (src/Usuario.cpp:40)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l25">Usuario::getMacro(int, Usuario&amp;) const (src/Usuario.cpp:25)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="4">called 4 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">75.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">50.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">66.7%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l13">Usuario::getNome[abi:cxx11]() const (src/Usuario.cpp:13)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l37">Usuario::removerMacro(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, Usuario&amp;) (src/Usuario.cpp:37)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l17">Usuario::setNome(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Usuario.cpp:17)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="0">not called</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">-%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">0.0%</div>
+  </div>
+  <div class="Box-row Box-row--focus-gray py-2 d-flex">
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2"><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l6">Usuario::~Usuario() (src/Usuario.cpp:6)</a>    </div>
+    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline" data-sort="2">called 2 times</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">80.0%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">33.3%</div>
+    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2">54.5%</div>
+  </div>
 </div>
+        </main>
+        <hr class="block-separator"/>
+        <footer class="text-center">
+          Created using <a href="http://gcovr.com/en/8.6">GCOVR (Version 8.6)</a>
+          at 2026-06-16 09:50:29
+        </footer>
       </div>
-
-      <hr/>
-    </header>
-
-    <nav>
-    </nav>
-
-    <main>
-<table class="listOfFunctions">
-  <tr>
-    <th>Function (File:Line)</th>
-    <th>Call count</th>
-    <th>Block coverage</th>
-  </tr>
-  <tr><td><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l4">ArCondicionado::ArCondicionado() (src/ArCondicionado.cpp:4)</a></td><td>called 4 times, returned 4 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l14">ArCondicionado::ajustarTemperatura(int) (src/ArCondicionado.cpp:14)</a></td><td>called 7 times, returned 7 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.ArCondicionado.hpp.17a1472aa3d7476ea7b2e00368f54ae1.html#l30">ArCondicionado::desligar() (include/ArCondicionado.hpp:30)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l20">ArCondicionado::detectarErro() (src/ArCondicionado.cpp:20)</a></td><td>called 1 time, returned 1 time</td><td>75.0%</td></tr>
-  <tr><td><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l26">ArCondicionado::getEstadoFormatado[abi:cxx11]() const (src/ArCondicionado.cpp:26)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l10">ArCondicionado::getTemperatura() const (src/ArCondicionado.cpp:10)</a></td><td>called 7 times, returned 7 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.ArCondicionado.hpp.17a1472aa3d7476ea7b2e00368f54ae1.html#l28">ArCondicionado::ligar() (include/ArCondicionado.hpp:28)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html#l7">ArCondicionado::~ArCondicionado() (src/ArCondicionado.cpp:7)</a></td><td>called 4 times, returned 4 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l3">Comodo::Comodo() (src/Comodo.cpp:3)</a></td><td>called 11 times, returned 11 times</td><td>78.0%</td></tr>
-  <tr><td><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l6">Comodo::Comodo(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/Comodo.cpp:6)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l25">Comodo::adicionarDispositivo(Dispositivo*) (src/Comodo.cpp:25)</a></td><td>called 10 times, returned 10 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l16">Comodo::getDispositivo(int) const (src/Comodo.cpp:16)</a></td><td>called 4 times, returned 4 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l43">Comodo::getDispositivoPorIndice(int) const (src/Comodo.cpp:43)</a></td><td>called 8 times, returned 8 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l48">Comodo::getNome[abi:cxx11]() const (src/Comodo.cpp:48)</a></td><td>called 3 times, returned 3 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l39">Comodo::getQtdDispositivos() const (src/Comodo.cpp:39)</a></td><td>called 6 times, returned 6 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l29">Comodo::removerDispositivo(int) (src/Comodo.cpp:29)</a></td><td>called 2 times, returned 2 times</td><td>96.0%</td></tr>
-  <tr><td><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l52">Comodo::setNome(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/Comodo.cpp:52)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html#l9">Comodo::~Comodo() (src/Comodo.cpp:9)</a></td><td>called 16 times, returned 16 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html#l6">Dispositivo::Dispositivo() (src/Dispositivo.cpp:6)</a></td><td>called 37 times, returned 37 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html#l26">Dispositivo::alterarEstado(bool) (src/Dispositivo.cpp:26)</a></td><td>called 10 times, returned 10 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html#l18">Dispositivo::getEstado() const (src/Dispositivo.cpp:18)</a></td><td>called 11 times, returned 11 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html#l14">Dispositivo::getId() const (src/Dispositivo.cpp:14)</a></td><td>called 21 times, returned 21 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html#l22">Dispositivo::temErro() const (src/Dispositivo.cpp:22)</a></td><td>called 5 times, returned 5 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html#l10">Dispositivo::~Dispositivo() (src/Dispositivo.cpp:10)</a></td><td>called 37 times, returned 37 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l17">InterfaceTextual::InterfaceTextual() (src/InterfaceTextual.cpp:17)</a></td><td>called 5 times, returned 5 times</td><td>54.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l265">InterfaceTextual::encerrar() (src/InterfaceTextual.cpp:265)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l389">InterfaceTextual::exibirAlerta(std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;&amp;) (src/InterfaceTextual.cpp:389)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l362">InterfaceTextual::exibirComodos() (src/InterfaceTextual.cpp:362)</a></td><td>called 2 times, returned 2 times</td><td>39.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l392">InterfaceTextual::exibirEstado(int) (src/InterfaceTextual.cpp:392)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l386">InterfaceTextual::exibirMensagem(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/InterfaceTextual.cpp:386)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l292">InterfaceTextual::exibirMenuComodo(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/InterfaceTextual.cpp:292)</a></td><td>called 1 time, returned 1 time</td><td>19.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l276">InterfaceTextual::exibirMenuPrincipal() (src/InterfaceTextual.cpp:276)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l339">InterfaceTextual::exibirRelatorio() (src/InterfaceTextual.cpp:339)</a></td><td>called 1 time, returned 1 time</td><td>57.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l20">InterfaceTextual::iniciar() (src/InterfaceTextual.cpp:20)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l38">InterfaceTextual::interpretarComando(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/InterfaceTextual.cpp:38)</a></td><td>called 7 times, returned 7 times</td><td>19.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l41">InterfaceTextual::interpretarComando(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;)::{lambda(unsigned char)#1}::operator()(unsigned char) const (src/InterfaceTextual.cpp:41)</a></td><td>called 136 times, returned 136 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html#l378">InterfaceTextual::limparTela() (src/InterfaceTextual.cpp:378)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l5">Luz::Luz() (src/Luz.cpp:5)</a></td><td>called 5 times, returned 5 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l18">Luz::ajustarIntensidade(int) (src/Luz.cpp:18)</a></td><td>called 4 times, returned 4 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Luz.hpp.f5a39c3505689c654bb5233d0a65f9d8.html#l30">Luz::desligar() (include/Luz.hpp:30)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l25">Luz::detectarErro() (src/Luz.cpp:25)</a></td><td>called 1 time, returned 1 time</td><td>75.0%</td></tr>
-  <tr><td><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l32">Luz::getEstadoFormatado[abi:cxx11]() const (src/Luz.cpp:32)</a></td><td>called 1 time, returned 1 time</td><td>49.0%</td></tr>
-  <tr><td><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l13">Luz::getIntensidade() const (src/Luz.cpp:13)</a></td><td>called 3 times, returned 3 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Luz.hpp.f5a39c3505689c654bb5233d0a65f9d8.html#l28">Luz::ligar() (include/Luz.hpp:28)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html#l9">Luz::~Luz() (src/Luz.cpp:9)</a></td><td>called 5 times, returned 5 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l5">Macro::Macro(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Macro.cpp:5)</a></td><td>called 6 times, returned 6 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l31">Macro::adicionarDispositivo(int, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Macro.cpp:31)</a></td><td>called 8 times, returned 8 times</td><td>92.0%</td></tr>
-  <tr><td><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l19">Macro::getEvento[abi:cxx11]() const (src/Macro.cpp:19)</a></td><td>called 2 times, returned 2 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l23">Macro::getLista() const (src/Macro.cpp:23)</a></td><td>called 22 times, returned 22 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l49">Macro::removerDispositivo(int, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Macro.cpp:49)</a></td><td>called 3 times, returned 3 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l27">Macro::setEvento(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Macro.cpp:27)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html#l9">Macro::~Macro() (src/Macro.cpp:9)</a></td><td>called 6 times, returned 6 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l4">Portao::Portao() (src/Portao.cpp:4)</a></td><td>called 6 times, returned 6 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l41">Portao::detectarErro() (src/Portao.cpp:41)</a></td><td>called 1 time, returned 1 time</td><td>67.0%</td></tr>
-  <tr><td><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l18">Portao::fecharAutomaticamente() (src/Portao.cpp:18)</a></td><td>called 1 time, returned 1 time</td><td>43.0%</td></tr>
-  <tr><td><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l49">Portao::getEstadoFormatado[abi:cxx11]() const (src/Portao.cpp:49)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l10">Portao::getTemporizador() const (src/Portao.cpp:10)</a></td><td>called 2 times, returned 2 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l14">Portao::setTemporizador(int) (src/Portao.cpp:14)</a></td><td>called 2 times, returned 2 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html#l7">Portao::~Portao() (src/Portao.cpp:7)</a></td><td>called 6 times, returned 6 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html#l5">Sensor::Sensor(int) (src/Sensor.cpp:5)</a></td><td>called 14 times, returned 14 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html#l25">Sensor::alterarTempoVerificacao(int) (src/Sensor.cpp:25)</a></td><td>called 2 times, returned 2 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html#l16">Sensor::getAlerta[abi:cxx11](int) const (src/Sensor.cpp:16)</a></td><td>called 6 times, returned 6 times</td><td>74.0%</td></tr>
-  <tr><td><a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html#l12">Sensor::getTempoVerificacao() const (src/Sensor.cpp:12)</a></td><td>called 3 times, returned 3 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html#l33">Sensor::salvarAlertas() (src/Sensor.cpp:33)</a></td><td>called 1 time, returned 1 time</td><td>48.0%</td></tr>
-  <tr><td><a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html#l8">Sensor::~Sensor() (src/Sensor.cpp:8)</a></td><td>called 9 times, returned 9 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l8">Sistema::Sistema() (src/Sistema.cpp:8)</a></td><td>called 10 times, returned 10 times</td><td>55.0%</td></tr>
-  <tr><td><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l41">Sistema::adicionarComodo(Comodo&amp;) (src/Sistema.cpp:41)</a></td><td>called 3 times, returned 3 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l33">Sistema::estaAtivo() const (src/Sistema.cpp:33)</a></td><td>called 2 times, returned 2 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l37">Sistema::executarSistema() (src/Sistema.cpp:37)</a></td><td>called 2 times, returned 2 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l50">Sistema::gerarRelatorio(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) const (src/Sistema.cpp:50)</a></td><td>called 1 time, returned 1 time</td><td>32.0%</td></tr>
-  <tr><td><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l16">Sistema::getComodo(int) const (src/Sistema.cpp:16)</a></td><td>called 7 times, returned 7 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l24">Sistema::getQtdComodos() const (src/Sistema.cpp:24)</a></td><td>called 10 times, returned 10 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l29">Sistema::getSensor() const (src/Sistema.cpp:29)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l71">Sistema::receberComando(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Sistema.cpp:71)</a></td><td>called 4 times, returned 4 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l45">Sistema::removerComodo(Comodo const&amp;) (src/Sistema.cpp:45)</a></td><td>called 1 time, returned 1 time</td><td>92.0%</td></tr>
-  <tr><td><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l46">Sistema::removerComodo(Comodo const&amp;)::{lambda(Comodo const&amp;)#1}::operator()(Comodo const&amp;) const (src/Sistema.cpp:46)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html#l11">Sistema::~Sistema() (src/Sistema.cpp:11)</a></td><td>called 5 times, returned 5 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l14">Som::Som() (src/Som.cpp:14)</a></td><td>called 6 times, returned 6 times</td><td>50.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l129">Som::adicionarMusica(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/Som.cpp:129)</a></td><td>called 7 times, returned 7 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l134">Som::adicionarMusica(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;, int) (src/Som.cpp:134)</a></td><td>called 1 time, returned 1 time</td><td>87.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l103">Som::anterior() (src/Som.cpp:103)</a></td><td>called 1 time, returned 1 time</td><td>70.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l54">Som::carregarMusicas(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/Som.cpp:54)</a></td><td>called 7 times, returned 7 times</td><td>46.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l195">Som::detectarErro() (src/Som.cpp:195)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l203">Som::getEstadoFormatado[abi:cxx11]() const (src/Som.cpp:203)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l50">Som::getPause() const (src/Som.cpp:50)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l42">Som::getVolume() const (src/Som.cpp:42)</a></td><td>called 2 times, returned 2 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l117">Som::printPlaylist() (src/Som.cpp:117)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l94">Som::proxima() (src/Som.cpp:94)</a></td><td>called 3 times, returned 3 times</td><td>62.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l172">Som::removerMusica(int) (src/Som.cpp:172)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l143">Som::removerMusica(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/Som.cpp:143)</a></td><td>called 2 times, returned 2 times</td><td>85.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l46">Som::setVolume(int) (src/Som.cpp:46)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l22">Som::supplArq(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;) (src/Som.cpp:22)</a></td><td>called 6 times, returned 6 times</td><td>55.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l78">Som::tocar() (src/Som.cpp:78)</a></td><td>called 1 time, returned 1 time</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l83">Som::tocar(int) (src/Som.cpp:83)</a></td><td>called 7 times, returned 7 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l70">Som::togglePause() (src/Som.cpp:70)</a></td><td>called 1 time, returned 1 time</td><td>83.0%</td></tr>
-  <tr><td><a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html#l18">Som::~Som() (src/Som.cpp:18)</a></td><td>called 6 times, returned 6 times</td><td>100.0%</td></tr>
-  <tr><td><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l3">Usuario::Usuario(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Usuario.cpp:3)</a></td><td>called 2 times, returned 2 times</td><td>80.0%</td></tr>
-  <tr><td><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l34">Usuario::adicionarMacro(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, Usuario&amp;) (src/Usuario.cpp:34)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l21">Usuario::autenticar(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) const (src/Usuario.cpp:21)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l40">Usuario::executarMacro(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, Usuario&amp;) (src/Usuario.cpp:40)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l25">Usuario::getMacro(int, Usuario&amp;) const (src/Usuario.cpp:25)</a></td><td>called 4 times, returned 4 times</td><td>67.0%</td></tr>
-  <tr><td><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l13">Usuario::getNome[abi:cxx11]() const (src/Usuario.cpp:13)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l37">Usuario::removerMacro(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, Usuario&amp;) (src/Usuario.cpp:37)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l17">Usuario::setNome(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;) (src/Usuario.cpp:17)</a></td><td>not called</td><td>0.0%</td></tr>
-  <tr><td><a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html#l6">Usuario::~Usuario() (src/Usuario.cpp:6)</a></td><td>called 2 times, returned 2 times</td><td>55.0%</td></tr>
-</table>
-
-      <hr/>
-    </main>
-
-    <footer>
-      Generated by: <a href="http://gcovr.com/en/7.2">GCOVR (Version 7.2)</a>
-    </footer>
+    </div>
   </body>
+
 </html>

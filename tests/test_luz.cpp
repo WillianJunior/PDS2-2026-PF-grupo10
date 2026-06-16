@@ -27,10 +27,10 @@ TEST_CASE("Testando a classe Luz - Gerenciamento de Iluminação") {
 
     SUBCASE("Cenário 2: Alteração de Estados (Ligar/Desligar)") {
         // Testa a função herdada de alterar o estado lógico
-        lampada.alterarEstado(true);
+        lampada.ligar();
         CHECK(lampada.getEstado() == true);
 
-        lampada.alterarEstado(false);
+        lampada.desligar();
         CHECK(lampada.getEstado() == false);
     }
 
@@ -44,7 +44,7 @@ TEST_CASE("Testando a classe Luz - Gerenciamento de Iluminação") {
     }
 
     SUBCASE("Cenário 4: Formatação Polimórfica do Estado para a Interface") {
-        lampada.alterarEstado(true);
+        lampada.desligar();
         lampada.ajustarIntensidade(4);
         
         std::string formato = lampada.getEstadoFormatado();

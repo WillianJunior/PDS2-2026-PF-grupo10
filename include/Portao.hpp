@@ -16,8 +16,8 @@ private:
 public:
     /** @brief Construtor da classe Portao.
      *  Inicializa uma nova instância de um portão automatizado com um identificador único.
-     *  Configura o estado inicial do portão como fechado, zera o temporizador padrão de fechamento
-     *  e garante que os flags de erro comecem limpos (falsos). */
+     *  Configura o estado inicial do portão como fechado, coloca valor padrão no temporizador 
+     * (30 segundos) para fechamento automático e garante que os flags de erro comecem limpos (falsos). */
     Portao();
 
     /** @brief Destrutor da classe Portao.
@@ -36,7 +36,7 @@ public:
      *  Modifica o atributo interno do temporizador. Este valor define por quanto tempo
      *  o portão permanecerá totalmente aberto antes que o sistema envie o comando
      *  de fechamento automático.
-     *  @param seg Tempo de espera desejado, expresso estritamente em segundos. */
+     *  @param seg Tempo de espera desejado, expresso estritamente em segundos, deve ser maior que 0. */
     void setTemporizador(int seg);
 
     /** @brief Inicia a rotina de contagem regressiva e executa o fechamento do portão.

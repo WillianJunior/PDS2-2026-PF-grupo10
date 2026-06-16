@@ -353,7 +353,7 @@ void InterfaceTextual::exibirRelatorio() {
             return;
       }
 
-      const std::string caminho = "relatorio.txt";
+      const std::string caminho = "src/relatorio.txt";
       sistema->gerarRelatorio(caminho);
 
       std::ifstream arq(caminho);

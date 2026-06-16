@@ -25,9 +25,9 @@ public:
      *  a comunicação ativa do aparelho. */
     ~ArCondicionado();
 
-    void ligar() { this->estado = true; }
+    void ligar();
 
-    void desligar() {this->estado = false; }
+    void desligar();
 
     /** @brief Consulta a temperatura atualmente configurada no aparelho.
      *  @return int Valor inteiro da temperatura ideal alvo, estabelecida entre 15°C e 30°C. */

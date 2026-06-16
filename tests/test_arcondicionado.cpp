@@ -3,12 +3,22 @@
 
 TEST_CASE("Testando o Construtor e Inicialização") {
     ArCondicionado ar;
-    // Substitua pelo método correto da classe base para pegar ID e Cômodo se houver
+    
     CHECK(ar.getId() > 0);
     
-    // Verifica se a temperatura inicial está no intervalo aceito
-    CHECK(ar.getTemperatura() >= 15);
-    CHECK(ar.getTemperatura() <= 30);
+    CHECK(ar.getEstado() == false); // Deve iniciar desligado
+    CHECK(ar.temErro() == false);   // Deve iniciar sem falhas
+    CHECK(ar.getTemperatura() == 22); // Temperatura padrão definida no construtor
+}
+
+TEST_CASE("Testando Ligar e Desligar") {
+    ArCondicionado ar;
+    
+    ar.ligar();
+    CHECK(ar.getEstado() == true); // Deve estar ligado
+
+    ar.desligar();
+    CHECK(ar.getEstado() == false); // Deve estar desligado
 }
 
 TEST_CASE("Testando Ajuste de Temperatura - Limites Válidos") {
@@ -41,5 +51,6 @@ TEST_CASE("Testando Detecção de Erros") {
     // Cenário normal
     ar.ajustarTemperatura(25);
     ar.detectarErro();
-    // CHECK(ar.hasErro() == false); // Depende de como a classe base gerencia o estado de erro
+
+    CHECK(ar.temErro() == false); // Depende de como a classe base gerencia o estado de erro
 }

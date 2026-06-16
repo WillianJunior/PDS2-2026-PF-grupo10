@@ -2,9 +2,19 @@
 #include <string>
 
 ArCondicionado::ArCondicionado() : Dispositivo(), temperatura(22) {
+    this->estado = false;
+    this->erro = false;
 }
 
 ArCondicionado::~ArCondicionado() {
+}
+
+void ArCondicionado::ligar() {
+    this->estado = true;
+}
+
+void ArCondicionado::desligar() {
+    this->estado = false;
 }
 
 int ArCondicionado::getTemperatura() const {

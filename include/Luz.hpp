@@ -25,9 +25,9 @@ public:
      *  qualquer comunicação ou rotina ativa do dispositivo. */
     ~Luz();
 
-    void ligar() { this->estado = true; }
+    void ligar();
 
-    void desligar() {this->estado = false; }
+    void desligar();
 
     /** @brief Consulta o nível atual de brilho da luz.
      *  @return int Valor inteiro representando a intensidade, escalonada estritamente de 1 a 5. */
