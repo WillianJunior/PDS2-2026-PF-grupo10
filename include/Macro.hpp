@@ -2,7 +2,7 @@
 #define MACRO_H
 
 #include <string>
-
+#include <memory>
 
 /** @struct Node
  * @brief Representa um nó da lista encadeada de uma macro. */
@@ -10,7 +10,7 @@ struct Node {
     int id;                       ///< Identificador do dispositivo associado à ação
     std::string acao;             ///< Ação a ser executada no dispositivo (valores esperados: "ligar",
                                   ///"desligar", "abrir", "fechar" e "ajustar")
-    Node* proximo;                ///< Ponteiro para o próximo nó da lista
+    std::unique_ptr<Node> proximo;                ///< Ponteiro para o próximo nó da lista
 };
 
 /** @class Macro
@@ -22,7 +22,7 @@ class Macro{
 
     private:
     std::string evento; ///< Nome do evento que ativa a macro 
-    Node* lista;        ///< Lista encadeada de ações sobre dispositivos
+    std::unique_ptr<Node> lista;        ///< Lista encadeada de ações sobre dispositivos
 
 public:
     /** @brief Contador global que rastreia o número total de instâncias de macros ativas.

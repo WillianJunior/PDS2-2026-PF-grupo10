@@ -1,18 +1,14 @@
 #include "Macro.hpp"
+#include <cctype>
 
 int Macro::qtdMacros = 0;
 
-Macro::Macro(std::string evento) : evento(evento), lista(nullptr) {
+Macro::Macro(std::string evento) : evento(evento), lista(nullptr)
+{
     qtdMacros++;
 }
 
 Macro::~Macro() {
-    Node* atual = lista;
-    while (atual != nullptr) {
-        Node* proximo = atual->proximo;
-        delete atual;
-        atual = proximo;
-    }
     qtdMacros--;
 }
 
@@ -21,46 +17,75 @@ std::string Macro::getEvento() const {
 }
 
 Node* Macro::getLista() const {
-    return lista;
+    return lista.get();
 }
 
 void Macro::setEvento(std::string evento) {
+    if (evento.empty()) {
+        throw std::invalid_argument("Evento invalido.");
+    }
+
+    bool contemCaracterValido = false;
+
+    for (char c : evento) {
+        if (!std::isspace(static_cast<unsigned char>(c))) {
+            contemCaracterValido = true;
+            break;
+        }
+    }
+
+    if (!contemCaracterValido) {
+        throw std::invalid_argument("Evento invalido.");
+    }
+
     this->evento = evento;
 }
 
 void Macro::adicionarDispositivo(int id, std::string acao) {
-    Node* novo = new Node;
+
+    auto novo = std::make_unique<Node>();
     novo->id = id;
     novo->acao = acao;
     novo->proximo = nullptr;
 
-    if (lista == nullptr) {
-        lista = novo;
+    if (!lista) {
+        lista = std::move(novo);
         return;
     }
 
-    Node* atual = lista;
-    while (atual->proximo != nullptr) {
-        atual = atual->proximo;
+    Node* atual = lista.get();
+
+    while (atual->proximo) {
+        atual = atual->proximo.get();
     }
-    atual->proximo = novo;
+
+    atual->proximo = std::move(novo);
 }
 
 void Macro::removerDispositivo(int id, std::string acao) {
-    Node* atual = lista;
-    Node* anterior = nullptr;
 
-    while (atual != nullptr) {
-        if (atual->id == id && atual->acao == acao) {
-            if (anterior == nullptr) {
-                lista = atual->proximo;
-            } else {
-                anterior->proximo = atual->proximo;
-            }
-            delete atual;
+    if (!lista) {
+        return;
+    }
+
+    if (lista->id == id && lista->acao == acao) {
+        lista = std::move(lista->proximo);
+        return;
+    }
+
+    Node* atual = lista.get();
+
+    while (atual->proximo) {
+
+        if (atual->proximo->id == id &&
+            atual->proximo->acao == acao) {
+
+            atual->proximo =
+                std::move(atual->proximo->proximo);
+
             return;
         }
-        anterior = atual;
-        atual = atual->proximo;
+
+        atual = atual->proximo.get();
     }
 }
