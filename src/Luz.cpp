@@ -1,6 +1,7 @@
 #include "Luz.hpp"
 #include <string>
 #include <iostream>
+#include <stdexcept>
 
 Luz::Luz() : Dispositivo(), intensidade(1) {
     this->estado = false; 
@@ -38,9 +39,7 @@ void Luz::ajustarIntensidade(int novaIntensidade) {
 
 
 void Luz::detectarErro() {
-    if (this->intensidade < 1 || this->intensidade > 5) {
-        this->erro = true;  
-    }
+    this->erro = (this->intensidade < 1 || this->intensidade > 5);
 }
 
 

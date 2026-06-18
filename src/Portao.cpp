@@ -1,6 +1,7 @@
 #include "Portao.hpp"
 #include <string>
 #include <iostream>
+#include <stdexcept>
 
 Portao::Portao() : Dispositivo(), segundos(30) {
     this->estado = false;
@@ -51,10 +52,11 @@ void Portao::fecharAutomaticamente() {
 }
 
 void Portao::detectarErro() {
-    
-    if (this->segundos < 0) {
-        this->erro = true;
-        this->segundos = 0; 
+
+    this->erro = (this->segundos < 0);
+
+    if (this->erro) {
+        this->segundos = 0;
     }
 }
 

@@ -1,6 +1,7 @@
 #include "ArCondicionado.hpp"
 #include <string>
 #include <iostream>
+#include <stdexcept>
 
 ArCondicionado::ArCondicionado() : Dispositivo(), temperatura(22) {
     this->estado = false;
@@ -36,9 +37,7 @@ void ArCondicionado::ajustarTemperatura(int temp) {
 }
 
 void ArCondicionado::detectarErro() {
-    if (temperatura < 15 || temperatura > 30){
-        this->erro = true;
-    }
+    this->erro = (temperatura < 15 || temperatura > 30);
 }
 
 std::string ArCondicionado::getEstadoFormatado() const {
