@@ -44,7 +44,16 @@ int Som::getVolume() const {
 }
 
 void Som::setVolume(int nVol){
-    _volume = nVol;
+    try {
+        if (nVol < 0 || nVol > 100) {
+            throw std::out_of_range("Volume inválido.");
+        }
+
+        _volume = nVol;
+    }
+    catch (const std::out_of_range& e) {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 bool Som::getPause() const{
@@ -201,8 +210,8 @@ void Som::detectarErro() {
 }
 
 std::string Som::getEstadoFormatado() const {
-    std::string estado_str = this->estado ? "ligado" : "desligado";
-    std::string resposta = std::to_string(this->getId()) + " Som " + estado_str + " " + std::to_string(this->_volume);
+    std::string estado_str = this->estado ? "Ligado" : "Desligado";
+    std::string resposta = std::to_string(this->getId()) + " Som " + estado_str + " Volume: " + std::to_string(this->_volume);
     if (this->erro) {
         resposta += " ⚠️";
     }

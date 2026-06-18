@@ -1,5 +1,6 @@
 #include "Portao.hpp"
 #include <string>
+#include <iostream>
 
 Portao::Portao() : Dispositivo(), segundos(30) {
     this->estado = false;
@@ -14,7 +15,16 @@ int Portao::getTemporizador() const {
 }
 
 void Portao::setTemporizador(int segundos) {
-    this->segundos = segundos;
+    try {
+        if (segundos <= 0) {
+            throw std::invalid_argument("O tempo deve ser maior que zero");
+        }
+
+        this->segundos = segundos;
+
+    } catch (const std::invalid_argument& e) {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 void Portao::fecharAutomaticamente() {
@@ -49,8 +59,8 @@ void Portao::detectarErro() {
 }
 
 std::string Portao::getEstadoFormatado() const {
-    std::string estado_str = this->estado ? "aberto" : "fechado";
-    std::string resposta = std::to_string(this->getId()) + " Portao " + estado_str + " " + std::to_string(this->segundos);
+    std::string estado_str = this->estado ? "Aberto" : "Fechado";
+    std::string resposta = std::to_string(this->getId()) + " Portao " + estado_str + " Temporizador: " + std::to_string(this->segundos);
     if (this->erro) {
         resposta += " ⚠️";
     }

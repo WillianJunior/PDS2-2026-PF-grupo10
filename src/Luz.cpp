@@ -1,6 +1,6 @@
 #include "Luz.hpp"
 #include <string>
-
+#include <iostream>
 
 Luz::Luz() : Dispositivo(), intensidade(1) {
     this->estado = false; 
@@ -24,8 +24,15 @@ int Luz::getIntensidade() const {
 
 
 void Luz::ajustarIntensidade(int novaIntensidade) {
-    if (novaIntensidade >= 1 && novaIntensidade <= 5) {
+    try {
+        if (novaIntensidade < 1 || novaIntensidade > 5) {
+            throw std::invalid_argument("Intensidade inválida.");
+        }
+
         this->intensidade = novaIntensidade;
+    }
+    catch (const std::invalid_argument& e) {
+        std::cout << e.what() << std::endl;
     }
 }
 
@@ -38,8 +45,8 @@ void Luz::detectarErro() {
 
 
 std::string Luz::getEstadoFormatado() const {
-    std::string estado_str = this->estado ? "ligada" : "desligada";
-    std::string resposta = std::to_string(this->getId()) + " Luz " + estado_str + " " + std::to_string(this->intensidade);
+    std::string estado_str = this->estado ? "Ligada" : "Desligada";
+    std::string resposta = std::to_string(this->getId()) + " Luz " + estado_str + " Intensidade: " + std::to_string(this->intensidade);
     if (this->erro) {
         resposta += " ⚠️";
     }

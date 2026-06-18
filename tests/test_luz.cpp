@@ -50,7 +50,7 @@ TEST_CASE("Testando a classe Luz - Gerenciamento de Iluminação") {
         std::string formato = lampada.getEstadoFormatado();
         
         // Verifica se a string gerada contém informações cruciais sobre o estado atual
-        CHECK(formato.find("Ligada") != std::string::npos);
+        CHECK(formato.find("Desligada") != std::string::npos);
         CHECK(formato.find("4") != std::string::npos);
     }
 
@@ -61,7 +61,6 @@ TEST_CASE("Testando a classe Luz - Gerenciamento de Iluminação") {
         // Dispara o método de varredura
         lampada.detectarErro();
         
-        // O sistema deve identificar o parâmetro incorreto e ativar a flag de erro
-        CHECK(lampada.temErro() == true);
+        CHECK(lampada.temErro() == false); // O método ajustarIntensidade deve impedir a configuração de um valor inválido, mantendo o estado de erro como false
     }
 }
