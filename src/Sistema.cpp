@@ -1,16 +1,16 @@
-#include "Sistema.hpp"
+#include "../include/Sistema.hpp"
 #include <iostream>
 #include <sstream>
 #include <algorithm>
 #include <vector>
 #include <fstream>
+#include <stdexcept> 
+#include <memory>    
 
-Sistema::Sistema() : ativo(false), sensor(new Sensor(10)) {
+Sistema::Sistema() : ativo(false), sensor(std::make_unique<Sensor>(10)) {
 }
 
 Sistema::~Sistema() {
-    comodos.clear();
-    delete sensor;
 }
 
 const Comodo* Sistema::getComodo(int i) const {
@@ -21,13 +21,13 @@ const Comodo* Sistema::getComodo(int i) const {
     return &comodos[i];
 }
 
-int Sistema::getQtdComodos() const{
+int Sistema::getQtdComodos() const {
     int quantidade = comodos.size();
     return quantidade;
 }
 
 Sensor* Sistema::getSensor() const {
-    return sensor;
+    return sensor.get();
 }
 
 bool Sistema::estaAtivo() const {
@@ -43,15 +43,19 @@ void Sistema::adicionarComodo(Comodo& comodo) {
 }
 
 void Sistema::removerComodo(const Comodo& comodo) {
-    auto it = std::find_if(comodos.begin(), comodos.end(), [&comodo](const Comodo& c){return &c == &comodo;});
-    if(it != comodos.end()){ comodos.erase(it); }
+    auto it = std::find_if(comodos.begin(), comodos.end(), [&comodo](const Comodo& c){
+        return &c == &comodo;
+    });
+    if (it != comodos.end()) { 
+        comodos.erase(it); 
+    }
 }
 
 void Sistema::gerarRelatorio(const std::string& caminhoArquivo) const {
     std::ofstream arquivo(caminhoArquivo);
+    
     if (!arquivo.is_open()) {
-        std::cerr << "Erro ao abrir arquivo para escrita: " << caminhoArquivo << std::endl;
-        return;
+        throw std::runtime_error("Erro crítico: Não foi possível abrir ou criar o arquivo de relatório em: " + caminhoArquivo);
     }
 
     for (const auto& comodo : comodos) {

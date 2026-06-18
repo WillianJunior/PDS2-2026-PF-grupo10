@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <memory> // Incluído para usar o std::unique_ptr (C9 - RAII)
 
 #include "Comodo.hpp"
 #include "Sensor.hpp"
@@ -19,68 +20,68 @@ private:
 
     bool ativo;           ///< Indica se o sistema está ativo
     std::vector<Comodo> comodos;     ///< Vetor de ponteiros para os cômodos
-    Sensor* sensor;       ///< Sensor responsável pelo monitoramento do sistema
+    std::unique_ptr<Sensor> sensor;   ///< C9 - Sensor gerenciado por Smart Pointer (RAII)
 
 public:
 
     /** @brief Construtor padrão da classe Sistema. 
-     *  Inicializa os componentes principais do sistema de automação residencial.
-     *  Aloca e configura a estrutura interna da casa, inicializa o sensor principal
-     *  e o vetor dinâmico de macros. */
+     * Inicializa os componentes principais do sistema de automação residencial.
+     * Aloca e configura a estrutura interna da casa, inicializa o sensor principal
+     * e o vetor dinâmico de macros. */
     Sistema();
 
     /** @brief Destrutor da classe Sistema. 
-     *  Garante a liberação correta de memória e recursos. Desaloca os ponteiros
-     *  armazenados no vetor de comodos e destrói o objeto sensor associado,
-     *  evitando vazamentos de memória. */
+     * Garante a liberação correta de memória e recursos. Desaloca os ponteiros
+     * armazenados no vetor de comodos e destrói o objeto sensor associado,
+     * evitando vazamentos de memória. */
     ~Sistema();
 
     /** @brief Identifica um cômodo específico da casa com base no seu índice de armazenamento. 
-     *  @param i Índice posicional do cômodo dentro do vetor de gerenciamento da casa.
-     *  @return Comodo* Ponteiro para o objeto do cômodo correspondente se o índice for válido;
-     *      Retorna `nullptr` caso o índice seja negativo ou maior/igual ao tamanho do vetor. */
+     * @param i Índice posicional do cômodo dentro do vetor de gerenciamento da casa.
+     * @return Comodo* Ponteiro para o objeto do cômodo correspondente se o índice for válido;
+     * Retorna `nullptr` caso o índice seja negativo ou maior/igual ao tamanho do vetor. */
     const Comodo* getComodo(int i) const;
 
     /** @brief Retorna o sensor principal associado e gerenciado pelo sistema. 
-     *  Permite o acesso externo ao objeto de monitoramento para leitura de estados,
-     *  ou configurações diretas no dispositivo de entrada.
-     *  @return Sensor* Ponteiro para a instância do objeto Sensor ativo no sistema. */
+     * Permite o acesso externo ao objeto de monitoramento para leitura de estados,
+     * ou configurações diretas no dispositivo de entrada.
+     * @return Sensor* Ponteiro para a instância do objeto Sensor ativo no sistema. */
     Sensor* getSensor() const;
 
     /** @brief Retorna a quantidade de cômodos cadastrados no sistema.
-     *  Esta função retorna o número total de objetos Comodo
-     *  armazenados no vetor de cômodos do sistema.
-     *  @return int Quantidade de cômodos cadastrados.*/
+     * Esta função retorna o número total de objetos Comodo
+     * armazenados no vetor de cômodos do sistema.
+     * @return int Quantidade de cômodos cadastrados.*/
     int getQtdComodos() const;
 
     /** @brief Verifica o estado de operação atual do sistema. 
-     *  Método de consulta que indica se as rotinas de automação, monitoramento
-     *  e resposta à comandos estão ativos no momento.
-     *  @return true Se o sistema estiver inicializado e rodando ativamente.
-     *  @return false Se o sistema estiver desligado. */
+     * Método de consulta que indica se as rotinas de automação, monitoramento
+     * e resposta à comandos estão ativos no momento.
+     * @return true Se o sistema estiver inicializado e rodando ativamente.
+     * @return false Se o sistema estiver desligado. */
     bool estaAtivo() const;
 
     /** @brief Inicia o loop principal de execução do sistema.
-     *  Altera o estado do sistema para ativo, coloca os sensores em modo de leitura
-     *  e passa a receber, processar e responder aos comandos do usuário. */
+     * Altera o estado do sistema para ativo, coloca os sensores em modo de leitura
+     * e passa a receber, processar e responder aos comandos do usuário. */
     void executarSistema();
 
     //removido receberComando(). Redundante com Interface Textual
 
     /** @brief Adiciona um novo cômodo à estrutura de gerenciamento da casa. 
-     *  Insere o objeto fornecido no vetor interno de cômodos do sistema.
-     *  @param comodo Referência para o objeto Comodo que se deseja vincular ao sistema. */
+     * Insere o objeto fornecido no vetor interno de cômodos do sistema.
+     * @param comodo Referência para o objeto Comodo que se deseja vincular ao sistema. */
     void adicionarComodo(Comodo& comodo);
 
     /** @brief Remove um cômodo específico do sistema de monitoramento. 
-     *  Varre a lista de cômodos cadastrados para encontrar o que corresponda à referência fornecida.
-     *  O cômodo deixa de responder aos comandos globais do sistema.
-     *  @param comodo Referência constante para o objeto Comodo que se deseja desvincular do sistema. */
+     * Varre a lista de cômodos cadastrados para encontrar o que corresponda à referência fornecida.
+     * O cômodo deixa de responder aos comandos globais do sistema.
+     * @param comodo Referência constante para o objeto Comodo que se deseja desvincular do sistema. */
     void removerComodo(const Comodo& comodo);
 
     /** @brief Gera um arquivo com as informações atuais de todos os cômodos e dispositivos.
-     *  O arquivo contém uma linha por dispositivo com formato: id dispositivo estado valor [emoji_alerta]
-     *  @param caminhoArquivo Caminho e nome do arquivo a ser gerado. */
+     * O arquivo contém uma linha por dispositivo com formato: id dispositivo estado valor [emoji_alerta]
+     * @param caminhoArquivo Caminho e nome do arquivo a ser gerado. */
     void gerarRelatorio(const std::string& caminhoArquivo) const;
 
     /** @brief Recebe e processa um comando informado pelo usuário.
