@@ -33,7 +33,7 @@ void Usuario::adicionarMacro(std::string evento, Usuario& user) {
     if (evento.empty()) {
         throw std::invalid_argument("Erro: O nome do evento para a macro não pode ser vazio.");
     }
-    macros.push_back(std::make_unique<Macro>(evento));
+    macros.push_back(std::unique_ptr<Macro>(new Macro(evento)));
 }
 
 void Usuario::removerMacro(std::string evento, Usuario& user) {

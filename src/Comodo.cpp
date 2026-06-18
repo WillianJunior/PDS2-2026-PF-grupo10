@@ -6,30 +6,22 @@ Comodo::Comodo() : nome("") {
 Comodo::Comodo(const std::string& nome) : nome(nome) {
 }
 
-Comodo::~Comodo() {
-    for (Dispositivo* dispositivo : dispositivos) {
-        delete dispositivo;
-    }
-    dispositivos.clear();
-}
-
 Dispositivo* Comodo::getDispositivo(int id) const {
-    for (Dispositivo* dispositivo : dispositivos) {
-        if (dispositivo != nullptr && dispositivo->getId() == id) {
-            return dispositivo;
+    for (const auto& dispositivo : dispositivos) {
+        if (dispositivo && dispositivo->getId() == id) {
+            return dispositivo.get();
         }
     }
     return nullptr;
 }
 
-void Comodo::adicionarDispositivo(Dispositivo* dispositivo) {
-    dispositivos.push_back(dispositivo);
+void Comodo::adicionarDispositivo(std::unique_ptr<Dispositivo> dispositivo) {
+    dispositivos.push_back(std::move(dispositivo));
 }
 
 void Comodo::removerDispositivo(int id) {
     for (auto it = dispositivos.begin(); it != dispositivos.end(); ++it) {
-        if (*it != nullptr && (*it)->getId() == id) {
-            delete *it;
+        if (*it && (*it)->getId() == id) {
             dispositivos.erase(it);
             return;
         }
@@ -41,8 +33,10 @@ int Comodo::getQtdDispositivos() const {
 }
 
 Dispositivo* Comodo::getDispositivoPorIndice(int idx) const {
-    if (idx < 0 || idx >= static_cast<int>(dispositivos.size())) return nullptr;
-    return dispositivos[idx];
+    if (idx < 0 || idx >= static_cast<int>(dispositivos.size())){
+        return nullptr;
+    }
+    return dispositivos[idx].get();
 }
 
 std::string Comodo::getNome() const {

@@ -7,7 +7,7 @@
 #include <stdexcept> 
 #include <memory>    
 
-Sistema::Sistema() : ativo(false), sensor(std::make_unique<Sensor>(10)) {
+Sistema::Sistema() : ativo(false), sensor(std::unique_ptr<Sensor>(new Sensor(10))) {
 }
 
 Sistema::~Sistema() {

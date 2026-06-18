@@ -7,6 +7,7 @@
 #include "Sistema.hpp"
 #include "Sensor.hpp"
 #include "Usuario.hpp"
+#include "Comodo.hpp"
 
 #include <cstdlib>
 #include <fstream>
@@ -14,7 +15,7 @@
 #include <algorithm>
 #include <cctype>
 
-InterfaceTextual::InterfaceTextual() : ativa(false), sistema(new Sistema), usuarioAtual(nullptr), menuAtual(" "), comodoFocado(" "), dispositivoFocadoID(0){
+InterfaceTextual::InterfaceTextual() : ativa(false), sistema(new Sistema), usuarioAtual(nullptr), menuAtual(""), comodoFocado(""), dispositivoFocadoID(0){
 }
 
 void InterfaceTextual::iniciar() {
@@ -204,7 +205,7 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
               else if (tipo == 4) novo = new Portao();
 
               if (novo != nullptr) {
-                  comodoAtual->adicionarDispositivo(novo);
+                  comodoAtual->adicionarDispositivo(std::unique_ptr<Dispositivo>(novo));
                   std::cout << "Dispositivo adicionado com ID: " << novo->getId() << std::endl;
               }
           }

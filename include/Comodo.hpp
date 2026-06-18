@@ -3,6 +3,8 @@
 
 #include "Dispositivo.hpp"
 #include <vector>
+#include <memory>
+#include <string>
 
 /** @class Comodo
  *  @brief Representa cada espaço físico da casa e gerencia seus dispositivos.
@@ -12,7 +14,7 @@ class Comodo{
     
 private:
     std::string nome;                         ///< Nome do cômodo
-    std::vector<Dispositivo*> dispositivos;   ///< Vetor de ponteiros para os dispositivos do Comodo
+    std::vector<std::unique_ptr<Dispositivo>> dispositivos;   ///< Vetor de ponteiros para os dispositivos do Comodo
 
 public:
     /** @brief Construtor padrão da classe Comodo.
@@ -30,7 +32,7 @@ public:
      *  Libera a memória e os recursos associados ao cômodo, limpando o contêiner de macros
      *  e gerenciando a destruição ou desvinculação da lista de dispositivos alocados para
      *  evitar vazamentos de memória. */
-    ~Comodo();
+    ~Comodo() = default;
 
     /** @brief Busca um dispositivo cadastrado no cômodo através do seu identificador.
      *  Percorre a lista interna comparando o ID fornecido com o de cada dispositivo.
@@ -41,7 +43,7 @@ public:
     /** @brief Insere um novo dispositivo no mapa de controle do cômodo.
      *  Adiciona o ponteiro do objeto ao contêiner interno.
      *  @param dispositivo Ponteiro para o objeto do dispositivo a ser acoplado. */
-    void adicionarDispositivo(Dispositivo* dispositivo);
+    void adicionarDispositivo(std::unique_ptr<Dispositivo> dispositivo);
 
     /** @brief Remove um dispositivo do cômodo com base no seu ID.
      *  Busca o dispositivo pelo identificador, retira sua referência do contêiner interno e, se necessário,

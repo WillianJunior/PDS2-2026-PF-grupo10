@@ -26,6 +26,9 @@ public:
      *  o contador estático global `qtdDispositivos`. */
     Dispositivo();
 
+    Dispositivo(const Dispositivo&) = delete;
+    Dispositivo& operator=(const Dispositivo&) = delete;
+
     /** @brief Destrutor virtual da classe Dispositivo.
      *  Garante que os destrutores das classes derivadas (como Luz, Som, ArCondicionado) sejam chamados
      *  corretamente ao deletar um objeto por meio de um ponteiro da classe base, evitando vazamentos de memória.
