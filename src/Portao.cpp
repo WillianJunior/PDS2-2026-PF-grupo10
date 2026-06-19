@@ -4,11 +4,6 @@
 #include <stdexcept>
 
 Portao::Portao() : Dispositivo(), segundos(30) {
-    this->estado = false;
-    this->erro = false;
-}
-
-Portao::~Portao() {
 }
 
 int Portao::getTemporizador() const {

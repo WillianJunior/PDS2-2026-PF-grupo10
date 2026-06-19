@@ -20,10 +20,8 @@ public:
      *  O ID exclusivo é fornecido pela classe base Dispositivo. */
     ArCondicionado();
 
-    /** @brief Destrutor da classe ArCondicionado.
-     *  Libera os recursos alocados para o módulo de climatização e encerra
-     *  a comunicação ativa do aparelho. */
-    ~ArCondicionado();
+    /** @brief Destrutor padrão da classe ArCondicionado. */
+    ~ArCondicionado() = default;
 
     void ligar();
 

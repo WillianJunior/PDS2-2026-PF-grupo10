@@ -21,10 +21,8 @@ public:
      *  @param tempoVerificacao Intervalo de tempo inicial (em segundos) entre as checagens do sensor. */
     Sensor(int tempoVerificacao);
 
-    /** @brief Destrutor da classe Sensor.
-     *  Libera a memória e os recursos associados ao sensor, limpando o histórico de strings
-     *  armazenadas no vetor de alertas para evitar desperdício de memória. */
-    ~Sensor();
+    /** @brief Destrutor padrão da classe Sensor. */
+    ~Sensor() = default;
 
     /** @brief Consulta o intervalo atual de varredura do sensor.
      *  @return int O tempo de ciclo atual configurado, expresso em segundos. */

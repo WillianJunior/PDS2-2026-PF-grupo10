@@ -28,32 +28,20 @@ TEST_CASE("Testes de Unidade - Classe Sistema") {
     }
 
     SUBCASE("Gerenciamento de Cômodos (Adicionar, Consultar e Tratar Limites)") {
-        // Criando cômodos de teste para avaliar as regras de negócio
-        Comodo sala;
-        Comodo cozinha;
-
-        // Adicionando cômodo
-        sistemaHome.adicionarComodo(sala);
-        sistemaHome.adicionarComodo(cozinha);
-        
-        // Valida se o cômodo foi armazenado e pode ser recuperado com sucesso
-        //Comodo* cRecuperado = sistemaHome.getComodo(0);
-        //REQUIRE(cRecuperado != nullptr); // REQUIRE para o teste se não conseguir ponteiro válido
-        //CHECK(cRecuperado->getComodo() == "Sala de Estar");
-
-        // Adicionando um segundo cômodo e testando limites de índice inválidos
-        // sistemaHome.adicionarComodo(cozinha);
-        CHECK(sistemaHome.getComodo(0) == nullptr);
-
+        // Adicionando cômodos
+        sistemaHome.adicionarComodo(std::unique_ptr<Comodo>(new Comodo("Sala de Estar")));
+        sistemaHome.adicionarComodo(std::unique_ptr<Comodo>(new Comodo("Cozinha")));
+        // Verifica se os cômodos foram armazenados corretamente
+        CHECK(sistemaHome.getComodo(0) != nullptr);
         CHECK(sistemaHome.getComodo(1) != nullptr);
 
-        // Índice fora do limite
+        // Índices inválidos
+        CHECK(sistemaHome.getComodo(-1) == nullptr);
         CHECK(sistemaHome.getComodo(2) == nullptr);
     }
 
     SUBCASE("Remoção de Cômodos e Validação de Ponteiros") {
-        Comodo quarto;
-        sistemaHome.adicionarComodo(quarto);
+        sistemaHome.adicionarComodo(std::unique_ptr<Comodo>(new Comodo("Quarto")));
 
         // Recupera ponteiro antes da remoção
         const Comodo* cAntes = sistemaHome.getComodo(0);
@@ -61,7 +49,7 @@ TEST_CASE("Testes de Unidade - Classe Sistema") {
         REQUIRE(cAntes != nullptr);
 
         // Remove cômodo
-        sistemaHome.removerComodo(*cAntes);
+        sistemaHome.removerComodo(cAntes);
 
         // Verifica remoção
         CHECK(sistemaHome.getComodo(0) == nullptr);

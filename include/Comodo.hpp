@@ -28,10 +28,8 @@ public:
      *  @param nome Nome do cômodo (ex: "Sala", "Cozinha") */
     Comodo(const std::string& nome);
 
-    /** @brief Destrutor da classe Comodo.
-     *  Libera a memória e os recursos associados ao cômodo, limpando o contêiner de macros
-     *  e gerenciando a destruição ou desvinculação da lista de dispositivos alocados para
-     *  evitar vazamentos de memória. */
+    /** @brief Destrutor padrão da classe Comodo.
+     * Os dispositivos são destruídos automaticamente pelo std::vector<std::unique_ptr>. */
     ~Comodo() = default;
 
     /** @brief Busca um dispositivo cadastrado no cômodo através do seu identificador.

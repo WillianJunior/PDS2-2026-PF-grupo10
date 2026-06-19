@@ -4,11 +4,6 @@
 #include <stdexcept>
 
 Luz::Luz() : Dispositivo(), intensidade(1) {
-    this->estado = false; 
-    this->erro = false;
-}
-
-Luz::~Luz() {
 }
 
 void Luz::ligar() { 

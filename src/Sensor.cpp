@@ -11,8 +11,6 @@ Sensor::Sensor(int temp) : tempoVerificacao(temp)
     }
 }
 
-Sensor::~Sensor() {}
-
 int Sensor::getTempoVerificacao() const {
     return tempoVerificacao;
 }
@@ -50,5 +48,6 @@ void Sensor::salvarAlertas() {
 
     for (size_t i = 0; i < alertas.size(); ++i) {
         arquivo << alertas[i] << '\n';
+    }
 }
 

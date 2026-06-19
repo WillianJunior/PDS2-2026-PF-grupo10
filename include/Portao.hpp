@@ -20,11 +20,8 @@ public:
      * (30 segundos) para fechamento automático e garante que os flags de erro comecem limpos (falsos). */
     Portao();
 
-    /** @brief Destrutor da classe Portao.
-     *  Responsável por liberar quaisquer recursos de hardware ou memória alocados
-     *  dinamicamente para este portão específico. Garante um encerramento seguro,
-     *  interrompendo rotinas de temporização ativas antes da destruição do objeto. */
-    ~Portao();
+    /** @brief Destrutor padrão da classe Portao. */
+    ~Portao() = default;
 
     /** @brief Consulta o tempo restante ou configurado no temporizador.
      *  Recupera o valor atual do cronômetro interno que gerencia o fechamento

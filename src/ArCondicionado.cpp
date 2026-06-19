@@ -4,11 +4,6 @@
 #include <stdexcept>
 
 ArCondicionado::ArCondicionado() : Dispositivo(), temperatura(22) {
-    this->estado = false;
-    this->erro = false;
-}
-
-ArCondicionado::~ArCondicionado() {
 }
 
 void ArCondicionado::ligar() {

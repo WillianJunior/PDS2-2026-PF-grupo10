@@ -1,10 +1,10 @@
 #include "Macro.hpp"
 #include <cctype>
+#include <stdexcept>
 
 int Macro::qtdMacros = 0;
 
-Macro::Macro(std::string evento) : evento(evento), lista(nullptr)
-{
+Macro::Macro(std::string evento) : evento(evento), lista(nullptr){
     qtdMacros++;
 }
 
@@ -43,7 +43,7 @@ void Macro::setEvento(std::string evento) {
 
 void Macro::adicionarDispositivo(int id, std::string acao) {
 
-    auto novo = std::make_unique<Node>();
+    auto novo = std::unique_ptr<Node>(new Node());
     novo->id = id;
     novo->acao = acao;
     novo->proximo = nullptr;

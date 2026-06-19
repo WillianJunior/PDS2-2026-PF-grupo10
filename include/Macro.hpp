@@ -36,9 +36,9 @@ public:
      *  @param evento Nome identificador do evento associado a esta macro. */
     Macro(std::string evento);
 
-    /** @brief Destrutor da classe Macro.
-     *  Libera a memória de todos os nós da lista encadeada de ações para evitar vazamento de memória
-     *  e decrementa o contador estático global `qtdMacros`. */
+    /** @brief Destrutor padrão da classe Macro.
+     *  Decrementa o contador global de macros.
+     *  A lista encadeada é liberada automaticamente por std::unique_ptr. */
     ~Macro(); 
     
     /** @brief Consulta o nome do evento associado à macro.

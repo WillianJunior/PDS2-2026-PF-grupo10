@@ -19,7 +19,7 @@ class Sistema {
 private:
 
     bool ativo;           ///< Indica se o sistema está ativo
-    std::vector<Comodo> comodos;     ///< Vetor de ponteiros para os cômodos
+    std::vector<std::unique_ptr<Comodo>> comodos;    ///< Vetor de cômodos gerenciados por smart pointers (RAII).
     std::unique_ptr<Sensor> sensor;   ///< C9 - Sensor gerenciado por Smart Pointer (RAII)
 
 public:
@@ -30,11 +30,8 @@ public:
      * e o vetor dinâmico de macros. */
     Sistema();
 
-    /** @brief Destrutor da classe Sistema. 
-     * Garante a liberação correta de memória e recursos. Desaloca os ponteiros
-     * armazenados no vetor de comodos e destrói o objeto sensor associado,
-     * evitando vazamentos de memória. */
-    ~Sistema();
+    /** @brief Destrutor padrão da classe Sistema. */
+    ~Sistema() = default;
 
     /** @brief Identifica um cômodo específico da casa com base no seu índice de armazenamento. 
      * @param i Índice posicional do cômodo dentro do vetor de gerenciamento da casa.
@@ -71,13 +68,13 @@ public:
     /** @brief Adiciona um novo cômodo à estrutura de gerenciamento da casa. 
      * Insere o objeto fornecido no vetor interno de cômodos do sistema.
      * @param comodo Referência para o objeto Comodo que se deseja vincular ao sistema. */
-    void adicionarComodo(Comodo& comodo);
+    void adicionarComodo(std::unique_ptr<Comodo> comodo);
 
     /** @brief Remove um cômodo específico do sistema de monitoramento. 
      * Varre a lista de cômodos cadastrados para encontrar o que corresponda à referência fornecida.
      * O cômodo deixa de responder aos comandos globais do sistema.
      * @param comodo Referência constante para o objeto Comodo que se deseja desvincular do sistema. */
-    void removerComodo(const Comodo& comodo);
+    void removerComodo(const Comodo* comodo);
 
     /** @brief Gera um arquivo com as informações atuais de todos os cômodos e dispositivos.
      * O arquivo contém uma linha por dispositivo com formato: id dispositivo estado valor [emoji_alerta]

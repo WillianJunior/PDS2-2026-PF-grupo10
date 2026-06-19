@@ -7,18 +7,15 @@
 #include <stdexcept> 
 #include <memory>    
 
-Sistema::Sistema() : ativo(false), sensor(std::unique_ptr<Sensor>(new Sensor(10))) {
-}
-
-Sistema::~Sistema() {
+Sistema::Sistema() : ativo(false), sensor(std::unique_ptr<Sensor>(new Sensor(10))), comodos() {
 }
 
 const Comodo* Sistema::getComodo(int i) const {
-    int quantidade = comodos.size();
-    if (i < 0 || i >= quantidade) {
+    if (i < 0 || i >= static_cast<int>(comodos.size())) {
         return nullptr;
     }
-    return &comodos[i];
+
+    return comodos[i].get();
 }
 
 int Sistema::getQtdComodos() const {
@@ -38,14 +35,14 @@ void Sistema::executarSistema() {
     ativo = true;
 }
 
-void Sistema::adicionarComodo(Comodo& comodo) {
-    comodos.push_back(comodo);
+void Sistema::adicionarComodo(std::unique_ptr<Comodo> comodo) {
+    comodos.push_back(std::move(comodo));
 }
 
-void Sistema::removerComodo(const Comodo& comodo) {
-    auto it = std::find_if(comodos.begin(), comodos.end(), [&comodo](const Comodo& c){
-        return &c == &comodo;
-    });
+void Sistema::removerComodo(const Comodo* comodo) {
+    auto it = std::find_if(comodos.begin(), comodos.end(), [&comodo](const std::unique_ptr<Comodo>& c){
+        return c.get() == comodo;});
+
     if (it != comodos.end()) { 
         comodos.erase(it); 
     }
@@ -59,17 +56,15 @@ void Sistema::gerarRelatorio(const std::string& caminhoArquivo) const {
     }
 
     for (const auto& comodo : comodos) {
-        arquivo << std::endl << comodo.getNome() << std::endl;
+        arquivo << std::endl << comodo->getNome() << std::endl;
         
-        for (int i = 0; i < comodo.getQtdDispositivos(); ++i) {
-            const Dispositivo* dispositivo = comodo.getDispositivoPorIndice(i);
+        for (int i = 0; i < comodo->getQtdDispositivos(); i++) {
+            const Dispositivo* dispositivo = comodo->getDispositivoPorIndice(i);
             if (dispositivo != nullptr) {
                 arquivo << dispositivo->getEstadoFormatado() << std::endl;
             }
         }
     }
-
-    arquivo.close();
 }
 
 void Sistema::receberComando(std::string comando) {

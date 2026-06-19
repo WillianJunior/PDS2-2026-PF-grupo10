@@ -187,11 +187,10 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
           std::cout << "Nome do comodo: ";
           std::cin.ignore();
           std::getline(std::cin, nomeComodo);
-          Comodo novoComodo(nomeComodo);
-          sistema->adicionarComodo(novoComodo);
+          sistema->adicionarComodo(std::unique_ptr<Comodo>(new Comodo(nomeComodo)));
       }else if (Fcomando == "remover comodo") {
           if (comodoAtual != nullptr) {
-              sistema->removerComodo(*comodoAtual);
+              sistema->removerComodo(comodoAtual);
           }
       }else if (Fcomando == "adicionar dispositivo") {
           if (comodoAtual != nullptr) {
@@ -250,21 +249,21 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
               std::string evento;
               std::cout << "Evento para a macro: ";
               std::cin >> evento;
-              usuarioAtual->adicionarMacro(evento, *usuarioAtual);
+              usuarioAtual->adicionarMacro(evento);
           }
       }else if (Fcomando == "remover macro") {
           if (usuarioAtual != nullptr) {
               std::string evento;
               std::cout << "Nome do evento da macro a remover: ";
               std::cin >> evento;
-              usuarioAtual->removerMacro(evento, *usuarioAtual);
+              usuarioAtual->removerMacro(evento);
           }
       }else if (Fcomando == "executar macro") {
           if (usuarioAtual != nullptr) {
               std::string evento;
               std::cout << "Nome do evento para executar: ";
               std::cin >> evento;
-              usuarioAtual->executarMacro(evento, *usuarioAtual);
+              usuarioAtual->executarMacro(evento);
           }
       }else {
           std::cout << "Comando invalido ou nao reconhecido.\n";

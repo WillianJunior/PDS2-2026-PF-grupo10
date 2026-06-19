@@ -102,8 +102,8 @@ TEST_CASE("getDispositivoPorIndice retorna nullptr para indices invalidos") {
 
 TEST_CASE("removerDispositivo remove o dispositivo correto e atualiza o vetor") {
     Comodo comodo;
-    auto d1 = std::make_unique<TestDispositivo>();
-    auto d2 = std::make_unique<TestDispositivo>();
+    std::unique_ptr<TestDispositivo> d1(new TestDispositivo());
+    std::unique_ptr<TestDispositivo> d2(new TestDispositivo());
 
     int id1 = d1->getId();
     int id2 = d2->getId();

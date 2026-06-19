@@ -20,10 +20,8 @@ public:
      *  O ID exclusivo é fornecido pela classe base Dispositivo. */
     Luz();
 
-    /** @brief Destrutor da classe Luz.
-     *  Libera os recursos específicos alocados para este ponto de iluminação e encerra
-     *  qualquer comunicação ou rotina ativa do dispositivo. */
-    ~Luz();
+    /** @brief Destrutor padrão da classe Luz. */
+    ~Luz() = default;
 
     void ligar();
 
