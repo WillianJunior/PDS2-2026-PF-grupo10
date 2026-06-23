@@ -61,6 +61,8 @@ public:
     /** @brief Busca e exibe detalhadamente as propriedades atuais de um aparelho específico.
      *  @param ID Identificador único do dispositivo. */
     void exibirEstado(int ID); 
+
+    void exibirAjuda();
 };
 
 #endif

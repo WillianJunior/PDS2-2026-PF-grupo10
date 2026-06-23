@@ -6,371 +6,269 @@
     <title>GCC Code Coverage Report</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="coverage.css"/>
-    <script src="coverage.js"></script>
   </head>
 
   <body>
-    <div class="Layout-main">
-      <div class="Layout-main-centered-lg" style="max-width: 1280px;">
-        <div class="d-flex flex-justify-center">
-          <h1>GCC Code Coverage Report</h1>
-        </div>
-        <hr class="block-separator"/>
-        <header>
-<div id="summary" class="summary">
-  <div>
-    <table class="legend">
-      <tr>
-        <th scope="row">Directory:</th>
-        <td>src/</td>
-      </tr>
-      <tr>
-        <th scope="row">Coverage:</th>
-        <td class="legend">
-          <span class="coverage-low">low: &ge; 0%</span>
-          <span class="coverage-medium">medium: &ge; 75.0%</span>
-          <span class="coverage-high">high: &ge; 90.0%</span>
-        </td>
-      </tr>
-    </table>
-  </div>
+    <header>
+      <h1>GCC Code Coverage Report</h1>
 
-  <div>
-    <table class="coverage">
-      <tr>
-        <th></th>
-        <th scope="col">Coverage</th>
-        <th scope="col">Exec / Excl / Total</th>
-      </tr>
-      <tr>
-        <th scope="row">Lines:</th>
-        <td class="coverage-low">60.6%</td>
-        <td class="coverage-low">412 / 0 / 680</td>
-      </tr>
-      <tr>
-        <th scope="row">Functions:</th>
-        <td class="coverage-medium">87.6%</td>
-        <td class="coverage-medium">92 / 0 / 105</td>
-      </tr>
-      <tr>
-        <th scope="row">Branches:</th>
-        <td class="coverage-low">23.7%</td>
-        <td class="coverage-low">224 / 0 / 946</td>
-      </tr>
-    </table>
-  </div>
+      <hr/>
+
+      <div class="summary">
+<div>
+  <table class="legend">
+    <tr>
+      <th scope="row">Directory:</th>
+      <td>src/</td>
+    </tr>
+    <tr>
+      <th scope="row">Date:</th>
+      <td>2026-06-18 16:12:24</td>
+    </tr>
+    <tr>
+      <th scope="row">Coverage:</th>
+      <td class="legend">
+        <span class="coverage-low">low: &ge; 0%</span>
+        <span class="coverage-medium">medium: &ge; 75.0%</span>
+        <span class="coverage-high">high: &ge; 90.0%</span>
+      </td>
+    </tr>
+  </table>
 </div>
-        </header>
-        <hr/>
-        <nav>
+
+<div>
+  <table class="coverage">
+    <tr>
+      <th></th>
+      <th scope="col">Exec</th>
+      <th scope="col">Total</th>
+      <th scope="col">Coverage</th>
+    </tr>
+    <tr>
+      <th scope="row">Lines:</th>
+      <td>408</td>
+      <td>695</td>
+      <td class="coverage-low">58.7%</td>
+    </tr>
+    <tr>
+      <th scope="row">Functions:</th>
+      <td>88</td>
+      <td>105</td>
+      <td class="coverage-medium">83.8%</td>
+    </tr>
+    <tr>
+      <th scope="row">Branches:</th>
+      <td>227</td>
+      <td>1004</td>
+      <td class="coverage-low">22.6%</td>
+    </tr>
+  </table>
+</div>
+      </div>
+
+      <hr/>
+    </header>
+
+    <nav>
 <a href="coverage.functions.html">List of functions</a>
+    </nav>
 
-        </nav>
-        <main>
-<div class="Box m-3 filelist">
-  <div class="Box-header py-2 d-flex sticky">
-    <div role="rowheader" class="color-fg-muted flex-auto min-width-0 col-md-2 sortable sorted-ascending">File</div>
-    <div role="rowheader" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline"></div>
-    <div role="rowheader" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 sortable">Lines</div>
-    <div role="rowheader" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 sortable">Functions</div>
-    <div role="rowheader" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 sortable">Branches</div>
-  </div>
-  <div class="Box-row Box-row--focus-gray py-2 d-flex">
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2">
-      <div class="d-flex">
-        <span class="css-truncate css-truncate-target d-block width-fit">
-          <a class="" title="ArCondicionado.cpp" href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html">ArCondicionado.cpp</a>
-        </span>
-      </div>
-    </div>
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline file-list coverage-low">
-      <span style="width: 200px;">
-        <meter class="coverage-low" min="0" max="100" value="67.7" title="67.7%">67.7</meter>
-      </span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="67.7">
-      <span>67.7%</span>
-      <span title="Exec / Excl / Total">21 / 0 / 31</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-medium" data-sort="87.5">
-      <span>87.5%</span>
-      <span title="Exec / Excl / Total">7 / 0 / 8</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="23.1">
-      <span>23.1%</span>
-      <span title="Exec / Excl / Total">6 / 0 / 26</span>
-    </div>
-  </div>
-  <div class="Box-row Box-row--focus-gray py-2 d-flex">
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2">
-      <div class="d-flex">
-        <span class="css-truncate css-truncate-target d-block width-fit">
-          <a class="" title="Comodo.cpp" href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html">Comodo.cpp</a>
-        </span>
-      </div>
-    </div>
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline file-list coverage-high">
-      <span style="width: 200px;">
-        <meter class="coverage-high" min="0" max="100" value="100.0" title="100.0%">100.0</meter>
-      </span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-high" data-sort="100.0">
-      <span>100.0%</span>
-      <span title="Exec / Excl / Total">33 / 0 / 33</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-high" data-sort="100.0">
-      <span>100.0%</span>
-      <span title="Exec / Excl / Total">10 / 0 / 10</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-medium" data-sort="77.8">
-      <span>77.8%</span>
-      <span title="Exec / Excl / Total">28 / 0 / 36</span>
-    </div>
-  </div>
-  <div class="Box-row Box-row--focus-gray py-2 d-flex">
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2">
-      <div class="d-flex">
-        <span class="css-truncate css-truncate-target d-block width-fit">
-          <a class="" title="Dispositivo.cpp" href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html">Dispositivo.cpp</a>
-        </span>
-      </div>
-    </div>
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline file-list coverage-medium">
-      <span style="width: 200px;">
-        <meter class="coverage-medium" min="0" max="100" value="88.2" title="88.2%">88.2</meter>
-      </span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-medium" data-sort="88.2">
-      <span>88.2%</span>
-      <span title="Exec / Excl / Total">15 / 0 / 17</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-high" data-sort="100.0">
-      <span>100.0%</span>
-      <span title="Exec / Excl / Total">6 / 0 / 6</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-unknown" data-sort="-">
-      <span>-%</span>
-      <span title="Exec / Excl / Total">0 / 0 / 0</span>
-    </div>
-  </div>
-  <div class="Box-row Box-row--focus-gray py-2 d-flex">
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2">
-      <div class="d-flex">
-        <span class="css-truncate css-truncate-target d-block width-fit">
-          <a class="" title="InterfaceTextual.cpp" href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html">InterfaceTextual.cpp</a>
-        </span>
-      </div>
-    </div>
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline file-list coverage-low">
-      <span style="width: 200px;">
-        <meter class="coverage-low" min="0" max="100" value="41.2" title="41.2%">41.2</meter>
-      </span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="41.2">
-      <span>41.2%</span>
-      <span title="Exec / Excl / Total">108 / 0 / 262</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-high" data-sort="100.0">
-      <span>100.0%</span>
-      <span title="Exec / Excl / Total">13 / 0 / 13</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="12.7">
-      <span>12.7%</span>
-      <span title="Exec / Excl / Total">65 / 0 / 512</span>
-    </div>
-  </div>
-  <div class="Box-row Box-row--focus-gray py-2 d-flex">
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2">
-      <div class="d-flex">
-        <span class="css-truncate css-truncate-target d-block width-fit">
-          <a class="" title="Luz.cpp" href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html">Luz.cpp</a>
-        </span>
-      </div>
-    </div>
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline file-list coverage-medium">
-      <span style="width: 200px;">
-        <meter class="coverage-medium" min="0" max="100" value="87.1" title="87.1%">87.1</meter>
-      </span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-medium" data-sort="87.1">
-      <span>87.1%</span>
-      <span title="Exec / Excl / Total">27 / 0 / 31</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-high" data-sort="100.0">
-      <span>100.0%</span>
-      <span title="Exec / Excl / Total">8 / 0 / 8</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="50.0">
-      <span>50.0%</span>
-      <span title="Exec / Excl / Total">13 / 0 / 26</span>
-    </div>
-  </div>
-  <div class="Box-row Box-row--focus-gray py-2 d-flex">
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2">
-      <div class="d-flex">
-        <span class="css-truncate css-truncate-target d-block width-fit">
-          <a class="" title="Macro.cpp" href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html">Macro.cpp</a>
-        </span>
-      </div>
-    </div>
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline file-list coverage-high">
-      <span style="width: 200px;">
-        <meter class="coverage-high" min="0" max="100" value="100.0" title="100.0%">100.0</meter>
-      </span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-high" data-sort="100.0">
-      <span>100.0%</span>
-      <span title="Exec / Excl / Total">42 / 0 / 42</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-high" data-sort="100.0">
-      <span>100.0%</span>
-      <span title="Exec / Excl / Total">7 / 0 / 7</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-medium" data-sort="81.8">
-      <span>81.8%</span>
-      <span title="Exec / Excl / Total">18 / 0 / 22</span>
-    </div>
-  </div>
-  <div class="Box-row Box-row--focus-gray py-2 d-flex">
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2">
-      <div class="d-flex">
-        <span class="css-truncate css-truncate-target d-block width-fit">
-          <a class="" title="Portao.cpp" href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html">Portao.cpp</a>
-        </span>
-      </div>
-    </div>
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline file-list coverage-low">
-      <span style="width: 200px;">
-        <meter class="coverage-low" min="0" max="100" value="63.2" title="63.2%">63.2</meter>
-      </span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="63.2">
-      <span>63.2%</span>
-      <span title="Exec / Excl / Total">24 / 0 / 38</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-medium" data-sort="85.7">
-      <span>85.7%</span>
-      <span title="Exec / Excl / Total">6 / 0 / 7</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="23.3">
-      <span>23.3%</span>
-      <span title="Exec / Excl / Total">7 / 0 / 30</span>
-    </div>
-  </div>
-  <div class="Box-row Box-row--focus-gray py-2 d-flex">
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2">
-      <div class="d-flex">
-        <span class="css-truncate css-truncate-target d-block width-fit">
-          <a class="" title="Sensor.cpp" href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html">Sensor.cpp</a>
-        </span>
-      </div>
-    </div>
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline file-list coverage-medium">
-      <span style="width: 200px;">
-        <meter class="coverage-medium" min="0" max="100" value="84.0" title="84.0%">84.0</meter>
-      </span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-medium" data-sort="84.0">
-      <span>84.0%</span>
-      <span title="Exec / Excl / Total">21 / 0 / 25</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-high" data-sort="100.0">
-      <span>100.0%</span>
-      <span title="Exec / Excl / Total">6 / 0 / 6</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="42.3">
-      <span>42.3%</span>
-      <span title="Exec / Excl / Total">11 / 0 / 26</span>
-    </div>
-  </div>
-  <div class="Box-row Box-row--focus-gray py-2 d-flex">
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2">
-      <div class="d-flex">
-        <span class="css-truncate css-truncate-target d-block width-fit">
-          <a class="" title="Sistema.cpp" href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html">Sistema.cpp</a>
-        </span>
-      </div>
-    </div>
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline file-list coverage-medium">
-      <span style="width: 200px;">
-        <meter class="coverage-medium" min="0" max="100" value="83.7" title="83.7%">83.7</meter>
-      </span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-medium" data-sort="83.7">
-      <span>83.7%</span>
-      <span title="Exec / Excl / Total">36 / 0 / 43</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-high" data-sort="100.0">
-      <span>100.0%</span>
-      <span title="Exec / Excl / Total">12 / 0 / 12</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="27.6">
-      <span>27.6%</span>
-      <span title="Exec / Excl / Total">16 / 0 / 58</span>
-    </div>
-  </div>
-  <div class="Box-row Box-row--focus-gray py-2 d-flex">
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2">
-      <div class="d-flex">
-        <span class="css-truncate css-truncate-target d-block width-fit">
-          <a class="" title="Som.cpp" href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html">Som.cpp</a>
-        </span>
-      </div>
-    </div>
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline file-list coverage-low">
-      <span style="width: 200px;">
-        <meter class="coverage-low" min="0" max="100" value="56.7" title="56.7%">56.7</meter>
-      </span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="56.7">
-      <span>56.7%</span>
-      <span title="Exec / Excl / Total">76 / 0 / 134</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="73.7">
-      <span>73.7%</span>
-      <span title="Exec / Excl / Total">14 / 0 / 19</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="28.1">
-      <span>28.1%</span>
-      <span title="Exec / Excl / Total">54 / 0 / 192</span>
-    </div>
-  </div>
-  <div class="Box-row Box-row--focus-gray py-2 d-flex">
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 col-md-2">
-      <div class="d-flex">
-        <span class="css-truncate css-truncate-target d-block width-fit">
-          <a class="" title="Usuario.cpp" href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html">Usuario.cpp</a>
-        </span>
-      </div>
-    </div>
-    <div role="gridcell" class="color-fg-muted flex-auto min-width-0 d-flex flex-justify-end flex-wrap flex-items-baseline file-list coverage-low">
-      <span style="width: 200px;">
-        <meter class="coverage-low" min="0" max="100" value="37.5" title="37.5%">37.5</meter>
-      </span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="37.5">
-      <span>37.5%</span>
-      <span title="Exec / Excl / Total">9 / 0 / 24</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="33.3">
-      <span>33.3%</span>
-      <span title="Exec / Excl / Total">3 / 0 / 9</span>
-    </div>
-    <div role="gridcell" class="color-fg-muted d-flex flex-justify-end flex-wrap col-2 file-list coverage-low" data-sort="33.3">
-      <span>33.3%</span>
-      <span title="Exec / Excl / Total">6 / 0 / 18</span>
-    </div>
-  </div>
-</div>
+    <main>
+<table class="file-list">
+  <col/>
+  <colgroup span="3"/>
+  <colgroup span="2"/>
+  <colgroup span="2"/>
 
-        </main>
-        <hr class="block-separator"/>
-        <footer class="text-center">
-          Created using <a href="http://gcovr.com/en/8.6">GCOVR (Version 8.6)</a>
-          at 2026-06-16 09:50:29
-        </footer>
-      </div>
-    </div>
+  <tr>
+    <th scope="col">File</th>
+    <th scope="colgroup" colspan=3>Lines</th>
+    <th scope="colgroup" colspan=2>Functions</th>
+    <th scope="colgroup" colspan=2>Branches</th>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="coverage.ArCondicionado.cpp.513a874bb53509d05fc3e87118debbb0.html">ArCondicionado.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-medium" min="0" max="100" value="78.1" title="78.1%">78.1</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-medium">78.1%</td>
+    <td class="CoverValue line-coverage coverage-medium">25 / 32</td>
+    <td class="CoverValue function-coverage coverage-medium">87.5%</td>
+    <td class="CoverValue function-coverage coverage-medium">7 / 8</td>
+    <td class="CoverValue branch-coverage coverage-low">29.4%</td>
+    <td class="CoverValue branch-coverage coverage-low">10 / 34</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="coverage.Comodo.cpp.22c7b60413c05e7db020850e727d1b1c.html">Comodo.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-high" min="0" max="100" value="100.0" title="100.0%">100.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-high">100.0%</td>
+    <td class="CoverValue line-coverage coverage-high">33 / 33</td>
+    <td class="CoverValue function-coverage coverage-high">100.0%</td>
+    <td class="CoverValue function-coverage coverage-high">10 / 10</td>
+    <td class="CoverValue branch-coverage coverage-medium">77.8%</td>
+    <td class="CoverValue branch-coverage coverage-medium">28 / 36</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="coverage.Dispositivo.cpp.5544c27b354b4bb36366609f7e474fe1.html">Dispositivo.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-high" min="0" max="100" value="100.0" title="100.0%">100.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-high">100.0%</td>
+    <td class="CoverValue line-coverage coverage-high">15 / 15</td>
+    <td class="CoverValue function-coverage coverage-high">100.0%</td>
+    <td class="CoverValue function-coverage coverage-high">6 / 6</td>
+    <td class="CoverValue branch-coverage coverage-unknown">-%</td>
+    <td class="CoverValue branch-coverage coverage-unknown">0 / 0</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="coverage.InterfaceTextual.cpp.f5aba0f6a702a407277adacd09e36c2a.html">InterfaceTextual.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-low" min="0" max="100" value="35.0" title="35.0%">35.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-low">35.0%</td>
+    <td class="CoverValue line-coverage coverage-low">92 / 263</td>
+    <td class="CoverValue function-coverage coverage-low">69.2%</td>
+    <td class="CoverValue function-coverage coverage-low">9 / 13</td>
+    <td class="CoverValue branch-coverage coverage-low">11.3%</td>
+    <td class="CoverValue branch-coverage coverage-low">58 / 512</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="coverage.Luz.cpp.5541ed4b8d856a03deb8978b36ce75bb.html">Luz.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-high" min="0" max="100" value="96.9" title="96.9%">96.9</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-high">96.9%</td>
+    <td class="CoverValue line-coverage coverage-high">31 / 32</td>
+    <td class="CoverValue function-coverage coverage-high">100.0%</td>
+    <td class="CoverValue function-coverage coverage-high">8 / 8</td>
+    <td class="CoverValue branch-coverage coverage-low">50.0%</td>
+    <td class="CoverValue branch-coverage coverage-low">17 / 34</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="coverage.Macro.cpp.392103ef8740219bc7fd56e7953cb6c1.html">Macro.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-high" min="0" max="100" value="100.0" title="100.0%">100.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-high">100.0%</td>
+    <td class="CoverValue line-coverage coverage-high">42 / 42</td>
+    <td class="CoverValue function-coverage coverage-high">100.0%</td>
+    <td class="CoverValue function-coverage coverage-high">7 / 7</td>
+    <td class="CoverValue branch-coverage coverage-medium">81.8%</td>
+    <td class="CoverValue branch-coverage coverage-medium">18 / 22</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="coverage.Portao.cpp.b44d0e441cefba8db7789da5807685a8.html">Portao.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-low" min="0" max="100" value="73.2" title="73.2%">73.2</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-low">73.2%</td>
+    <td class="CoverValue line-coverage coverage-low">30 / 41</td>
+    <td class="CoverValue function-coverage coverage-medium">85.7%</td>
+    <td class="CoverValue function-coverage coverage-medium">6 / 7</td>
+    <td class="CoverValue branch-coverage coverage-low">32.5%</td>
+    <td class="CoverValue branch-coverage coverage-low">13 / 40</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="coverage.Sensor.cpp.d4347b2169d1f8bfce84e1e7afc278ea.html">Sensor.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-medium" min="0" max="100" value="88.0" title="88.0%">88.0</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-medium">88.0%</td>
+    <td class="CoverValue line-coverage coverage-medium">22 / 25</td>
+    <td class="CoverValue function-coverage coverage-high">100.0%</td>
+    <td class="CoverValue function-coverage coverage-high">6 / 6</td>
+    <td class="CoverValue branch-coverage coverage-low">46.2%</td>
+    <td class="CoverValue branch-coverage coverage-low">12 / 26</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="coverage.Sistema.cpp.6f9674dee0cf5a0eb653ee8d34a4293b.html">Sistema.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-medium" min="0" max="100" value="83.3" title="83.3%">83.3</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-medium">83.3%</td>
+    <td class="CoverValue line-coverage coverage-medium">35 / 42</td>
+    <td class="CoverValue function-coverage coverage-high">100.0%</td>
+    <td class="CoverValue function-coverage coverage-high">12 / 12</td>
+    <td class="CoverValue branch-coverage coverage-low">26.1%</td>
+    <td class="CoverValue branch-coverage coverage-low">12 / 46</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="coverage.Som.cpp.c2ae53f5424f23e2c72f648e37690ae2.html">Som.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-low" min="0" max="100" value="55.5" title="55.5%">55.5</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-low">55.5%</td>
+    <td class="CoverValue line-coverage coverage-low">76 / 137</td>
+    <td class="CoverValue function-coverage coverage-low">73.7%</td>
+    <td class="CoverValue function-coverage coverage-low">14 / 19</td>
+    <td class="CoverValue branch-coverage coverage-low">26.5%</td>
+    <td class="CoverValue branch-coverage coverage-low">54 / 204</td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">
+      <a href="coverage.Usuario.cpp.039fdef25eca4e5545e820731e2cb3a9.html">Usuario.cpp</a>
+    </th>
+    <td>
+      <meter class="coverage-low" min="0" max="100" value="21.2" title="21.2%">21.2</meter>
+    </td>
+    <td class="CoverValue line-coverage coverage-low">21.2%</td>
+    <td class="CoverValue line-coverage coverage-low">7 / 33</td>
+    <td class="CoverValue function-coverage coverage-low">33.3%</td>
+    <td class="CoverValue function-coverage coverage-low">3 / 9</td>
+    <td class="CoverValue branch-coverage coverage-low">10.0%</td>
+    <td class="CoverValue branch-coverage coverage-low">5 / 50</td>
+  </tr>
+
+</table>
+      <hr/>
+    </main>
+
+    <footer>
+      Generated by: <a href="http://gcovr.com/en/7.2">GCOVR (Version 7.2)</a>
+    </footer>
   </body>
-
 </html>

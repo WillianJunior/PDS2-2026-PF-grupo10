@@ -17,19 +17,13 @@ TEST_CASE("Macro possui destrutor") {
 
 TEST_CASE("getEvento retorna string") {
     CHECK(
-        std::is_same<
-            decltype(std::declval<Macro>().getEvento()),
-            std::string
-        >::value
+        std::is_same<decltype(std::declval<Macro>().getEvento()),std::string>::value
     );
 }
 
 TEST_CASE("getLista retorna Node*") {
     CHECK(
-        std::is_same<
-            decltype(std::declval<Macro>().getLista()),
-            Node*
-        >::value
+        std::is_same<decltype(std::declval<Macro>().getLista()),Node*>::value
     );
 }
 

@@ -13,7 +13,7 @@
 class Comodo{
     
 private:
-    std::string nome;                         ///< Nome do cômodo
+    std::string nome;                                         ///< Nome do cômodo
     std::vector<std::unique_ptr<Dispositivo>> dispositivos;   ///< Vetor de ponteiros para os dispositivos do Comodo
 
 public:
@@ -27,6 +27,12 @@ public:
      *  que armazenará as referências dos dispositivos.
      *  @param nome Nome do cômodo (ex: "Sala", "Cozinha") */
     Comodo(const std::string& nome);
+
+    Comodo(const Comodo&) = delete;
+    Comodo& operator=(const Comodo&) = delete;
+
+    Comodo(Comodo&&) = default;
+    Comodo& operator=(Comodo&&) = default;
 
     /** @brief Destrutor padrão da classe Comodo.
      * Os dispositivos são destruídos automaticamente pelo std::vector<std::unique_ptr>. */

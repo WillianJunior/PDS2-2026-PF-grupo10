@@ -14,6 +14,7 @@
 #include <iostream>
 #include <algorithm>
 #include <cctype>
+#include <string>
 
 InterfaceTextual::InterfaceTextual() : ativa(false), sistema(new Sistema), usuarioAtual(nullptr), menuAtual(""), comodoFocado(""), dispositivoFocadoID(0){
 }
@@ -22,7 +23,11 @@ void InterfaceTextual::iniciar() {
       ativa = true;
       std::string comando;
       while (ativa) {
-            exibirMenuPrincipal();
+          if (menuAtual == "COMODO" && !comodoFocado.empty()) {
+              exibirMenuComodo(comodoFocado);
+          } else {
+              exibirMenuPrincipal();
+          }
 
             if (!std::getline(std::cin, comando)) break;
             if (comando.empty()) continue;
@@ -30,7 +35,6 @@ void InterfaceTextual::iniciar() {
                   encerrar();
             break;
             }
-            this->limparTela();
             interpretarComando(comando);
             std::cout << std::endl;
             std::cout << std::endl;
@@ -48,6 +52,7 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
       });
 
       Comodo* comodoAtual = nullptr;
+
       if (!comodoFocado.empty() && sistema != nullptr) {
             int qtd = sistema->getQtdComodos();
             for (int i = 0; i < qtd; ++i) {
@@ -64,16 +69,38 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
           dispBase = comodoAtual->getDispositivo(dispositivoFocadoID);
       }
 
+      if (Fcomando.find("entrar ") == 0) {
+          std::string nome = Fcomando.substr(7); // remove "entrar "
+          Comodo* c = sistema->getComodo(nome);
+          if (c) {
+              comodoFocado = nome;
+              dispositivoFocadoID = -1;
+              menuAtual = "COMODO";
+              limparTela();
+              exibirMenuComodo(nome);
+          } else {
+              std::cout << "Cômodo '" << nome << "' não encontrado.\n";
+          }
+      }
+
+
+
       //inicio da leitura dos comandos
 
-      if       (Fcomando == "ligar som") {
+      else if(Fcomando == "ligar som") {
           if(auto som = dynamic_cast<Som*>(dispBase)) {
               som->alterarEstado(true);
               som->printPlaylist();
           }else{
               std::cout << "O dispositivo focado nao e um aparelho de som ou nao foi encontrado.\n";
           }
-      }else if(Fcomando == "tocar musica") {
+      }
+
+      else if (Fcomando == "ajuda" || Fcomando == "help" || Fcomando == "?") {
+          exibirAjuda();
+      }
+
+      else if(Fcomando == "tocar musica") {
            if(auto som = dynamic_cast<Som*>(dispBase)) {
               som->tocar();
           }
@@ -185,27 +212,39 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
       }else if (Fcomando == "adicionar comodo") {
           std::string nomeComodo;
           std::cout << "Nome do comodo: ";
-          std::cin.ignore();
           std::getline(std::cin, nomeComodo);
+
+          std::transform(nomeComodo.begin(), nomeComodo.end(), nomeComodo.begin(), [](unsigned char c){ return static_cast<char>(std::tolower(c)); });
+
           sistema->adicionarComodo(std::unique_ptr<Comodo>(new Comodo(nomeComodo)));
+
       }else if (Fcomando == "remover comodo") {
           if (comodoAtual != nullptr) {
               sistema->removerComodo(comodoAtual);
           }
+
+      }else if (Fcomando == "comodo") {
+          if (comodoAtual != nullptr) {
+              exibirMenuComodo(comodoFocado);
+          }else{
+              std::cout << "Nenhum cômodo focado" << std::endl;
+        }
+
       }else if (Fcomando == "adicionar dispositivo") {
           if (comodoAtual != nullptr) {
               std::cout << "Tipo (1-Luz, 2-Som, 3-Ar, 4-Portao): ";
               int tipo;
               std::cin >> tipo;
-              Dispositivo* novo = nullptr;
-              if (tipo == 1)      novo = new Luz();
-              else if (tipo == 2) novo = new Som();
-              else if (tipo == 3) novo = new ArCondicionado();
-              else if (tipo == 4) novo = new Portao();
+              std::unique_ptr<Dispositivo> novo = nullptr;
+              if (tipo == 1)      novo = std::make_unique<Luz>();
+              else if (tipo == 2) novo = std::make_unique<Som>();
+              else if (tipo == 3) novo = std::make_unique<ArCondicionado>();
+              else if (tipo == 4) novo = std::make_unique<Portao>();
 
               if (novo != nullptr) {
-                  comodoAtual->adicionarDispositivo(std::unique_ptr<Dispositivo>(novo));
-                  std::cout << "Dispositivo adicionado com ID: " << novo->getId() << std::endl;
+                  int id = novo->getId();
+                  comodoAtual->adicionarDispositivo(std::move(novo));
+                  std::cout << "Dispositivo adicionado com ID: " << id << std::endl;
               }
           }
       }else if (Fcomando == "remover dispositivo") {
@@ -215,13 +254,10 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
               std::cin >> id;
               comodoAtual->removerDispositivo(id);
           }
-      }
+      }else if (Fcomando == "ajuda"){
+          exibirAjuda();
+    }
 
-      /*todo:
-       * listar comodos
-       * interface normal
-       *
-        */
       // comandos de usuario
 
       else if (Fcomando == "renomear") {
@@ -264,8 +300,17 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
               std::cout << "Nome do evento para executar: ";
               std::cin >> evento;
               usuarioAtual->executarMacro(evento);
+
+        }
+    }else if (Fcomando == "voltar") {
+              menuAtual = "PRINCIPAL";
+              comodoFocado.clear();
+              dispositivoFocadoID = -1;
+              limparTela();
+              exibirMenuPrincipal();
           }
-      }else {
+
+      else {
           std::cout << "Comando invalido ou nao reconhecido.\n";
       } // when (others <- ?)
 }
@@ -278,32 +323,41 @@ void InterfaceTextual::encerrar() {
       dispositivoFocadoID = -1;
       // Remove referência ao usuário atual
       usuarioAtual = nullptr;
+      limparTela();
       std::cout << "Interface encerrada." << std::endl;
 }
 
 void InterfaceTextual::exibirMenuPrincipal() {
+      limparTela();
+
       menuAtual = "PRINCIPAL";
-      comodoFocado.clear();
       dispositivoFocadoID = -1;
 
       std::cout << "Bem-vindo ao Sistema Smart Home (digite 'sair' para encerrar)" << std::endl;
       std::cout << "=== Menu Principal ===" << std::endl;
       exibirComodos();
 
-      std::cout << "\nComandos disponíveis:" << std::endl;
-      std::cout << "  entrar <nome_comodo>  - acessar um cômodo\n" << std::endl;
+      std::cout << "\nComandos gerais disponíveis:" << std::endl;
+      std::cout << "  comodo                - exibe o menu do cômodo focado\n" << std::endl;
       std::cout << "  relatorio             - gerar e exibir relatório\n" << std::endl;
       std::cout << "  alertas               - exibir alertas recentes\n" << std::endl;
+      std::cout << "  ajuda                 - exibir todos os comandos disponíveis\n";
       std::cout << "  macros                - listar macros cadastradas\n" << std::endl;
       std::cout << "  sair                  - encerrar a interface\n" << std::endl;
-
+      std::cout << std::endl;
       std::cout << "> ";
 }
 
 void InterfaceTextual::exibirMenuComodo(const std::string &nomeComodo) {
-      if (sistema == nullptr) {
+    limparTela();
+    if (sistema == nullptr) {
             std::cout << "Sistema não inicializado." << std::endl;
             return;
+      }
+
+      if (nomeComodo == "") {
+          std::cout << "Nenhum comodo focado" << std::endl;
+          return;
       }
 
       // Procura o cômodo pelo nome
@@ -313,7 +367,7 @@ void InterfaceTextual::exibirMenuComodo(const std::string &nomeComodo) {
             const Comodo* c = sistema->getComodo(i);
             if (c != nullptr && c->getNome() == nomeComodo) {
                   alvo = c;
-            break;
+                  break;
             }
       }
 
@@ -372,7 +426,7 @@ void InterfaceTextual::exibirRelatorio() {
 
 void InterfaceTextual::exibirComodos() {
       if (sistema == nullptr) {
-            std::cout << "(Sistema não inicializado)" << std::endl;
+            std::cerr << "(Sistema não inicializado)" << std::endl;
             return;
       }
 
@@ -392,6 +446,65 @@ void InterfaceTextual::limparTela() {
 #else
     std::system("clear");
 #endif
+}
+
+void InterfaceTextual::exibirAjuda() {
+    limparTela();
+    std::cout << "\n========== AJUDA - COMANDOS DISPONÍVEIS ==========\n\n";
+
+    std::cout << "  **COMANDOS DO SOM** (necessário ter um dispositivo Som focado):\n";
+    std::cout << "  ligar som           - Liga o aparelho de som\n";
+    std::cout << "  desligar som        - Desliga o aparelho de som\n";
+    std::cout << "  tocar musica        - Toca a música atual\n";
+    std::cout << "  escolher musica     - Escolhe uma música pelo índice\n";
+    std::cout << "  alterar volume      - Altera o volume (0-100)\n";
+    std::cout << "  pausar som          - Pausa/retoma a reprodução\n";
+    std::cout << "  avancar musica      - Avança para a próxima música\n";
+    std::cout << "  voltar musica       - Volta para a música anterior\n";
+    std::cout << "  inserir musica      - Adiciona uma música à playlist\n";
+    std::cout << "  remover musica      - Remove uma música da playlist\n\n";
+
+    std::cout << "  **COMANDOS DA ILUMINAÇÃO** (necessário ter uma Luz focada):\n";
+    std::cout << "  ligar luz           - Liga a luz\n";
+    std::cout << "  desligar luz        - Desliga a luz\n";
+    std::cout << "  alterar intensidade - Altera a intensidade (1-5)\n\n";
+
+    std::cout << "  **COMANDOS DO PORTÃO** (necessário ter um Portão focado):\n";
+    std::cout << "  abrir portao        - Abre o portão\n";
+    std::cout << "  alterar temporizador - Altera o tempo de fechamento automático (segundos)\n\n";
+
+    std::cout << "  **COMANDOS DO AR CONDICIONADO** (necessário ter um Ar focado):\n";
+    std::cout << "  ligar ar condicionado   - Liga o ar-condicionado\n";
+    std::cout << "  desligar ar condicionado - Desliga o ar-condicionado\n";
+    std::cout << "  alterar temperatura     - Ajusta a temperatura (15-30°C)\n\n";
+
+    std::cout << "  **COMANDOS GERAIS DO SISTEMA** (gerais):\n";
+    std::cout << "  fazer relatorio     - Gera um relatório do sistema\n";
+    std::cout << "  adicionar comodo    - Adiciona um novo cômodo\n";
+    std::cout << "  remover comodo      - Remove o cômodo atual\n";
+    std::cout << "  adicionar dispositivo - Adiciona um dispositivo ao cômodo atual\n";
+    std::cout << "  remover dispositivo - Remove um dispositivo do cômodo atual\n\n";
+
+    std::cout << "  **COMANDOS DO USUÁRIO** (requer usuário logado):\n";
+    std::cout << "  renomear            - Altera o nome do usuário\n";
+    std::cout << "  ver nome            - Mostra o nome do usuário logado\n";
+    std::cout << "  autenticar          - Autentica o usuário\n";
+    std::cout << "  adicionar macro     - Cria uma nova macro\n";
+    std::cout << "  remover macro       - Remove uma macro\n";
+    std::cout << "  executar macro      - Executa uma macro\n\n";
+
+    std::cout << "  **COMANDOS DE NAVEGAÇÃO** (sempre disponíveis):\n";
+    std::cout << "  entrar <nome>       - Entra em um cômodo\n";
+    std::cout << "  sair                - Encerra a interface\n";
+    std::cout << "  ajuda               - Exibe esta mensagem de ajuda\n\n";
+
+    std::cout << "=====================================================\n";
+    std::cout << "Pressione qualquer tecla para sair\n";
+    std::cout << "> ";
+
+    std::string info = " ";
+    std::getline(std::cin, info);
+
 }
 
 void InterfaceTextual::exibirMensagem(const std::string &mensagem) {

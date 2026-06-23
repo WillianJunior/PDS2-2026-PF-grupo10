@@ -39,6 +39,8 @@ public:
      * Retorna `nullptr` caso o índice seja negativo ou maior/igual ao tamanho do vetor. */
     const Comodo* getComodo(int i) const;
 
+          Comodo* getComodo(const std::string& nome);
+
     /** @brief Retorna o sensor principal associado e gerenciado pelo sistema. 
      * Permite o acesso externo ao objeto de monitoramento para leitura de estados,
      * ou configurações diretas no dispositivo de entrada.

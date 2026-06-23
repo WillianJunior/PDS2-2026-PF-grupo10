@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -w -I include
+CXXFLAGS = -std=c++14 -w -I include
 
 # Flags para cobertura de código
 COV_FLAGS = --coverage -g -O0

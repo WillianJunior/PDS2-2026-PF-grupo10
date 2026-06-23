@@ -18,6 +18,13 @@ const Comodo* Sistema::getComodo(int i) const {
     return comodos[i].get();
 }
 
+Comodo* Sistema::getComodo(const std::string& nome) {
+    for (auto& c : comodos) {
+        if (c->getNome() == nome) return c.get();
+    }
+    return nullptr;
+}
+
 int Sistema::getQtdComodos() const {
     int quantidade = comodos.size();
     return quantidade;
