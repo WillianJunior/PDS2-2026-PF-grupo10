@@ -59,7 +59,7 @@ std::string Portao::getEstadoFormatado() const {
     std::string estado_str = this->estado ? "Aberto" : "Fechado";
     std::string resposta = std::to_string(this->getId()) + " Portao " + estado_str + " Temporizador: " + std::to_string(this->segundos);
     if (this->erro) {
-        resposta += " ⚠️";
+        resposta += " erro";
     }
     return resposta;
 }

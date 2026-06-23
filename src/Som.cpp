@@ -213,7 +213,7 @@ std::string Som::getEstadoFormatado() const {
     std::string estado_str = this->estado ? "Ligado" : "Desligado";
     std::string resposta = std::to_string(this->getId()) + " Som " + estado_str + " Volume: " + std::to_string(this->_volume);
     if (this->erro) {
-        resposta += " ⚠️";
+        resposta += " erro";
     }
     return resposta;
 }

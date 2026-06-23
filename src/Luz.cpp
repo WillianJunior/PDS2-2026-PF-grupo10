@@ -42,7 +42,7 @@ std::string Luz::getEstadoFormatado() const {
     std::string estado_str = this->estado ? "Ligada" : "Desligada";
     std::string resposta = std::to_string(this->getId()) + " Luz " + estado_str + " Intensidade: " + std::to_string(this->intensidade);
     if (this->erro) {
-        resposta += " ⚠️";
+        resposta += " erro";
     }
     return resposta;
 }

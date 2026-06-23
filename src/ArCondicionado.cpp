@@ -39,7 +39,7 @@ std::string ArCondicionado::getEstadoFormatado() const {
     std::string estado_str = this->estado ? "Ligado" : "Desligado";
     std::string resposta = std::to_string(this->getId()) + " ArCondicionado " + estado_str + " Temperatura: " + std::to_string(this->temperatura);
     if (this->erro) {
-        resposta += " ⚠️";
+        resposta += " erro";
     }
     return resposta;
 }
