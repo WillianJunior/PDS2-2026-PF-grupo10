@@ -12,6 +12,7 @@ Assume-se que:
 */
 
 Som::Som() : Dispositivo(), _volume(50), _indice(0), _pause(true) {
+    this->nome = "Som";
     carregarMusicas("src/playlist.txt");
 }
 
@@ -236,7 +237,7 @@ void Som::detectarErro() {
 
 std::string Som::getEstadoFormatado() const {
     std::string estado_str = this->estado ? "Ligado" : "Desligado";
-    std::string resposta = std::to_string(this->getId()) + " Som " + estado_str + " Volume: " + std::to_string(this->_volume) + "    Tocando agora: " + this->_musica;
+    std::string resposta = std::to_string(this->getId()) + " " + this->nome + " " + estado_str + " Volume: " + std::to_string(this->_volume) + "    Tocando agora: " + this->_musica;
     if (this->erro) {
         resposta += " erro";
     }

@@ -37,7 +37,7 @@ Macro* Usuario::getMacro(int i) const {
     return macros[i].get();
 }
 
-Macro* Usuario::adicionarMacro(const std::string& evento) {
+Macro* Usuario::adicionarMacro(const std::string& evento, Sistema& sistema) {
     if (evento.empty()) {
         throw std::invalid_argument("Erro: O nome do evento para a macro não pode ser vazio.");
     }
@@ -56,60 +56,71 @@ void Usuario::removerMacro(std::string evento) {
 }
 
 void Usuario::executarMacro(std::string evento, Sistema& sistema) {
+    try {
+        for (const auto& macro : macros) {
 
-    for (const auto& macro : macros) {
+            if (macro->getEvento() != evento)
+                continue;
 
-        if (macro->getEvento() != evento)
-            continue;
+            Node* atual = macro->getLista();
 
-        Node* atual = macro->getLista();
+            while (atual != nullptr) {
 
-        while (atual != nullptr) {
+                Dispositivo* disp = sistema.getDispositivo(atual->id);
 
-            Dispositivo* disp = sistema.getDispositivo(atual->id);
-
-            if (disp != nullptr) {
-                if (atual->acao == "ligar") {
-                    disp->alterarEstado(true);
-                }
-                else if (atual->acao == "desligar") {
-                    disp->alterarEstado(false);
-                }
-                else if (atual->acao == "abrir") {
-                    disp->alterarEstado(true);
-                }
-                else if (atual->acao == "fechar") {
-                    disp->alterarEstado(false);
-                }
-                else if (atual->acao == "ajustar") {
-                    if (auto* luz = dynamic_cast<Luz*>(disp)) {
-                        luz->ajustarIntensidade(atual->valor);
+                if (disp != nullptr) {
+                    if (atual->acao == "ligar") {
+                        disp->alterarEstado(true);
                     }
-                    else if (auto* ar = dynamic_cast<ArCondicionado*>(disp)) {
-                        ar->ajustarTemperatura(atual->valor);
+                    else if (atual->acao == "desligar") {
+                        disp->alterarEstado(false);
                     }
-                    else if (auto* som = dynamic_cast<Som*>(disp)) {
-                        som->setVolume(atual->valor);
+                    else if (atual->acao == "abrir") {
+                        disp->alterarEstado(true);
                     }
-                    else if (auto* portao = dynamic_cast<Portao*>(disp)) {
-                        portao->setTemporizador(atual->valor);
+                    else if (atual->acao == "fechar") {
+                        disp->alterarEstado(false);
+                    }
+                    else if (atual->acao == "ajustar") {
+                        if (auto* luz = dynamic_cast<Luz*>(disp)) {
+                            luz->ajustarIntensidade(atual->valor);
+                        }
+                        else if (auto* ar = dynamic_cast<ArCondicionado*>(disp)) {
+                            ar->ajustarTemperatura(atual->valor);
+                        }
+                        else if (auto* som = dynamic_cast<Som*>(disp)) {
+                            som->setVolume(atual->valor);
+                        }
+                        else if (auto* portao = dynamic_cast<Portao*>(disp)) {
+                            portao->setTemporizador(atual->valor);
+                        }
+                    }
+                    else {
+                        throw std::runtime_error(
+                            "Acao desconhecida: " + atual->acao
+                        );
                     }
                 }
-                else {
-                    throw std::runtime_error(
-                        "Acao desconhecida: " + atual->acao
-                    );
-                }
+                atual = atual->proximo.get();
             }
-            atual = atual->proximo.get();
+            return;
         }
-        return;
-    }
 
-    throw std::runtime_error(
-        "Erro: Nao foi possivel executar. Macro \"" +
-        evento + "\" nao encontrada."
-    );
+        throw std::runtime_error(
+            "Erro: Nao foi possivel executar. Macro \"" +
+            evento + "\" nao encontrada."
+        );
+
+    }
+    catch (const std::runtime_error& e) {
+        std::cerr << "Erro ao executar macro: " << e.what() << std::endl;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Excecao: " << e.what() << std::endl;
+    }
+    catch (...) {
+        std::cerr << "Erro desconhecido ao executar a macro." << std::endl;
+    }
 }
 
 

@@ -3,7 +3,7 @@
 int Dispositivo::qtdDispositivos = 0;
 int Dispositivo::identificador = 0;
 
-Dispositivo::Dispositivo() : id(++Dispositivo::identificador), estado(false), erro(false) {
+Dispositivo::Dispositivo() : id(++Dispositivo::identificador), estado(false), erro(false), nome("") {
     qtdDispositivos++;
 }
 
@@ -21,6 +21,10 @@ bool Dispositivo::getEstado() const {
 
 bool Dispositivo::temErro() const {
     return erro;
+}
+
+std::string Dispositivo::getNome() const {
+    return nome;
 }
 
 void Dispositivo::alterarEstado(bool novoEstado) {

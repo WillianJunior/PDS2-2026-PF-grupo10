@@ -51,6 +51,24 @@ Dispositivo* Sistema::getDispositivo(int id) {
     return nullptr;
 }
 
+void Sistema::listarDispositivos() const {
+    std::cout << "\n=== Dispositivos disponiveis ===\n";
+
+    for (const auto& comodo : comodos) {
+        std::cout << "\n" << comodo->getNome() << ":\n";
+
+        for (int i = 0; i < comodo->getQtdDispositivos(); i++) {
+            const Dispositivo* disp = comodo->getDispositivoPorIndice(i);
+
+            if (disp != nullptr) {
+                std::cout << disp->getId() << " - " << disp->getNome() << '\n';
+            }
+        }
+    }
+
+    std::cout << "===============================\n";
+}
+
 void Sistema::executarSistema() {
     ativo = true;
 }

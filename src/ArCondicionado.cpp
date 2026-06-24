@@ -4,6 +4,7 @@
 #include <stdexcept>
 
 ArCondicionado::ArCondicionado() : Dispositivo(), temperatura(22) {
+    this->nome = "ArCondicionado";
 }
 
 void ArCondicionado::ligar() {
@@ -37,7 +38,7 @@ void ArCondicionado::detectarErro() {
 
 std::string ArCondicionado::getEstadoFormatado() const {
     std::string estado_str = this->estado ? "Ligado" : "Desligado";
-    std::string resposta = std::to_string(this->getId()) + " ArCondicionado " + estado_str + " Temperatura: " + std::to_string(this->temperatura);
+    std::string resposta = std::to_string(this->getId()) + " " + this->nome + " " + estado_str + " Temperatura: " + std::to_string(this->temperatura);
     if (this->erro) {
         resposta += " erro";
     }

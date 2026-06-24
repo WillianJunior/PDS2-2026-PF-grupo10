@@ -9,9 +9,10 @@
 class Dispositivo {
 
 protected: // Protected para que as subclasses tenham acesso
-    int id;    ///< Identificador único do dispositivo
+    int id;               ///< Identificador único do dispositivo
     bool estado;          ///< Estado atual (false = desligado/fechado, true = ligado/aberto)
-    bool erro;            ///< Indica se o dispositivo apresenta falha 
+    bool erro;            ///< Indica se o dispositivo está com algum problema de funcionamento
+    std::string nome;     ///< Nome da classe do dispositivo
 
 public:
     /** @brief Contador global que rastreia o número total de dispositivos criados no sistema. */
@@ -27,6 +28,7 @@ public:
     Dispositivo();
 
     Dispositivo(const Dispositivo&) = delete;
+
     Dispositivo& operator=(const Dispositivo&) = delete;
 
     /** @brief Destrutor virtual da classe Dispositivo.
@@ -49,6 +51,10 @@ public:
      *  @return false Se o funcionamento do aparelho estiver normal. */
     bool temErro() const;
 
+    /** @brief Retorna o nome da classe do dispositivo.
+     *  @return std::string Nome do tipo de dispositivo (ex: "Luz", "Som", "ArCondicionado"). */
+    std::string getNome() const;
+    
     /** @brief Modifica o estado lógico (ativo/inativo) do dispositivo.
      *  @param novoEstado Flag booleano representando o comando desejado (true para ligar/abrir, false para desligar/fechar). */
     virtual void alterarEstado(bool novoEstado); 

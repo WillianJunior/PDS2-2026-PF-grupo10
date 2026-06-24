@@ -292,13 +292,18 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
       }
 
     else if (Fcomando.find("focar ") == 0) {
-        int id = std::stoi(Fcomando.substr(6));
-        if (comodoAtual && comodoAtual->getDispositivo(id)) {
-            dispositivoFocadoID = id;
-            menuAtual = "DISPOSITIVO";
-            std::cout << "Dispositivo " << id << " focado.\n";
-        } else {
-            std::cout << "Dispositivo " << id << " nao encontrado.\n";
+        try{
+            int id = std::stoi(Fcomando.substr(6));
+            if (comodoAtual && comodoAtual->getDispositivo(id)) {
+                dispositivoFocadoID = id;
+                menuAtual = "DISPOSITIVO";
+                std::cout << "Dispositivo " << id << " focado.\n";
+            } else {
+                std::cout << "Dispositivo " << id << " nao encontrado.\n";
+            }
+        }
+        catch (...) {
+            std::cout << "ID invalido.\n";
         }
     }
 
@@ -361,12 +366,14 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
               std::cout << "Evento da macro: ";
               std::cin >> evento;
               std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-              Macro* macro = usuarioAtual->adicionarMacro(evento);
+              Macro* macro = usuarioAtual->adicionarMacro(evento, *sistema);
 
               while(true){
                   std::string entrada;
+                  sistema->listarDispositivos();
                   std::cout << "\nDigite o ID do dispositivo (ou 'fim' para terminar): ";
                   std::getline(std::cin, entrada);
+
                   if (entrada == "fim") {
                       break;
                   }
@@ -379,6 +386,12 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
                       std::cout << "ID invalido.\n";
                       continue;
                   }
+
+                  // Verifica se o dispositivo existe
+                  if (sistema->getDispositivo(id) == nullptr) {
+                      std::cout << "Dispositivo invalido.\n";
+                      continue;
+                  }   
 
                   std::string acao;
                   std::cout << "Digite a acao: ";

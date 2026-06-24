@@ -58,6 +58,8 @@ public:
 
     Dispositivo* getDispositivo(int id);
 
+    void listarDispositivos() const;
+    
     /** @brief Inicia o loop principal de execução do sistema.
      * Altera o estado do sistema para ativo, coloca os sensores em modo de leitura
      * e passa a receber, processar e responder aos comandos do usuário. */

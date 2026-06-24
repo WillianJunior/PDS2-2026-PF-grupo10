@@ -4,6 +4,7 @@
 #include <stdexcept>
 
 Portao::Portao() : Dispositivo(), segundos(30) {
+    this->nome = "Portao";
 }
 
 int Portao::getTemporizador() const {
@@ -57,7 +58,7 @@ void Portao::detectarErro() {
 
 std::string Portao::getEstadoFormatado() const {
     std::string estado_str = this->estado ? "Aberto" : "Fechado";
-    std::string resposta = std::to_string(this->getId()) + " Portao " + estado_str + " Temporizador: " + std::to_string(this->segundos);
+    std::string resposta = std::to_string(this->getId()) + " " + this->nome + " " + estado_str + " Temporizador: " + std::to_string(this->segundos);
     if (this->erro) {
         resposta += " erro";
     }

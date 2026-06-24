@@ -52,8 +52,9 @@ public:
     /** @brief Registra e armazena uma nova macro vazia no sistema.
      * Cria uma nova estrutura de automação baseada no nome de um evento fornecido e a
      * adiciona ao vetor de macros. A partir do registro, ações podem ser vinculadas a este evento.
-     * @param evento Nome identificador único que será associado à nova macro (ex: "sair_de_casa"). */
-    Macro* adicionarMacro(const std::string& evento);
+     * @param evento Nome identificador único que será associado à nova macro (ex: "sair_de_casa").
+     * @param sistema Referência ao sistema de dispositivos para executar as ações. */
+    Macro* adicionarMacro(const std::string& evento, Sistema& sistema);
 
     /** @brief Remove uma macro existente do sistema com base no nome de evento fornecido.
      * Busca no vetor de macros o evento correspondente. Se encontrado, o objeto é
