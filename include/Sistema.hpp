@@ -37,7 +37,7 @@ public:
      * @param i Índice posicional do cômodo dentro do vetor de gerenciamento da casa.
      * @return Comodo* Ponteiro para o objeto do cômodo correspondente se o índice for válido;
      * Retorna `nullptr` caso o índice seja negativo ou maior/igual ao tamanho do vetor. */
-    const Comodo* getComodo(int i) const;
+    Comodo* getComodo(int i) const;
 
     /** @brief Identifica um cômodo específico da casa com base no seu nome. 
      * @param nome Nome do cômodo a ser buscado.
@@ -63,6 +63,8 @@ public:
      * @return true Se o sistema estiver inicializado e rodando ativamente.
      * @return false Se o sistema estiver desligado. */
     bool estaAtivo() const;
+
+    Dispositivo* getDispositivo(int id);
 
     /** @brief Inicia o loop principal de execução do sistema.
      * Altera o estado do sistema para ativo, coloca os sensores em modo de leitura

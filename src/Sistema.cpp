@@ -10,7 +10,7 @@
 Sistema::Sistema() : ativo(false), sensor(std::unique_ptr<Sensor>(new Sensor(10))), comodos() {
 }
 
-const Comodo* Sistema::getComodo(int i) const {
+Comodo* Sistema::getComodo(int i) const {
     if (i < 0 || i >= static_cast<int>(comodos.size())) {
         return nullptr;
     }
@@ -36,6 +36,23 @@ Sensor* Sistema::getSensor() const {
 
 bool Sistema::estaAtivo() const {
     return ativo;
+}
+
+Dispositivo* Sistema::getDispositivo(int id) {
+    int qtd = getQtdComodos();
+
+    for (int i = 0; i < qtd; i++) {
+        Comodo* comodo = this->getComodo(i);
+
+        if (comodo != nullptr) {
+            Dispositivo* disp = comodo->getDispositivo(id);
+
+            if (disp != nullptr) {
+                return disp;
+            }
+        }
+    }
+    return nullptr;
 }
 
 void Sistema::executarSistema() {

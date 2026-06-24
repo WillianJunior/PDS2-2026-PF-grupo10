@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 #include "Macro.hpp"
+#include "Sistema.hpp"
 
 /** @brief Representa um usuário do sistema. 
  * Armazena nome e senha, permitindo autenticação
@@ -52,7 +53,7 @@ public:
      * Cria uma nova estrutura de automação baseada no nome de um evento fornecido e a
      * adiciona ao vetor de macros. A partir do registro, ações podem ser vinculadas a este evento.
      * @param evento Nome identificador único que será associado à nova macro (ex: "sair_de_casa"). */
-    void adicionarMacro(std::string evento);
+    Macro* adicionarMacro(const std::string& evento);
 
     /** @brief Remove uma macro existente do sistema com base no nome de evento fornecido.
      * Busca no vetor de macros o evento correspondente. Se encontrado, o objeto é
@@ -65,8 +66,9 @@ public:
      * Procura pela macro associada ao nome do evento fornecido. Se encontrada, o sistema
      * intercepta e executa todos os comandos e alterações de estado agendados
      * para aquela macro específica.
-     * @param evento Nome do evento cuja macro correspondente deve ser disparada. */
-    void executarMacro(std::string evento);
+     * @param evento Nome do evento cuja macro correspondente deve ser disparada.
+     * @param sistema Referência ao sistema de dispositivos para executar as ações. */
+    void executarMacro(std::string evento, Sistema& sistema);
 };
 
 

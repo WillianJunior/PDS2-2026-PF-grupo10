@@ -26,11 +26,12 @@ Macro* Usuario::getMacro(int i) const {
     return macros[i].get();
 }
 
-void Usuario::adicionarMacro(std::string evento) {
+Macro* Usuario::adicionarMacro(const std::string& evento) {
     if (evento.empty()) {
         throw std::invalid_argument("Erro: O nome do evento para a macro não pode ser vazio.");
     }
     macros.push_back(std::unique_ptr<Macro>(new Macro(evento)));
+    return macros.back().get();
 }
 
 void Usuario::removerMacro(std::string evento) {
@@ -43,11 +44,38 @@ void Usuario::removerMacro(std::string evento) {
     throw std::runtime_error("Erro: Macro com o evento '" + evento + "' não encontrada.");
 }
 
-void Usuario::executarMacro(std::string evento) {
+void Usuario::executarMacro(std::string evento, Sistema& sistema) {
+
     for (const auto& macro : macros) {
-        if (macro->getEvento() == evento) {
-            return;
+
+        if (macro->getEvento() != evento)
+            continue;
+
+        Node* atual = macro->getLista();
+
+        while (atual != nullptr) {
+
+            Dispositivo* disp = sistema.getDispositivo(atual->id);
+
+            if (disp != nullptr) {
+
+                if (atual->acao == "ligar")
+                    disp->alterarEstado(true);
+
+                else if (atual->acao == "desligar")
+                    disp->alterarEstado(false);
+
+                else if (atual->acao == "abrir")
+                    disp->alterarEstado(true);
+
+                // demais ações...
+            }
+
+            atual = atual->proximo.get();
         }
+        return;
     }
-    throw std::runtime_error("Erro: Não foi possível executar. Macro '" + evento + "' não encontrada.");
+
+    throw std::runtime_error(
+        "Erro: Não foi possível executar. Macro '" + evento + "' não encontrada.");
 }

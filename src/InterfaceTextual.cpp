@@ -340,10 +340,39 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
       }else if (Fcomando == "adicionar macro") {
           if (usuarioAtual != nullptr) {
               std::string evento;
-              std::cout << "Evento para a macro: ";
+              std::cout << "Evento da macro: ";
               std::cin >> evento;
               std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-              usuarioAtual->adicionarMacro(evento);
+              Macro* macro = usuarioAtual->adicionarMacro(evento);
+
+              while(true){
+                  std::string entrada;
+                  std::cout << "\nDigite o ID do dispositivo (ou 'fim' para terminar): ";
+                  std::getline(std::cin, entrada);
+                  if (entrada == "fim") {
+                      break;
+                  }
+
+                  int id;
+
+                  try {
+                      id = std::stoi(entrada);
+                  } catch (...) {
+                      std::cout << "ID invalido.\n";
+                      continue;
+                  }
+
+                  std::string acao;
+                  std::cout << "Digite a acao: ";
+                  std::getline(std::cin, acao);
+
+                  macro->adicionarDispositivo(id, acao);
+                  std::cout << "Comando adicionado a macro.\n";
+              }
+              std::cout << "\nMacro criada!\n";
+
+          }else{
+              std::cout << "Nenhum usuario logado. Nao e possivel adicionar macro.\n";
           }
       }else if (Fcomando == "remover macro") {
           if (usuarioAtual != nullptr) {
@@ -359,16 +388,18 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
               std::cout << "Nome do evento para executar: ";
               std::cin >> evento;
               std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-              usuarioAtual->executarMacro(evento);
+              usuarioAtual->executarMacro(evento, *sistema);
           }
-      }else if (Fcomando == "voltar ao menu principal") {
+      }else if (Fcomando == "voltar") {
+          if(menuAtual == "COMODO"){
               menuAtual = "PRINCIPAL";
               comodoFocado.clear();
               dispositivoFocadoID = -1;
-      }else if (Fcomando == "voltar ao menu comodo") {
+          }else if(menuAtual == "DISPOSITIVO"){
               menuAtual = "COMODO";
               dispositivoFocadoID = -1;
           }
+      }
 
       else {
           std::cout << "Comando invalido ou nao reconhecido.\n";
@@ -452,7 +483,7 @@ void InterfaceTextual::exibirMenuComodo(const std::string &nomeComodo) {
       std::cout << "\nComandos disponiveis:" << std::endl;
       std::cout << "  adicionar dispositivo      - adicionar dispositivo" << std::endl;
       std::cout << "  focar <id>                 - foca em um dispositivo para executar comandos sobre ele" << std::endl;
-      std::cout << "  voltar ao menu principal   - volta" << std::endl;
+      std::cout << "  voltar                     - volta ao menu principal" << std::endl;
       std::cout << std::endl;
       std::cout << "> ";
       //adicionar mais comandos específicos.
@@ -522,7 +553,7 @@ void InterfaceTextual::exibirDispositivoFocado(int id) {
     }
 
     std::cout << "\nComandos gerais:\n";
-    std::cout << "  voltar ao menu comodo   - volta ao menu do comodo\n";
+    std::cout << "  voltar                  - volta ao menu comodo\n";
     std::cout << "  remover dispositivo     - remove este dispositivo\n";
     std::cout << "\n> ";
 }
