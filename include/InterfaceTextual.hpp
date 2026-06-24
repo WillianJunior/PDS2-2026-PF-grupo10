@@ -41,6 +41,10 @@ public:
      *  @param nomeComodo Nome do cômodo a ser renderizado. */
     void exibirMenuComodo(const std::string &nomeComodo);
 
+    /** @brief Exibe as opções e comandos possíveis dentro de um dispositivo.
+     *  @param id ID do dispositivo a ser renderizado. */
+    void exibirDispositivoFocado(int id);
+
     /** @brief Exibe o arquivo de relatório detalhado com informações sobre todos os cômodos e dispositivos. */
     void exibirRelatorio();
 

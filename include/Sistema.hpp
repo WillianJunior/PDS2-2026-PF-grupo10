@@ -39,7 +39,11 @@ public:
      * Retorna `nullptr` caso o índice seja negativo ou maior/igual ao tamanho do vetor. */
     const Comodo* getComodo(int i) const;
 
-          Comodo* getComodo(const std::string& nome);
+    /** @brief Identifica um cômodo específico da casa com base no seu nome. 
+     * @param nome Nome do cômodo a ser buscado.
+     * @return Comodo* Ponteiro para o objeto do cômodo correspondente se o nome for válido;
+     * Retorna `nullptr` caso o cômodo não seja encontrado. */
+    Comodo* getComodo(const std::string& nome);
 
     /** @brief Retorna o sensor principal associado e gerenciado pelo sistema. 
      * Permite o acesso externo ao objeto de monitoramento para leitura de estados,
