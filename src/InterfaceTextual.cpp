@@ -409,7 +409,11 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
               std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
               usuarioAtual->executarMacro(evento, *sistema);
           }
-      }else if (Fcomando == "voltar") {
+      }
+      else if(Fcomando == "salvar"){
+          usuarioAtual->salvarDados(*sistema);
+    }
+      else if (Fcomando == "voltar") {
           if(menuAtual == "COMODO"){
               menuAtual = "PRINCIPAL";
               comodoFocado.clear();

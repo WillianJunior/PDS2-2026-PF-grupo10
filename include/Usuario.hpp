@@ -69,6 +69,10 @@ public:
      * @param evento Nome do evento cuja macro correspondente deve ser disparada.
      * @param sistema Referência ao sistema de dispositivos para executar as ações. */
     void executarMacro(std::string evento, Sistema& sistema);
+
+    /** @brief Registra as informações de um usuário em um arquivo de texto dentro de data/
+    */
+    void salvarDados(const Sistema& sistema);
 };
 
 

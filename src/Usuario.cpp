@@ -1,9 +1,15 @@
-#include "../include/Usuario.hpp"
-#include <stdexcept>
-#include "Luz.hpp"
 #include "ArCondicionado.hpp"
-#include "Som.hpp"
+#include "Usuario.hpp"
+#include "Sistema.hpp"
 #include "Portao.hpp"
+#include "Luz.hpp"
+#include "Som.hpp"
+
+
+#include <stdexcept>
+#include <iostream>
+#include <fstream>
+
 
 Usuario::Usuario(std::string nome, std::string senha) : _nome(nome), _senha(senha) {
 }
@@ -104,3 +110,47 @@ void Usuario::executarMacro(std::string evento, Sistema& sistema) {
         evento + "\" nao encontrada."
     );
 }
+
+
+void Usuario::salvarDados(const Sistema& sistema){
+/*
+ * Formato de salvamento:
+ * USUARIO1,SENHA1;MACRO1,MACRO2, ... ,MACROn;COMODO1,COMODO2,COMODO3, ... ,COMODOn;
+ * USUARIO2,SENHA2;MACRO1,MACRO2, ... ,MACROn;COMODO1,COMODO2,COMODO3, ... ,COMODOn;
+ * ...
+*/
+
+    std::string caminho = "data/" + _nome + ".txt";
+    std::ofstream registro(caminho);
+
+    if (!registro.is_open()) {
+        std::cerr << "Erro: não foi possível abrir o arquivo " << caminho << std::endl;
+        return;
+    }
+
+    registro << _nome << "," << _senha << ";";
+
+    for (int i = 0; i < macros.size(); ++i) {
+        if (macros[i] != nullptr) {
+            registro << macros[i]->getEvento();
+            if (i < macros.size() - 1) registro << ",";
+        }
+    }
+    registro << ";";
+
+    int qtdComodos = sistema.getQtdComodos();
+    for (int i = 0; i < qtdComodos; ++i) {
+        const Comodo* c = sistema.getComodo(i);
+        if (c != nullptr) {
+            registro << c->getNome();
+            if (i < qtdComodos - 1) registro << ",";
+        }
+    }
+    registro<< ";";
+    registro.close();
+
+    std::cout << "Dados registrados com sucesso!" << std::endl;
+}
+
+/*
+void carregarDados*/
