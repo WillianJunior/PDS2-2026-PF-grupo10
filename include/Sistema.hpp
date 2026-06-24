@@ -20,7 +20,6 @@ private:
 
     bool ativo;           ///< Indica se o sistema está ativo
     std::vector<std::unique_ptr<Comodo>> comodos;    ///< Vetor de cômodos gerenciados por smart pointers (RAII).
-    std::unique_ptr<Sensor> sensor;   ///< C9 - Sensor gerenciado por Smart Pointer (RAII)
 
 public:
 
@@ -44,12 +43,6 @@ public:
      * @return Comodo* Ponteiro para o objeto do cômodo correspondente se o nome for válido;
      * Retorna `nullptr` caso o cômodo não seja encontrado. */
     Comodo* getComodo(const std::string& nome);
-
-    /** @brief Retorna o sensor principal associado e gerenciado pelo sistema. 
-     * Permite o acesso externo ao objeto de monitoramento para leitura de estados,
-     * ou configurações diretas no dispositivo de entrada.
-     * @return Sensor* Ponteiro para a instância do objeto Sensor ativo no sistema. */
-    Sensor* getSensor() const;
 
     /** @brief Retorna a quantidade de cômodos cadastrados no sistema.
      * Esta função retorna o número total de objetos Comodo

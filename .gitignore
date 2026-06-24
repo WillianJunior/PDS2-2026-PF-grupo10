@@ -68,6 +68,10 @@ cmake-build-*/
 \#*\#
 .\#*
 
+# Kate
+*.bak
+
+
 # ============================================
 # Sistema operacional
 # ============================================
@@ -138,6 +142,8 @@ coverage_report.functions.html
 # Arquivos de teste temporários
 test.log
 test_output.txt
+output.txt
+
 
 # Core dumps
 core.*

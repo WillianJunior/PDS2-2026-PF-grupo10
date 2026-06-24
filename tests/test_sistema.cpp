@@ -12,9 +12,6 @@ TEST_CASE("Testes de Unidade - Classe Sistema") {
         // O sistema deve iniciar desligado/inativo até ser explicitamente executado
         CHECK(sistemaHome.estaAtivo() == false);
 
-        // O construtor deve alocar automaticamente o sensor principal
-        CHECK(sistemaHome.getSensor() != nullptr);
-
         // A lista de cômodos deve iniciar vazia
         CHECK(sistemaHome.getComodo(0) == nullptr);
         CHECK(sistemaHome.getComodo(-1) == nullptr);

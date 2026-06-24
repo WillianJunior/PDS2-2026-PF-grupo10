@@ -7,7 +7,7 @@
 #include <stdexcept> 
 #include <memory>    
 
-Sistema::Sistema() : ativo(false), sensor(std::unique_ptr<Sensor>(new Sensor(10))), comodos() {
+Sistema::Sistema() : ativo(false), comodos() {
 }
 
 Comodo* Sistema::getComodo(int i) const {
@@ -28,10 +28,6 @@ Comodo* Sistema::getComodo(const std::string& nome) {
 int Sistema::getQtdComodos() const {
     int quantidade = comodos.size();
     return quantidade;
-}
-
-Sensor* Sistema::getSensor() const {
-    return sensor.get();
 }
 
 bool Sistema::estaAtivo() const {

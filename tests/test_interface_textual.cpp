@@ -55,8 +55,8 @@ TEST_CASE("Testes de Unidade - Classe InterfaceTextual") {
 
         // Criando uma lista de alertas fictícia para testar o método de renderização de avisos
         std::vector<std::string> listaAlertasFalsos = {
-            "Sensor Cozinha: Temperatura critica!",
-            "Sensor Sala: Dispositivo Offline"
+            "Cozinha: Temperatura critica!",
+            "Sala: Dispositivo Offline"
         };
         
         // Valida se o método percorre e consome o vetor com segurança
