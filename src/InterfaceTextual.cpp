@@ -83,7 +83,7 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
               limparTela();
               exibirMenuComodo(nome);
           } else {
-              std::cerr << "Comodo '" << nome << "' não encontrado.\n";
+              std::cerr << "Comodo '" << nome << "' nao encontrado.\n";
           }
       }
 
@@ -253,7 +253,7 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
             menuAtual = "DISPOSITIVO";
             std::cout << "Dispositivo " << id << " focado.\n";
         } else {
-            std::cout << "Dispositivo " << id << " não encontrado.\n";
+            std::cout << "Dispositivo " << id << " nao encontrado.\n";
         }
     }
 
@@ -370,7 +370,7 @@ void InterfaceTextual::exibirMenuPrincipal() {
       std::cout << "=== Menu Principal ===" << std::endl;
       exibirComodos();
 
-      std::cout << "\nPara exibir comandos possíveis, execute \"ajuda\" \n";
+      std::cout << "\nPara exibir comandos possiveis, execute \"ajuda\" \n";
       std::cout << "\nPara exercutar um comando, digite-o e pressione Enter \n ";
       std::cout << "> ";
       
@@ -379,7 +379,7 @@ void InterfaceTextual::exibirMenuPrincipal() {
 void InterfaceTextual::exibirMenuComodo(const std::string &nomeComodo) {
     limparTela();
     if (sistema == nullptr) {
-            std::cout << "Sistema não inicializado." << std::endl;
+            std::cout << "Sistema nao inicializado." << std::endl;
             return;
       }
 
@@ -400,7 +400,7 @@ void InterfaceTextual::exibirMenuComodo(const std::string &nomeComodo) {
       }
 
       if (alvo == nullptr) {
-            std::cout << "Cômodo '" << nomeComodo << "' não encontrado." << std::endl;
+            std::cout << "Comodo '" << nomeComodo << "' nao encontrado." << std::endl;
             return;
       }
 
@@ -408,7 +408,7 @@ void InterfaceTextual::exibirMenuComodo(const std::string &nomeComodo) {
       comodoFocado = nomeComodo;
       dispositivoFocadoID = -1;
 
-      std::cout << "=== Cômodo: " << nomeComodo << " ===" << std::endl;
+      std::cout << "=== Comodo: " << nomeComodo << " ===" << std::endl;
       int qtdDisp = alvo->getQtdDispositivos();
       if (qtdDisp == 0) {
             std::cout << "(nenhum dispositivo cadastrado)" << std::endl;
@@ -422,7 +422,7 @@ void InterfaceTextual::exibirMenuComodo(const std::string &nomeComodo) {
             }
       }
 
-      std::cout << "\nComandos disponíveis:" << std::endl;
+      std::cout << "\nComandos disponiveis:" << std::endl;
       std::cout << "  adicionar dispositivo      - adicionar dispositivo" << std::endl;
       std::cout << "  focar <id>                 - foca em um dispositivo para executar comandos sobre ele" << std::endl;
       std::cout << "  voltar ao menu principal   - volta" << std::endl;
@@ -435,12 +435,12 @@ void InterfaceTextual::exibirDispositivoFocado(int id) {
     limparTela();
 
     if (sistema == nullptr) {
-        std::cout << "Sistema não inicializado." << std::endl;
+        std::cout << "Sistema nao inicializado." << std::endl;
         return;
     }
 
     if (comodoFocado.empty()) {
-        std::cout << "Nenhum cômodo focado." << std::endl;
+        std::cout << "Nenhum comodo focado." << std::endl;
         return;
     }
 
@@ -448,14 +448,14 @@ void InterfaceTextual::exibirDispositivoFocado(int id) {
     Comodo* alvo = sistema->getComodo(comodoFocado);
 
     if (alvo == nullptr) {
-        std::cout << "Cômodo não encontrado." << std::endl;
+        std::cout << "Comodo nao encontrado." << std::endl;
         return;
     }
 
     Dispositivo* disp = alvo->getDispositivo(id);
 
     if (disp == nullptr) {
-        std::cout << "Dispositivo não encontrado." << std::endl;
+        std::cout << "Dispositivo nao encontrado." << std::endl;
         return;
     }
 
@@ -465,7 +465,7 @@ void InterfaceTextual::exibirDispositivoFocado(int id) {
     std::cout << "=== Dispositivo Focado ===" << std::endl;
     std::cout << disp->getEstadoFormatado() << std::endl;
 
-    std::cout << "\nComandos disponíveis:\n";
+    std::cout << "\nComandos disponiveis:\n";
 
     if (dynamic_cast<Luz*>(disp)) {
         std::cout << "  ligar luz\n";
@@ -502,7 +502,7 @@ void InterfaceTextual::exibirDispositivoFocado(int id) {
 
 void InterfaceTextual::exibirRelatorio() {
       if (sistema == nullptr) {
-            std::cerr << "Sistema não inicializado." << std::endl;
+            std::cerr << "Sistema nao inicializado." << std::endl;
             return;
       }
 
@@ -511,7 +511,7 @@ void InterfaceTextual::exibirRelatorio() {
 
       std::ifstream arq(caminho);
       if (!arq.is_open()) {
-            std::cerr << "Não foi possível abrir o relatório: " << caminho << std::endl;
+            std::cerr << "Nao foi possivel abrir o relatorio: " << caminho << std::endl;
             return;
       }
 
@@ -525,12 +525,12 @@ void InterfaceTextual::exibirRelatorio() {
 
 void InterfaceTextual::exibirComodos() {
       if (sistema == nullptr) {
-            std::cerr << "(Sistema não inicializado)" << std::endl;
+            std::cerr << "(Sistema nao inicializado)" << std::endl;
             return;
       }
 
       int qtd = sistema->getQtdComodos();
-      std::cout << "Cômodos cadastrados: " << qtd << std::endl;
+      std::cout << "Comodos cadastrados: " << qtd << std::endl;
       for (int i = 0; i < qtd; ++i) {
             const Comodo* c = sistema->getComodo(i);
             if (c != nullptr) {
@@ -563,14 +563,14 @@ void InterfaceTextual::exibirAjuda() {
     std::cout << "  inserir musica      - Adiciona uma música à playlist\n";
     std::cout << "  remover musica      - Remove uma música da playlist\n\n";
 
-    std::cout << "  **COMANDOS DA ILUMINAÇÃO** (necessário ter uma Luz focada):\n";
+    std::cout << "  **COMANDOS DA ILUMINAÇAO** (necessário ter uma Luz focada):\n";
     std::cout << "  ligar luz          - Liga a luz\n";
     std::cout << "  desligar luz        - Desliga a luz\n";
     std::cout << "  alterar intensidade - Altera a intensidade (1-5)\n\n";
 
-    std::cout << "  **COMANDOS DO PORTÃO** (necessário ter um Portão focado):\n";
-    std::cout << "  abrir portao         - Abre o portão\n";
-    std::cout << "  alterar temporizador - Altera o tempo de fechamento automático (segundos)\n\n";
+    std::cout << "  **COMANDOS DO PORTAO** (necessário ter um Portão focado):\n";
+    std::cout << "  abrir portao         - Abre o portao\n";
+    std::cout << "  alterar temporizador - Altera o tempo de fechamento automatico (segundos)\n\n";
 
     std::cout << "  **COMANDOS DO AR CONDICIONADO** (necessário ter um Ar focado):\n";
     std::cout << "  ligar ar condicionado    - Liga o ar-condicionado\n";
@@ -578,23 +578,23 @@ void InterfaceTextual::exibirAjuda() {
     std::cout << "  alterar temperatura      - Ajusta a temperatura (15-30°C)\n\n";
 
     std::cout << "  **COMANDOS DO SISTEMA** (gerais):\n";
-    std::cout << "  fazer relatorio       - Gera um relatório do sistema\n";
-    std::cout << "  adicionar comodo      - Adiciona um novo cômodo\n";
+    std::cout << "  fazer relatorio       - Gera um relatorio do sistema\n";
+    std::cout << "  adicionar comodo      - Adiciona um novo comodo\n";
     std::cout << "  focar <id>            - foca um dispositivo para comandos\n";
-    std::cout << "  remover comodo        - Remove o cômodo atual\n";
-    std::cout << "  adicionar dispositivo - Adiciona um dispositivo ao cômodo atual\n";
-    std::cout << "  remover dispositivo   - Remove um dispositivo do cômodo atual\n\n";
+    std::cout << "  remover comodo        - Remove o comodo atual\n";
+    std::cout << "  adicionar dispositivo - Adiciona um dispositivo ao comodo atual\n";
+    std::cout << "  remover dispositivo   - Remove um dispositivo do comodo atual\n\n";
 
-    std::cout << "  **COMANDOS DO USUÁRIO** (requer usuário logado):\n";
-    std::cout << "  renomear            - Altera o nome do usuário\n";
-    std::cout << "  ver nome            - Mostra o nome do usuário logado\n";
-    std::cout << "  autenticar          - Autentica o usuário\n";
+    std::cout << "  **COMANDOS DO USUARIO** (requer usuário logado):\n";
+    std::cout << "  renomear            - Altera o nome do usuario\n";
+    std::cout << "  ver nome            - Mostra o nome do usuario logado\n";
+    std::cout << "  autenticar          - Autentica o usuario\n";
     std::cout << "  adicionar macro     - Cria uma nova macro\n";
     std::cout << "  remover macro       - Remove uma macro\n";
     std::cout << "  executar macro      - Executa uma macro\n\n";
 
-    std::cout << "  **COMANDOS DE NAVEGAÇÃO** (sempre disponíveis):\n";
-    std::cout << "  entrar <nome>       - Entra em um cômodo\n";
+    std::cout << "  **COMANDOS DE NAVEGACAO** (sempre disponiveis):\n";
+    std::cout << "  entrar <nome>       - Entra em um comodo\n";
     std::cout << "  sair                - Encerra a interface\n";
     std::cout << "  ajuda               - Exibe esta mensagem de ajuda\n\n";
 
