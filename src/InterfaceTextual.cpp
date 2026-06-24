@@ -22,6 +22,16 @@ InterfaceTextual::InterfaceTextual() : ativa(false), sistema(new Sistema), usuar
 
 void InterfaceTextual::iniciar() {
       limparTela();
+
+      std::cout << R"(
+  ____  __  __    _    ____ _____   _   _  ___  __  __ _____ 
+ / ___||  \/  |  / \  |  _ \_   _| | | | |/ _ \|  \/  | ____|
+ \___ \| |\/| | / _ \ | |_) || |   | |_| | | | | |\/| |  _|  
+  ___) | |  | |/ ___ \|  _ < | |   |  _  | |_| | |  | | |___ 
+ |____/|_|  |_/_/   \_\_| \_\|_|   |_| |_|\___/|_|  |_|_____|
+                                                             
+    )" << std::endl;
+
       ativa = true;
       std::string comando;
       while (ativa) {
