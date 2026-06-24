@@ -41,11 +41,12 @@ void Macro::setEvento(std::string evento) {
     this->evento = evento;
 }
 
-void Macro::adicionarDispositivo(int id, std::string acao) {
+void Macro::adicionarDispositivo(int id, std::string acao, int valor) {
 
     auto novo = std::unique_ptr<Node>(new Node());
     novo->id = id;
     novo->acao = acao;
+    novo->valor = valor;
     novo->proximo = nullptr;
 
     if (!lista) {

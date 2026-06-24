@@ -10,6 +10,7 @@ struct Node {
     int id;                       ///< Identificador do dispositivo associado à ação
     std::string acao;             ///< Ação a ser executada no dispositivo (valores esperados: "ligar",
                                   ///"desligar", "abrir", "fechar" e "ajustar")
+    int valor;
     std::unique_ptr<Node> proximo;                ///< Ponteiro para o próximo nó da lista
 };
 
@@ -58,7 +59,7 @@ public:
      *  no final da lista encadeada.
      *  @param id Identificador numérico do dispositivo que sofrerá a ação.
      *  @param acao Comando textual a ser disparado (ex: "ligar", "desligar", "abrir", "fechar", "ajustar"). */
-    void adicionarDispositivo(int id, std::string acao);
+    void adicionarDispositivo(int id, std::string acao, int valor);
 
     /** @brief Remove uma instrução de comando específica da sequência da macro.
      *  Varre a lista encadeada em busca do primeiro nó que coincida simultaneamente com o ID e a ação fornecidos.

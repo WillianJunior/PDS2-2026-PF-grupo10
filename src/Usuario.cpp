@@ -1,5 +1,9 @@
 #include "../include/Usuario.hpp"
 #include <stdexcept>
+#include "Luz.hpp"
+#include "ArCondicionado.hpp"
+#include "Som.hpp"
+#include "Portao.hpp"
 
 Usuario::Usuario(std::string nome, std::string senha) : _nome(nome), _senha(senha) {
 }
@@ -58,24 +62,45 @@ void Usuario::executarMacro(std::string evento, Sistema& sistema) {
             Dispositivo* disp = sistema.getDispositivo(atual->id);
 
             if (disp != nullptr) {
-
-                if (atual->acao == "ligar")
+                if (atual->acao == "ligar") {
                     disp->alterarEstado(true);
-
-                else if (atual->acao == "desligar")
+                }
+                else if (atual->acao == "desligar") {
                     disp->alterarEstado(false);
-
-                else if (atual->acao == "abrir")
+                }
+                else if (atual->acao == "abrir") {
                     disp->alterarEstado(true);
-
-                // demais ações...
+                }
+                else if (atual->acao == "fechar") {
+                    disp->alterarEstado(false);
+                }
+                else if (atual->acao == "ajustar") {
+                    if (auto* luz = dynamic_cast<Luz*>(disp)) {
+                        luz->ajustarIntensidade(atual->valor);
+                    }
+                    else if (auto* ar = dynamic_cast<ArCondicionado*>(disp)) {
+                        ar->ajustarTemperatura(atual->valor);
+                    }
+                    else if (auto* som = dynamic_cast<Som*>(disp)) {
+                        som->setVolume(atual->valor);
+                    }
+                    else if (auto* portao = dynamic_cast<Portao*>(disp)) {
+                        portao->setTemporizador(atual->valor);
+                    }
+                }
+                else {
+                    throw std::runtime_error(
+                        "Acao desconhecida: " + atual->acao
+                    );
+                }
             }
-
             atual = atual->proximo.get();
         }
         return;
     }
 
     throw std::runtime_error(
-        "Erro: Não foi possível executar. Macro '" + evento + "' não encontrada.");
+        "Erro: Nao foi possivel executar. Macro \"" +
+        evento + "\" nao encontrada."
+    );
 }

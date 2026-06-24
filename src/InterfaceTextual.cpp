@@ -393,8 +393,9 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
                   std::string acao;
                   std::cout << "Digite a acao: ";
                   std::getline(std::cin, acao);
+                  int valor = 0;
 
-                  macro->adicionarDispositivo(id, acao);
+                  macro->adicionarDispositivo(id, acao, valor);
                   std::cout << "Comando adicionado a macro.\n";
               }
               std::cout << "\nMacro criada!\n";
