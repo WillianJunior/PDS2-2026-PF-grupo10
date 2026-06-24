@@ -12,11 +12,11 @@ Assume-se que:
 */
 
 Som::Som() : Dispositivo(), _volume(50), _indice(0), _pause(true) {
-    carregarMusicas("playlist.txt");
+    carregarMusicas("src/playlist.txt");
 }
 
 Som::~Som() {
-    supplArq("playlist.txt");
+    supplArq("src/playlist.txt");
 }
 
 void Som::supplArq(const string& nomeArquivo){
@@ -85,17 +85,28 @@ void Som::togglePause() {
 }
 
 void Som::tocar() {
-    std::cout << "Reprodução iniciada" <<std::endl;
-    _musica = playlist[0];
+    if(playlist.empty()){
+        std::cerr << "Nada para tocar" << std::endl;
+        return;
+    }else{
+        std::cout << "Reprodução iniciada" <<std::endl;
+        _indice = 0;
+        _musica = playlist[0];
+    }
 }
 
 void Som::tocar(int indice){
+    if(playlist.empty()){
+        std::cerr << "Nada para tocar" << std::endl;
+        return;
+    }
+
     if(indice < 0 || indice >= playlist.size()){
         std::cerr << "Erro: Índice inválido" << std::endl;
         return;
     }else{
         _indice = indice;
-        _musica = playlist[indice];
+        _musica = playlist[indice - 1];
         std::cout << "Tocando música escolhida: "<< _musica << std::endl;
     }
 }
@@ -143,6 +154,14 @@ void Som::adicionarMusica(const string& nome){
 void Som::adicionarMusica(const string& nome, int pos) {
     std::cout << "Adicionando " << nome << "na posição " << pos << " da lista de reprodução" << std::endl;
 
+    if(pos < 0) {
+        pos = 0;
+    }
+
+    if(pos > static_cast<int>(playlist.size())){
+        pos = playlist.size();
+    }
+
     auto it = playlist.begin() + pos;
     playlist.insert(it, nome);
 
@@ -152,6 +171,7 @@ void Som::adicionarMusica(const string& nome, int pos) {
 void Som::removerMusica(const string& nome) {
     if(playlist.empty()){
         std::cerr << "Não há nada para remover" << std::endl;
+        return;
     }
 
     auto it = std::find(playlist.begin(), playlist.end(), nome);
@@ -181,6 +201,11 @@ void Som::removerMusica(const string& nome) {
 void Som::removerMusica(int pos) {
     if(playlist.empty()){
         std::cerr << "Não há nada para remover" << std::endl;
+    }
+
+    if (pos < 0 || pos >= static_cast<int>(playlist.size())) {
+        std::cerr << "Índice inválido!" << std::endl;
+        return;
     }
 
     auto it = playlist.begin() + pos;

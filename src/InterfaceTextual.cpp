@@ -39,14 +39,7 @@ void InterfaceTextual::iniciar() {
 
       limparTela();
 
-      std::cout << R"(
-  ____  __  __    _    ____ _____   _   _  ___  __  __ _____ 
- / ___||  \/  |  / \  |  _ \_   _| | | | |/ _ \|  \/  | ____|
- \___ \| |\/| | / _ \ | |_) || |   | |_| | | | | |\/| |  _|  
-  ___) | |  | |/ ___ \|  _ < | |   |  _  | |_| | |  | | |___ 
- |____/|_|  |_/_/   \_\_| \_\|_|   |_| |_|\___/|_|  |_|_____|
-                                                             
-    )" << std::endl;
+
 
       ativa = true;
       std::string comando;
@@ -166,8 +159,8 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
           if (auto som = dynamic_cast<Som*>(dispBase)) {
               std::string nomeMusica;
               std::cout << "Digite o nome da musica: ";
-              std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
               std::getline(std::cin, nomeMusica);
+              // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
               som->adicionarMusica(nomeMusica);
           }
       }else if (Fcomando == "remover musica") {
@@ -285,8 +278,6 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
               limparTela();
           }
           
-      }else if (Fcomando == "remover comodo") {
-
       }else if (Fcomando == "remover comodo") {
           if (comodoAtual != nullptr) {
               sistema->removerComodo(comodoAtual);
@@ -451,6 +442,15 @@ void InterfaceTextual::exibirMenuPrincipal() {
 
       menuAtual = "PRINCIPAL";
       dispositivoFocadoID = -1;
+
+      std::cout << R"(
+      ____  __  __    _    ____ _____   _   _  ___  __  __ _____
+     / ___||  \/  |  / \  |  _ \_   _| | | | |/ _ \|  \/  | ____|
+     \___ \| |\/| | / _ \ | |_) || |   | |_| | | | | |\/| |  _|
+      ___) | |  | |/ ___ \|  _ < | |   | | | | |_| | |  | | |___
+     |____/|_|  |_/_/   \_\_| \_\|_|   |_| |_|\___/|_|  |_|_____|
+
+    )" << std::endl;
 
       std::cout << "Bem-vindo ao Sistema Smart Home (digite 'sair' para encerrar)" << std::endl;
       std::cout << "=== Menu Principal ===" << std::endl;
