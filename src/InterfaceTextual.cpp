@@ -1,21 +1,20 @@
-#include "InterfaceTextual.hpp"
 #include "ArCondicionado.hpp"
-#include "Som.hpp"
-#include "Portao.hpp"
-#include "Dispositivo.hpp"
-#include "Luz.hpp"
-#include "Sistema.hpp"
-#include "Sensor.hpp"
-#include "Usuario.hpp"
 #include "Comodo.hpp"
+#include "Dispositivo.hpp"
+#include "InterfaceTextual.hpp"
+#include "Luz.hpp"
+#include "Portao.hpp"
+#include "Sistema.hpp"
+#include "Som.hpp"
+#include "Usuario.hpp"
 
+#include <algorithm>
+#include <cctype>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
-#include <algorithm>
-#include <cctype>
-#include <string>
 #include <limits>
+#include <string>
 
 InterfaceTextual::InterfaceTextual() : ativa(false), sistema(new Sistema), usuarioAtual(nullptr), menuAtual(""), comodoFocado(""), dispositivoFocadoID(0){
 }

@@ -6,7 +6,6 @@
 #include <memory> // Incluído para usar o std::unique_ptr (C9 - RAII)
 
 #include "Comodo.hpp"
-#include "Sensor.hpp"
 #include "Macro.hpp"
 
 
