@@ -22,6 +22,23 @@ InterfaceTextual::InterfaceTextual() : ativa(false), sistema(new Sistema), usuar
 
 void InterfaceTextual::iniciar() {
       limparTela();
+      std::string nome;
+      std::string senha;
+
+      std::cout << "===== LOGIN =====" << std::endl;
+      std::cout << "Usuario: ";
+      std::getline(std::cin, nome);
+
+      std::cout << "Senha: ";
+      std::getline(std::cin, senha);
+
+      usuarioAtual.reset(new Usuario(nome, senha));
+
+      std::cout << "\nLogin realizado com sucesso!" << std::endl;
+      std::cout << "Pressione Enter para continuar...";
+      std::cin.get();
+
+      limparTela();
 
       std::cout << R"(
   ____  __  __    _    ____ _____   _   _  ___  __  __ _____ 

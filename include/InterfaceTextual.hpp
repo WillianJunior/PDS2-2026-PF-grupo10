@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 #include "Usuario.hpp"
 #include "Sistema.hpp"
 
@@ -12,10 +13,10 @@
 class InterfaceTextual {
 
 private: 
-    static int qtdInterfaces;   ///< Quantidade de interfaces ativas
-    Sistema* sistema;           ///< Ponteiro para o sistema principal (regras de negócio)
-    bool ativa;                 ///< Indica se o loop da interface está ativo  
-    Usuario* usuarioAtual;      ///< Ponteiro para o usuário logado no sistema
+    static int qtdInterfaces;                   ///< Quantidade de interfaces ativas
+    std::unique_ptr<Sistema> sistema;           ///< Ponteiro para o sistema principal (regras de negócio)
+    bool ativa;                                 ///< Indica se o loop da interface está ativo  
+    std::unique_ptr<Usuario> usuarioAtual;      ///< smart pointer para o usuário logado no sistema
 
     std::string menuAtual;      ///< Armazena a tela atual (ex: "PRINCIPAL", "COMODO", "DISPOSITIVO")
     std::string comodoFocado;   ///< Armazena o nome do cômodo que o usuário está inspecionando no momento
