@@ -259,15 +259,13 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
           } else {
               sistema->adicionarComodo(std::unique_ptr<Comodo>(new Comodo(nomeComodo)));
               
-              // Formata o nome para ter exatamente 9 caracteres para não quebrar a parede do desenho
               std::string nomeFormatado = nomeComodo;
-              if (nomeFormatado.length() > 9) {
+              if (nomeFormatado.length() > 10) {
                   nomeFormatado = nomeFormatado.substr(0, 6) + "...";
               } else {
-                  nomeFormatado.append(9 - nomeFormatado.length(), ' '); // Preenche com espaços vazios
+                  nomeFormatado.append(10 - nomeFormatado.length(), ' '); 
               }
 
-              // --- Inserindo a ASCII Art com o nome DENTRO ---
               limparTela();
               std::cout << " [ COMODO ADICIONADO COM SUCESSO! ]\n";
               std::cout << R"(
@@ -284,7 +282,7 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
 
               std::cout << "Pressione Enter para voltar ao menu...";
               std::string pausa;
-              std::getline(std::cin, pausa); // Segura a tela para o usuario ver a arte
+              std::getline(std::cin, pausa); 
               limparTela();
           }
           
