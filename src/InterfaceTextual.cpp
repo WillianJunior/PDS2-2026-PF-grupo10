@@ -410,8 +410,11 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
               usuarioAtual->executarMacro(evento, *sistema);
           }
       }
-      else if(Fcomando == "salvar"){
+    else if(Fcomando == "salvar"){
           usuarioAtual->salvarDados(*sistema);
+    }
+    else if(Fcomando == "carregar"){
+        usuarioAtual->carregarDados(*sistema);
     }
       else if (Fcomando == "voltar") {
           if(menuAtual == "COMODO"){

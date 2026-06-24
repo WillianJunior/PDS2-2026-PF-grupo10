@@ -14,7 +14,7 @@
  * A classe Sistema é responsável por controlar a execução do sistema,
  * gerenciar os cômodos, sensores e comandos recebidos da interface textual. */
 class Sistema {
-    
+
 private:
 
     bool ativo;           ///< Indica se o sistema está ativo

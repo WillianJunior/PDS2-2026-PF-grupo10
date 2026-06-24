@@ -73,6 +73,11 @@ public:
     /** @brief Registra as informações de um usuário em um arquivo de texto dentro de data/
     */
     void salvarDados(const Sistema& sistema);
+
+    /** @brief Lê as informações de um usuário a partir de um arquivo de texto dentro de data/
+     */
+    bool carregarDados(Sistema& sistema);
+
 };
 
 

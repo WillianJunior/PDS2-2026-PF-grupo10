@@ -9,6 +9,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 
 Usuario::Usuario(std::string nome, std::string senha) : _nome(nome), _senha(senha) {
@@ -129,8 +130,7 @@ void Usuario::salvarDados(const Sistema& sistema){
     }
 
     registro << _nome << "," << _senha << ";";
-
-    for (int i = 0; i < macros.size(); ++i) {
+    for (size_t i = 0; i < macros.size(); ++i) {
         if (macros[i] != nullptr) {
             registro << macros[i]->getEvento();
             if (i < macros.size() - 1) registro << ",";
@@ -152,5 +152,69 @@ void Usuario::salvarDados(const Sistema& sistema){
     std::cout << "Dados registrados com sucesso!" << std::endl;
 }
 
-/*
-void carregarDados*/
+
+bool Usuario::carregarDados(Sistema& sistema) {
+
+    std::string caminho = "data/" + _nome + ".txt";
+    std::ifstream registro(caminho);
+
+    if (!registro.is_open()) {
+        std::cerr << "Erro: não foi possível abrir o arquivo " << caminho << std::endl;
+        return false;
+    }
+
+    std::string conteudo;
+    std::getline(registro, conteudo);
+    registro.close();
+
+    if (!conteudo.empty() && conteudo.back() == ';') {
+        conteudo.pop_back();
+    }
+
+    // divide em cada ';'
+
+    std::vector<std::string> partes;
+    std::stringstream ss(conteudo);
+    std::string parte;
+    while (std::getline(ss, parte, ';')) {
+        partes.push_back(parte);
+    }
+
+
+    if (partes.size() < 3) {
+        std::cerr << "Arquivo corrompido ou formato inválido." << std::endl;;
+        return false;
+    }
+
+    std::stringstream ssUser(partes[0]);
+    std::string nome, senha;
+    if (std::getline(ssUser, nome, ',') && std::getline(ssUser, senha, ',')) {
+        _nome = nome;
+        _senha = senha;
+    } else {
+        std::cerr << "Erro ao ler nome/senha." << std::endl;;
+        return false;
+    }
+
+
+    std::stringstream ssMacros(partes[1]);
+    std::string novomacro;
+    macros.clear();
+    while (std::getline(ssMacros, novomacro, ',')) {
+        if (!novomacro.empty()) {
+            macros.push_back(std::make_unique<Macro>(novomacro));
+        }
+    }
+
+
+    std::stringstream ssComodos(partes[2]);
+    std::string comodo;
+    while (std::getline(ssComodos, comodo, ',')) {
+        if (!comodo.empty()) {
+            if (sistema.getComodo(comodo) == nullptr) {
+                sistema.adicionarComodo(std::make_unique<Comodo>(comodo));
+            }
+        }
+    }
+    return true;
+}
