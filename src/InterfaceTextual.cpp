@@ -247,7 +247,7 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
           std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
           sistema->gerarRelatorio(caminho);
 
-      }else if (Fcomando == "adicionar comodo") {
+} else if (Fcomando == "adicionar comodo") {
           std::string nomeComodo;
           std::cout << "Nome do comodo: ";
           std::getline(std::cin, nomeComodo);
@@ -255,10 +255,40 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
           std::transform(nomeComodo.begin(), nomeComodo.end(), nomeComodo.begin(), [](unsigned char c){ return static_cast<char>(std::tolower(c)); });
 
           if (sistema->getComodo(nomeComodo) != nullptr) {
-          std::cout << "Ja existe um comodo com esse nome." << std::endl;
+              std::cout << "Ja existe um comodo com esse nome." << std::endl;
           } else {
-          sistema->adicionarComodo(std::unique_ptr<Comodo>(new Comodo(nomeComodo)));
+              sistema->adicionarComodo(std::unique_ptr<Comodo>(new Comodo(nomeComodo)));
+              
+              // Formata o nome para ter exatamente 9 caracteres para não quebrar a parede do desenho
+              std::string nomeFormatado = nomeComodo;
+              if (nomeFormatado.length() > 9) {
+                  nomeFormatado = nomeFormatado.substr(0, 6) + "...";
+              } else {
+                  nomeFormatado.append(9 - nomeFormatado.length(), ' '); // Preenche com espaços vazios
+              }
+
+              // --- Inserindo a ASCII Art com o nome DENTRO ---
+              limparTela();
+              std::cout << " [ COMODO ADICIONADO COM SUCESSO! ]\n";
+              std::cout << R"(
+        ____________________
+       /                   /|
+      /_________________  / |
+     |  __               |  |
+     | |  | )" << nomeFormatado << R"( |  |
+     | |  |              | / 
+     | |__|              |/  
+     ====================
+     
+              )" << std::endl;
+
+              std::cout << "Pressione Enter para voltar ao menu...";
+              std::string pausa;
+              std::getline(std::cin, pausa); // Segura a tela para o usuario ver a arte
+              limparTela();
           }
+          
+      }else if (Fcomando == "remover comodo") {
 
       }else if (Fcomando == "remover comodo") {
           if (comodoAtual != nullptr) {
