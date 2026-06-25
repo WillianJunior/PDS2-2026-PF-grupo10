@@ -6,6 +6,10 @@ COMODOS
 quarto
 Som 3 1 50
 FIM_COMODO
+externo
+Luz 5 0 1
+Portao 6 0 60
+FIM_COMODO
 FIM_COMODOS
 
 MACROS

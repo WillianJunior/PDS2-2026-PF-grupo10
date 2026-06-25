@@ -58,18 +58,6 @@ public:
     /** @brief Limpa o console para garantir que a interface textual fique organizada a cada comando. */
     void limparTela();
 
-    /** @brief Imprime uma mensagem padrão de feedback na tela do usuário.
-     *  @param mensagem Texto a ser exibido. */
-    void exibirMensagem(const std::string &mensagem); 
-
-    /** @brief Percorre e exibe de forma destacada os avisos e problemas detectados por sensores.
-     *  @param alertas Vetor de strings contendo o histórico de alertas do sistema. */
-    void exibirAlerta(std::vector<std::string> &alertas); 
-
-    /** @brief Busca e exibe detalhadamente as propriedades atuais de um aparelho específico.
-     *  @param ID Identificador único do dispositivo. */
-    void exibirEstado(int ID); 
-
     /** @brief Exibe a lista de comandos disponíveis na interface e suasrespectivas funcionalidades. */
     void exibirAjuda();
 };

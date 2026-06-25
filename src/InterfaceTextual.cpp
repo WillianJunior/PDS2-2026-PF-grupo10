@@ -22,51 +22,61 @@ InterfaceTextual::InterfaceTextual() : ativa(false), sistema(new Sistema), usuar
 }
 
 void InterfaceTextual::iniciar() {
-      limparTela();
-      std::string nome;
-      std::string senha;
+    limparTela();
+    std::string nome;
+    std::string senha;
 
-      std::cout << "===== LOGIN =====" << std::endl;
-      std::cout << "Usuario: ";
-      std::getline(std::cin, nome);
+    std::cout << "===== LOGIN =====" << std::endl;
+    std::cout << "Usuario: ";
+    std::getline(std::cin, nome);
 
-      std::cout << "Senha: ";
-      std::getline(std::cin, senha);
+    std::cout << "Senha: ";
+    std::getline(std::cin, senha);
 
-      usuarioAtual.reset(new Usuario(nome, senha));
-      usuarioAtual->carregarDados(*sistema);
+    std::string caminho = "data/" + nome + ".txt";
 
-      std::cout << "\nLogin realizado com sucesso!" << std::endl;
-      std::cout << "Pressione Enter para continuar...";
-      std::cin.get();
+    std::ifstream teste(caminho);
+    if (!teste.is_open()) {
+        std::ofstream criar(caminho);
+        if (!criar.is_open()) {
+            std::cout << "Erro: não foi possível criar arquivo do usuário.\n";
+            return;
+        }
+    }
+    usuarioAtual.reset(new Usuario(nome, senha));
+    usuarioAtual->carregarDados(*sistema);
 
-      limparTela();
+    std::cout << "\nLogin realizado com sucesso!" << std::endl;
+    std::cout << "Pressione Enter para continuar...";
+    std::cin.get();
+
+    limparTela();
 
 
 
-      ativa = true;
-      std::string comando;
-      while (ativa) {
-          if (menuAtual == "COMODO" && !comodoFocado.empty()) {
-              exibirMenuComodo(comodoFocado);
-          } else if (menuAtual == "DISPOSITIVO" && dispositivoFocadoID > 0) {
-              exibirDispositivoFocado(dispositivoFocadoID);
-          } else if (menuAtual == "PRINCIPAL" || menuAtual.empty()) {
-              exibirMenuPrincipal();
-          }
+    ativa = true;
+    std::string comando;
+    while (ativa) {
+        if (menuAtual == "COMODO" && !comodoFocado.empty()) {
+            exibirMenuComodo(comodoFocado);
+        } else if (menuAtual == "DISPOSITIVO" && dispositivoFocadoID > 0) {
+            exibirDispositivoFocado(dispositivoFocadoID);
+        } else if (menuAtual == "PRINCIPAL" || menuAtual.empty()) {
+            exibirMenuPrincipal();
+        }
 
-          if (!std::getline(std::cin, comando)) break;
-          limparTela();
-          if (comando.empty()) continue;
-          if (comando == "sair" || comando == "encerrar") {
-                encerrar();
-          break;
-          }
-          interpretarComando(comando);
-          std::cout << std::endl;
-          std::cout << std::endl;
+        if (!std::getline(std::cin, comando)) break;
+        limparTela();
+        if (comando.empty()) continue;
+        if (comando == "sair" || comando == "encerrar") {
+            encerrar();
+        break;
+        }
+        interpretarComando(comando);
+        std::cout << std::endl;
+        std::cout << std::endl;
 
-      }
+    }
 }
 
 void InterfaceTextual::interpretarComando(const std::string &comando){
@@ -118,7 +128,7 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
               som->alterarEstado(true);
               som->printPlaylist();
           }else{
-              std::cout << "O dispositivo focado nao e um aparelho de som ou nao foi encontrado.\n";
+              std::cout << "O dispositivo focado nao eh um aparelho de som ou nao foi encontrado.\n";
           }
           usuarioAtual->salvarDados(*sistema);
       }
@@ -216,7 +226,7 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
               portao->fecharAutomaticamente();
           }
           usuarioAtual->salvarDados(*sistema);
-      }else if (Fcomando == "alterar temporizador") {
+      }else if (Fcomando == "alterar tempo") {
           if (auto portao = dynamic_cast<Portao*>(dispBase)) {
               int segundos;
               std::cout << "Digite o tempo em segundos: ";
@@ -252,12 +262,11 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
 
       // comandos do sistema
 
-    else if (Fcomando == "fazer relatorio") {
-          std::string caminho;
-          std::cout << "Digite o caminho/nome do arquivo: ";
-          std::cin >> caminho;
-          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    else if (Fcomando == "relatorio") {
+          std::string caminho = "src/relatorio.txt";
+          
           sistema->gerarRelatorio(caminho);
+          this->exibirRelatorio();
           usuarioAtual->salvarDados(*sistema);
     } else if (Fcomando == "adicionar comodo") {
           std::string nomeComodo;
@@ -385,17 +394,20 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
           if (usuarioAtual != nullptr) {
               std::cout << "Usuario logado: " << usuarioAtual->getNome() << std::endl;
           }
-      }else if (Fcomando == "autenticar") {
-          std::string nome, senha;
-          std::cout << "Nome: "; std::cin >> nome;
-          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-          std::cout << "Senha: "; std::cin >> senha;
-          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-          if (usuarioAtual != nullptr && usuarioAtual->autenticar(nome, senha)) {
-              std::cout << "Autenticado com sucesso!\n";
+      }else if (Fcomando == "excluir usuario") {
+          std::string caminho = "data/" + usuarioAtual->getNome() + ".txt";
+
+          if (std::remove(caminho.c_str()) != 0) {
+              std::cout << "Erro: Não foi possível excluir o usuário.\n";
           } else {
-              std::cout << "Falha na autenticacao.\n";
-          }
+              std::cout << "Usuário excluído com sucesso!\n";
+              std::cout << "Pressione Enter para continuar...";
+              std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+              std::cin.get();
+
+            // Encerra a interface atual e volta para a tela inicial
+            return;
+       }
       }else if (Fcomando == "adicionar macro") {
           if (usuarioAtual != nullptr) {
               std::string evento;
@@ -637,7 +649,7 @@ void InterfaceTextual::exibirDispositivoFocado(int id) {
     }
     else if (dynamic_cast<Portao*>(disp)) {
         std::cout << "  abrir portao\n";
-        std::cout << "  alterar temporizador\n";
+        std::cout << "  alterar tempo\n";
     }
 
     std::cout << "\nComandos gerais:\n";
@@ -660,11 +672,14 @@ void InterfaceTextual::exibirRelatorio() {
             std::cerr << "Nao foi possivel abrir o relatorio: " << caminho << std::endl;
             return;
       }
-
+      std::cout << "\n===== RELATORIO DO SISTEMA =====\n";
       std::string linha;
       while (std::getline(arq, linha)) {
             std::cout << linha << std::endl;
       }
+      std::cout << "===============================\n";
+      std::cout << "\nPressione Enter para voltar ao menu.";
+      std::cin.get();
 
       arq.close();
 }
@@ -714,9 +729,9 @@ void InterfaceTextual::exibirAjuda() {
     std::cout << "  desligar luz        - Desliga a luz\n";
     std::cout << "  alterar intensidade - Altera a intensidade (1 a 5)\n\n";
 
-    std::cout << "  **COMANDOS DO PORTAO** (necessário ter um Portao focado):\n";
+    std::cout << "  **COMANDOS DO PORTAO** (necessario ter um Portao focado):\n";
     std::cout << "  abrir portao         - Abre o portao\n";
-    std::cout << "  alterar temporizador - Altera o tempo de fechamento automatico (segundos)\n\n";
+    std::cout << "  alterar tempo        - Altera o tempo de fechamento automatico (segundos)\n\n";
 
     std::cout << "  **COMANDOS DO AR CONDICIONADO** (necessario ter um Ar focado):\n";
     std::cout << "  ligar ar condicionado    - Liga o ar-condicionado\n";
@@ -724,7 +739,7 @@ void InterfaceTextual::exibirAjuda() {
     std::cout << "  alterar temperatura      - Ajusta a temperatura (15 a 30)\n\n";
 
     std::cout << "  **COMANDOS DO SISTEMA** (gerais):\n";
-    std::cout << "  fazer relatorio       - Gera um relatorio do sistema\n";
+    std::cout << "  relatorio             - Gera um relatorio do sistema\n";
     std::cout << "  adicionar comodo      - Adiciona um novo comodo\n";
     std::cout << "  focar <id>            - foca um dispositivo para comandos\n";
     std::cout << "  remover comodo        - Remove o comodo atual\n";
@@ -734,7 +749,6 @@ void InterfaceTextual::exibirAjuda() {
     std::cout << "  **COMANDOS DO USUARIO** (requer usuario logado):\n";
     std::cout << "  renomear            - Altera o nome do usuario\n";
     std::cout << "  ver nome            - Mostra o nome do usuario logado\n";
-    std::cout << "  autenticar          - Autentica o usuario\n";
     std::cout << "  adicionar macro     - Cria uma nova macro\n";
     std::cout << "  remover macro       - Remove uma macro\n";
     std::cout << "  executar macro      - Executa uma macro\n\n";
@@ -742,6 +756,7 @@ void InterfaceTextual::exibirAjuda() {
     std::cout << "  **COMANDOS DE NAVEGACAO** (sempre disponiveis):\n";
     std::cout << "  entrar <nome>       - Entra em um comodo\n";
     std::cout << "  sair                - Encerra a interface\n";
+    std::cout << "  excluir usuario     - remove o usuario logado e todos os dados relacionados a ele\n";
     std::cout << "  ajuda               - Exibe esta mensagem de ajuda\n\n";
 
     std::cout << "=====================================================\n";
@@ -754,13 +769,4 @@ void InterfaceTextual::exibirAjuda() {
     limparTela();
     exibirMenuPrincipal();
 
-}
-
-void InterfaceTextual::exibirMensagem(const std::string &mensagem) {
-}
-
-void InterfaceTextual::exibirAlerta(std::vector<std::string> &alertas) {
-}
-
-void InterfaceTextual::exibirEstado(int ID) {
 }

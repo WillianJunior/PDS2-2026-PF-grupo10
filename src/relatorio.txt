@@ -1,0 +1,7 @@
+
+quarto
+3 Som Ligado Volume: 50    Tocando agora: Disciple - Slayer
+
+externo
+5 Luz Desligada Intensidade: 1
+6 Portao Fechado Temporizador: 60

@@ -325,8 +325,6 @@ bool Usuario::carregarDados(Sistema& sistema) {
     }
     registro.close();
 
-    std::cout << "Dados carregados com sucesso!" << std::endl;
-
     return true;
 }
 
