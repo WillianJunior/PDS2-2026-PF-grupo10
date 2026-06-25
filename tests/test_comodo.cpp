@@ -67,15 +67,18 @@ TEST_CASE("adicionarDispositivo adiciona e getQtdDispositivos reflete o tamanho"
     auto d1 = std::unique_ptr<TestDispositivo>(new TestDispositivo());
     auto d2 = std::unique_ptr<TestDispositivo>(new TestDispositivo());
 
+    int id1 = d1->getId();
+    int id2 = d2->getId();
+
     const int inicial = comodo.getQtdDispositivos();
     comodo.adicionarDispositivo(move(d1));
     comodo.adicionarDispositivo(move(d2));
 
     CHECK_EQ(comodo.getQtdDispositivos(), inicial + 2);
-    CHECK_EQ(comodo.getDispositivoPorIndice(1)->getId(), d1->getId());
-    CHECK_EQ(comodo.getDispositivoPorIndice(2)->getId(), d2->getId());
-    CHECK_EQ(comodo.getDispositivo(d1->getId())->getId(), d1->getId());
-    CHECK_EQ(comodo.getDispositivo(d2->getId())->getId(), d2->getId());
+    CHECK_EQ(comodo.getDispositivoPorIndice(0)->getId(), id1);
+    CHECK_EQ(comodo.getDispositivoPorIndice(1)->getId(), id2);
+    CHECK_EQ(comodo.getDispositivo(id1)->getId(), id1);
+    CHECK_EQ(comodo.getDispositivo(id2)->getId(), id2);
 }
 
 TEST_CASE("adicionarDispositivo rejeita ponteiro nulo") {
@@ -103,6 +106,7 @@ TEST_CASE("getDispositivoPorIndice retorna nullptr para indices invalidos") {
 
 TEST_CASE("removerDispositivo remove o dispositivo correto e atualiza o vetor") {
     Comodo comodo;
+    Dispositivo::identificador = 0;
     std::unique_ptr<TestDispositivo> d1(new TestDispositivo());
     std::unique_ptr<TestDispositivo> d2(new TestDispositivo());
 
@@ -114,7 +118,6 @@ TEST_CASE("removerDispositivo remove o dispositivo correto e atualiza o vetor") 
 
     CHECK_EQ(comodo.getDispositivoPorIndice(0)->getId(), id1);
     CHECK_EQ(comodo.getDispositivoPorIndice(1)->getId(), id2);
-
     CHECK_EQ(comodo.getDispositivo(id1)->getId(), id1);
     CHECK_EQ(comodo.getDispositivo(id2)->getId(), id2);
 }
