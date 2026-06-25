@@ -28,11 +28,17 @@ public:
      *  @param nome Nome do cômodo (ex: "Sala", "Cozinha") */
     Comodo(const std::string& nome);
 
-    Comodo(const Comodo&) = delete;
-    Comodo& operator=(const Comodo&) = delete;
+    /** @brief Construtor de movimentação da classe Comodo.
+     *  Transfere os recursos de outro objeto Comodo para este, evitando cópias desnecessárias.
+     *  @param outro Objeto Comodo de origem, cujo conteúdo será movido. */
+    Comodo(Comodo&& outro) = default;
 
-    Comodo(Comodo&&) = default;
-    Comodo& operator=(Comodo&&) = default;
+    /** @brief Operador de atribuição por movimentação.
+     *  Transfere os recursos de outro objeto Comodo para este,
+     *  substituindo o conteúdo atual e evitando cópias desnecessárias.
+     *  @param outro Objeto Comodo de origem, cujo conteúdo será movido.
+     *  @return Comodo& Referência para o objeto atualizado após a movimentação. */
+    Comodo& operator=(Comodo&& outro) = default;
 
     /** @brief Destrutor padrão da classe Comodo.
      * Os dispositivos são destruídos automaticamente pelo std::vector<std::unique_ptr>. */

@@ -27,8 +27,17 @@ public:
      *  o contador estático global `qtdDispositivos`. */
     Dispositivo();
 
+    /** @brief Construtor de cópia excluído.
+     *  Impede a criação de cópias de objetos Dispositivo, garantindo
+     *  que cada dispositivo mantenha sua identidade e recursos exclusivos.
+     *  @param outro Objeto Dispositivo que se tentaria copiar. */
     Dispositivo(const Dispositivo&) = delete;
 
+    /** @brief Operador de atribuição por cópia excluído.
+     *  Impede a atribuição entre objetos Dispositivo, preservando
+     *  a unicidade e a integridade dos recursos do dispositivo.
+     *  @param outro Objeto Dispositivo que se tentaria copiar.
+     *  @return Dispositivo& Referência ao objeto de destino (não disponível, pois o método é excluído). */
     Dispositivo& operator=(const Dispositivo&) = delete;
 
     /** @brief Destrutor virtual da classe Dispositivo.
@@ -55,6 +64,10 @@ public:
      *  @return std::string Nome do tipo de dispositivo (ex: "Luz", "Som", "ArCondicionado"). */
     std::string getNome() const;
 
+    /** @brief Define um novo identificador para o dispositivo.
+     *  Atualiza o ID associado ao dispositivo com o valor informado.
+     *  Usado quando os dados são carregados novamente para o sistema.
+     *  @param novoId Novo identificador a ser atribuído ao dispositivo. */
     void setId(int novoId);
     
     /** @brief Modifica o estado lógico (ativo/inativo) do dispositivo.

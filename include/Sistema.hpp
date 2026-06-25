@@ -17,7 +17,7 @@ class Sistema {
 
 private:
 
-    bool ativo;           ///< Indica se o sistema está ativo
+    bool ativo;                                      ///< Indica se o sistema está ativo
     std::vector<std::unique_ptr<Comodo>> comodos;    ///< Vetor de cômodos gerenciados por smart pointers (RAII).
 
 public:
@@ -56,16 +56,20 @@ public:
      * @return false Se o sistema estiver desligado. */
     bool estaAtivo() const;
 
+    /** @brief Busca um dispositivo pelo seu identificador.
+     *  Percorre todos os cômodos cadastrados até encontrar um dispositivo com o ID informado.
+     *  @param id Identificador único do dispositivo.
+     *  @return Dispositivo* Ponteiro para o dispositivo encontrado ou `nullptr` caso nenhum dispositivo possua o ID informado. */
     Dispositivo* getDispositivo(int id);
 
+    /** @brief Lista todos os dispositivos cadastrados no sistema.
+     *  Percorre todos os cômodos e exibe informações dos dispositivos atualmente registrados. */
     void listarDispositivos() const;
     
     /** @brief Inicia o loop principal de execução do sistema.
      * Altera o estado do sistema para ativo, coloca os sensores em modo de leitura
      * e passa a receber, processar e responder aos comandos do usuário. */
     void executarSistema();
-
-    //removido receberComando(). Redundante com Interface Textual
 
     /** @brief Adiciona um novo cômodo à estrutura de gerenciamento da casa. 
      * Insere o objeto fornecido no vetor interno de cômodos do sistema.
@@ -92,6 +96,9 @@ public:
      * @param comando Texto contendo o comando a ser executado.*/
     void receberComando(std::string comando);
 
+    /** @brief Remove todos os dados armazenados no sistema.
+     *  Limpa a lista de cômodos e restaura o sistema ao estado inicial,
+     *  descartando todas as informações atualmente cadastradas. */
     void limparSistema();
 };
 

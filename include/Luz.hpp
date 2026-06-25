@@ -23,8 +23,14 @@ public:
     /** @brief Destrutor padrão da classe Luz. */
     ~Luz() = default;
 
+    /** @brief Liga a luz.
+     *  Altera o estado do dispositivo para ligado, permitindo
+     *  o funcionamento da iluminação com a intensidade configurada. */
     void ligar();
 
+    /** @brief Desliga a luz.
+     *  Altera o estado do dispositivo para desligado,
+     *  interrompendo o funcionamento da iluminação. */
     void desligar();
 
     /** @brief Consulta o nível atual de brilho da luz.

@@ -13,9 +13,9 @@
 class Usuario{
 
 private:
-    std::string _nome;   ///< Nome do usuário
-    std::string _senha;  ///< Senha do usuário
-    std::vector<std::unique_ptr<Macro>> macros;       ///< Vetor de macros do sistema
+    std::string _nome;                             ///< Nome do usuário
+    std::string _senha;                            ///< Senha do usuário
+    std::vector<std::unique_ptr<Macro>> macros;    ///< Vetor de macros do sistema
 
 
 public:
@@ -49,6 +49,8 @@ public:
      * Retorna `nullptr` se o índice não for válido */
     Macro* getMacro(int i) const;
 
+    /** @brief Exibe todas as macros cadastradas pelo usuário.
+     *  Percorre o vetor de macros e apresenta o nome de cada evento registrado no sistema. */
     void listarMacros() const;
 
     /** @brief Registra e armazena uma nova macro vazia no sistema.
@@ -73,14 +75,15 @@ public:
      * @param sistema Referência ao sistema de dispositivos para executar as ações. */
     void executarMacro(std::string evento, Sistema& sistema);
 
-    /** @brief Registra as informações de um usuário em um arquivo de texto dentro de data/
-    */
+    /** @brief Registra as informações de um usuário em um arquivo de texto dentro de data/ */
     void salvarDados(const Sistema& sistema);
 
-    /** @brief Lê as informações de um usuário a partir de um arquivo de texto dentro de data/
-     */
+    /** @brief Lê as informações de um usuário e salva novamente no sistema 
+     * a partir de um arquivo de texto dentro de data/ */
     bool carregarDados(Sistema& sistema);
 
+    /** @brief Remove todas as macros cadastradas pelo usuário.
+     *  Limpa o vetor de macros, liberando os recursos associados e restaurando a lista de macros ao estado vazio. */
     void limparMacros();
     
 };

@@ -23,8 +23,13 @@ public:
     /** @brief Destrutor padrão da classe ArCondicionado. */
     ~ArCondicionado() = default;
 
+    /** @brief Liga o ar-condicionado.
+     *  Altera o estado do dispositivo para ligado, permitindo seu funcionamento
+     *  e a utilização da temperatura configurada. */
     void ligar();
-
+    
+    /** @brief Desliga o ar-condicionado.
+     *  Altera o estado do dispositivo para desligado, interrompendo seu funcionamento. */
     void desligar();
 
     /** @brief Consulta a temperatura atualmente configurada no aparelho.

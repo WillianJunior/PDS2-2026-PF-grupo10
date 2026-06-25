@@ -7,11 +7,10 @@
 /** @struct Node
  * @brief Representa um nó da lista encadeada de uma macro. */
 struct Node {
-    int id;                       ///< Identificador do dispositivo associado à ação
-    std::string acao;             ///< Ação a ser executada no dispositivo (valores esperados: "ligar",
-                                  ///"desligar", "abrir", "fechar" e "ajustar")
+    int id;                          ///< Identificador do dispositivo associado à ação
+    std::string acao;                ///< Ação a ser executada no dispositivo (valores esperados: "ligar", "desligar", "abrir", "fechar" e "ajustar")
     int valor;
-    std::unique_ptr<Node> proximo;                ///< Ponteiro para o próximo nó da lista
+    std::unique_ptr<Node> proximo;   ///< Ponteiro para o próximo nó da lista
 };
 
 /** @class Macro
@@ -22,8 +21,8 @@ struct Node {
 class Macro{
 
     private:
-    std::string evento; ///< Nome do evento que ativa a macro 
-    std::unique_ptr<Node> lista;        ///< Lista encadeada de ações sobre dispositivos
+    std::string evento;              ///< Nome do evento que ativa a macro 
+    std::unique_ptr<Node> lista;     ///< Lista encadeada de ações sobre dispositivos
 
 public:
     /** @brief Contador global que rastreia o número total de instâncias de macros ativas.

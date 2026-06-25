@@ -144,7 +144,7 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
       }else if (Fcomando == "alterar volume") {
           if (auto som = dynamic_cast<Som*>(dispBase)) {
               int volume;
-              std::cout << "Digite o novo volume (0-100): ";
+              std::cout << "Digite o novo volume (0 a 100): ";
               std::cin >> volume;
               som->setVolume(volume);
               std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -308,7 +308,7 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
           if (comodoAtual != nullptr) {
               exibirMenuComodo(comodoFocado);
           }else{
-              std::cout << "Nenhum cômodo focado" << std::endl;
+              std::cout << "Nenhum comodo focado" << std::endl;
           }
       }
 
@@ -697,31 +697,31 @@ void InterfaceTextual::exibirAjuda() {
     limparTela();
     std::cout << "\n========== AJUDA - COMANDOS DISPONIVEIS ==========\n\n";
 
-    std::cout << "  **COMANDOS DO SOM** (necessário ter um dispositivo Som focado):\n";
+    std::cout << "  **COMANDOS DO SOM** (necessario ter um dispositivo Som focado):\n";
     std::cout << "  ligar som           - Liga o aparelho de som\n";
     std::cout << "  desligar som        - Desliga o aparelho de som\n";
-    std::cout << "  tocar musica        - Toca a música atual\n";
-    std::cout << "  escolher musica     - Escolhe uma música pelo índice\n";
-    std::cout << "  alterar volume      - Altera o volume (0-100)\n";
-    std::cout << "  pausar som          - Pausa/retoma a reprodução\n";
-    std::cout << "  avancar musica      - Avança para a próxima música\n";
-    std::cout << "  voltar musica       - Volta para a música anterior\n";
-    std::cout << "  inserir musica      - Adiciona uma música à playlist\n";
-    std::cout << "  remover musica      - Remove uma música da playlist\n\n";
+    std::cout << "  tocar musica        - Toca a musica atual\n";
+    std::cout << "  escolher musica     - Escolhe uma musica pelo indice\n";
+    std::cout << "  alterar volume      - Altera o volume (0 a 100)\n";
+    std::cout << "  pausar som          - Pausa/retoma a reproducao\n";
+    std::cout << "  avancar musica      - Avanca para a proxima musica\n";
+    std::cout << "  voltar musica       - Volta para a musica anterior\n";
+    std::cout << "  inserir musica      - Adiciona uma musica a playlist\n";
+    std::cout << "  remover musica      - Remove uma musica da playlist\n\n";
 
-    std::cout << "  **COMANDOS DA ILUMINAÇAO** (necessário ter uma Luz focada):\n";
+    std::cout << "  **COMANDOS DA ILUMINACAO** (necessario ter uma Luz focada):\n";
     std::cout << "  ligar luz          - Liga a luz\n";
     std::cout << "  desligar luz        - Desliga a luz\n";
-    std::cout << "  alterar intensidade - Altera a intensidade (1-5)\n\n";
+    std::cout << "  alterar intensidade - Altera a intensidade (1 a 5)\n\n";
 
-    std::cout << "  **COMANDOS DO PORTAO** (necessário ter um Portão focado):\n";
+    std::cout << "  **COMANDOS DO PORTAO** (necessário ter um Portao focado):\n";
     std::cout << "  abrir portao         - Abre o portao\n";
     std::cout << "  alterar temporizador - Altera o tempo de fechamento automatico (segundos)\n\n";
 
-    std::cout << "  **COMANDOS DO AR CONDICIONADO** (necessário ter um Ar focado):\n";
+    std::cout << "  **COMANDOS DO AR CONDICIONADO** (necessario ter um Ar focado):\n";
     std::cout << "  ligar ar condicionado    - Liga o ar-condicionado\n";
     std::cout << "  desligar ar condicionado - Desliga o ar-condicionado\n";
-    std::cout << "  alterar temperatura      - Ajusta a temperatura (15-30°C)\n\n";
+    std::cout << "  alterar temperatura      - Ajusta a temperatura (15 a 30)\n\n";
 
     std::cout << "  **COMANDOS DO SISTEMA** (gerais):\n";
     std::cout << "  fazer relatorio       - Gera um relatorio do sistema\n";
@@ -731,7 +731,7 @@ void InterfaceTextual::exibirAjuda() {
     std::cout << "  adicionar dispositivo - Adiciona um dispositivo ao comodo atual\n";
     std::cout << "  remover dispositivo   - Remove um dispositivo do comodo atual\n\n";
 
-    std::cout << "  **COMANDOS DO USUARIO** (requer usuário logado):\n";
+    std::cout << "  **COMANDOS DO USUARIO** (requer usuario logado):\n";
     std::cout << "  renomear            - Altera o nome do usuario\n";
     std::cout << "  ver nome            - Mostra o nome do usuario logado\n";
     std::cout << "  autenticar          - Autentica o usuario\n";

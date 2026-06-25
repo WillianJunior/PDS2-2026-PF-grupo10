@@ -24,7 +24,10 @@ private:
 
 public:
 
+    /** @brief Constrói uma nova interface textual.
+     *  Inicializa o sistema, o estado da interface e as estruturas necessárias para interação com o usuário. */
     InterfaceTextual();
+
     /** @brief Inicializa a interface, exibe as boas-vindas e carrega o menu inicial. */
     void iniciar(); 
 
@@ -67,6 +70,7 @@ public:
      *  @param ID Identificador único do dispositivo. */
     void exibirEstado(int ID); 
 
+    /** @brief Exibe a lista de comandos disponíveis na interface e suasrespectivas funcionalidades. */
     void exibirAjuda();
 };
 
