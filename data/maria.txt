@@ -10,7 +10,7 @@ FIM_COMODO
 sala
 Luz 3 1 1
 Som 4 0 50
-ArCondicionado 5 1 23
+ArCondicionado 5 0 23
 FIM_COMODO
 quarto
 Luz 6 1 4
@@ -28,11 +28,5 @@ chegar
 1 ligar 0
 3 ligar 0
 6 ligar 0
-FIM_MACRO
-esfriar
-5 ajustar 23
-FIM_MACRO
-a
-1 desligar 0
 FIM_MACRO
 FIM_MACROS

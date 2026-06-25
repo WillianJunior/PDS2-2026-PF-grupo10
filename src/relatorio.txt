@@ -6,7 +6,7 @@ externo
 sala
 3 Luz Ligada Intensidade: 1
 4 Som Desligado Volume: 50    Tocando agora: Disciple - Slayer
-5 ArCondicionado Ligado Temperatura: 23
+5 ArCondicionado Desligado Temperatura: 23
 
 quarto
 6 Luz Ligada Intensidade: 4
