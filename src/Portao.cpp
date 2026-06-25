@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <thread>
+#include <chrono>
 
 Portao::Portao() : Dispositivo(), segundos(30) {
     this->nome = "Portao";
