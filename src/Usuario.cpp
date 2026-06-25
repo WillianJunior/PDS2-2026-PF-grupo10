@@ -193,8 +193,6 @@ void Usuario::salvarDados(const Sistema& sistema){
     registro << "FIM_MACROS\n";
 
     registro.close();
-
-    std::cout << "Dados registrados com sucesso!" << std::endl;
 }
 
 

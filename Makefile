@@ -82,6 +82,9 @@ rebuild: clean all
 # Rebuild dos testes
 rebuild-tests: clean tests
 
+run: all
+	./$(TARGET)
+
 # ============================================
 # REGRA DE COBERTURA COMPLETA
 # ============================================

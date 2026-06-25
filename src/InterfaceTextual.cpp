@@ -681,6 +681,7 @@ void InterfaceTextual::exibirRelatorio() {
       std::cout << "\nPressione Enter para voltar ao menu.";
       std::cin.get();
 
+      limparTela();
       arq.close();
 }
 
