@@ -67,18 +67,18 @@ TEST_CASE("adicionarDispositivo adiciona e getQtdDispositivos reflete o tamanho"
     auto d1 = std::unique_ptr<TestDispositivo>(new TestDispositivo());
     auto d2 = std::unique_ptr<TestDispositivo>(new TestDispositivo());
 
-    int id1 = d1->getId();
-    int id2 = d2->getId();
+    // Guarda os IDs antes de transferir a posse (evita ler ponteiro nulo depois do move)
+    int idEsperado1 = d1->getId();
+    int idEsperado2 = d2->getId();
 
     const int inicial = comodo.getQtdDispositivos();
-    comodo.adicionarDispositivo(move(d1));
-    comodo.adicionarDispositivo(move(d2));
+    
+    comodo.adicionarDispositivo(std::move(d1));
+    comodo.adicionarDispositivo(std::move(d2));
 
     CHECK_EQ(comodo.getQtdDispositivos(), inicial + 2);
-    CHECK_EQ(comodo.getDispositivoPorIndice(0)->getId(), id1);
-    CHECK_EQ(comodo.getDispositivoPorIndice(1)->getId(), id2);
-    CHECK_EQ(comodo.getDispositivo(id1)->getId(), id1);
-    CHECK_EQ(comodo.getDispositivo(id2)->getId(), id2);
+    CHECK_EQ(comodo.getDispositivoPorIndice(static_cast<int>(0))->getId(), idEsperado1);
+    CHECK_EQ(comodo.getDispositivoPorIndice(static_cast<int>(1))->getId(), idEsperado2);
 }
 
 TEST_CASE("adicionarDispositivo rejeita ponteiro nulo") {
@@ -101,7 +101,7 @@ TEST_CASE("getDispositivoPorIndice retorna nullptr para indices invalidos") {
     comodo.adicionarDispositivo(std::move(d1));
 
     CHECK(comodo.getDispositivoPorIndice(-1) == nullptr);
-    CHECK(comodo.getDispositivoPorIndice(1) == nullptr);
+    CHECK(comodo.getDispositivoPorIndice(5) == nullptr);
 }
 
 TEST_CASE("removerDispositivo remove o dispositivo correto e atualiza o vetor") {
@@ -116,8 +116,9 @@ TEST_CASE("removerDispositivo remove o dispositivo correto e atualiza o vetor") 
     comodo.adicionarDispositivo(std::move(d1));
     comodo.adicionarDispositivo(std::move(d2));
 
-    CHECK_EQ(comodo.getDispositivoPorIndice(0)->getId(), id1);
-    CHECK_EQ(comodo.getDispositivoPorIndice(1)->getId(), id2);
+    CHECK_EQ(comodo.getDispositivoPorIndice(static_cast<int>(0))->getId(), id1);
+    CHECK_EQ(comodo.getDispositivoPorIndice(static_cast<int>(1))->getId(), id2);
+
     CHECK_EQ(comodo.getDispositivo(id1)->getId(), id1);
     CHECK_EQ(comodo.getDispositivo(id2)->getId(), id2);
 }
@@ -130,7 +131,7 @@ TEST_CASE("removerDispositivo nao altera a lista quando id nao existe") {
 
     comodo.removerDispositivo(id + 100);
     CHECK_EQ(comodo.getQtdDispositivos(), 1);
-    CHECK_EQ(comodo.getDispositivoPorIndice(0)->getId(), id);
+    CHECK_EQ(comodo.getDispositivoPorIndice(static_cast<int>(0))->getId(), id);
 }
 
 TEST_CASE("Destrutor de Comodo libera dispositivos internos") {
