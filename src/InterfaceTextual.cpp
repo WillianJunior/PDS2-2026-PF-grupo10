@@ -173,6 +173,14 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
           }
           usuarioAtual->salvarDados(*sistema);
       }
+      else if(Fcomando == "desligar som"){
+          if(auto som = dynamic_cast<Som*>(dispBase)) {
+              som->alterarEstado(false);
+          } else {
+              std::cout << "O dispositivo focado nao eh um aparelho de som ou nao foi encontrado.\n";
+          }
+          usuarioAtual->salvarDados(*sistema);
+      }
 
       else if (Fcomando == "ajuda" || Fcomando == "help" || Fcomando == "?") {
           exibirAjuda();
@@ -227,14 +235,27 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
           usuarioAtual->salvarDados(*sistema);
       }else if (Fcomando == "remover musica") {
           if (auto som = dynamic_cast<Som*>(dispBase)) {
+              som->printPlaylist();
               int indice;
+          while (true) {
+
               std::cout << "Digite o indice da musica a remover: ";
-              std::cin >> indice;
-              std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-              som->removerMusica(indice);
+
+              if (std::cin >> indice) {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+
+                som->removerMusica(indice);
+                break;
+              }
+
+              std::cout << "Indice invalido. Digite apenas numeros.\n";
+
+              std::cin.clear();
+              std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
           }
-          usuarioAtual->salvarDados(*sistema);
       }
+      usuarioAtual->salvarDados(*sistema);
+      }             
 
       //comandos de luz
 
@@ -746,7 +767,6 @@ void InterfaceTextual::exibirDispositivoFocado(int id) {
         std::cout << "  tocar musica\n";
         std::cout << "  escolher musica\n";
         std::cout << "  alterar volume\n";
-        std::cout << "  pausar som\n";
         std::cout << "  avancar musica\n";
         std::cout << "  voltar musica\n";
         std::cout << "  inserir musica\n";
@@ -829,7 +849,6 @@ void InterfaceTextual::exibirAjuda() {
     std::cout << "  tocar musica        - Toca a musica atual\n";
     std::cout << "  escolher musica     - Escolhe uma musica pelo indice\n";
     std::cout << "  alterar volume      - Altera o volume (0 a 100)\n";
-    std::cout << "  pausar som          - Pausa/retoma a reproducao\n";
     std::cout << "  avancar musica      - Avanca para a proxima musica\n";
     std::cout << "  voltar musica       - Volta para a musica anterior\n";
     std::cout << "  inserir musica      - Adiciona uma musica a playlist\n";

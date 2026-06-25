@@ -105,7 +105,7 @@ void Som::tocar(int indice){
         return;
     }else{
         _indice = indice;
-        _musica = playlist[indice - 1];
+        _musica = playlist[indice];
         std::cout << "Tocando musica escolhida: "<< _musica << std::endl;
     }
 }
@@ -115,8 +115,9 @@ void Som::proxima() {
         std::cerr << "Nada para tocar" << std::endl;
         return;
     }
-    int prox = (_indice + 1) % playlist.size();
-    tocar(prox);
+    
+    _indice = (_indice + 1) % playlist.size();
+    tocar(_indice);
 }
 
 void Som::anterior() {
@@ -125,12 +126,9 @@ void Som::anterior() {
         return;
     }
 
-    int ant = _indice - 1;
+    _indice = (_indice == 0) ? playlist.size() - 1 : _indice - 1;
 
-    if(ant < 0){
-        ant = playlist.size() - 1;
-    }
-    tocar(ant);
+    tocar(_indice);
 }
 
 void Som::printPlaylist() {
@@ -140,9 +138,12 @@ void Som::printPlaylist() {
     }
 
     std::cout << "Lista de reproducao atual:" << std::endl << std::endl;
-    for(auto a : playlist){
-        std::cout << a << std::endl;
+
+    for (int i = 0; i < static_cast<int>(playlist.size()); i++) {
+        std::cout << "[" << i << "] " << playlist[i] << std::endl;
     }
+
+    std::cout << std::endl;
 }
 
 void Som::adicionarMusica(const string& nome){
@@ -180,17 +181,19 @@ void Som::removerMusica(const string& nome) {
     auto it = std::find(playlist.begin(), playlist.end(), nome);
 
     if(it != playlist.end()){
-        int pos = std::distance(playlist.begin(), it);
+        int pos = static_cast<int>(it - playlist.begin());
+
         playlist.erase(it);
         std::cout << "Removendo " << nome << " da lista de reproducao" << std::endl;
 
         if(playlist.empty()){
             _indice = 0;
-            _musica = " ";
+            _musica = "";
         }else if (pos < _indice) {
             _indice--;
+            _musica = playlist[_indice];
         }else if (pos == _indice) {
-            if(_indice >= playlist.size()){
+            if(_indice >= static_cast<int>(playlist.size())){
                 _indice = 0;
             }
             _musica = playlist[_indice];
