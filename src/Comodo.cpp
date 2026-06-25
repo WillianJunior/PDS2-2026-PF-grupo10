@@ -44,12 +44,7 @@ int Comodo::getQtdDispositivos() const {
 }
 
 Dispositivo* Comodo::getDispositivoPorIndice(int idx) const {
-    std::cout << "idx = " << idx
-              << ", size = " << dispositivos.size()
-              << std::endl;
-
     if (idx < 0 || idx >= static_cast<int>(dispositivos.size())) {
-        std::cout << "retornando nullptr\n";
         return nullptr;
     }
 
