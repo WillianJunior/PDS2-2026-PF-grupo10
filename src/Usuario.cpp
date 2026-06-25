@@ -13,6 +13,13 @@
 
 
 Usuario::Usuario(std::string nome, std::string senha) : _nome(nome), _senha(senha) {
+    if (nome.empty()) {
+        throw std::invalid_argument("Erro: O nome do usuário não pode ser vazio.");
+    }
+
+    if (senha.size() < 8) {
+        throw std::invalid_argument("numero insuficiente de caracteres");
+    }
 }
 
 std::string Usuario::getNome() const {

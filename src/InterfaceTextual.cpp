@@ -23,35 +23,75 @@ InterfaceTextual::InterfaceTextual() : ativa(false), sistema(new Sistema), usuar
 
 void InterfaceTextual::iniciar() {
     limparTela();
-    std::string nome;
-    std::string senha;
+    while (true) {
+        std::string nome;
+        std::string senha;
 
-    std::cout << "===== LOGIN =====" << std::endl;
-    std::cout << "Usuario: ";
-    std::getline(std::cin, nome);
+        std::cout << "===== LOGIN =====" << std::endl;
+        std::cout << "Usuario: ";
+        std::getline(std::cin, nome);
 
-    std::cout << "Senha: ";
-    std::getline(std::cin, senha);
+        std::cout << "Senha: ";
+        std::getline(std::cin, senha);
 
-    std::string caminho = "data/" + nome + ".txt";
-
-    std::ifstream teste(caminho);
-    if (!teste.is_open()) {
-        std::ofstream criar(caminho);
-        if (!criar.is_open()) {
-            std::cout << "Erro: não foi possível criar arquivo do usuário.\n";
-            return;
+        if (senha.size() < 8) {
+            std::cout << "numero insuficiente de caracteres" << std::endl;
+            std::cout << "Pressione Enter para tentar novamente...";
+            std::cin.get();
+            limparTela();
+            continue;
         }
+
+        std::string caminho = "data/" + nome + ".txt";
+        std::ifstream teste(caminho);
+        bool arquivoExiste = teste.is_open();
+
+        if (arquivoExiste) {
+            std::string linha;
+            std::getline(teste, linha);
+            std::getline(teste, linha);
+            std::string senhaArmazenada;
+            std::getline(teste, senhaArmazenada);
+            teste.close();
+
+            if (senhaArmazenada != senha) {
+                std::cout << "senha incorreta, tente novamente" << std::endl;
+                std::cout << "Pressione Enter para tentar novamente...";
+                std::cin.get();
+                limparTela();
+                continue;
+            }
+        } else {
+            std::ofstream criar(caminho);
+            if (!criar.is_open()) {
+                std::cout << "Erro: nao foi possivel criar arquivo do usuario.\n";
+                return;
+            }
+            criar.close();
+        }
+
+        try {
+            usuarioAtual.reset(new Usuario(nome, senha));
+            if (arquivoExiste) {
+                usuarioAtual->carregarDados(*sistema);
+            } else {
+                usuarioAtual->salvarDados(*sistema);
+            }
+        } catch (const std::invalid_argument& erro) {
+            std::cout << erro.what() << std::endl;
+            std::cout << "Pressione Enter para tentar novamente...";
+            std::cin.get();
+            limparTela();
+            continue;
+        }
+
+        std::cout << "\nLogin realizado com sucesso!" << std::endl;
+        std::cout << "Pressione Enter para continuar...";
+        std::cin.get();
+
+        limparTela();
+        break;
     }
-    teste.close();
-    usuarioAtual.reset(new Usuario(nome, senha));
-    usuarioAtual->carregarDados(*sistema);
-
-    std::cout << "\nLogin realizado com sucesso!" << std::endl;
-    std::cout << "Pressione Enter para continuar...";
-    std::cin.get();
-
-    limparTela();
 
 
 
