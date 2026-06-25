@@ -1,0 +1,20 @@
+USUARIO
+maria
+123
+
+COMODOS
+quarto
+Som 3 1 50
+FIM_COMODO
+FIM_COMODOS
+
+MACROS
+sair
+1 desligar 0
+2 desligar 0
+3 desligar 0
+FIM_MACRO
+chegar
+2 ligar 0
+FIM_MACRO
+FIM_MACROS

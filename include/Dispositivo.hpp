@@ -54,6 +54,8 @@ public:
     /** @brief Retorna o nome da classe do dispositivo.
      *  @return std::string Nome do tipo de dispositivo (ex: "Luz", "Som", "ArCondicionado"). */
     std::string getNome() const;
+
+    void setId(int novoId);
     
     /** @brief Modifica o estado lógico (ativo/inativo) do dispositivo.
      *  @param novoEstado Flag booleano representando o comando desejado (true para ligar/abrir, false para desligar/fechar). */

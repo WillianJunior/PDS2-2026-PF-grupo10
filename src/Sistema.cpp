@@ -108,3 +108,7 @@ void Sistema::gerarRelatorio(const std::string& caminhoArquivo) const {
 void Sistema::receberComando(std::string comando) {
     return;
 }
+
+void Sistema::limparSistema() {
+    comodos.clear();
+}

@@ -37,6 +37,20 @@ Macro* Usuario::getMacro(int i) const {
     return macros[i].get();
 }
 
+void Usuario::listarMacros() const {
+
+    if (macros.empty()) {
+        std::cout << "Nenhuma macro cadastrada." << std::endl;
+        return;
+    }
+
+    std::cout << "Macros disponiveis:" << std::endl;
+
+    for (const auto& macro : macros) {
+        std::cout << "- " << macro->getEvento() << std::endl;
+    }
+}
+
 Macro* Usuario::adicionarMacro(const std::string& evento, Sistema& sistema) {
     if (evento.empty()) {
         throw std::invalid_argument("Erro: O nome do evento para a macro não pode ser vazio.");
@@ -96,9 +110,7 @@ void Usuario::executarMacro(std::string evento, Sistema& sistema) {
                         }
                     }
                     else {
-                        throw std::runtime_error(
-                            "Acao desconhecida: " + atual->acao
-                        );
+                        throw std::runtime_error("Acao desconhecida: " + atual->acao);
                     }
                 }
                 atual = atual->proximo.get();
@@ -106,31 +118,15 @@ void Usuario::executarMacro(std::string evento, Sistema& sistema) {
             return;
         }
 
-        throw std::runtime_error(
-            "Erro: Nao foi possivel executar. Macro \"" +
-            evento + "\" nao encontrada."
-        );
-
+        throw std::runtime_error("Nao foi possivel executar. Macro \"" + evento + "\" nao encontrada.");
     }
     catch (const std::runtime_error& e) {
-        std::cerr << "Erro ao executar macro: " << e.what() << std::endl;
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Excecao: " << e.what() << std::endl;
-    }
-    catch (...) {
-        std::cerr << "Erro desconhecido ao executar a macro." << std::endl;
+        std::cerr << "Erro: " << e.what() << std::endl;
     }
 }
 
 
 void Usuario::salvarDados(const Sistema& sistema){
-/*
- * Formato de salvamento:
- * USUARIO1,SENHA1;MACRO1,MACRO2, ... ,MACROn;COMODO1,COMODO2,COMODO3, ... ,COMODOn;
- * USUARIO2,SENHA2;MACRO1,MACRO2, ... ,MACROn;COMODO1,COMODO2,COMODO3, ... ,COMODOn;
- * ...
-*/
 
     std::string caminho = "data/" + _nome + ".txt";
     std::ofstream registro(caminho);
@@ -140,24 +136,62 @@ void Usuario::salvarDados(const Sistema& sistema){
         return;
     }
 
-    registro << _nome << "," << _senha << ";";
-    for (size_t i = 0; i < macros.size(); ++i) {
-        if (macros[i] != nullptr) {
-            registro << macros[i]->getEvento();
-            if (i < macros.size() - 1) registro << ",";
-        }
-    }
-    registro << ";";
+    registro << "USUARIO\n";
+    registro << _nome << '\n';
+    registro << _senha << "\n\n";
 
-    int qtdComodos = sistema.getQtdComodos();
-    for (int i = 0; i < qtdComodos; ++i) {
-        const Comodo* c = sistema.getComodo(i);
-        if (c != nullptr) {
-            registro << c->getNome();
-            if (i < qtdComodos - 1) registro << ",";
+    registro << "COMODOS\n";
+
+    for (int i = 0; i < sistema.getQtdComodos(); i++) {
+
+        Comodo* comodo = sistema.getComodo(i);
+
+        registro << comodo->getNome() << '\n';
+
+        for (int j = 0; j < comodo->getQtdDispositivos(); j++) {
+
+            Dispositivo* disp = comodo->getDispositivoPorIndice(j);
+
+            int valor = 0;
+
+            if (auto* luz = dynamic_cast<Luz*>(disp))
+                valor = luz->getIntensidade();
+
+            else if (auto* ar = dynamic_cast<ArCondicionado*>(disp))
+                valor = ar->getTemperatura();
+
+            else if (auto* som = dynamic_cast<Som*>(disp))
+                valor = som->getVolume();
+
+            else if (auto* portao = dynamic_cast<Portao*>(disp))
+                valor = portao->getTemporizador();
+
+            registro << disp->getNome() << ' ' << disp->getId() << ' ' << disp->getEstado() << ' ' << valor << '\n';
         }
+
+        registro << "FIM_COMODO\n";
     }
-    registro<< ";";
+    registro << "FIM_COMODOS\n\n";
+
+    registro << "MACROS\n";
+
+    for (const auto& macro : macros) {
+
+        registro << macro->getEvento() << '\n';
+
+        Node* atual = macro->getLista();
+
+        while (atual != nullptr) {
+
+            registro << atual->id << ' ' << atual->acao << ' ' << atual->valor << '\n';
+
+            atual = atual->proximo.get();
+        }
+
+        registro << "FIM_MACRO\n";
+    }
+    registro << "FIM_MACROS\n";
+
     registro.close();
 
     std::cout << "Dados registrados com sucesso!" << std::endl;
@@ -174,58 +208,128 @@ bool Usuario::carregarDados(Sistema& sistema) {
         return false;
     }
 
-    std::string conteudo;
-    std::getline(registro, conteudo);
+    sistema.limparSistema();
+    macros.clear();
+
+    std::string linha;
+
+    // ---------- USUARIO ----------
+    std::getline(registro, linha); // USUARIO
+    std::getline(registro, _nome);
+    std::getline(registro, _senha);
+
+    std::getline(registro, linha); // linha vazia
+
+    // ---------- COMODOS ----------
+    std::getline(registro, linha); // COMODOS
+
+    while (std::getline(registro, linha)) {
+
+        if (linha == "FIM_COMODOS")
+            break;
+
+         std::unique_ptr<Comodo> novoComodo(new Comodo(linha));
+        Comodo* ptrComodo = novoComodo.get();
+
+        while (std::getline(registro, linha)) {
+
+            if (linha == "FIM_COMODO")
+                break;
+
+            std::stringstream ss(linha);
+
+            std::string tipo;
+            int id;
+            bool estado;
+            int valor;
+
+            ss >> tipo >> id >> estado >> valor;
+
+            std::unique_ptr<Dispositivo> disp;
+
+            if (tipo == "Luz") {
+
+                auto luz = std::unique_ptr<Luz>(new Luz());
+                luz->setId(id);
+                luz->alterarEstado(estado);
+                luz->ajustarIntensidade(valor);
+
+                disp = std::move(luz);
+            }
+
+            else if (tipo == "Som") {
+
+                auto som = std::unique_ptr<Som>(new Som());
+                som->setId(id);
+                som->alterarEstado(estado);
+                som->setVolume(valor);
+
+                disp = std::move(som);
+            }
+
+            else if (tipo == "ArCondicionado") {
+
+                auto ar = std::unique_ptr<ArCondicionado>(new ArCondicionado());
+                ar->setId(id);
+                ar->alterarEstado(estado);
+                ar->ajustarTemperatura(valor);
+
+                disp = std::move(ar);
+            }
+
+            else if (tipo == "Portao") {
+
+                auto portao = std::unique_ptr<Portao>(new Portao());
+                portao->setId(id);
+                portao->alterarEstado(estado);
+                portao->setTemporizador(valor);
+
+                disp = std::move(portao);
+            }
+
+            if (disp)
+                ptrComodo->adicionarDispositivo(std::move(disp));
+        }
+
+        sistema.adicionarComodo(std::move(novoComodo));
+    }
+
+    // ---------- MACROS ----------
+    std::getline(registro, linha); // linha vazia
+    std::getline(registro, linha); // MACROS
+
+    while (std::getline(registro, linha)) {
+
+        if (linha == "FIM_MACROS")
+            break;
+
+        std::unique_ptr<Macro> macro(new Macro(linha));
+
+        while (std::getline(registro, linha)) {
+
+            if (linha == "FIM_MACRO")
+                break;
+
+            std::stringstream ss(linha);
+
+            int id;
+            int valor;
+            std::string acao;
+
+            ss >> id >> acao >> valor;
+
+            macro->adicionarDispositivo(id, acao, valor);
+        }
+
+        macros.push_back(std::move(macro));
+    }
     registro.close();
 
-    if (!conteudo.empty() && conteudo.back() == ';') {
-        conteudo.pop_back();
-    }
+    std::cout << "Dados carregados com sucesso!" << std::endl;
 
-    // divide em cada ';'
-
-    std::vector<std::string> partes;
-    std::stringstream ss(conteudo);
-    std::string parte;
-    while (std::getline(ss, parte, ';')) {
-        partes.push_back(parte);
-    }
-
-
-    if (partes.size() < 3) {
-        std::cerr << "Arquivo corrompido ou formato inválido." << std::endl;;
-        return false;
-    }
-
-    std::stringstream ssUser(partes[0]);
-    std::string nome, senha;
-    if (std::getline(ssUser, nome, ',') && std::getline(ssUser, senha, ',')) {
-        _nome = nome;
-        _senha = senha;
-    } else {
-        std::cerr << "Erro ao ler nome/senha." << std::endl;;
-        return false;
-    }
-
-
-    std::stringstream ssMacros(partes[1]);
-    std::string novomacro;
-    macros.clear();
-    while (std::getline(ssMacros, novomacro, ',')) {
-        if (!novomacro.empty()) {
-            macros.push_back(std::make_unique<Macro>(novomacro));
-        }
-    }
-
-
-    std::stringstream ssComodos(partes[2]);
-    std::string comodo;
-    while (std::getline(ssComodos, comodo, ',')) {
-        if (!comodo.empty()) {
-            if (sistema.getComodo(comodo) == nullptr) {
-                sistema.adicionarComodo(std::make_unique<Comodo>(comodo));
-            }
-        }
-    }
     return true;
+}
+
+void Usuario::limparMacros() {
+    macros.clear();
 }

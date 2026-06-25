@@ -49,6 +49,8 @@ public:
      * Retorna `nullptr` se o índice não for válido */
     Macro* getMacro(int i) const;
 
+    void listarMacros() const;
+
     /** @brief Registra e armazena uma nova macro vazia no sistema.
      * Cria uma nova estrutura de automação baseada no nome de um evento fornecido e a
      * adiciona ao vetor de macros. A partir do registro, ações podem ser vinculadas a este evento.
@@ -79,6 +81,8 @@ public:
      */
     bool carregarDados(Sistema& sistema);
 
+    void limparMacros();
+    
 };
 
 

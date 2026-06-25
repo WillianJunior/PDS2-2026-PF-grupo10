@@ -27,6 +27,13 @@ std::string Dispositivo::getNome() const {
     return nome;
 }
 
+void Dispositivo::setId(int novoId) {
+    id = novoId;
+
+    if (novoId >= identificador)
+        identificador = novoId + 1;
+}
+
 void Dispositivo::alterarEstado(bool novoEstado) {
     estado = novoEstado;
 }

@@ -91,6 +91,8 @@ public:
      * @note O comportamento específico depende da implementação do método.
      * @param comando Texto contendo o comando a ser executado.*/
     void receberComando(std::string comando);
+
+    void limparSistema();
 };
 
 #endif

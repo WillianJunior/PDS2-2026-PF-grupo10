@@ -16,9 +16,7 @@ Som::Som() : Dispositivo(), _volume(50), _indice(0), _pause(true) {
     carregarMusicas("src/playlist.txt");
 }
 
-Som::~Som() {
-    supplArq("src/playlist.txt");
-}
+Som::~Som() = default;
 
 void Som::supplArq(const string& nomeArquivo){
     if(playlist.empty()){
@@ -28,7 +26,7 @@ void Som::supplArq(const string& nomeArquivo){
 
     std::cout << "Salvando músicas..." << std::endl;
 
-    std::fstream playArq(nomeArquivo, std::ios::trunc);
+    std::fstream playArq(nomeArquivo, std::ios::out | std::ios::trunc);
     if(!playArq.is_open()){
         std::cerr << "Erro ao abrir o arquivo" << std::endl;
         return;
@@ -150,6 +148,8 @@ void Som::printPlaylist() {
 void Som::adicionarMusica(const string& nome){
         std::cout << "Adicionando " << nome << "no final da lista de reprodução" << std::endl;
         playlist.push_back(nome);
+
+        supplArq("src/playlist.txt");
 }
 
 void Som::adicionarMusica(const string& nome, int pos) {
@@ -167,6 +167,8 @@ void Som::adicionarMusica(const string& nome, int pos) {
     playlist.insert(it, nome);
 
     if(pos <= _indice) _indice++;
+
+    supplArq("src/playlist.txt");
 }
 
 void Som::removerMusica(const string& nome) {
@@ -196,7 +198,7 @@ void Som::removerMusica(const string& nome) {
     }else{
         std::cerr << "Música não encontrada" << std::endl;
     }
-
+    supplArq("src/playlist.txt");
 }
 
 void Som::removerMusica(int pos) {
@@ -225,6 +227,7 @@ void Som::removerMusica(int pos) {
         }
         _musica = playlist[_indice];
     }
+    supplArq("src/playlist.txt");
 }
 
 void Som::detectarErro() {
