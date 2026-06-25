@@ -34,7 +34,7 @@ void InterfaceTextual::iniciar() {
         std::cout << "Senha: ";
         std::getline(std::cin, senha);
 
-        if (senha.size() < 8) {
+        if (senha.size() < 3) {
             std::cout << "numero insuficiente de caracteres" << std::endl;
             std::cout << "Pressione Enter para tentar novamente...";
             std::cin.get();
