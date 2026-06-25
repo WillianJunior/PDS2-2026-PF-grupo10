@@ -52,9 +52,22 @@ void Usuario::listarMacros() const {
 }
 
 Macro* Usuario::adicionarMacro(const std::string& evento, Sistema& sistema) {
-    if (evento.empty()) {
-        throw std::invalid_argument("Erro: O nome do evento para a macro não pode ser vazio.");
+    try{
+        if (evento.empty()) {
+            throw std::invalid_argument("Erro: O nome do evento para a macro nao pode ser vazio.");
+        }
+
+        for (const auto& m : macros) {
+            if (m->getEvento() == evento) {
+                throw std::runtime_error("Erro: Ja existe uma macro com esse evento.");
+            }
+        }
     }
+    catch(const std::exception& e){
+        std::cout << e.what() << std::endl;
+        return nullptr;
+    }
+    
     macros.push_back(std::unique_ptr<Macro>(new Macro(evento)));
     return macros.back().get();
 }
@@ -66,7 +79,7 @@ void Usuario::removerMacro(std::string evento) {
             return;
         }
     }
-    throw std::runtime_error("Erro: Macro com o evento '" + evento + "' não encontrada.");
+    throw std::runtime_error("Erro: Macro com o evento '" + evento + "' nao encontrada.");
 }
 
 void Usuario::executarMacro(std::string evento, Sistema& sistema) {

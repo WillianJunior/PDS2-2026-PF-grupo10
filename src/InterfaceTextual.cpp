@@ -43,6 +43,7 @@ void InterfaceTextual::iniciar() {
             return;
         }
     }
+    teste.close();
     usuarioAtual.reset(new Usuario(nome, senha));
     usuarioAtual->carregarDados(*sistema);
 
@@ -396,25 +397,30 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
           }
       }else if (Fcomando == "excluir usuario") {
           std::string caminho = "data/" + usuarioAtual->getNome() + ".txt";
-
+          
           if (std::remove(caminho.c_str()) != 0) {
-              std::cout << "Erro: Não foi possível excluir o usuário.\n";
+              std::cout << "Erro: Nao foi possivel excluir o usuario.\n";
           } else {
-              std::cout << "Usuário excluído com sucesso!\n";
+              std::cout << "Usuario excluido com sucesso!\n";
               std::cout << "Pressione Enter para continuar...";
               std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
               std::cin.get();
 
-            // Encerra a interface atual e volta para a tela inicial
-            return;
-       }
+            iniciar();
+          }
       }else if (Fcomando == "adicionar macro") {
           if (usuarioAtual != nullptr) {
               std::string evento;
               std::cout << "Evento da macro: ";
               std::cin >> evento;
               std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+              
               Macro* macro = usuarioAtual->adicionarMacro(evento, *sistema);
+              if(macro == nullptr){
+                  return;
+              }
+              std::cout << "Macro criada com sucesso.\n";
 
               while(true){
                   std::string entrada;
@@ -441,26 +447,90 @@ void InterfaceTextual::interpretarComando(const std::string &comando){
                       continue;
                   }   
 
-                  std::string acao;
-                  std::cout << "Digite a acao: ";
-                  std::getline(std::cin, acao);
-                  int valor = 0;
+                Dispositivo* disp = sistema->getDispositivo(id);
 
-                  macro->adicionarDispositivo(id, acao, valor);
-                  std::cout << "Comando adicionado a macro.\n";
+                // Descobre ações válidas
+                std::vector<std::string> acoesValidas;
+
+                if (dynamic_cast<Luz*>(disp)) {
+                    acoesValidas = {"ligar", "desligar", "ajustar"};
+                }
+                else if (dynamic_cast<ArCondicionado*>(disp)) {
+                    acoesValidas = {"ligar", "desligar", "ajustar"};
+                }
+                else if (dynamic_cast<Som*>(disp)) {
+                    acoesValidas = {"ligar", "desligar", "ajustar"};
+                }
+                else if (dynamic_cast<Portao*>(disp)) {
+                    acoesValidas = {"abrir", "fechar", "ajustar"};
+                }
+                else {
+                    std::cout << "Tipo de dispositivo desconhecido.\n";
+                                    continue;
+                }
+
+                // Mostra ações possíveis
+                std::cout << "Acoes disponiveis:\n";
+                for (const auto& a : acoesValidas) {
+                    std::cout << " - " << a << "\n";
+                }
+
+                // Validação da ação
+                std::string acao;
+
+                while (true) {
+                    std::cout << "Digite a acao: ";
+                    std::getline(std::cin, acao);
+
+                    bool valido = false;
+                    for (const auto& a : acoesValidas) {
+                        if (acao == a) {
+                            valido = true;
+                            break;
+                        }
+                    }
+
+                    if (!valido) {
+                        std::cout << "Acao invalida para este dispositivo. Tente novamente:\n";
+                        continue;
+                    }
+
+                    break;
+                }
+
+                // Valor (caso ajuste)
+                int valor = 0;
+
+                if (acao == "ajustar") {
+                    std::cout << "Digite o valor: ";
+                    std::cin >> valor;
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                }
+
+                macro->adicionarDispositivo(id, acao, valor);
+                std::cout << "Comando adicionado a macro.\n";
               }
               std::cout << "\nMacro criada!\n";
               usuarioAtual->salvarDados(*sistema);
+              limparTela();
           }else{
               std::cout << "Nenhum usuario logado. Nao e possivel adicionar macro.\n";
           }
       }else if (Fcomando == "remover macro") {
           if (usuarioAtual != nullptr) {
               std::string evento;
+              usuarioAtual->listarMacros();
               std::cout << "Nome do evento da macro a remover: ";
               std::cin >> evento;
               std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-              usuarioAtual->removerMacro(evento);
+              try {
+                  usuarioAtual->removerMacro(evento);
+                  limparTela();
+                  std::cout << "Macro removida com sucesso.\n";
+              }
+              catch (const std::runtime_error& e) {
+                std::cout << e.what() << std::endl;
+              }
           }
           usuarioAtual->salvarDados(*sistema);
     }else if (Fcomando == "executar macro") {

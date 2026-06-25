@@ -1,7 +1,13 @@
 
-quarto
-3 Som Ligado Volume: 50    Tocando agora: Disciple - Slayer
-
 externo
-5 Luz Ligada Intensidade: 1
-6 Portao Fechado Temporizador: 60
+1 Luz Ligada Intensidade: 1
+2 Portao Fechado Temporizador: 30
+
+sala
+3 Luz Ligada Intensidade: 1
+4 Som Desligado Volume: 50    Tocando agora: Disciple - Slayer
+5 ArCondicionado Ligado Temperatura: 23
+
+quarto
+6 Luz Ligada Intensidade: 4
+7 ArCondicionado Desligado Temperatura: 22

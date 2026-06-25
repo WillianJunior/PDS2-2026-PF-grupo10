@@ -3,22 +3,36 @@ maria
 123
 
 COMODOS
-quarto
-Som 3 1 50
-FIM_COMODO
 externo
-Luz 5 1 1
-Portao 6 0 60
+Luz 1 1 1
+Portao 2 0 30
+FIM_COMODO
+sala
+Luz 3 1 1
+Som 4 0 50
+ArCondicionado 5 1 23
+FIM_COMODO
+quarto
+Luz 6 1 4
+ArCondicionado 7 0 22
 FIM_COMODO
 FIM_COMODOS
 
 MACROS
 sair
 1 desligar 0
-2 desligar 0
 3 desligar 0
+6 desligar 0
 FIM_MACRO
 chegar
-2 ligar 0
+1 ligar 0
+3 ligar 0
+6 ligar 0
+FIM_MACRO
+esfriar
+5 ajustar 23
+FIM_MACRO
+a
+1 desligar 0
 FIM_MACRO
 FIM_MACROS
