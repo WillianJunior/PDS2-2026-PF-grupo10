@@ -64,22 +64,25 @@ TEST_CASE("construtor com nome rejeita entrada invalida") {
 
 TEST_CASE("adicionarDispositivo adiciona e getQtdDispositivos reflete o tamanho") {
     Comodo comodo;
-    Dispositivo::identificador = 0; 
+    Dispositivo::identificador = 0;
+
     auto d1 = std::unique_ptr<TestDispositivo>(new TestDispositivo());
     auto d2 = std::unique_ptr<TestDispositivo>(new TestDispositivo());
 
-    
+    int id1 = d1->getId();
+    int id2 = d2->getId();
+
     const int inicial = comodo.getQtdDispositivos();
-    comodo.adicionarDispositivo(move(d1));
-    comodo.adicionarDispositivo(move(d2));
+    comodo.adicionarDispositivo(std::move(d1));
+    comodo.adicionarDispositivo(std::move(d2));
 
     CHECK_EQ(comodo.getQtdDispositivos(), inicial + 2);
-    CHECK_EQ(comodo.getDispositivoPorIndice(1)->getId(), d1->getId());
-    CHECK_EQ(comodo.getDispositivoPorIndice(2)->getId(), d2->getId());
-    CHECK_EQ(comodo.getDispositivo(d1->getId())->getId(), d1->getId());
-    CHECK_EQ(comodo.getDispositivo(d2->getId())->getId(), d2->getId());
-}
 
+    CHECK_EQ(comodo.getDispositivoPorIndice(0)->getId(), id1);
+    CHECK_EQ(comodo.getDispositivoPorIndice(1)->getId(), id2);
+    CHECK_EQ(comodo.getDispositivo(id1)->getId(), id1);
+    CHECK_EQ(comodo.getDispositivo(id2)->getId(), id2);
+}
 TEST_CASE("adicionarDispositivo rejeita ponteiro nulo") {
     Comodo comodo;
     CHECK_THROWS_AS(comodo.adicionarDispositivo(nullptr), std::invalid_argument);

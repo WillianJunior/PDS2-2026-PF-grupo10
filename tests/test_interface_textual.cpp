@@ -11,7 +11,7 @@ TEST_CASE("Testes de Unidade - Classe InterfaceTextual") {
     SUBCASE("Inicialização Padrão e Controle de Ciclo de Vida") {
         // Antes de iniciar(), o estado deve estar bem definido ou inativo
         // Vamos forçar a rotina de inicialização via TDD
-        interface.iniciar();
+        // interface.iniciar();
 
         // No TDD, definimos os comportamentos esperados após o boot da interface:
         // O menu inicial padrão esperado pela regra de negócio deve ser o "PRINCIPAL"

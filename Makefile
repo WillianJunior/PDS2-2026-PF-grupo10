@@ -88,7 +88,7 @@ run: all
 # ============================================
 # REGRA DE COBERTURA COMPLETA
 # ============================================
-coverage: clean
+coverage:
 
 	$(MAKE) COVERAGE=1 tests
 	cd $(COVR_DIR) && ../$(TEST_TARGET) 2>/dev/null || true
