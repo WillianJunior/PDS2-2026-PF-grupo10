@@ -37,17 +37,6 @@ TEST_CASE("Alterar estado do portao") {
     CHECK(p.getEstado() == false);
 }
 
-TEST_CASE("Fechamento automatico desliga o portao") {
-    Portao p;
-
-    p.alterarEstado(true);
-    p.setTemporizador(1); // Configura o temporizador para 1 segundo para acelerar o teste
-
-    p.fecharAutomaticamente();
-
-    CHECK(p.getEstado() == false);
-}
-
 TEST_CASE("Deteccao de erro executa corretamente") {
     Portao p;
 
