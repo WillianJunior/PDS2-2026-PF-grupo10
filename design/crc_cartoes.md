@@ -132,13 +132,3 @@ Subclasses: Luz, Ar condicionado, Portão, Som
 | Exibir alertas                      |              |
 
 ---
-
-## Classe: Sensor
-
-| Responsabilidades                   | Colaborações |
-|-------------------------------------|--------------|
-| Monitorar o estado de dispositivos  | Sistema      |
-| Coletar dados dos dispositivos      | Casa         |
-| Detectar erros                      | Macro        |
-| Gerar alertas                       |              |
-| Notificar o sistema sobre problemas |              |

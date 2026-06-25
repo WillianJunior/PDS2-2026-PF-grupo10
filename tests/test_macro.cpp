@@ -51,13 +51,13 @@ TEST_CASE("adicionarDispositivo insere nos e preserva ordem") {
     Macro macro("evento_lista");
     CHECK(macro.getLista() == nullptr);
 
-    macro.adicionarDispositivo(1, "ligar");
+    macro.adicionarDispositivo(1, "ligar", 0);
     REQUIRE(macro.getLista() != nullptr);
     CHECK_EQ(macro.getLista()->id, 1);
     CHECK_EQ(macro.getLista()->acao, "ligar");
     CHECK(macro.getLista()->proximo == nullptr);
 
-    macro.adicionarDispositivo(2, "desligar");
+    macro.adicionarDispositivo(2, "desligar", 0);
     REQUIRE(macro.getLista()->proximo != nullptr);
     CHECK_EQ(macro.getLista()->proximo->id, 2);
     CHECK_EQ(macro.getLista()->proximo->acao, "desligar");
@@ -66,8 +66,8 @@ TEST_CASE("adicionarDispositivo insere nos e preserva ordem") {
 
 TEST_CASE("removerDispositivo elimina o primeiro no da lista") {
     Macro macro("evento_remover_cabeca");
-    macro.adicionarDispositivo(10, "abrir");
-    macro.adicionarDispositivo(20, "fechar");
+    macro.adicionarDispositivo(10, "abrir", 0);
+    macro.adicionarDispositivo(20, "fechar", 0);
     macro.removerDispositivo(10, "abrir");
 
     REQUIRE(macro.getLista() != nullptr);
@@ -78,9 +78,9 @@ TEST_CASE("removerDispositivo elimina o primeiro no da lista") {
 
 TEST_CASE("removerDispositivo elimina um no do meio da lista") {
     Macro macro("evento_remover_meio");
-    macro.adicionarDispositivo(100, "ligar");
-    macro.adicionarDispositivo(200, "desligar");
-    macro.adicionarDispositivo(300, "ajustar");
+    macro.adicionarDispositivo(100, "ligar", 0);
+    macro.adicionarDispositivo(200, "desligar", 0);
+    macro.adicionarDispositivo(300, "ajustar", 0);
 
     macro.removerDispositivo(200, "desligar");
 
@@ -93,7 +93,7 @@ TEST_CASE("removerDispositivo elimina um no do meio da lista") {
 
 TEST_CASE("removerDispositivo nao altera a lista quando o elemento nao existe") {
     Macro macro("evento_remover_inexistente");
-    macro.adicionarDispositivo(5, "ligar");
+    macro.adicionarDispositivo(5, "ligar", 0);
     macro.removerDispositivo(6, "desligar");
 
     REQUIRE(macro.getLista() != nullptr);

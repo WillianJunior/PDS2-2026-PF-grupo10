@@ -63,16 +63,17 @@ TEST_CASE("construtor com nome rejeita entrada invalida") {
 
 TEST_CASE("adicionarDispositivo adiciona e getQtdDispositivos reflete o tamanho") {
     Comodo comodo;
+    Dispositivo::identificador = 0; 
     auto d1 = std::unique_ptr<TestDispositivo>(new TestDispositivo());
     auto d2 = std::unique_ptr<TestDispositivo>(new TestDispositivo());
 
     const int inicial = comodo.getQtdDispositivos();
-    comodo.adicionarDispositivo(std::unique_ptr<Dispositivo>(new TestDispositivo()));
-    comodo.adicionarDispositivo(std::unique_ptr<Dispositivo>(new TestDispositivo()));
+    comodo.adicionarDispositivo(move(d1));
+    comodo.adicionarDispositivo(move(d2));
 
     CHECK_EQ(comodo.getQtdDispositivos(), inicial + 2);
-    CHECK_EQ(comodo.getDispositivoPorIndice(0)->getId(), d1->getId());
-    CHECK_EQ(comodo.getDispositivoPorIndice(1)->getId(), d2->getId());
+    CHECK_EQ(comodo.getDispositivoPorIndice(1)->getId(), d1->getId());
+    CHECK_EQ(comodo.getDispositivoPorIndice(2)->getId(), d2->getId());
     CHECK_EQ(comodo.getDispositivo(d1->getId())->getId(), d1->getId());
     CHECK_EQ(comodo.getDispositivo(d2->getId())->getId(), d2->getId());
 }
