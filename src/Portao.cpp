@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include <thread>
 
 Portao::Portao() : Dispositivo(), segundos(30) {
     this->nome = "Portao";
@@ -25,26 +26,22 @@ void Portao::setTemporizador(int segundos) {
 }
 
 void Portao::fecharAutomaticamente() {
-    if (!this->estado || this->erro) {
-        return;
-    }
+    if (this->erro) return;
 
-    if (this->segundos < 0) {
-        detectarErro();
-        return;
-    }
+    std::thread([this]() {
 
-    if (this->segundos > 0) {
-        std::time_t tempoInicial = std::time(nullptr);
         int tempoRestante = this->segundos;
 
         while (tempoRestante > 0) {
-            std::time_t tempoAtual = std::time(nullptr);
-            tempoRestante = this->segundos - static_cast<int>(tempoAtual - tempoInicial);
-        }
-    }
+            std::cout << "Portao fechando em " << tempoRestante << "s\r" << std::flush;
 
-    this->alterarEstado(false);
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            tempoRestante--;
+        }
+
+        this->alterarEstado(false);
+
+    }).detach();
 }
 
 void Portao::detectarErro() {

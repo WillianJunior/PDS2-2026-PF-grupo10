@@ -24,7 +24,7 @@ void Som::supplArq(const string& nomeArquivo){
         return;
     }
 
-    std::cout << "Salvando músicas..." << std::endl;
+    std::cout << "Salvando musicas..." << std::endl;
 
     std::fstream playArq(nomeArquivo, std::ios::out | std::ios::trunc);
     if(!playArq.is_open()){
@@ -45,7 +45,7 @@ int Som::getVolume() const {
 void Som::setVolume(int nVol){
     try {
         if (nVol < 0 || nVol > 100) {
-            throw std::out_of_range("Volume inválido.");
+            throw std::out_of_range("Volume invalido.");
         }
 
         _volume = nVol;
@@ -60,7 +60,7 @@ bool Som::getPause() const{
 }
 
 void Som::carregarMusicas(const string& nomeArquivo) {
-    std::cout << "Carregando músicas salvas..." << std::endl;
+    std::cout << "Carregando musicas salvas..." << std::endl;
     std::ifstream playArq(nomeArquivo);
     if(!playArq.is_open()){
         std::cout << "Erro ao abrir o arquivo" << std::endl;
@@ -70,7 +70,7 @@ void Som::carregarMusicas(const string& nomeArquivo) {
     while(getline(playArq, _musica)){
         if(!_musica.empty()){playlist.push_back(_musica);}
     }
-    std::cout << "Músicas carregadas!"<<std::endl;
+    std::cout << "Musicas carregadas!"<<std::endl;
 
     playArq.close();
 }
@@ -79,7 +79,7 @@ void Som::togglePause() {
     /* Pause true:  pausado
      * Pause false: tocando
      * */
-    std::cout << (_pause ? "Reprodução pausada" : "Reprodução retomada" ) <<std::endl;
+    std::cout << (_pause ? "Reproducao pausada" : "Reproducao retomada" ) <<std::endl;
     _pause = !_pause;
 }
 
@@ -88,7 +88,7 @@ void Som::tocar() {
         std::cerr << "Nada para tocar" << std::endl;
         return;
     }else{
-        std::cout << "Reprodução iniciada" <<std::endl;
+        std::cout << "Reproducao iniciada" <<std::endl;
         _indice = 0;
         _musica = playlist[0];
     }
@@ -101,12 +101,12 @@ void Som::tocar(int indice){
     }
 
     if(indice < 0 || indice >= playlist.size()){
-        std::cerr << "Erro: Índice inválido" << std::endl;
+        std::cerr << "Erro: Indice invalido" << std::endl;
         return;
     }else{
         _indice = indice;
         _musica = playlist[indice - 1];
-        std::cout << "Tocando música escolhida: "<< _musica << std::endl;
+        std::cout << "Tocando musica escolhida: "<< _musica << std::endl;
     }
 }
 
@@ -139,21 +139,21 @@ void Som::printPlaylist() {
         return;
     }
 
-    std::cout << "Lista de reprodução atual:" << std::endl << std::endl;
+    std::cout << "Lista de reproducao atual:" << std::endl << std::endl;
     for(auto a : playlist){
         std::cout << a << std::endl;
     }
 }
 
 void Som::adicionarMusica(const string& nome){
-        std::cout << "Adicionando " << nome << "no final da lista de reprodução" << std::endl;
+        std::cout << "Adicionando " << nome << "no final da lista de reproducao" << std::endl;
         playlist.push_back(nome);
 
         supplArq("src/playlist.txt");
 }
 
 void Som::adicionarMusica(const string& nome, int pos) {
-    std::cout << "Adicionando " << nome << "na posição " << pos << " da lista de reprodução" << std::endl;
+    std::cout << "Adicionando " << nome << "na posicao " << pos << " da lista de reproducao" << std::endl;
 
     if(pos < 0) {
         pos = 0;
@@ -173,7 +173,7 @@ void Som::adicionarMusica(const string& nome, int pos) {
 
 void Som::removerMusica(const string& nome) {
     if(playlist.empty()){
-        std::cerr << "Não há nada para remover" << std::endl;
+        std::cerr << "Nao ha nada para remover" << std::endl;
         return;
     }
 
@@ -182,7 +182,7 @@ void Som::removerMusica(const string& nome) {
     if(it != playlist.end()){
         int pos = std::distance(playlist.begin(), it);
         playlist.erase(it);
-        std::cout << "Removendo " << nome << " da lista de reprodução" << std::endl;
+        std::cout << "Removendo " << nome << " da lista de reproducao" << std::endl;
 
         if(playlist.empty()){
             _indice = 0;
@@ -196,25 +196,25 @@ void Som::removerMusica(const string& nome) {
             _musica = playlist[_indice];
         }
     }else{
-        std::cerr << "Música não encontrada" << std::endl;
+        std::cerr << "Musica nao encontrada" << std::endl;
     }
     supplArq("src/playlist.txt");
 }
 
 void Som::removerMusica(int pos) {
     if(playlist.empty()){
-        std::cerr << "Não há nada para remover" << std::endl;
+        std::cerr << "Nao ha nada para remover" << std::endl;
     }
 
     if (pos < 0 || pos >= static_cast<int>(playlist.size())) {
-        std::cerr << "Índice inválido!" << std::endl;
+        std::cerr << "Indice invalido!" << std::endl;
         return;
     }
 
     auto it = playlist.begin() + pos;
     playlist.erase(it);
 
-    std::cout << "Removendo da lista de reprodução a musica na posição "<< pos << std::endl;
+    std::cout << "Removendo da lista de reprodução a musica na posicao "<< pos << std::endl;
 
     if(playlist.empty()){
         _indice = 0;
