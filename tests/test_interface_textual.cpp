@@ -1,23 +1,44 @@
 #include "doctest.h"
+#include <sstream>
+#include <iostream>
 #include <string>
 #include <vector>
 #include "InterfaceTextual.hpp"
 
 
-TEST_CASE("Testes de Unidade - Classe InterfaceTextual") {
-    // Cenário inicial: Instanciação da interface
+TEST_CASE("Testes de Unidade - InterfaceTextual (sem entrada do usuario)") {
+
     InterfaceTextual interface;
 
-    SUBCASE("Inicialização Padrão e Controle de Ciclo de Vida") {
-        // Antes de iniciar(), o estado deve estar bem definido ou inativo
-        // Vamos forçar a rotina de inicialização via TDD
-        // interface.iniciar();
+    SUBCASE("Exibicao inicial nao deve pedir input") {
+        CHECK_NOTHROW(interface.exibirMenuPrincipal());
+    }
 
-        // No TDD, definimos os comportamentos esperados após o boot da interface:
-        // O menu inicial padrão esperado pela regra de negócio deve ser o "PRINCIPAL"
-        // Como esses atributos são privados, testamos a estabilidade dos métodos de exibição iniciais:
-        interface.exibirMenuPrincipal();
-        interface.exibirRelatorio();
+    SUBCASE("Exibir relatorio sem bloquear") {
+        std::istringstream entrada("\n");
+        auto* cinOriginal = std::cin.rdbuf(entrada.rdbuf());
+
+        CHECK_NOTHROW(interface.exibirRelatorio());
+
+        std::cin.rdbuf(cinOriginal);
+    }
+
+    SUBCASE("Interpretador aceita comandos invalidos") {
+        CHECK_NOTHROW(interface.interpretarComando(""));
+        CHECK_NOTHROW(interface.interpretarComando("comando_inexistente"));
+        CHECK_NOTHROW(interface.interpretarComando("focar abc"));
+        CHECK_NOTHROW(interface.interpretarComando("entrar "));
+    }
+
+    SUBCASE("Comandos de navegacao invalidos nao travam") {
+        CHECK_NOTHROW(interface.interpretarComando("entrar quarto"));
+        CHECK_NOTHROW(interface.interpretarComando("voltar"));
+        CHECK_NOTHROW(interface.interpretarComando("comodo"));
+    }
+
+    SUBCASE("Exibir menu de comodo inexistente") {
+        CHECK_NOTHROW(interface.exibirMenuComodo(""));
+        CHECK_NOTHROW(interface.exibirMenuComodo("comodo_que_nao_existe"));
     }
 
     SUBCASE("Máquina de Estados de Navegação (Menus e Focos)") {
@@ -46,11 +67,16 @@ TEST_CASE("Testes de Unidade - Classe InterfaceTextual") {
         interface.interpretarComando("focar_dispositivo -9999"); // ID inválido / negativo
     }
 
-    SUBCASE("Rotinas de Encerramento da Aplicação") {
-       interface.iniciar();
-        
-        // Garante o desligamento correto do loop da interface textual
-        interface.encerrar();
-        // Após encerrar, o estado da interface deve ser limpo ou inativo
+    SUBCASE("Exibir ajuda sem bloquear") {
+        std::istringstream entrada("\n");
+        auto* cinOriginal = std::cin.rdbuf(entrada.rdbuf());
+
+        CHECK_NOTHROW(interface.exibirAjuda());
+
+        std::cin.rdbuf(cinOriginal);
+    }
+
+    SUBCASE("Encerrar pode ser chamado sem iniciar") {
+        CHECK_NOTHROW(interface.encerrar());
     }
 }

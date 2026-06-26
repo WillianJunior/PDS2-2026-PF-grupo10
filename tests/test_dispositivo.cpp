@@ -25,6 +25,22 @@ TEST_CASE("Construtor inicializa corretamente") {
     CHECK(d.temErro() == false);
 }
 
+TEST_CASE("Construtor inicializa nome vazio") {
+    DispositivoTeste d;
+
+    CHECK(d.getNome() == "");
+}
+
+TEST_CASE("IDs gerados sao unicos") {
+    DispositivoTeste d1;
+    DispositivoTeste d2;
+    DispositivoTeste d3;
+
+    CHECK(d1.getId() != d2.getId());
+    CHECK(d2.getId() != d3.getId());
+    CHECK(d1.getId() != d3.getId());
+}
+
 TEST_CASE("Alterar estado do dispositivo") {
     DispositivoTeste d;
 
@@ -33,6 +49,16 @@ TEST_CASE("Alterar estado do dispositivo") {
 
     d.alterarEstado(false);
     CHECK(d.getEstado() == false);
+}
+
+TEST_CASE("Detectar erro nao altera estado ligado") {
+    DispositivoTeste d;
+
+    d.alterarEstado(true);
+    d.detectarErro();
+
+    CHECK(d.getEstado());
+    CHECK(d.temErro());
 }
 
 TEST_CASE("Deteccao de erro altera flag de erro") {

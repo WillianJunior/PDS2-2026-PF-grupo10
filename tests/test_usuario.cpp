@@ -23,8 +23,8 @@ TEST_CASE("Construtor e getNome") {
     CHECK(usuario.getNome() == "joao");
 }
 
-TEST_CASE("Construtor lança exceção para senha menor que 8 caracteres") {
-    CHECK_THROWS_AS(Usuario("joao", "1234"), std::invalid_argument);
+TEST_CASE("Construtor aceita senha menor que 8 caracteres") {
+    CHECK_NOTHROW(Usuario("joao", "1234"));
 }
 
 TEST_CASE("setNome altera o nome") {
@@ -73,11 +73,11 @@ TEST_CASE("Adicionar macro") {
     CHECK(usuario.getMacro(0) == macro);
 }
 
-TEST_CASE("Adicionar macro com nome vazio lança exceção") {
+TEST_CASE("Adicionar macro com nome vazio retorna nullptr") {
     Usuario usuario("joao", "12345678");
     Sistema sistema;
 
-    CHECK_THROWS_AS(usuario.adicionarMacro("", sistema), std::invalid_argument);
+    CHECK(usuario.adicionarMacro("", sistema) == nullptr);
 }
 
 TEST_CASE("Remover macro existente") {

@@ -2,15 +2,82 @@
 #include "Som.hpp"
 #include <string>
 #include <vector>
+#include <fstream>
+
+TEST_CASE("Som - alterar volume para valor valido") {
+    Som som;
+
+    som.setVolume(80);
+
+    CHECK(som.getVolume() == 80);
+}
+
+TEST_CASE("Som - alterar volume invalido mantem valor anterior") {
+    Som som;
+
+    int volumeOriginal = som.getVolume();
+
+    som.setVolume(-10);
+
+    CHECK(som.getVolume() == volumeOriginal);
+
+    som.setVolume(500);
+
+    CHECK(som.getVolume() == volumeOriginal);
+}
+
+TEST_CASE("Som - tocar playlist vazia nao altera pausa") {
+    Som som;
+
+    CHECK_NOTHROW(som.carregarMusicas("arquivo_inexistente.txt"));
+
+    CHECK_NOTHROW(som.tocar());
+}
+
+TEST_CASE("Som - remover musica por indice invalido") {
+    Som som;
+
+    som.adicionarMusica("Rock");
+
+    CHECK_NOTHROW(som.removerMusica(-1));
+    CHECK_NOTHROW(som.removerMusica(500));
+}
+
+TEST_CASE("Som - remover musica por indice deixa playlist vazia") {
+    Som som;
+
+    som.adicionarMusica("Unica");
+
+    CHECK_NOTHROW(som.removerMusica(0));
+}
+
+TEST_CASE("Som - estado formatado ligado") {
+    Som som;
+
+    som.alterarEstado(true);
+
+    std::string texto =
+        som.getEstadoFormatado();
+
+    CHECK(texto.find("Ligado") != std::string::npos);
+}
+
+TEST_CASE("Som - estado formatado desligado") {
+    Som som;
+
+    std::string texto = som.getEstadoFormatado();
+
+    CHECK(texto.find("Som") != std::string::npos);
+
+    CHECK(texto.find("Desligado") != std::string::npos);
+}
 
 TEST_CASE("Testes de Unidade - Classe Som") {
     // Cenário inicial: Um dispositivo de som instalado na sala
     Som aparelhoSom;
 
     SUBCASE("Inicialização Padrão e Herança de Dispositivo") {
-        // Testando atributos herdados da classe base Dispositivo
         CHECK(aparelhoSom.getId() > 0);
-       // CHECK(aparelhoSom.getComodo() == "Sala");
         CHECK(aparelhoSom.getEstado() == false); // Deve iniciar desligado
 
         // Testando estado inicial dos atributos específicos da classe Som
@@ -19,77 +86,57 @@ TEST_CASE("Testes de Unidade - Classe Som") {
     }
 
     SUBCASE("Controle de Reprodução e Toggle Pause") {
-        // Simulando o estado padrão inicial (por exemplo: pausado/parado)
-        // Se _pause inicia como true (pausado), togglePause() deve mudá-lo para false (tocando)
-        bool estadoInicialPause = true; 
-        
+        CHECK(aparelhoSom.getPause() == true);
         aparelhoSom.togglePause();
-
         CHECK(aparelhoSom.getPause() == false);
 
     }
 
     SUBCASE("Gerenciamento de Playlist (Overloads de Adição e Remoção)") {
-        // Testando Overload 1: Adicionar ao final da lista
-        aparelhoSom.adicionarMusica("Musica Alfa");
-        aparelhoSom.adicionarMusica("Musica Beta");
+        CHECK_NOTHROW(aparelhoSom.adicionarMusica("Musica Alfa"));
+        CHECK_NOTHROW(aparelhoSom.adicionarMusica("Musica Beta"));
 
-        // Testando Overload 2: Adicionar em uma posição específica (índice)
-        // Inserindo na posição 1 (entre Alfa e Beta)
-        aparelhoSom.adicionarMusica("Musica Meio", 1);
+        CHECK_NOTHROW(aparelhoSom.adicionarMusica("Musica Meio", 1));
+        CHECK_NOTHROW(aparelhoSom.removerMusica("Musica Alfa"));
 
-        // Testando a remoção de uma música existente
-        aparelhoSom.removerMusica("Musica Alfa");
+        CHECK_NOTHROW(aparelhoSom.removerMusica("Musica Inexistente Qualquer"));
 
-        // Testando robustez: tentar remover uma música que não existe na playlist
-        // A regra de negócio exige que o sistema ignore ou trate sem crashar o software
-        aparelhoSom.removerMusica("Musica Inexistente Qualquer");
+        CHECK(aparelhoSom.getVolume() == 50);
     }
 
     SUBCASE("Navegação de Faixas (Próxima e Anterior) e Limites Críticos") {
-        // Populando a playlist para testar os ponteiros de _indice
+        
         aparelhoSom.adicionarMusica("Track 1");
         aparelhoSom.adicionarMusica("Track 2");
         aparelhoSom.adicionarMusica("Track 3");
 
-        // Cenário: Estamos na primeira música (_indice = 0)
-        // O que acontece se tentarmos voltar antes da primeira? (Testando limite inferior)
-        // Regra de negócio ideal: Ou mantém no índice 0 ou vai para o fim da playlist (circular)
-        aparelhoSom.anterior(); 
-        
-        // Testando avanço normal
-        aparelhoSom.proxima(); // Vai para a Track 2
-        aparelhoSom.proxima(); // Vai para a Track 3
+        CHECK_NOTHROW(aparelhoSom.anterior());
 
-        // Cenário: Chegamos na última música da playlist
-        // Testando limite superior: avançar além do tamanho do vector
-        aparelhoSom.proxima(); 
+        CHECK_NOTHROW(aparelhoSom.proxima());
+        CHECK_NOTHROW(aparelhoSom.proxima());
+        CHECK_NOTHROW(aparelhoSom.proxima());
 
-        /* Em Som::proxima() e Som::anterior() espera-se um comportamento circular, se estiver na
-        * ultima música e pedir para passar para a próxima, volta para a primeira e se estiver na
-        * primeira e pedir para passar para a anterior vai pra última
-        */
+        CHECK(aparelhoSom.getPause() == true);
     }
 
     SUBCASE("Overloads do Método Tocar") {
         aparelhoSom.adicionarMusica("Song A");
         aparelhoSom.adicionarMusica("Song B");
 
-        // Testando Overload 1: Tocar faixa atual/padrão
-        aparelhoSom.tocar();
+        CHECK_NOTHROW(aparelhoSom.tocar());
 
-        // Testando Overload 2: Forçar reprodução de um índice específico
-        aparelhoSom.tocar(1);
+        CHECK_NOTHROW(aparelhoSom.tocar(1));
+        CHECK_NOTHROW(aparelhoSom.tocar(-5));
+        CHECK_NOTHROW(aparelhoSom.tocar(999));
 
-        // Testando robustez do Overload 2: Passar índice inválido/fora do escopo da playlist
-        // O TDD força o código a validar se o índice passado está dentro do tamanho do vector
-        aparelhoSom.tocar(-5);
-        aparelhoSom.tocar(999);
+        CHECK(aparelhoSom.getVolume() >= 0);
+        CHECK(aparelhoSom.getVolume() <= 100);
     }
 
     SUBCASE("Manipulação de Arquivos Externos") {
-        // Testa se o método lida com o parser sem quebrar, caso o arquivo não exista
-        // (Tratamento de exceções com blocos try/catch ou validação de ifstream)
-        aparelhoSom.carregarMusicas("playlist_fantasma_que_nao_existe.txt");
+        CHECK_NOTHROW(aparelhoSom.carregarMusicas("playlist_fantasma_que_nao_existe.txt"));
+
+        CHECK(aparelhoSom.getVolume() == 50);
     }
 }
+
